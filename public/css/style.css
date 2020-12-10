@@ -1,0 +1,350 @@
+html{
+    position: relative;
+    min-height: 100%;
+}
+
+body{
+    padding-top:100px;;
+    margin-bottom: 60px;
+}
+
+
+
+.showline{
+    border: 1px solid red;
+}
+
+.print-letterhead-col2{
+    padding-top: 10px;
+   
+}
+
+
+.logo-container{
+	display: flex;
+}
+
+.logo-col1{
+	flex: 1;
+}
+
+.logo-col2{
+	padding-top: 5px;;
+}
+
+.a-element-long{
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.a-element-short{
+    display: none;
+}
+
+.b-element-long{
+	font-size: 14px;
+	flex:1;
+}
+
+.b-element-short{
+    display: none;
+}
+
+.navbar{
+    /*background-color: #249027; */
+	border-top: 5px solid #184725;
+}
+
+.navbar-custom{
+	background-color: white;
+	border-bottom : 2px solid #184725;
+	color : 08541e;
+}
+
+.navbar-brand{
+    color: #184725;
+}
+ .navbar-brand:hover{
+    /* color:#b1ceea; */
+	color : #184725;
+}
+
+.nav-link{
+    /* color: white; */
+	color : #184725;
+
+}
+
+.nav-link:hover{
+    /* color:#b1ceea; */
+	color : #184725;
+
+	border-bottom : 1px solid #184725;
+}
+
+
+
+.nav-item {
+	color : green;
+	/* border : 1px solid red; */
+}
+
+.navbar-custom .navbar-toggler {
+    border: 1px solid #184725;
+}
+
+.navbar-toggler-icon {
+    background-color:#33aa33;
+}
+
+.active{
+    font-weight: bold;
+}
+
+
+
+div.dt-buttons {
+    clear: both;
+}
+
+
+/* .btn-table-edit{
+  background-image: url('img/delete.png');
+} */
+
+.btn-table-delete{
+
+}
+
+
+.btn-success{
+    background-color: #184725;
+}
+.custom-control-inpu{
+    color:#F06586;
+}
+
+
+.sticky-top {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 100px;
+
+}
+
+
+.btn-link {
+  background: none!important;
+  border: none;
+  padding: 0!important;
+  /*optional*/
+  font-family: arial, sans-serif;
+  /*input has OS specific font-family*/
+  color: #069;
+  text-decoration: underline;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+
+
+.ans-sheet {
+    display: flex;
+    justify-content: center;
+}
+
+.mytable td{
+    padding: 10px;
+}
+
+.mytable th{
+
+    border-top: 3px solid black;
+}
+
+.myfooter{
+
+
+    background-color: #184725;
+    color:white;
+    text-align: center;
+}
+
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 60px;
+    line-height: 60px; /* Vertically center the text there */
+
+}
+
+.showline{
+    border: 1px solid red;
+}
+
+
+
+@media screen and (max-width: 600px) {
+    .auto-width {
+        width: 100%;
+        margin: 5px;
+    }
+
+    .eval-table{
+        margin: 10px;
+    }
+
+    .logo-col2{
+        display: flex;
+        flex-direction: column;
+
+    }
+
+	.a-element-long{
+		display : none;
+	}
+
+	.a-element-short{
+        display: block;
+        font-weight: bold;
+        flex:1;
+	}
+
+    .b-element-short{
+        display: block;
+        font-size: 14px;
+        flex:1;
+    }
+
+    .b-element-long{
+        display : none;
+    }
+}
+
+@media (max-width: 992px) {
+
+    .auto-width {
+        width: 100%;
+        margin: 5px;
+    }
+    .eval-table{
+        margin: 10px;
+    }
+}
+
+
+
+
+/* funky radio ---------------------*/
+
+/*.funkyradio div {*/
+/*    clear: both;*/
+/*    overflow: hidden;*/
+/*}*/
+
+/*.funkyradio label {*/
+/*    width: 100%;*/
+/*    border-radius: 3px;*/
+/*    border: 1px solid #D1D3D4;*/
+/*    font-weight: normal;*/
+/*}*/
+
+/*.funkyradio input[type="radio"]:empty,*/
+/*.funkyradio input[type="checkbox"]:empty {*/
+/*    display: none;*/
+/*}*/
+
+/*.funkyradio input[type="radio"]:empty ~ label,*/
+/*.funkyradio input[type="checkbox"]:empty ~ label {*/
+/*    position: relative;*/
+/*    line-height: 2.5em;*/
+/*    text-indent: 3.25em;*/
+/*    margin-top: 2em;*/
+/*    cursor: pointer;*/
+/*    -webkit-user-select: none;*/
+/*    -moz-user-select: none;*/
+/*    -ms-user-select: none;*/
+/*    user-select: none;*/
+/*}*/
+
+/*.funkyradio input[type="radio"]:empty ~ label:before,*/
+/*.funkyradio input[type="checkbox"]:empty ~ label:before {*/
+/*    position: absolute;*/
+/*    display: block;*/
+/*    top: 0;*/
+/*    bottom: 0;*/
+/*    left: 0;*/
+/*    content: '';*/
+/*    width: 2.5em;*/
+/*    background: #D1D3D4;*/
+/*    border-radius: 3px 0 0 3px;*/
+/*}*/
+
+/*.funkyradio input[type="radio"]:hover:not(:checked) ~ label,*/
+/*.funkyradio input[type="checkbox"]:hover:not(:checked) ~ label {*/
+/*    color: #888;*/
+/*}*/
+
+/*.funkyradio input[type="radio"]:hover:not(:checked) ~ label:before,*/
+/*.funkyradio input[type="checkbox"]:hover:not(:checked) ~ label:before {*/
+/*    content: '\2714';*/
+/*    text-indent: .9em;*/
+/*    color: #C2C2C2;*/
+/*}*/
+
+/*.funkyradio input[type="radio"]:checked ~ label,*/
+/*.funkyradio input[type="checkbox"]:checked ~ label {*/
+/*    color: #777;*/
+/*}*/
+
+/*.funkyradio input[type="radio"]:checked ~ label:before,*/
+/*.funkyradio input[type="checkbox"]:checked ~ label:before {*/
+/*    content: '\2714';*/
+/*    text-indent: .9em;*/
+/*    color: #333;*/
+/*    background-color: #ccc;*/
+/*}*/
+
+/*.funkyradio input[type="radio"]:focus ~ label:before,*/
+/*.funkyradio input[type="checkbox"]:focus ~ label:before {*/
+/*    box-shadow: 0 0 0 3px #999;*/
+/*}*/
+
+/*.funkyradio-default input[type="radio"]:checked ~ label:before,*/
+/*.funkyradio-default input[type="checkbox"]:checked ~ label:before {*/
+/*    color: #333;*/
+/*    background-color: #ccc;*/
+/*}*/
+
+/*.funkyradio-primary input[type="radio"]:checked ~ label:before,*/
+/*.funkyradio-primary input[type="checkbox"]:checked ~ label:before {*/
+/*    color: #fff;*/
+/*    background-color: #337ab7;*/
+/*}*/
+
+/*.funkyradio-success input[type="radio"]:checked ~ label:before,*/
+/*.funkyradio-success input[type="checkbox"]:checked ~ label:before {*/
+/*    color: #fff;*/
+/*    background-color: #5cb85c;*/
+/*}*/
+
+/*.funkyradio-danger input[type="radio"]:checked ~ label:before,*/
+/*.funkyradio-danger input[type="checkbox"]:checked ~ label:before {*/
+/*    color: #fff;*/
+/*    background-color: #d9534f;*/
+/*}*/
+
+/*.funkyradio-warning input[type="radio"]:checked ~ label:before,*/
+/*.funkyradio-warning input[type="checkbox"]:checked ~ label:before {*/
+/*    color: #fff;*/
+/*    background-color: #f0ad4e;*/
+/*}*/
+
+/*.funkyradio-info input[type="radio"]:checked ~ label:before,*/
+/*.funkyradio-info input[type="checkbox"]:checked ~ label:before {*/
+/*    color: #fff;*/
+/*    background-color: #5bc0de;*/
+/*}*/
