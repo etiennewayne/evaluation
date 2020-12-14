@@ -35,7 +35,12 @@ Route::post('/','LoginController@auth');
 
 //ADMINISTRATOR-------
 Route::get('/cpanel-home', 'Administrator\HomeController@index')->name('cpanel-home');
+
+//USERS
+Route::resource('/user-uploader' , 'Administrator\UserUploaderController');
 Route::resource('/cpanel-users','UserController');
+
+
 Route::get('/cpanel-report-faculty', 'Administrator\ReportResultController@index')->name('report');
 
 Route::get('/cpanel-report/{facultyid}', 'Administrator\ReportResultController@reportRating');
@@ -68,10 +73,17 @@ Route::post('/cpanel-academicyear/set-active' , 'Administrator\AcademicYearContr
 
 
 
+
 //Route::post('/cpanel-criteria/update' , 'Administrator\CriteriaController@update');
 
 
 
+//SCHEDULE
+Route::resource('/schedule-uploader', 'Administrator\ScheduleUploaderController');
+
+
+//FaCULTY
+Route::resource('/faculty-uploader', 'Administrator\FacultyUploaderController');
 
 
 

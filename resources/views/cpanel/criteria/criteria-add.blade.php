@@ -2,8 +2,6 @@
 
 @section('content')
 
-
-
 		<div class="row justify-content-center">
 			<div class="col-md-8">
 				<div class="card">
@@ -19,7 +17,12 @@
 								<div class="col-md-6">
 									<select class="form-control" name="ay_id" id="ay_id">
 										@foreach($ay as $ay)
-											<option value="{{ $ay->ay_id }}">{{ $ay->ay_desc }} ({{ $ay->ay_code }})</option>
+											@if($ay->active == 1)
+												<option value="{{ $ay->ay_id }}" selected>{{ $ay->ay_desc }} ({{ $ay->ay_code }})</option>
+											@else
+												<option value="{{ $ay->ay_id }}">{{ $ay->ay_desc }} ({{ $ay->ay_code }})</option>
+											@endif
+											
 										@endforeach
 									</select>
 								</div>

@@ -3,9 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="720635db-fce7-4503-8300-ca514c204a37" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Student/StudyLoadController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Student/StudyLoadController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/student/rate.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/rate.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/student/studyload.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/studyload.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Administrator/CriteriaController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Administrator/CriteriaController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/cpanel/criteria/criteria-add.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/cpanel/criteria/criteria-add.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/admin-layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/admin-layout.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,6 +22,13 @@
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -119,6 +127,9 @@
     <option name="version" value="1" />
   </component>
   <component name="ProjectId" id="1ZN5GFxTef7nMvEVoXOiDaAZH1F" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -169,6 +180,7 @@
       <workItem from="1584808034761" duration="11355000" />
       <workItem from="1584821914831" duration="80000" />
       <workItem from="1607579428976" duration="3752000" />
+      <workItem from="1607920151862" duration="10377000" />
     </task>
     <servers />
   </component>
@@ -184,6 +196,18 @@
     </option>
   </component>
   <component name="WindowStateProjectService">
+    <state x="-940" y="204" key="FileChooserDialogImpl" timestamp="1607920196315">
+      <screen x="-1440" y="0" width="1440" height="900" />
+    </state>
+    <state x="-940" y="204" key="FileChooserDialogImpl/0.0.1440.860/-1440.0.1440.900@-1440.0.1440.900" timestamp="1607920196315" />
+    <state x="554" y="353" key="NewPhpFileDialog" timestamp="1607931143505">
+      <screen x="0" y="0" width="1440" height="860" />
+    </state>
+    <state x="554" y="353" key="NewPhpFileDialog/0.0.1440.860/-1440.0.1440.900@0.0.1440.860" timestamp="1607931143505" />
+    <state x="-1335" y="140" width="1026" height="708" key="dock-window-1" timestamp="1607923483409">
+      <screen x="-1440" y="0" width="1440" height="900" />
+    </state>
+    <state x="-1335" y="140" width="1026" height="708" key="dock-window-1/0.0.1440.860/-1440.0.1440.900@0.0.1440.860" timestamp="1607923483409" />
     <state x="-1057" y="190" width="672" height="678" key="search.everywhere.popup" timestamp="1607588924651">
       <screen x="-1440" y="0" width="1440" height="900" />
     </state>
