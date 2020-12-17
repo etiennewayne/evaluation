@@ -15,6 +15,7 @@
 //     return view('welcome');
 // });
 
+use App\User;
 
 Auth::routes([	'reset' => false,
 				'verify' => false]);
@@ -81,13 +82,17 @@ Route::post('/cpanel-academicyear/set-active' , 'Administrator\AcademicYearContr
 //SCHEDULE
 Route::resource('/schedule-uploader', 'Administrator\ScheduleUploaderController');
 
-
 //FaCULTY
 Route::resource('/faculty-uploader', 'Administrator\FacultyUploaderController');
 
-
 //COURSE UPLOADER
 Route::resource('/course-uploader', 'Administrator\CourseController');
+
+//ENROLEE UPLOADER
+Route::resource('/enrolee-uploader', 'Administrator\EnroleeUploaderController');
+
+
+
 
 
 
@@ -124,4 +129,17 @@ Route::get('/android/login/{u}/{p}','AndroidLoginController@checkLogin');
 //LOGOUT
 Route::get('/logout', function() {
     Auth::logout();
+});
+
+//insert admin
+Route::get('/insert', function(){
+    
+    User::create([
+        'student_id' => 'admin',
+        'username' => 'admin',
+        'lname' => 'AMPARADO',
+        'password' => \Hash::make('gadtc'),
+        'role' => 'ADMINISTRATOR'
+    ]);
+    
 });

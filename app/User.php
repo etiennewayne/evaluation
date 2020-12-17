@@ -17,7 +17,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         //'lname', 'fname', 'mname', 'sex', 'email', 'password',
-        'lname', 'fname', 'mname', 'sex', 'username', 'password',
+        'student_id', 'lname', 'fname', 'mname', 'sex', 'username', 'password', 'role'
     ];
     
     protected $primaryKey = 'user_id';
@@ -37,9 +37,7 @@ class User extends Authenticatable
         return $this->hasOne('App\Position', 'position_id', 'position_id');
     }
 
-    public function programs(){
-        return $this->hasOne('App\Program', 'program_id', 'program_id');
-    }
+
 
     /**
      * The attributes that should be cast to native types.

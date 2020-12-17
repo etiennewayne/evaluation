@@ -157,6 +157,7 @@
               <a class="collapse-item" href="/user-uploader">User Uploader</a>
               <a class="collapse-item" href="/course-uploader">Course Uploader</a>
               <a class="collapse-item" href="/faculty-uploader">Faculty Uploader</a>
+              <a class="collapse-item" href="/enrolee-uploader">Enrolees Uploader</a>
               <a class="collapse-item" href="/schedule-uploader">Schedule Uploader</a>
 
 

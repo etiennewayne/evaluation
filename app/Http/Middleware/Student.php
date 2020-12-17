@@ -23,8 +23,8 @@ class Student
         }
 
 
-        $position = strtolower(Auth::user()->positions->position);
-        if($position == 'student' || $position == 'administrator' ){
+        $role = strtolower(Auth::user()->role);
+        if($role == 'student' || $role == 'administrator' ){
             return $next($request)
                 ->header('Cache-Control','nocache, no-store, max-age=0, must-revalidate')
                 ->header('Pragma','no-cache');

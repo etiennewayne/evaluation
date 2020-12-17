@@ -28,6 +28,7 @@ class UserUploaderController extends Controller
 
         foreach($arr as $item) { //foreach element in $arr
             \DB::table('users')->insertOrIgnore([
+                'student_id' => $item->username,
                 'username' => $item->username,
                 'lname' => $item->lname,
                 'fname' => $item->fname,

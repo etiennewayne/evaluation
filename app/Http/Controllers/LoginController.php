@@ -25,12 +25,12 @@ class LoginController extends Controller
 	public function index(){
 	
 		if(Auth::check()){
-			$position = Auth::user()->positions->position;
-			if($position == "ADMINISTRATOR"){
+			$role = Auth::user()->role;
+			if($role == "ADMINISTRATOR"){
 				return redirect()->intended('cpanel-home');
 			}
 
-			if($position == "STUDENT"){
+			if($role == "STUDENT"){
 				return redirect()->intended('home');
 			}
 		}
@@ -45,13 +45,13 @@ class LoginController extends Controller
         if (Auth::attempt($credentials)) {
             // Authentication passed...
 
-			$position = Auth::user()->positions->position;
+			$position = Auth::user()->role;
 
-			if($position == "ADMINISTRATOR"){
+			if($role == "ADMINISTRATOR"){
 				return redirect()->intended('cpanel-home');
 			}
 
-			if($position == "STUDENT"){
+			if($role == "STUDENT"){
 				return redirect()->intended('home');
 			}
 

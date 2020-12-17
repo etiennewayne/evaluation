@@ -24,9 +24,9 @@ class Admin
         }
 
 
-        $position = strtolower(Auth::user()->positions->position);
+        $role = strtolower(Auth::user()->role);
 
-        if($position == 'administrator'){
+        if($role == 'administrator'){
         return $next($request)
             ->header('Cache-Control','nocache, no-store, max-age=0, must-revalidate')
             ->header('Pragma','no-cache');
@@ -34,7 +34,7 @@ class Admin
             //no cache so user cant use prev button in browser
     }
 
-        if($position == 'student'){
+        if($role == 'student'){
             return redirect('/home')->with('error', 'You dont\'t have admin access.');
         }
 
