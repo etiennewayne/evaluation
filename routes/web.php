@@ -86,6 +86,8 @@ Route::resource('/schedule-uploader', 'Administrator\ScheduleUploaderController'
 Route::resource('/faculty-uploader', 'Administrator\FacultyUploaderController');
 
 
+//COURSE UPLOADER
+Route::resource('/course-uploader', 'Administrator\CourseController');
 
 
 

@@ -155,6 +155,7 @@
             <a class="collapse-item" href="register.html">Register</a>
             <a class="collapse-item" href="forgot-password.html">Forgot Password</a> --}}
               <a class="collapse-item" href="/user-uploader">User Uploader</a>
+              <a class="collapse-item" href="/course-uploader">Course Uploader</a>
               <a class="collapse-item" href="/faculty-uploader">Faculty Uploader</a>
               <a class="collapse-item" href="/schedule-uploader">Schedule Uploader</a>
 

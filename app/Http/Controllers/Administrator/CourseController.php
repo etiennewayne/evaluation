@@ -5,34 +5,36 @@ namespace App\Http\Controllers\Administrator;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class FacultyUploaderController extends Controller
+
+class CourseController extends Controller
 {
     //
+
 
     public function __construct()
     {
         $this->middleware('auth');
     }
 
+
     public function index(){
-        return view('cpanel.faculty.facultyuploader');
+        return view('cpanel.course.course-uploader');
     }
 
-
     public function store(Request $req){
+
         set_time_limit(1080);
-        $arr = json_decode($req->faculty_json);
+        $arr = json_decode($req->course_json);
 
         //return $arr;
 
         foreach($arr as $item) { //foreach element in $arr
-            \DB::table('faculties')->insertOrIgnore([
-                'faculty_code' => $item->faculty_code,
-                'lname' => $item->lname,
-                'fname' => $item->fname,
-                'mname' => $item->mname,
-                'institute' => $item->institute,
-                'status' => $item->status,
+            \DB::table('courses')->insertOrIgnore([
+                'course_code' => $item->course_code,
+                'course_name' => $item->course_name,
+                'course_desc' => $item->course_desc,
+                'course_class' => $item->course_class,
+                'unit' => $item->unit,
             ]);
 
         }
@@ -40,8 +42,6 @@ class FacultyUploaderController extends Controller
         return redirect()->back()
             ->with('success', "Successfully uploaded.");
     }
-
-
 
 
 }

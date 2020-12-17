@@ -83,7 +83,7 @@
             </script>
 
 
-            <form enctype="multipart/form-data" method="post" action="/quiz/question/uploader/39/store">
+            <form enctype="multipart/form-data" method="post" action="/schedule-uploader">
 
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
@@ -104,7 +104,7 @@
 
                 </div>
 
-                <textarea readonly class="form-control" name="user_json" rows=20 cols=120 id="xlx_json"></textarea>
+                <textarea readonly class="form-control" name="schedule_json" rows=20 cols=120 id="xlx_json"></textarea>
 
 
                 <div class="row mt-2" style="float: right;">

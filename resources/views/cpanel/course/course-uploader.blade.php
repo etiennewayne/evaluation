@@ -34,7 +34,7 @@
 
 
         <div class="row justify-content-center" style="border-bottom: 1px solid #05a805;">
-            <h3>FACULTY UPLOADER</h3>
+            <h3>COURSE UPLOADER</h3>
         </div>
 
         <br>
@@ -83,7 +83,7 @@
             </script>
 
 
-            <form enctype="multipart/form-data" method="post" action="/faculty-uploader">
+            <form enctype="multipart/form-data" method="post" action="/course-uploader">
 
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
@@ -104,7 +104,7 @@
 
                 </div>
 
-                <textarea readonly class="form-control" name="faculty_json" rows=20 cols=120 id="xlx_json"></textarea>
+                <textarea readonly class="form-control" name="course_json" rows=20 cols=120 id="xlx_json"></textarea>
 
 
                 <div class="row mt-2" style="float: right;">
