@@ -119,3 +119,9 @@ Route::get('/data/ajax-users','UserController@ajaxUsers')->name('db-ajax-user');
 
 
 Route::get('/android/login/{u}/{p}','AndroidLoginController@checkLogin');
+
+
+//LOGOUT
+Route::get('/logout', function() {
+    Auth::logout();
+});
