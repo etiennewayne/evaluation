@@ -45,7 +45,7 @@ class LoginController extends Controller
         if (Auth::attempt($credentials)) {
             // Authentication passed...
 
-			$position = Auth::user()->role;
+			$role = Auth::user()->role;
 
 			if($role == "ADMINISTRATOR"){
 				return redirect()->intended('cpanel-home');

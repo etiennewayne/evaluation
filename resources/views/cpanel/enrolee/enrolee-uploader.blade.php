@@ -83,7 +83,7 @@
             </script>
 
 
-            <form enctype="multipart/form-data" method="post" action="/schedule-uploader">
+            <form enctype="multipart/form-data" method="post" action="/enrolee-uploader">
 
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">

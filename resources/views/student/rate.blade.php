@@ -62,29 +62,28 @@
                     <div class="card-header">
                       <b>SCHEDULE INFORMATION</b>
                     </div>
+
                     <div class="card-body">
 						<table>
 							<tr>
 								<td style="width:150px;"><b>Schedule Code</b> :</td>
-								<td>{{$schedule->sched_code}}</td>
+{{--								<td>{{ $schedule }}</td>--}}
 							</tr>
 							<tr>
 								<td><b>Course</b> :</td>
-								<td>{{ $schedule->course->course_code }} {{ $schedule->course->course }}</td>
+								{{-- <td>{{ $schedule->course->course_code }} {{ $schedule->course->course }}</td> --}}
 							</tr>
-							<tr>
+							{{-- <tr>
 								<td><b>Schedule</b> :</td>
 								<td>{{ \Carbon\Carbon::createFromFormat('H:i:s',$schedule->time_start)->format('h:i A')  }} -  {{ \Carbon\Carbon::createFromFormat('H:i:s',$schedule->time_end)->format('h:i A')  }} {{ $schedule->sched_day}} {{$schedule->course->course_class }}</td>
 							</tr>
 							<tr>
 								<td><b>Instructor</b> :</td>
 								<td>{{ $schedule->faculty->lname }}, {{ $schedule->faculty->fname }} {{ $schedule->faculty->mname[0] }}</td>
-							</tr>
+							</tr> --}}
 						</table>
-
-
-
                     </div>
+
                   </div>
                 </div><!--close md-6-->
 
@@ -110,7 +109,7 @@
 
                           <div class="row">
                               <div class="col-md-6">
-                                  3 - undecided
+                                  3 - Undecided
                               </div>
                               <div class="col-md-6">
                                   2 - Disagree
@@ -139,7 +138,7 @@
         <form id="form-submit" method="post" action="/studyload/save">
         <div class="row justify-content-center">
 
-            <input type="hidden" name="sched_id" value="{{ $schedule->schedule_id }}" />
+            <input type="hidden" name="schedule_code" value="" />
             @csrf
 
             <table class="table mytable">
@@ -152,6 +151,8 @@
                             <td colspan="100%" style="border-bottom: 1px solid black; border-top: 1px solid black;"><b>{{ $cat->category  }} </b></td>
                         </tr>
                         @foreach($cat->criteria as $crit)
+
+                            {{$crit}}
                             <tr id="row{{ $crit->criterion_id }}">
                                 <td>&emsp; {{ $crit->criterion }}</td>
                                 <td>

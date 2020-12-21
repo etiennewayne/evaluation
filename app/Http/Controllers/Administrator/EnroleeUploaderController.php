@@ -21,20 +21,24 @@ class EnroleeUploaderController extends Controller
 
     public function store(Request $req){
 
-        set_time_limit(1080);
+       
+        set_time_limit(5000);
         $arr = json_decode($req->enrolee_json);
 
         //return $arr;
 
+        //return $arr;
+
         foreach($arr as $item) { //foreach element in $arr
-            \DB::table('enrolees')->insertOrIgnore([
+            \DB::table('enrolees')->insert([
                 'student_id' => $item->student_id,
-                'schedule_code' => $item->schedule_code,
-                'course_code' => $item->course_code,
-                'course_status' => $item->course_status,
+                'program_code' => $item->program_code,
+                'enr_class' => $item->enr_class,
+                'enr_yearlevel' => $item->enr_yearlevel,
+                'enr_units' => $item->enr_units,
+                'enr_section' => $item->enr_section,
+                'enr_status' => $item->enr_status,
             ]);
-
-
         }
 
         return redirect()->back()

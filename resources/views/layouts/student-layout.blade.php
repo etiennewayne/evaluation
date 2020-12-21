@@ -80,8 +80,8 @@
 
 						<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
 							@foreach($coursesNoRate as $courseNoRate)
-								<a class="dropdown-item" href="/studyload/schedule/{{ $courseNoRate->schedule_id }}">
-									<b>{{ $courseNoRate->sched_code }}</b> - {{ $courseNoRate->course_code }} 
+								<a class="dropdown-item" href="/studyload/schedule/{{ $courseNoRate->schedule_code }}">
+									<b>{{ $courseNoRate->schedule_code }}</b> - {{ $courseNoRate->course_name }} 
 								</a>
 							@endforeach
 							

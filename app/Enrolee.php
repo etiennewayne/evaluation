@@ -8,7 +8,7 @@ class Enrolee extends Model
 {
     //
 
-    protected $fillable = ['user_id', 'schedule_id'];
+    protected $fillable = ['student_id', 'program_code', 'enr_class', 'enr_yearlevel', 'enr_units', 'enr_section', 'enr_status'];
 
     public $timestamps = false;
 
@@ -19,13 +19,13 @@ class Enrolee extends Model
 
 
     public function schedules(){
-        return $this->hasMany('App\Schedule', 'schedule_id','schedule_id');
+        return $this->hasMany('App\Schedule', 'schedule_code','schedule_code');
     }
 
 
-    public function user()
+    public function student_id()
     {
-        return $this->hasOne('App\User', 'user_id', 'user_id');
+        return $this->hasOne('App\User', 'student_id', 'student_id');
     }
 
     // public function isRated(){

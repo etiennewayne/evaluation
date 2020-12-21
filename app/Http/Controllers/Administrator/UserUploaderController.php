@@ -36,14 +36,14 @@ class UserUploaderController extends Controller
                 'sex' => $item->sex,
                 'email' => $item->email,
                 'password' => Hash::make($item->password),
-                'program_id' => $item->program_id,
                 'yearlevel' => $item->year_level,
-                'position_id' => $item->position_id
+                'role' => $item->role
             ]);
 
 
         }
 
-        return redirect()->back();
+        return redirect()->back()
+        ->with('success', 'Successfully uploaded');
     }
 }

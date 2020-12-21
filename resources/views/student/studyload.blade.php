@@ -34,7 +34,7 @@
 
 
         <div class="row">
-            <div class="alert alert-success" role="alert">
+            <div class="alert alert-success" style="width:100%;" role="alert">
                 <h4 class="alert-heading">ATTENTION!</h4>
                 <p>All courses must be rated. Please check every courses if it has been rated before logging out in the system.</p>
                 <hr>
@@ -74,21 +74,23 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach ($enrolees as $enrolee)
-                        @foreach ($enrolee->schedules as $eSched)
+                    @foreach ($enroleeCourses as $enrCourses)
+
+                        @foreach ($enrCourses->schedules as $enrSchedule)
                             <tr>
-                                <th scope="row"> {{ $eSched->sched_code }}</th>
-                                <td>{{ $eSched->course->course_code }}</td>
-                                <td>{{ $eSched->course->course }}</td>
+                                <th scope="row"> {{ $enrSchedule->schedule_code }}</th>
+                               
+                                <td>{{ $enrSchedule->course->course_name }}</td>
+                                <td>{{ $enrSchedule->course->course_desc }}</td>
                                 {{--                            <td>{{ \Carbon\Carbon::createFromFormat('H:i:s',$eSched->time_start)->format('h:i A')  }} - {{ \Carbon\Carbon::createFromFormat('H:i:s',  $eSched->time_end)->format('h:i A') }}</td>--}}
                                 {{--                            <td>{{ $eSched->sched_day }}</td>--}}
 
                                 @php
 
-                                    if(\App\Rating::where('user_id', Auth::user()->user_id)->where('schedule_id', $eSched->schedule_id)->exists() > 0){
-                                         echo '<td style="background-color:#ffeded; font-style: italic; text-align:center;"><a href="/studyload/viewrating/'. $eSched->schedule_id .'">View Rating</a></td>';
+                                    if(\App\Rating::where('student_id', Auth::user()->student_id)->where('schedule_code', $enrSchedule->schedule_code)->exists() > 0){
+                                         echo '<td style="background-color:#ffeded; font-style: italic; text-align:center;"><a href="/studyload/viewrating/'. $enrSchedule->schedule_code .'">View Rating</a></td>';
                                     }else{
-                                        echo '<td><a class="btn btn-success" href="/studyload/schedule/'. $eSched->schedule_id .'">  RATE  </a></td>';
+                                        echo '<td><a class="btn btn-success" href="/studyload/schedule/'. $enrSchedule->schedule_code .'">  RATE  </a></td>';
                                     }
 
                                 @endphp

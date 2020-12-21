@@ -90,6 +90,7 @@ Route::resource('/course-uploader', 'Administrator\CourseController');
 
 //ENROLEE UPLOADER
 Route::resource('/enrolee-uploader', 'Administrator\EnroleeUploaderController');
+Route::resource('/enrolee-courses-uploader', 'Administrator\EnroleeCoursesUploaderController');
 
 
 

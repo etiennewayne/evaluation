@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Student;
 use App\Category;
 use App\Criteria;
 use App\Enrolee;
+use App\EnroleeCourses;
 use App\RatingComment;
 use App\Schedule;
 use App\Rating;
@@ -30,9 +31,9 @@ class StudyLoadController extends Controller
 
 	public function index(){
 
-		$user_id = Auth::user()->user_id;
+		$student_id = Auth::user()->student_id;
 		$ay = AcademicYear::where('active', 1)->first();
-		$coursesNoRate = DB::select('call proc_view_noratecourses(?, ?)', array($ay->ay_id, $user_id));
+		$coursesNoRate = DB::select('call proc_view_noratecourses(?, ?)', array($ay->ay_id, $student_id));
 
 		return view('student/home');
 
@@ -40,28 +41,24 @@ class StudyLoadController extends Controller
 
 
 	public function studyload(){
-		$user_id = Auth::user()->user_id;
+		$student_id = Auth::user()->student_id;
 		$ay = AcademicYear::where('active', 1)->first();
 
+		$coursesNoRate = DB::select('call proc_view_noratecourses(?, ?)', array($ay->ay_id, $student_id));
 
-		$coursesNoRate = DB::select('call proc_view_noratecourses(?, ?)', array($ay->ay_id, $user_id));
+		$count = DB::table('enrolee_courses')
+		    ->where('student_id', $student_id)->count();
 
-		$count = DB::table('enrolees')
-		    ->where('user_id', $user_id)->count();
-
-		$enrolees = Enrolee::orderBy('enrolee_id', 'asc')
-            ->where('user_id', $user_id)
+		$enroleeCourses = EnroleeCourses::orderBy('enrolee_course_id', 'asc')
+            ->where('student_id', $student_id)
             ->get();
 
 
-
-
-
-        $countCourses = Enrolee::where('user_id', $user_id)
+        $countCourses = EnroleeCourses::where('student_id', $student_id)
             ->count();
 
-        $countRated = Rating::where('user_id', $user_id)
-            ->distinct('schedule_id')
+        $countRated = Rating::where('student_id', $student_id)
+            ->distinct('schedule_code')
             ->count();
 
         if(!isset($countCourses)){
@@ -72,14 +69,14 @@ class StudyLoadController extends Controller
         }
 
 		$user = DB::table('users')
-            ->join('programs', 'users.program_id', 'programs.program_id')
-            ->where('user_id', $user_id)
+			->leftJoin('enrolees', 'users.student_id', 'enrolees.student_id')
+            ->where('enrolees.student_id', $student_id)
             ->first();
 
 		return view('student.studyload')
 		    ->with('count', $count)
             ->with('user', $user)
-		    ->with('enrolees' , $enrolees)
+		    ->with('enroleeCourses' , $enroleeCourses)
             ->with('countcourse', $countCourses)
             ->with('countrated', $countRated)
 		    ->with('ay', $ay)
@@ -89,7 +86,7 @@ class StudyLoadController extends Controller
 	}
 
 
-	public function rate($sched_id){
+	public function rate($sched_code){
 
 		$allowrate = DB::table('allow_rate')
 		    ->where('allow_rate', 1)->count();
@@ -99,24 +96,32 @@ class StudyLoadController extends Controller
 			->with('error', 'Rating is now allowed this time.');
 		}
 
-		$user_id = Auth::user()->user_id;
+		$student_id = Auth::user()->student_id;
 
-		$count = DB::table('enrolees')
-		->where('schedule_id', $sched_id)
-		->where('user_id', $user_id)->count();
+		$count = DB::table('enrolee_courses')
+		->where('schedule_code', $sched_code)
+		->where('student_id', $student_id)->count();
+
+
 
 		$ay = AcademicYear::where('active', 1)->first();
 
-		$coursesNoRate = DB::select('call proc_view_noratecourses(?, ?)', array($ay->ay_id, $user_id));
+		$coursesNoRate = DB::select('call proc_view_noratecourses(?, ?)', array($ay->ay_id, $student_id));
 
-		$criteria = Criteria::all();
-
+		$criteria = Criteria::where('ay_id', $ay->ay_id)->get();
+		//get all criteria by academic year
 
 		if($count > 0){
 
-			$categories = Category::orderBy('order_no', 'asc')
-			->get();
-			$schedule = Schedule::find($sched_id);
+			$categories = Category::orderBy('order_no', 'asc');
+
+			dd($categories);
+
+
+            return $categories->criteria;
+			$schedule = Schedule::where('schedule_code', $sched_code)->get();
+
+			//return $schedule;
 
 			return view('student/rate')
 				->with('categories', $categories)
@@ -126,8 +131,8 @@ class StudyLoadController extends Controller
 				->with('coursesNoRate', $coursesNoRate);
 		}else{
 
-			$enrolees = Enrolee::orderBy('enrolee_id', 'asc')
-			->where('user_id', $user_id)
+			$enrolees = EnroleeCourses::orderBy('enrolee_course_id', 'asc')
+			->where('student_id', $student_id)
 			->get();
 
 			return redirect('/studyload')
@@ -135,9 +140,6 @@ class StudyLoadController extends Controller
 			->with('error', 'Your not allowed to rate this subject.')
 			->with('ay', $ay);
 		}
-
-
-
 
     }
 

@@ -11,7 +11,8 @@ class Schedule extends Model
     protected $primaryKey = 'schedule_id';
     protected $table = 'schedules';
 
-    protected $fillable = [];
+    protected $fillable = ['schedule_code', 'program_id',
+    'institute', 'course_code', 'time_start', 'time_end', 'sched_day', 'room'];
 
     protected $date = ['time_start', 'time_end'];
 
@@ -27,12 +28,12 @@ class Schedule extends Model
 
     public function course()
     {
-        return $this->hasOne('App\Course', 'course_id', 'course_id');
+        return $this->hasOne('App\Course', 'course_code', 'course_code');
     }
 
     public function comments()
     {
-        return $this->hasMany('App\RatingComment', 'schedule_id', 'schedule_id');
+        return $this->hasMany('App\RatingComment', 'schedule_code', 'schedule_code');
     }
 
     

@@ -19,7 +19,7 @@ class Category extends Model
 
     public function criteria()
     {
-        return $this->hasMany('App\Criteria', 'category_id')
+        return $this->hasMany('App\Criteria', 'category_id', 'category_id')
             ->orderBy('order_no', 'asc');
     }
 

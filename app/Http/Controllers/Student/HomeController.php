@@ -26,9 +26,9 @@ class HomeController extends Controller
 		
 		if(Auth::check()){
 			
-			$user_id = Auth::user()->user_id;
+			$student_id = Auth::user()->student_id;
 			$ay = AcademicYear::where('active', 1)->first();
-			$coursesNoRate = DB::select('call proc_view_noratecourses(?, ?)', array($ay->ay_id, $user_id));
+			$coursesNoRate = DB::select('call proc_view_noratecourses(?, ?)', array($ay->ay_id, $student_id));
 			
 			return view('student/home')
 			->with('coursesNoRate', $coursesNoRate);

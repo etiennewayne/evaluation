@@ -2,8 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="720635db-fce7-4503-8300-ca514c204a37" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Category.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Category.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Course.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Course.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Enrolee.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Enrolee.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Administrator/EnroleeUploaderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Administrator/EnroleeUploaderController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Administrator/UserUploaderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Administrator/UserUploaderController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/LoginController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Student/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Student/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Student/StudyLoadController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Student/StudyLoadController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Schedule.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Schedule.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/cpanel/enrolee/enrolee-uploader.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/cpanel/enrolee/enrolee-uploader.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/admin-layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/admin-layout.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/student-layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/student-layout.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/student/rate.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/rate.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/student/studyload.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/studyload.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uploader template/enrolee_template.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/uploader template/user_template.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/uploader template/user_template.xlsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -179,6 +196,8 @@
       <workItem from="1607579428976" duration="3752000" />
       <workItem from="1607920151862" duration="10377000" />
       <workItem from="1608185326756" duration="7057000" />
+      <workItem from="1608280190706" duration="5568000" />
+      <workItem from="1608348465370" duration="90000" />
     </task>
     <servers />
   </component>
