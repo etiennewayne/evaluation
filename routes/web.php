@@ -78,7 +78,6 @@ Route::post('/cpanel-academicyear/set-active' , 'Administrator\AcademicYearContr
 //Route::post('/cpanel-criteria/update' , 'Administrator\CriteriaController@update');
 
 
-
 //SCHEDULE
 Route::resource('/schedule-uploader', 'Administrator\ScheduleUploaderController');
 

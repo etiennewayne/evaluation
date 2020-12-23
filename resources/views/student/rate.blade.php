@@ -150,9 +150,9 @@
                         <tr>
                             <td colspan="100%" style="border-bottom: 1px solid black; border-top: 1px solid black;"><b>{{ $cat->category  }} </b></td>
                         </tr>
+                       
                         @foreach($cat->criteria as $crit)
 
-                            {{$crit}}
                             <tr id="row{{ $crit->criterion_id }}">
                                 <td>&emsp; {{ $crit->criterion }}</td>
                                 <td>
@@ -162,7 +162,6 @@
                                         <input type="radio" class="custom-control-input"  name="rate[{{$crit->criterion_id}}]" id="rate[{{$crit->criterion_id}}][{{$r}}]" value="{{$r}}">
                                         <label class="custom-control-label" for="rate[{{$crit->criterion_id}}][{{$r}}]">{{$r}}</label>
                                       </div>
-
                                   @endfor
                                   <p class="errormsg-rate" id="errormsg{{ $crit->criterion_id }}"><i>Please rate this criterion.</i></p>
                                 </td>
@@ -176,8 +175,6 @@
                             </td>
 
                         </tr>
-
-
                     @endforeach
 
                 </table>

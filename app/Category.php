@@ -23,6 +23,8 @@ class Category extends Model
             ->orderBy('order_no', 'asc');
     }
 
+    
+
     public function comments(){
         return $this->hasMany('App\RatingComment', 'category_id', 'category_id');
     }

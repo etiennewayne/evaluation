@@ -35,9 +35,11 @@ class CriteriaController extends Controller
 
 
     public function create(){
-
-        $categories = Category::all();
         $ay = AcademicYear::all();
+       //return $ay->ay_id;
+        $categories = Category::all();
+      
+        //return $categories;
 
         return  view('cpanel/criteria/criteria-add')
         ->with('categories', $categories)
@@ -117,11 +119,14 @@ class CriteriaController extends Controller
 
 
     public function ajax_criteria(){
+        $ay = AcademicYear::where('active', 1)->first();
+
+       
         $data = DB::table('criteria as a')
         ->join('categories as b', 'a.category_id', 'b.category_id')
-        ->join('ay as c', 'a.ay_id', 'c.ay_id')
+        ->join('ay as c', 'c.ay_id', 'b.ay_id')
+        ->where('c.active', 1)
         ->select('criterion_id', 'criterion', 'a.order_no', 'a.category_id', 'a.ay_id', 'b.category', 'c.ay_code', 'c.ay_desc', 'c.active')
-        ->where('c.active', '1')
         ->get();
 
         return $data;
