@@ -20,7 +20,7 @@
 
 
 
-<nav class="navbar navbar-expand-lg navbar-custom fixed-top">
+<nav class="navbar navbar-expand-lg navbar-custom fixed-top navbar-light">
 
     <a class="navbar-brand" href="/home">
 		<div class="logo-container">
@@ -51,7 +51,7 @@
 			  <li class="nav-item {{ (request()->is('about')) ? 'active' : '' }}">
                 <a class="nav-link" href="/about">About</a>
               </li>
-			  
+
 			  <li class="nav-item {{ (request()->is('faq')) ? 'active' : '' }}">
                 <a class="nav-link" href="/faq">FAQ</a>
               </li>
@@ -61,37 +61,37 @@
                     <li class="nav-item {{ (request()->is('studyload*')) ? 'active' : '' }}">
                         <a class="nav-link" href="/studyload">Study Load</a>
                     </li>
-					
-				
-					
-					
+
+
+
+
 					 <li class="nav-item dropdown">
 						<a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-							Notification
+							Courses To Rate
 								<span class="badge badge-warning">
 									{{ count($coursesNoRate) }}
 								</span>
-							
+
 							<span class="caret"></span>
-						   
+
 						</a>
 
-					   
+
 
 						<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
 							@foreach($coursesNoRate as $courseNoRate)
 								<a class="dropdown-item" href="/studyload/schedule/{{ $courseNoRate->schedule_code }}">
-									<b>{{ $courseNoRate->schedule_code }}</b> - {{ $courseNoRate->course_name }} 
+									<b>{{ $courseNoRate->schedule_code }}</b> - {{ $courseNoRate->course_name }}
 								</a>
 							@endforeach
-							
+
 						</div>
 					</li>
-					
+
                 @endif
 
 
-            
+
             @if(Auth::check())
                 <li class="nav-item dropdown">
                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -102,14 +102,14 @@
                         @endphp
 
                         {{ $fname[0] }}{{ ucfirst($lname) }} ({{Auth::user()->username}})  <span class="caret"></span>
-                       
+
                     </a>
 
-                   
+
 
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                        
-                       
+
+
                         <a class="dropdown-item" href="{{ route('logout') }}"
                         onclick="event.preventDefault();
                                         document.getElementById('logout-form').submit();">

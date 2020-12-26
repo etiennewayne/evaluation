@@ -67,20 +67,20 @@
 						<table>
 							<tr>
 								<td style="width:150px;"><b>Schedule Code</b> :</td>
-{{--								<td>{{ $schedule }}</td>--}}
+								<td>{{ $schedule->schedule_code }}</td>
 							</tr>
 							<tr>
 								<td><b>Course</b> :</td>
-								{{-- <td>{{ $schedule->course->course_code }} {{ $schedule->course->course }}</td> --}}
+								<td>{{ $schedule->course->course_name }} {{ $schedule->course->course_desc }}</td>
 							</tr>
-							{{-- <tr>
+							<tr>
 								<td><b>Schedule</b> :</td>
 								<td>{{ \Carbon\Carbon::createFromFormat('H:i:s',$schedule->time_start)->format('h:i A')  }} -  {{ \Carbon\Carbon::createFromFormat('H:i:s',$schedule->time_end)->format('h:i A')  }} {{ $schedule->sched_day}} {{$schedule->course->course_class }}</td>
 							</tr>
 							<tr>
 								<td><b>Instructor</b> :</td>
-								<td>{{ $schedule->faculty->lname }}, {{ $schedule->faculty->fname }} {{ $schedule->faculty->mname[0] }}</td>
-							</tr> --}}
+								<td>{{ $schedule->faculty->lname }}, {{ $schedule->faculty->fname }} {{ $schedule->faculty->mname }}</td>
+							</tr>
 						</table>
                     </div>
 
@@ -138,7 +138,7 @@
         <form id="form-submit" method="post" action="/studyload/save">
         <div class="row justify-content-center">
 
-            <input type="hidden" name="schedule_code" value="" />
+            <input type="hidden" name="schedule_code" value="{{ $schedule->schedule_code }}" />
             @csrf
 
             <table class="table mytable">
@@ -150,33 +150,45 @@
                         <tr>
                             <td colspan="100%" style="border-bottom: 1px solid black; border-top: 1px solid black;"><b>{{ $cat->category  }} </b></td>
                         </tr>
-                       
+
                         @foreach($cat->criteria as $crit)
 
                             <tr id="row{{ $crit->criterion_id }}">
                                 <td>&emsp; {{ $crit->criterion }}</td>
                                 <td>
 
-                                  @for($r=5;$r>=1;$r--)
-                                      <div class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" class="custom-control-input"  name="rate[{{$crit->criterion_id}}]" id="rate[{{$crit->criterion_id}}][{{$r}}]" value="{{$r}}">
-                                        <label class="custom-control-label" for="rate[{{$crit->criterion_id}}][{{$r}}]">{{$r}}</label>
-                                      </div>
-                                  @endfor
+
+                                        <select class="form-control" name="rate[{{$crit->criterion_id}}]" id="rate[{{$crit->criterion_id}}]">
+                                            <option>5</option>
+                                            <option>4</option>
+                                            <option selected>3</option>
+                                            <option>2</option>
+                                            <option>1</option>
+                                        </select>
+
+
+{{--                                  @for($r=5;$r>=1;$r--)--}}
+{{--                                      <div class="custom-control custom-radio custom-control-inline">--}}
+{{--                                        <input type="radio" class="custom-control-input"  name="rate[{{$crit->criterion_id}}]" id="rate[{{$crit->criterion_id}}][{{$r}}]" value="{{$r}}">--}}
+{{--                                        <label class="custom-control-label" for="rate[{{$crit->criterion_id}}][{{$r}}]">{{$r}}</label>--}}
+{{--                                      </div>--}}
+{{--                                  @endfor--}}
                                   <p class="errormsg-rate" id="errormsg{{ $crit->criterion_id }}"><i>Please rate this criterion.</i></p>
                                 </td>
 
                             </tr>
                         @endforeach
 
-                        <tr>
-                            <td colspan="100%"> &emsp; <i>Remarks/Suggestions :</i> <textarea rows="3" class="form-control" name="comment[{{ $cat->category_id }}][remark]"> </textarea>
 
-                            </td>
-
-                        </tr>
                     @endforeach
+                    <tr>
+                        <td colspan="100%" style="border-bottom: 1px solid black; border-top: 1px solid black;"><b>Remarks/Suggestion</b></td>
+                    </tr>
+                    <tr>
+                        <td colspan="100%"> &emsp; <i>Tell me something about your teacher (this is optional):</i> <textarea rows="3" class="form-control" name="remark"> </textarea>
 
+                        </td>
+                    </tr>
                 </table>
 
         </div><!--div clas row -->
@@ -201,36 +213,39 @@
     var radioValue = 0;
 
    @foreach($criteria as $criterion)
+        //declaring varible...
         var row{{ $criterion->criterion_id }} = document.getElementById('row{{ $criterion->criterion_id }}');
         var rate{{ $criterion->criterion_id }} = document.getElementsByName('rate[{{ $criterion->criterion_id }}]');
         var errormsg{{ $criterion->criterion_id }} = document.getElementById('errormsg{{ $criterion->criterion_id }}');
         var radioValue{{ $criterion->criterion_id }} = 0;
 
 
-   @endforeach
+//    @endforeach
 
     btnSubmit.onclick = function(){
 
-        @foreach($criteria as $criterion)
-            for(var i = 0; i < rate1.length; i++){
-                if(rate{{ $criterion->criterion_id }}[i].checked){
-                    radioValue{{ $criterion->criterion_id }} = rate{{ $criterion->criterion_id }}[i].value;
-                    break;
-                }
-            }
+        // @foreach($criteria as $criterion) //php looping assigning id to element based on the primary key from database
+        //     //for filtering radiobutton, checking if it was selected. variables are dynamic, came from database primary key.
+        //     for(var i = 0; i < rate{{ $criterion->criterion_id }}.length; i++){
+        //         if(rate{{ $criterion->criterion_id }}[i].checked){
+        //             radioValue{{ $criterion->criterion_id }} = rate{{ $criterion->criterion_id }}[i].value;
+        //             break;
+        //         }
+        //     }
 
-            if(radioValue{{ $criterion->criterion_id }} < 1){
-                row{{ $criterion->criterion_id }}.style.backgroundColor = 'pink';
-                errormsg{{ $criterion->criterion_id }}.style.display='block';
-                row{{ $criterion->criterion_id }}.scrollIntoView({ behavior: 'smooth', block: 'center'});
+        //     //if radio button was not selected.(filtering)
+        //     if(radioValue{{ $criterion->criterion_id }} < 1){
+        //         row{{ $criterion->criterion_id }}.style.backgroundColor = 'pink';
+        //         errormsg{{ $criterion->criterion_id }}.style.display='block';
+        //         row{{ $criterion->criterion_id }}.scrollIntoView({ behavior: 'smooth', block: 'center'});
 
-                return;
-            }else{
-                row{{ $criterion->criterion_id }}.style.backgroundColor = '';
-                errormsg{{ $criterion->criterion_id }}.style.display='none';
-            }
+        //         return;
+        //     }else{
+        //         row{{ $criterion->criterion_id }}.style.backgroundColor = '';
+        //         errormsg{{ $criterion->criterion_id }}.style.display='none';
+        //     }
 
-        @endforeach
+        // @endforeach
 
         $.confirm({
             theme: 'supervan',
@@ -240,6 +255,7 @@
               confirm:{
                 text : 'SUBMIT',
                 action : function(){
+                    btnSubmit.disabled = true;
                   form_submit.submit();
                 }
               },

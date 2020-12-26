@@ -8,7 +8,7 @@ class Rating extends Model
 {
     //
 
-    protected $fillable = ['user_id', 'criterion_id','schedule_id', 'user_comment', 'user_suggestion'];
+    protected $fillable = ['student_id','schedule_code', 'remark', 'ay_id'];
 
     public $timestamps = false;
 

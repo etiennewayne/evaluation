@@ -20,12 +20,13 @@ class ViewRatingController extends Controller
 	}
 
 
-	public function viewRating($sched_id){
-		$user_id = Auth::user()->user_id;
+	public function viewRating($schedule_code){
+		$student_id = Auth::user()->student_id;
 		$ay = AcademicYear::where('active', 1)->first();
 
-		$data = DB::select('call proc_viewrating_perstudent(?, ?)',array($user_id, $sched_id));
-		$coursesNoRate = DB::select('call proc_view_noratecourses(?, ?)', array($ay->ay_id, $user_id));
+
+		$data = DB::select('call proc_viewrating_perstudent(?, ?, ?)',array($student_id, $schedule_code, $ay->ay_id));
+		$coursesNoRate = DB::select('call proc_view_noratecourses(?, ?)', array($ay->ay_id, $student_id));
 
 		return view('student/viewrating')
 		->with('coursesNoRate', $coursesNoRate)
@@ -34,6 +35,6 @@ class ViewRatingController extends Controller
 	}
 
 
-	
+
 
 }

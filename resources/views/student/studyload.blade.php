@@ -51,8 +51,8 @@
                         <b>STUDENT INFORMATION</b>
                     </div>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Name : {{ $user->lname }}, {{ $user->fname }}</li>
-                        <li class="list-group-item">Program : {{ $user->program_code }}</li>
+                        <li class="list-group-item">Name : {{ trim(Auth::user()->lname) }}, {{ trim(Auth::user()->fname) }}</li>
+                        <li class="list-group-item">Program : {{ $user ? $user->program_code : '' }}</li>
                         <li class="list-group-item">No of Subject to Rated : {{$countrated }} / {{$countcourse}}</li>
                         <li class="list-group-item">Academic Year : {{ $ay->ay_desc }}({{$ay->ay_code}})</li>
                     </ul>
@@ -79,7 +79,7 @@
                         @foreach ($enrCourses->schedules as $enrSchedule)
                             <tr>
                                 <th scope="row"> {{ $enrSchedule->schedule_code }}</th>
-                               
+
                                 <td>{{ $enrSchedule->course->course_name }}</td>
                                 <td>{{ $enrSchedule->course->course_desc }}</td>
                                 {{--                            <td>{{ \Carbon\Carbon::createFromFormat('H:i:s',$eSched->time_start)->format('h:i A')  }} - {{ \Carbon\Carbon::createFromFormat('H:i:s',  $eSched->time_end)->format('h:i A') }}</td>--}}

@@ -9,6 +9,7 @@ use App\EnroleeCourses;
 use App\RatingComment;
 use App\Schedule;
 use App\Rating;
+use App\RatingRate;
 use App\AcademicYear;
 
 
@@ -36,7 +37,6 @@ class StudyLoadController extends Controller
 		$coursesNoRate = DB::select('call proc_view_noratecourses(?, ?)', array($ay->ay_id, $student_id));
 
 		return view('student/home');
-
 	}
 
 
@@ -49,7 +49,7 @@ class StudyLoadController extends Controller
 		//get the courses of the user
 		$coursesNoRate = DB::select('call proc_view_noratecourses(?, ?)', array($ay->ay_id, $student_id));
 
-	
+
 		// $count = DB::table('enrolee_courses as a')
 		// 	->join('schedules as b', 'a.schedule_code', 'b.schedule_code')
 		// 	->where('set_no', 0)
@@ -70,25 +70,25 @@ class StudyLoadController extends Controller
 			->whereIn('set_no', [2, 0])
 			->where('student_id', $student_id)
 			->count();
-			
+
 
 		//count rated course of the student by set no
 		$countRated = DB::table('ratings as a')
-			->join('criteria as b', 'a.criterion_id', 'b.criterion_id')
-			->where('b.ay_id', $ay)
+			->where('ay_id', $ay->ay_id)
 			->where('student_id', $student_id)
             ->distinct('schedule_code')
             ->count();
 
-		
+
 
         if(!isset($countCourses)){
             $countCourses = 0;
-        }
+		}
+
         if(!isset($countRated)){
             $countRated = 0;
 		}
-		
+
 
 		//get the user information to display in the studyload page
 		$user = DB::table('users')
@@ -96,8 +96,6 @@ class StudyLoadController extends Controller
             ->where('enrolees.student_id', $student_id)
 			->first();
 		//please add filter if ever no course makuha ang query dere--->
-
-
 
 		return view('student.studyload')
 		    //->with('count', $count)
@@ -113,7 +111,7 @@ class StudyLoadController extends Controller
 
 
 	public function rate($sched_code){
-	
+
 		//if server allow the rate...
 		$allowrate = DB::table('allow_rate')
 		    ->where('allow_rate', 1)->count();
@@ -123,6 +121,7 @@ class StudyLoadController extends Controller
 			->with('error', 'Rating is now allowed this time.');
 		}
 		//if server allow the rate ....
+
 
 
 
@@ -142,16 +141,17 @@ class StudyLoadController extends Controller
 		if($count > 0){
 
 			//$categories = Category::orderBy('order_no', 'asc')
-			
+
 
 			$categories = Category::with(['criteria'])
 			->where('ay_id', $ay->ay_id)->get();
 
 
 			//return $categories;
-			
-			$schedule = Schedule::where('schedule_code', $sched_code)->get();
 
+			$schedule = Schedule::where('schedule_code', $sched_code)->first();
+
+			//return $schedule->course;
 			//return $categories;
 
 			return view('student/rate')
@@ -177,60 +177,68 @@ class StudyLoadController extends Controller
 
 	public function save(Request $req){
 
-		$user_id = Auth::user()->user_id;
+		$student_id = Auth::user()->student_id;
 		$ay = AcademicYear::where('active', 1)->first();
+
+		//return $student_id;
 
 		//$coursesNoRate = DB::select('call proc_view_noratecourses(?, ?)', array($ay->ay_id, $user_id));
 
 		 $count = DB::table('ratings')
-		 ->where('schedule_id', $req->sched_id)
-		 ->where('user_id', $user_id)->count();
+		 ->where('schedule_code', $req->schedule_code)
+		 ->where('student_id', $student_id)->count();
 
 		 if($count > 0){
 
-		 	return redirect('/studyload')
+		 	return redirect()->back()
 		 	//->with('enrolees' , $enrolees)
 		 	->with('warning', 'You are not allowed to evaluate twice.')
 		 	->with('ay', $ay);
 		 }
 
 
-		$dataArray = array();
-		$commentArray = array();
-		//create array for ratings
-		 foreach ($req->rate as $key => $rate){
-		 	//echo $key . '<br>';
+		 try{
 
-		 	$temp = array([
-		 		'user_id' => $user_id,
-		 		'criterion_id' => $key,
-		 		'schedule_id' => $req->sched_id,
-		 		'rate' => $rate
-		 	]);
+			DB::transaction(function () use($req, $student_id, $ay)  {
 
-		 	$dataArray = array_merge($dataArray, $temp);
+				//insert rating in ratings table
+				$rating = Rating::create([
+					'student_id' => $student_id,
+					'schedule_code' => $req->schedule_code,
+					'remark' => $req->remark,
+					'ay_id' => $ay->ay_id
+				]);
+			   //------------------------------
+
+			   //create array for ratings
+			   $dataArray = array();
+			   foreach ($req->rate as $key => $rate){
+					   $temp = array([
+					   'rating_id' => $rating->rating_id,
+					   'student_id' => $student_id,
+					   'criterion_id' => $key,
+					   'schedule_code' => $req->schedule_code,
+					   'rate' => $rate
+				   ]);
+				   $dataArray = array_merge($dataArray, $temp);
+			   }
+
+            //save ratings in RatingRate Table in Database
+            $ratingRate = RatingRate::insert($dataArray);
+
+
+
+
+			}); //<--close DB Transaction
+
+             return redirect('/studyload')
+                 ->with('success', 'Ratings submitted successfully.');
+
+
+		 }catch(\Exception $e){
+			return $e->getMessage();
 		 }
 
-		//crete array for comments
-		foreach ($req->comment as $key => $data){
-			$temp = array([
-				'user_id' => $user_id,
-				'category_id' => $key,
-				'schedule_id' => $req->sched_id,
-				'user_remark' => $data['remark'],
-
-			]);
-
-			$commentArray = array_merge($commentArray, $temp);
-
-		}
-
-
-		Rating::insert($dataArray);
-		RatingComment::insert($commentArray);
-
-		 return redirect('/studyload')
-		 	->with('success', 'Ratings submitted successfully.');
 	}
 
 

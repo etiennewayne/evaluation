@@ -27,12 +27,12 @@ class FacultyUploaderController extends Controller
 
         foreach($arr as $item) { //foreach element in $arr
             \DB::table('faculties')->insertOrIgnore([
-                'faculty_code' => $item->faculty_code,
-                'lname' => $item->lname,
-                'fname' => $item->fname,
-                'mname' => $item->mname,
-                'institute' => $item->institute,
-                'status' => $item->status,
+                'faculty_code' => trim($item->faculty_code),
+                'lname' => trim($item->lname),
+                'fname' => trim($item->fname),
+                'mname' => trim($item->mname),
+                'institute' => trim($item->institute),
+                'status' => trim($item->status),
             ]);
 
         }

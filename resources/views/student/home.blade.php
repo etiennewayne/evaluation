@@ -51,11 +51,11 @@
 
                         @if(Auth::check())
                             <div class="alert alert-success" role="alert">
-                                Successfully Login!
+                                Hi {{ trim(Auth::user()->lname)  }}, {{ trim(Auth::user()->fname)  }}
                             </div>
                         @else
-                        
-                        
+
+
                             <h5 class="card-title text-center">Sign in</h5>
                             <form class="form-signin" method="POST" action="/">
                                 @csrf

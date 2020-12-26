@@ -2,9 +2,6 @@
 
 @section('content')
 
-
-
-
     <div class="container">
 
 
@@ -60,9 +57,9 @@
 
                     foreach($data as $info){
                         $name = $info->lname . ', ' . $info->fname . ' ' . $info->mname;
-                        $sched_code = $info->sched_code;
+                        $sched_code = $info->schedule_code;
                         $course_code = $info->course_code;
-                        $course = $info->course;
+                        $course = $info->course_name;
                     }
                 @endphp
                  <h4>Rating</h4>
@@ -70,12 +67,12 @@
                     Faculty : {{$name }}
                  </div>
                  <div>
-                    Schedule/Course Code : {{ $sched_code }} ({{ $course_code }}) 
+                    Schedule/Course Code : {{ $sched_code }} ({{ $course }})
                  </div>
                  <div>
-                    Course : {{ $course }} 
+                    Course : {{ $course }}
                  </div>
-                 
+
                 <table class="table table-hover">
                     <thead>
                         <tr>
@@ -107,28 +104,9 @@
         <br>
         <div class="row justify-content-center">
             <div class="col-md-6">
-                <h4>Remark and Suggestion</h4>
-                <table class="table table-hover">
-                    <thead>
-                        <tr>
+                <h4>Remarks and Suggestion</h4>
+                <p>{{ $category->remark }}</p>
 
-                            <th scope="col">Category</th>
-                            <th scope="col">Remark(s)/Suggestion(s)</th>
-
-                        </tr>
-
-                        @foreach($data as $category)
-                            <tr>
-
-                                 <td>{{ $category->category }}</td>
-                                 <td>{{ $category->user_remark }}</td>
-                            </tr>
-                        @endforeach
-                    </thead>
-                    <tfoot>
-
-                    </tfoot>
-                </table>
             </div>
         </div> <!-- div class row -->
 

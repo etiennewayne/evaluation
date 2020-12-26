@@ -23,16 +23,17 @@ class HomeController extends Controller
     //
 
 	public function index(){
-		
+
 		if(Auth::check()){
-			
+
 			$student_id = Auth::user()->student_id;
 			$ay = AcademicYear::where('active', 1)->first();
 			$coursesNoRate = DB::select('call proc_view_noratecourses(?, ?)', array($ay->ay_id, $student_id));
-			
+
+			//return $coursesNoRate;
 			return view('student/home')
 			->with('coursesNoRate', $coursesNoRate);
-		}	
+		}
 		else{
 				return view('student/home');
 		}

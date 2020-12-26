@@ -78,7 +78,6 @@ body{
 .nav-link:hover{
     /* color:#b1ceea; */
 	color : #184725;
-
 	border-bottom : 1px solid #184725;
 }
 
@@ -93,9 +92,9 @@ body{
     border: 1px solid #184725;
 }
 
-.navbar-toggler-icon {
+/* .navbar-toggler-icon {
     background-color:#33aa33;
-}
+} */
 
 .active{
     font-weight: bold;
