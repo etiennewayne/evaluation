@@ -5,7 +5,7 @@
 
     <div class="container">
 
-        
+
         @if(session('error'))
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
                 <strong>ERROR!</strong> {{ session('error') }}
@@ -49,11 +49,11 @@
 		<h3>FACULTY LIST</h3>
        </div>
        <br>
-	   
+
         <div class="row justify-content-center">
 
             <div class="col-md-12">
-                
+
                 <table id="faculty" class="table table-striped table-bordered" style="width:100%">
                 	<thead>
                 		<tr>
@@ -64,7 +64,7 @@
                 			<th>Action</th>
                 		</tr>
                 	</thead>
-                	
+
                 	<tfoot>
                 		<tr>
                 			<th>ID</th>
@@ -77,12 +77,12 @@
 
                 </table>
             </div>
-            
+
         </div><!--div clas row -->
-        
+
 
     </div> <!--div class container -->
-    
+
     <br><br>
 
 @endsection
@@ -101,7 +101,7 @@
 					dataSrc: ''
 				},
 				columns: [
-					{ data : 'faculty_id' },			
+					{ data : 'faculty_id' },
 					{ data : 'lname' },
 					{ data : 'fname' },
 					{ data : 'mname' },
@@ -119,14 +119,14 @@
 
 			$('#faculty tbody').on( 'click', '#btnTotalRating', function () {
 				var data = table.row( $(this).parents('tr') ).data();
-				window.location = '/cpanel-report/'+data['faculty_id'];
-				
+				// window.location = '/cpanel-report/'+data['faculty_id'];
+
 			});//end btnTotalRating
 
             $('#faculty tbody').on( 'click', '#btnSchedule', function () {
                 var data = table.row( $(this).parents('tr') ).data();
-                window.location = '/cpanel-report/'+data['faculty_id'] + '/schedule';
-                
+                window.location = '/cpanel-report-faculty/schedule/'+data['faculty_id'];
+
             });//end btnTotalRating
 
 

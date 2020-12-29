@@ -11,6 +11,26 @@
                     <form method="POST" action="/cpanel-users">
                         @csrf
 
+
+                        <div class="form-group row">
+                            <label for="student_id" class="col-md-4 col-form-label text-md-right">{{ __('Student No') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="student_id" type="text" class="form-control @error('student_id') is-invalid @enderror"
+                                       name="student_id" value="{{ old('student_id') }}"
+                                       maxlength="10"
+                                       required autocomplete="off" autofocus>
+
+                                @error('student_id')
+                                <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+
+
                         <div class="form-group row">
                             <label for="lname" class="col-md-4 col-form-label text-md-right">{{ __('Lastname') }}</label>
 
@@ -44,7 +64,7 @@
 
                             <div class="col-md-6">
                                 <input id="mname" type="text" class="form-control" name="mname" value="{{ old('mname') }}" autocomplete="off" autofocus>
-                                {{-- 
+                                {{--
                                 @error('mname')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -53,17 +73,17 @@
                             </div>
                         </div>
 
-                        
+
 
                         <div class="form-group row">
-                            <label for="gender" class="col-md-4 col-form-label text-md-right">{{ __('Gender') }}</label>
+                            <label for="sex" class="col-md-4 col-form-label text-md-right">{{ __('Sex') }}</label>
                             <div class="col-md-6">
-                                <select class="form-control" name="gender">
-                                    <option value="Male">Male</option>
-                                    <option value="Female">Female</option>
+                                <select class="form-control" name="sex">
+                                    <option value="MALE">MALE</option>
+                                    <option value="FEMALE">FEMALE</option>
                                 </select>
                             </div>
-                        </div> 
+                        </div>
 
 
                         <div class="form-group row">
@@ -105,20 +125,9 @@
 
 
                         <div class="form-group row">
-                            <label for="gender" class="col-md-4 col-form-label text-md-right">{{ __('Programs') }}</label>
+                            <label for="role" class="col-md-4 col-form-label text-md-right">{{ __('Role') }}</label>
                             <div class="col-md-6">
-                                <select class="form-control" name="program_id">
-                                    @foreach($programs as $program)
-                                        <option value="{{ $program->program_id  }}">{{ $program->program_code }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="gender" class="col-md-4 col-form-label text-md-right">{{ __('Position') }}</label>
-                            <div class="col-md-6">
-                                <select class="form-control" name="program_id">
+                                <select class="form-control" name="role">
                                     @foreach($positions as $position)
                                         <option value="{{ $position->position_id  }}">{{ $position->position }}</option>
                                     @endforeach

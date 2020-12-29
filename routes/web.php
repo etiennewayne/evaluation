@@ -43,13 +43,15 @@ Route::resource('/cpanel-users','UserController');
 
 
 Route::get('/cpanel-report-faculty', 'Administrator\ReportResultController@index')->name('report');
+Route::get('/cpanel-report-faculty/schedule/{facultyid}', 'Administrator\ReportResultController@facultySchedule');
+Route::get('/cpanel-report-faculty/schedule/{facultyid}/{schedcode}', 'Administrator\ReportResultController@reportRating');
 
-Route::get('/cpanel-report/{facultyid}', 'Administrator\ReportResultController@reportRating');
-Route::get('/cpanel-report/{facultyid}/print/print-report-rating-total', 'Administrator\ReportResultController@printReportRating');
 
-Route::get('/cpanel-report/{facultyid}/schedule', 'Administrator\ReportResultController@facultySchedule');
-Route::get('/cpanel-report/{facultyid}/schedule/rate', 'Administrator\ReportResultController@facultyRate');
-Route::get('/cpanel-report/{facultyid}/print/rate', 'Administrator\ReportResultController@printFacultyRate');
+//Route::get('/cpanel-report/{facultyid}/print/print-report-rating-total', 'Administrator\ReportResultController@printReportRating');
+//
+//
+//Route::get('/cpanel-report/{facultyid}/schedule/rate', 'Administrator\ReportResultController@facultyRate');
+//Route::get('/cpanel-report/{facultyid}/print/rate', 'Administrator\ReportResultController@printFacultyRate');
 Route::get('/cpanel-report-student/by-student', 'Administrator\ReportResultController@studentSchedRated');
 
 
@@ -100,15 +102,15 @@ Route::resource('/enrolee-courses-uploader', 'Administrator\EnroleeCoursesUpload
 Route::get('/home','Student\HomeController@index');
 Route::get('/about','Student\AboutController@index');
 Route::get('/faq','Student\FAQController@index');
-Route::get('/studyload','Student\StudyLoadController@studyload');
+Route::get('/cor','Student\StudyLoadController@studyload');
 
 
-Route::get('/studyload/schedule/{schedid}','Student\StudyLoadController@rate');
-Route::post('/studyload/save','Student\StudyLoadController@save');
-Route::get('/studyload/{schedid}/rated','Student\StudyLoadController@isRated');
+Route::get('/cor/schedule/{schedid}','Student\StudyLoadController@rate');
+Route::post('/cor/save','Student\StudyLoadController@save');
+Route::get('/cor/{schedid}/rated','Student\StudyLoadController@isRated');
 
 
-Route::get('/studyload/viewrating/{schedid}','Student\ViewRatingController@viewRating');
+Route::get('/cor/viewrating/{schedid}','Student\ViewRatingController@viewRating');
 
 
 // Route::get('/rate/{schedid}','Student\RatingController@index');
@@ -132,14 +134,14 @@ Route::get('/logout', function() {
 });
 
 //insert admin
-Route::get('/insert', function(){
-    
-    User::create([
-        'student_id' => 'admin',
-        'username' => 'admin',
-        'lname' => 'AMPARADO',
-        'password' => \Hash::make('gadtc'),
-        'role' => 'ADMINISTRATOR'
-    ]);
-    
-});
+//Route::get('/insert', function(){
+//
+//    User::create([
+//        'student_id' => 'admin',
+//        'username' => 'admin',
+//        'lname' => 'AMPARADO',
+//        'password' => \Hash::make('gadtc'),
+//        'role' => 'ADMINISTRATOR'
+//    ]);
+//
+//});

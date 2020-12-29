@@ -7,7 +7,7 @@
 
     <div class="container">
 
-        
+
         @if(session('error'))
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
                 <strong>ERROR!</strong> {{ session('error') }}
@@ -65,7 +65,7 @@
         <div class="row justify-content-center">
 
             <div class="col-md-12">
-              
+
                 <table id="schedules" class="table table-striped table-bordered" style="width:100%">
                     <thead>
                         <tr>
@@ -74,12 +74,12 @@
                             <th>Course Code</th>
                             <th>Time Start</th>
                             <th>Time End</th>
-                            <th>Day</th> 
+                            <th>Day</th>
                             <th>Room</th>
                             <th>Action</th>
                         </tr>
                     </thead>
-                    
+
                     <tfoot>
                         <tr>
                             <th>ID</th>
@@ -87,7 +87,7 @@
                             <th>Course Code</th>
                             <th>Time Start</th>
                             <th>Time End</th>
-                            <th>Day</th> 
+                            <th>Day</th>
                             <th>Room</th>
                             <th>Action</th>
                         </tr>
@@ -95,7 +95,7 @@
 
                 </table>
             </div>
-            
+
         </div><!--div clas row -->
 
 
@@ -115,26 +115,25 @@
 
             processing : true,
             ajax : {
-                url: '/data/ajax-schedules?fid=' + {{ $faculty_id }},
+                url: '/data/ajax-schedules?fid='+{{ $faculty_id }},
                 dataSrc: ''
             },
             columns: [
-                { data : 'schedule_id', visible :true },            
-                { data : 'sched_code' },
-                { data : 'course_code' },
+                { data : 'schedule_id', visible :true },
+                { data : 'schedule_code' },
+                { data : 'course.course_name' },
                 { data : 'time_start' },
                 { data : 'time_end' },
                 { data : 'sched_day' },
                 { data : 'room' },
-                {
 
+                {
                     "defaultContent": '<button class="btn btn-primary" id="btnRating">Rating</button>'
-                
                 }
             ],
 
             // columnDefs:[
-            //     { 
+            //     {
             //         targets:4, render:function(data){
             //             return moment(data).format('LT');
             //         }
@@ -145,8 +144,9 @@
 
         $('#schedules tbody').on( 'click', '#btnRating', function () {
             var data = table.row( $(this).parents('tr') ).data();
-            window.location = '/cpanel-report/'+data['faculty_id'] + '/schedule/rate?sid='+ data['schedule_id'] + '&fid='+ data['faculty_id'];
-            
+            //window.location = '/cpanel-report-faculty/schedule/'+data['faculty_id'] + '/schedule/rate?sid='+ data['schedule_id'] + '&fid='+ data['faculty_id'];
+            window.location = '/cpanel-report-faculty/schedule/'+ {{ $faculty_id }} + '/'+data['schedule_code'];
+
         });//end btnRating
 
 

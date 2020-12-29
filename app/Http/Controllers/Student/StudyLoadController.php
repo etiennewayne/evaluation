@@ -117,7 +117,7 @@ class StudyLoadController extends Controller
 		    ->where('allow_rate', 1)->count();
 
 		if($allowrate < 1){
-			return redirect('/studyload')
+			return redirect('/cor')
 			->with('error', 'Rating is now allowed this time.');
 		}
 		//if server allow the rate ....
@@ -166,7 +166,7 @@ class StudyLoadController extends Controller
 			->where('student_id', $student_id)
 			->get();
 
-			return redirect('/studyload')
+			return redirect('/cor')
 			->with('enrolees' , $enrolees)
 			->with('error', 'Your not allowed to rate this subject.')
 			->with('ay', $ay);
@@ -231,7 +231,7 @@ class StudyLoadController extends Controller
 
 			}); //<--close DB Transaction
 
-             return redirect('/studyload')
+             return redirect('/cor')
                  ->with('success', 'Ratings submitted successfully.');
 
 

@@ -53,8 +53,8 @@
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">Name : {{ trim(Auth::user()->lname) }}, {{ trim(Auth::user()->fname) }}</li>
                         <li class="list-group-item">Program : {{ $user ? $user->program_code : '' }}</li>
-                        <li class="list-group-item">No of Subject to Rated : {{$countrated }} / {{$countcourse}}</li>
-                        <li class="list-group-item">Academic Year : {{ $ay->ay_desc }}({{$ay->ay_code}})</li>
+                        <li class="list-group-item">No. of course to be rated : {{$countrated }} / {{$countcourse}}</li>
+                        <li class="list-group-item">Academic year : {{ $ay->ay_desc }}({{$ay->ay_code}})</li>
                     </ul>
 				</div>
 
@@ -88,9 +88,9 @@
                                 @php
 
                                     if(\App\Rating::where('student_id', Auth::user()->student_id)->where('schedule_code', $enrSchedule->schedule_code)->exists() > 0){
-                                         echo '<td style="background-color:#ffeded; font-style: italic; text-align:center;"><a href="/studyload/viewrating/'. $enrSchedule->schedule_code .'">View Rating</a></td>';
+                                         echo '<td style="background-color:#ffeded; font-style: italic; text-align:center;"><a href="/cor/viewrating/'. $enrSchedule->schedule_code .'">View Rating</a></td>';
                                     }else{
-                                        echo '<td><a class="btn btn-success" href="/studyload/schedule/'. $enrSchedule->schedule_code .'">  RATE  </a></td>';
+                                        echo '<td><a class="btn btn-success" href="/cor/schedule/'. $enrSchedule->schedule_code .'">  RATE  </a></td>';
                                     }
 
                                 @endphp

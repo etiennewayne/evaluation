@@ -36,17 +36,27 @@ class ReportResultController extends Controller
 
 
 
-    public function reportRating($f_id){
+    public function reportRating($f_id, $schedcode){
 
-    	if(!is_numeric($f_id)){
+        if(!is_numeric($f_id)){
             return redirect('/cpanel-report-faculty');
         }
-
         if($f_id==0){
             return redirect('/cpanel-report-faculty');
         }
 
-        $data = DB::select('call report_faculty_rating(?)', array($f_id));
+        $faculty = Faculty::find($f_id);
+        $ay = AcademicYear::where('active', 1)->first();
+
+        //count student belong in schedule code
+        $studentRated = DB::table('ratings')
+        ->where('schedule_code', $schedcode)->count();
+
+
+        //return $studentRated;
+
+        //$data = DB::select('call report_faculty_rating(?)', array($f_id));
+
 
 
         $faculty = DB::table('faculties')
@@ -56,40 +66,12 @@ class ReportResultController extends Controller
 
         $noCategories = DB::table('categories')->count();
 
-        foreach ($remarks_suggestion as $r) {
 
-            $schedules = DB::table('schedules')
-            ->select('schedule_id', 'faculty_id')
-            ->where('faculty_id', $f_id)->get();
-
-            $r->schedules = $schedules;
-
-            foreach ($schedules as $sched) {
-                $remarks = DB::table('rating_comments')
-                ->select('category_id','user_remark', 'user_suggestion')
-                ->where('schedule_id', $sched->schedule_id)
-                ->where('category_id', $r->category_id)
-                ->get();
-
-                $sched->remarks = $remarks;
-            }
-
-        }
-
-        $ay = AcademicYear::where('active', 1)->first();
-
-        // $rating_comment = DB::table('rating_comments as a')
-        // ->join('schedules as b', 'a.schedule_id', '=', 'b.schedule_id')
-        // ->join('categories as c', 'a.category_id', '=', 'c.category_id')
-        // ->where('b.faculty_id', $f_id)
-        // ->get();
 
         return view('cpanel/report/cpanel-report-rating-total')
-        ->with('data', $data)
-        ->with('ay',$ay)
-        ->with('faculty', $faculty)
-        ->with('noCategories', $noCategories)
-        ->with('remarks_suggestion', $remarks_suggestion);
+            ->with('ay',$ay)
+            ->with('faculty', $faculty)
+            ->with('noCategories', $noCategories);
     }
 
     public function printReportRating($f_id){
@@ -155,15 +137,22 @@ class ReportResultController extends Controller
     }
 
 
-
     public function ajaxSchedules(Request $request){
 
         $fid = $request->query('fid');
-        $schedules = DB::table('schedules as a')
-        ->join('courses as b', 'a.course_id', 'b.course_id')
-        ->select('a.schedule_id' , 'a.sched_code', 'a.course_id', DB::raw('time_format(a.time_start, "%h:%i %p") as time_start'), DB::raw('time_format(a.time_end, "%h:%i %p") as time_end'), 'a.sched_day', 'a.room', 'a.faculty_id', 'b.subjcode', 'b.course_code', 'b.course')
-        ->where('faculty_id', $fid)
-        ->get();
+
+        $faculty = Faculty::where('faculty_id', $fid)->first();
+
+        $schedules = Schedule::where('faculty_code', $faculty->faculty_code)
+            ->with(['faculty', 'course'])
+            ->get();
+
+
+//        $schedules = DB::table('schedules as a')
+//        ->join('courses as b', 'a.course_id', 'b.course_id')
+//        ->select('a.schedule_id' , 'a.sched_code', 'a.course_id', DB::raw('time_format(a.time_start, "%h:%i %p") as time_start'), DB::raw('time_format(a.time_end, "%h:%i %p") as time_end'), 'a.sched_day', 'a.room', 'a.faculty_id', 'b.subjcode', 'b.course_code', 'b.course')
+//        ->where('faculty_id', $fid)
+//        ->get();
 
         return $schedules;
 
@@ -220,7 +209,7 @@ class ReportResultController extends Controller
         ->with('remarks_suggestion', $remarks_suggestion)
         ->with('ay', $ay);
     }
-    
+
     public function printFacultyRate(Request $req){
 
         $faculty_id = $req->fid;

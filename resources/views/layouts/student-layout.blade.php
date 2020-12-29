@@ -58,8 +58,8 @@
 
 
                 @if(Auth::check())
-                    <li class="nav-item {{ (request()->is('studyload*')) ? 'active' : '' }}">
-                        <a class="nav-link" href="/studyload">Study Load</a>
+                    <li class="nav-item {{ (request()->is('cor*')) ? 'active' : '' }}">
+                        <a class="nav-link" href="/cor">Certificate of Registration</a>
                     </li>
 
 

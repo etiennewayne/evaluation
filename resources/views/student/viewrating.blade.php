@@ -54,12 +54,14 @@
                     $sched_code = '';
                     $course_code = '';
                     $course = '';
+                    $instructor = '';
 
                     foreach($data as $info){
                         $name = $info->lname . ', ' . $info->fname . ' ' . $info->mname;
                         $sched_code = $info->schedule_code;
                         $course_code = $info->course_code;
                         $course = $info->course_name;
+                        $instructor = $info->f_lname. ', ' .$info->f_fname;
                     }
                 @endphp
                  <h4>Rating</h4>
@@ -72,6 +74,9 @@
                  <div>
                     Course : {{ $course }}
                  </div>
+                <div>
+                    Instructor : {{ $instructor }}
+                </div>
 
                 <table class="table table-hover">
                     <thead>

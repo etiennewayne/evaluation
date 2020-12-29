@@ -135,7 +135,7 @@
         <br>
 
 
-        <form id="form-submit" method="post" action="/studyload/save">
+        <form id="form-submit" method="post" action="/cor/save">
         <div class="row justify-content-center">
 
             <input type="hidden" name="schedule_code" value="{{ $schedule->schedule_code }}" />

@@ -2,29 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="720635db-fce7-4503-8300-ca514c204a37" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/evaluation.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/evaluation.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Administrator/FacultyUploaderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Administrator/FacultyUploaderController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Administrator/ScheduleUploaderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Administrator/ScheduleUploaderController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Administrator/UserUploaderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Administrator/UserUploaderController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Student/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Student/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Faculty.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Faculty.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Administrator/ReportResultController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Administrator/ReportResultController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Student/StudyLoadController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Student/StudyLoadController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Student/ViewRatingController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Student/ViewRatingController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Rating.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Rating.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Schedule.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Schedule.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/custom-login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/custom-login.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/auth/usercreate.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/usercreate.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/cpanel/report/cpanel-report-faculty.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/cpanel/report/cpanel-report-faculty.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/cpanel/report/cpanel-report-rating-total.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/cpanel/report/cpanel-report-rating-total.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/cpanel/report/faculty_schedule.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/cpanel/report/faculty_schedule.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/cpanel/report/print-report-rating-total.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/cpanel/report/print-report-rating-total.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/student-layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/student-layout.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/student/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/home.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/student/rate.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/rate.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/student/studyload.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/studyload.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/student/viewrating.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/viewrating.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -209,7 +201,11 @@
       <workItem from="1608185326756" duration="7057000" />
       <workItem from="1608280190706" duration="5568000" />
       <workItem from="1608348465370" duration="90000" />
-      <workItem from="1608977841395" duration="8459000" />
+      <workItem from="1608977841395" duration="10949000" />
+      <workItem from="1609002403525" duration="796000" />
+      <workItem from="1609029217008" duration="676000" />
+      <workItem from="1609045704717" duration="17671000" />
+      <workItem from="1609207875057" duration="4564000" />
     </task>
     <servers />
   </component>
@@ -241,15 +237,20 @@
       <screen x="0" y="0" width="1440" height="860" />
     </state>
     <state x="554" y="353" key="NewPhpFileDialog/0.0.1440.860/-1440.0.1440.900@0.0.1440.860" timestamp="1608186728884" />
-    <state x="-1335" y="140" width="1026" height="708" key="dock-window-1" timestamp="1607923483409">
-      <screen x="-1440" y="0" width="1440" height="900" />
+    <state x="406" y="212" width="1306" height="819" key="dock-window-1" timestamp="1609057441620">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="-1335" y="140" width="1026" height="708" key="dock-window-1/0.0.1440.860/-1440.0.1440.900@0.0.1440.860" timestamp="1607923483409" />
-    <state x="511" y="220" width="896" height="784" key="search.everywhere.popup" timestamp="1608989636259">
+    <state x="406" y="212" width="1306" height="819" key="dock-window-1/0.0.1920.1040@0.0.1920.1040" timestamp="1609057441620" />
+    <state x="124" y="274" width="1306" height="819" key="dock-window-2" timestamp="1609059404896">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="124" y="274" width="1306" height="819" key="dock-window-2/0.0.1920.1040@0.0.1920.1040" timestamp="1609059404896" />
+    <state x="511" y="220" width="896" height="784" key="search.everywhere.popup" timestamp="1609062229825">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="-1057" y="190" width="672" height="678" key="search.everywhere.popup/0.0.1440.860/-1440.0.1440.900@-1440.0.1440.900" timestamp="1607588924651" />
     <state x="383" y="182" width="672" height="648" key="search.everywhere.popup/0.0.1440.860/-1440.0.1440.900@0.0.1440.860" timestamp="1608196098056" />
-    <state x="511" y="220" width="896" height="784" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1608989636259" />
+    <state x="511" y="220" width="896" height="784" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1609062229825" />
   </component>
 </project>

@@ -46,24 +46,26 @@ class UserController extends Controller
     public function store(Request $request){
 
         $validateData = $request->validate([
+            'student_id' => ['string', 'max:10', 'min:3', 'required', 'unique:users'],
             'username' => ['string', 'max:50', 'min:3', 'required', 'unique:users'],
             'lname' => ['string', 'max:50', 'required'],
             'fname' => ['string', 'max:50', 'required'],
-            'gender' => ['string', 'max:10', 'required'],
+            'sex' => ['string', 'max:10', 'required'],
         ]);
 
         $data = User::create([
+            'student_id' => $request->student_id,
             'username' => $request->username,
             'lname' => $request->lname,
             'fname' => $request->fname,
             'mname' => $request->mname,
-            'gender' => $request->gender,
+            'sex' => $request->gender,
             'password' => Hash::make($request->password)
         ]);
 
         return redirect('/cpanel-users')->with('success', 'User created successfully.');
     }
-   
+
 
     public function edit($id){
 
@@ -76,7 +78,7 @@ class UserController extends Controller
 
         $civilstatus = DB::table('civil_status')->get();
 
-      
+
           return view('auth/useredit')->with('user', $user)
            ->with('positions', $positions)
            ->with('programs', $programs)
@@ -85,7 +87,7 @@ class UserController extends Controller
     }
 
     public function update(Request $request, $id){
-      
+
             $user = User::find($id);
 
             $user->position_id = $request->position_id;
@@ -95,14 +97,14 @@ class UserController extends Controller
              $user->sex = $request->sex;
              $user->civil_status = $request->civilstatus;
              $user->program_id = $request->program_id;
-             
+
 
 
              if($request->password != null){
 
                 $user->password =Hash::make($request->password);
              }
-           
+
              $user->save();
 
              return redirect('/cpanel-users')
