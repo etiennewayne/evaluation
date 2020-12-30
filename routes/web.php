@@ -27,9 +27,14 @@ Auth::routes([	'reset' => false,
 Route::Auth();
 
 
+
 //LOGIN ------
 Route::get('/','LoginController@index')->name('login');
 Route::post('/','LoginController@auth');
+Route::get('/change-password', 'Auth\ChangePasswordController@index');
+Route::post('/change-password', 'Auth\ChangePasswordController@update');
+
+//Route::post('/mylogout', 'Auth\LogoutController@logout');
 
 
 
@@ -52,6 +57,7 @@ Route::get('/cpanel-report-faculty/schedule/{facultyid}/{schedcode}', 'Administr
 //
 //Route::get('/cpanel-report/{facultyid}/schedule/rate', 'Administrator\ReportResultController@facultyRate');
 //Route::get('/cpanel-report/{facultyid}/print/rate', 'Administrator\ReportResultController@printFacultyRate');
+
 Route::get('/cpanel-report-student/by-student', 'Administrator\ReportResultController@studentSchedRated');
 
 

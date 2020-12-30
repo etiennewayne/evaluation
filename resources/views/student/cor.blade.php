@@ -82,15 +82,22 @@
 
                                 <td>{{ $enrSchedule->course->course_name }}</td>
                                 <td>{{ $enrSchedule->course->course_desc }}</td>
-                                {{--                            <td>{{ \Carbon\Carbon::createFromFormat('H:i:s',$eSched->time_start)->format('h:i A')  }} - {{ \Carbon\Carbon::createFromFormat('H:i:s',  $eSched->time_end)->format('h:i A') }}</td>--}}
-                                {{--                            <td>{{ $eSched->sched_day }}</td>--}}
 
                                 @php
 
                                     if(\App\Rating::where('student_id', Auth::user()->student_id)->where('schedule_code', $enrSchedule->schedule_code)->exists() > 0){
                                          echo '<td style="background-color:#ffeded; font-style: italic; text-align:center;"><a href="/cor/viewrating/'. $enrSchedule->schedule_code .'">View Rating</a></td>';
                                     }else{
-                                        echo '<td><a class="btn btn-success" href="/cor/schedule/'. $enrSchedule->schedule_code .'">  RATE  </a></td>';
+                                        $hasFaculty = \DB::table('schedules as a')
+                                            ->join('faculties as b', 'a.faculty_code', 'b.faculty_code')
+                                            ->where('a.schedule_code',$enrSchedule->schedule_code)
+                                            ->count();
+
+                                       if($hasFaculty > 0){
+                                           echo '<td><a class="btn btn-success" href="/cor/schedule/'. $enrSchedule->schedule_code .'">  RATE  </a></td>';
+                                       }else{
+                                            echo '<td><i>Not available</i></td>';
+                                       }
                                     }
 
                                 @endphp

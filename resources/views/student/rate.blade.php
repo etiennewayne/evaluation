@@ -71,15 +71,15 @@
 							</tr>
 							<tr>
 								<td><b>Course</b> :</td>
-								<td>{{ $schedule->course->course_name }} {{ $schedule->course->course_desc }}</td>
+								<td>{{ $schedule->course_name }} {{ $schedule->course_desc }}</td>
 							</tr>
 							<tr>
 								<td><b>Schedule</b> :</td>
-								<td>{{ \Carbon\Carbon::createFromFormat('H:i:s',$schedule->time_start)->format('h:i A')  }} -  {{ \Carbon\Carbon::createFromFormat('H:i:s',$schedule->time_end)->format('h:i A')  }} {{ $schedule->sched_day}} {{$schedule->course->course_class }}</td>
+								<td>{{ \Carbon\Carbon::createFromFormat('H:i:s',$schedule->time_start)->format('h:i A')  }} -  {{ \Carbon\Carbon::createFromFormat('H:i:s',$schedule->time_end)->format('h:i A')  }} {{ $schedule->sched_day}} {{$schedule->course_class }}</td>
 							</tr>
 							<tr>
 								<td><b>Instructor</b> :</td>
-								<td>{{ $schedule->faculty->lname }}, {{ $schedule->faculty->fname }} {{ $schedule->faculty->mname }}</td>
+								<td>{{ $schedule->lname }}, {{ $schedule->fname }} {{ $schedule->mname }}</td>
 							</tr>
 						</table>
                     </div>

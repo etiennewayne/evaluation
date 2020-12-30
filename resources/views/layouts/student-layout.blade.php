@@ -80,7 +80,7 @@
 
 						<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
 							@foreach($coursesNoRate as $courseNoRate)
-								<a class="dropdown-item" href="/studyload/schedule/{{ $courseNoRate->schedule_code }}">
+								<a class="dropdown-item" href="/cor/schedule/{{ $courseNoRate->schedule_code }}">
 									<b>{{ $courseNoRate->schedule_code }}</b> - {{ $courseNoRate->course_name }}
 								</a>
 							@endforeach
@@ -105,12 +105,11 @@
 
                     </a>
 
-
-
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
 
+                        <a class="dropdown-item" href="/change-password">Change Password</a>
 
-                        <a class="dropdown-item" href="{{ route('logout') }}"
+                        <a class="dropdown-item" href="{{route('logout')}}"
                         onclick="event.preventDefault();
                                         document.getElementById('logout-form').submit();">
                             {{ __('Logout') }}

@@ -29,7 +29,6 @@ class StudyLoadController extends Controller
 	}
 
 
-
 	public function index(){
 
 		$student_id = Auth::user()->student_id;
@@ -71,6 +70,8 @@ class StudyLoadController extends Controller
 			->where('student_id', $student_id)
 			->count();
 
+        //return $countCourses;
+
 
 		//count rated course of the student by set no
 		$countRated = DB::table('ratings as a')
@@ -97,7 +98,7 @@ class StudyLoadController extends Controller
 			->first();
 		//please add filter if ever no course makuha ang query dere--->
 
-		return view('student.studyload')
+		return view('student.cor')
 		    //->with('count', $count)
             ->with('user', $user)
 		    ->with('enroleeCourses' , $enroleeCourses)
@@ -120,10 +121,8 @@ class StudyLoadController extends Controller
 			return redirect('/cor')
 			->with('error', 'Rating is now allowed this time.');
 		}
+
 		//if server allow the rate ....
-
-
-
 
 		$ay = AcademicYear::where('active', 1)->first();
 		$student_id = Auth::user()->student_id;
@@ -135,31 +134,41 @@ class StudyLoadController extends Controller
 
 		$coursesNoRate = DB::select('call proc_view_noratecourses(?, ?)', array($ay->ay_id, $student_id));
 
+
 		$criteria = Criteria::where('ay_id', $ay->ay_id)->get();
 		//get all criteria by academic year
 
 		if($count > 0){
 
-			//$categories = Category::orderBy('order_no', 'asc')
-
-
 			$categories = Category::with(['criteria'])
 			->where('ay_id', $ay->ay_id)->get();
 
 
-			//return $categories;
+			//$schedule = Schedule::where('schedule_code', $sched_code)->first();
+            $schedule = DB::table('schedules as a')
+                ->join('faculties as b', 'a.faculty_code', 'b.faculty_code')
+                ->join('courses as c', 'a.course_code', 'c.course_code')
+                ->where('a.schedule_code', $sched_code)
+                ->first();
 
-			$schedule = Schedule::where('schedule_code', $sched_code)->first();
+
+            if($schedule){
+                //if schedule has a faculty assigned
+                return view('student/rate')
+                    ->with('categories', $categories)
+                    ->with('schedule', $schedule)
+                    ->with('ay', $ay)
+                    ->with('criteria', $criteria)
+                    ->with('coursesNoRate', $coursesNoRate);
+            }else{
+                //if no faculty found. redirect not rated page.
+                return view('errors.cantrate');
+            }
 
 			//return $schedule->course;
 			//return $categories;
 
-			return view('student/rate')
-				->with('categories', $categories)
-				->with('schedule', $schedule)
-				->with('ay', $ay)
-				->with('criteria', $criteria)
-				->with('coursesNoRate', $coursesNoRate);
+
 		}else{
 
 			$enrolees = EnroleeCourses::orderBy('enrolee_course_id', 'asc')

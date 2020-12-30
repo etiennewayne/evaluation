@@ -53,6 +53,10 @@
                             <div class="alert alert-success" role="alert">
                                 Hi {{ trim(Auth::user()->lname)  }}, {{ trim(Auth::user()->fname)  }}
                             </div>
+
+                            <div class="alert alert-warning" role="alert">
+                                <b>Note</b> : We, encourage you to change password from default to keep your rating secret.
+                            </div>
                         @else
 
 
@@ -77,6 +81,7 @@
                                 @if(session('pwderror'))
                                     <p style="color:red;">{{ session('pwderror') }}</p>
                                 @endif
+
 
                             </form>
 

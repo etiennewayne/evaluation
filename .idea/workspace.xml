@@ -1,21 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="720635db-fce7-4503-8300-ca514c204a37" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Faculty.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Faculty.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Administrator/ReportResultController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Administrator/ReportResultController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/LoginController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Student/StudyLoadController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Student/StudyLoadController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/usercreate.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/usercreate.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/cpanel/report/cpanel-report-faculty.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/cpanel/report/cpanel-report-faculty.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/cpanel/report/cpanel-report-rating-total.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/cpanel/report/cpanel-report-rating-total.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/cpanel/report/faculty_schedule.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/cpanel/report/faculty_schedule.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/cpanel/report/print-report-rating-total.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/cpanel/report/print-report-rating-total.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/student-layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/student-layout.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/student/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/home.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/student/rate.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/rate.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/student/studyload.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/studyload.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/student/viewrating.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/viewrating.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/student/studyload.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/cor.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -161,6 +172,12 @@
     <property name="settings.editor.selected.configurable" value="configurable.group.tools" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\eshen\Desktop\Github\evaluation\resources\views\auth\passwords" />
+      <recent name="C:\Users\eshen\Desktop\Github\evaluation\resources\views\auth" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
       <TestRunner scope="XML" />
@@ -205,12 +222,25 @@
       <workItem from="1609002403525" duration="796000" />
       <workItem from="1609029217008" duration="676000" />
       <workItem from="1609045704717" duration="17671000" />
-      <workItem from="1609207875057" duration="4564000" />
+      <workItem from="1609207875057" duration="14507000" />
+      <workItem from="1609282503313" duration="6343000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="Vcs.Log.UiProperties">
     <option name="RECENTLY_FILTERED_USER_GROUPS">
@@ -233,10 +263,11 @@
       <screen x="-1440" y="0" width="1440" height="900" />
     </state>
     <state x="-940" y="204" key="FileChooserDialogImpl/0.0.1440.860/-1440.0.1440.900@-1440.0.1440.900" timestamp="1607920196315" />
-    <state x="554" y="353" key="NewPhpFileDialog" timestamp="1608186728884">
-      <screen x="0" y="0" width="1440" height="860" />
+    <state x="739" y="427" key="NewPhpFileDialog" timestamp="1609257491412">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="554" y="353" key="NewPhpFileDialog/0.0.1440.860/-1440.0.1440.900@0.0.1440.860" timestamp="1608186728884" />
+    <state x="739" y="427" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1609257491412" />
     <state x="406" y="212" width="1306" height="819" key="dock-window-1" timestamp="1609057441620">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -246,11 +277,11 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="124" y="274" width="1306" height="819" key="dock-window-2/0.0.1920.1040@0.0.1920.1040" timestamp="1609059404896" />
-    <state x="511" y="220" width="896" height="784" key="search.everywhere.popup" timestamp="1609062229825">
+    <state x="511" y="220" width="896" height="784" key="search.everywhere.popup" timestamp="1609287363676">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="-1057" y="190" width="672" height="678" key="search.everywhere.popup/0.0.1440.860/-1440.0.1440.900@-1440.0.1440.900" timestamp="1607588924651" />
     <state x="383" y="182" width="672" height="648" key="search.everywhere.popup/0.0.1440.860/-1440.0.1440.900@0.0.1440.860" timestamp="1608196098056" />
-    <state x="511" y="220" width="896" height="784" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1609062229825" />
+    <state x="511" y="220" width="896" height="784" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1609287363676" />
   </component>
 </project>
