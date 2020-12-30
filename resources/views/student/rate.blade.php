@@ -60,7 +60,7 @@
                 <div class="col-md-6">
                   <div class="card">
                     <div class="card-header">
-                      <b>SCHEDULE INFORMATION</b>
+                      <b>COURSE INFORMATION</b>
                     </div>
 
                     <div class="card-body">
