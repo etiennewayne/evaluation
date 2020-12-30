@@ -25,7 +25,7 @@
 {{--                    </ol>--}}
 {{--                </div> <!--nested row close-->--}}
                  @if(Auth::check())
-                    <a class="btn btn-success btn-lg" href="/studyload" role="button">Start Evaluation</a>
+                    <a class="btn btn-success btn-lg" href="/cor" role="button">Start Evaluation</a>
                      <br>
                     <br>
                 @endif
