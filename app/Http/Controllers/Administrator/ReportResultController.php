@@ -39,16 +39,17 @@ class ReportResultController extends Controller
         $fcode = Faculty::where('faculty_id', $req->f)
             ->first();
 
+
         $ay = AcademicYear::where('active', 1)->first();
 
         $result = DB::select('call report_faculty_rating_schedule(?, ?)', array($fcode->faculty_code, $ay->ay_id));
 
-        $comments = DB::select('call report_faculty_rating(?, ?)', array($fcode->faculty_code, $ay->ay_id));
+        $final = DB::select('call report_faculty_rating(?, ?)', array($fcode->faculty_code, $ay->ay_id));
 
 
         return view('cpanel.report.print-faculty-rating')
             ->with('result', $result)
-            ->with('comments', $comments);
+            ->with('final', $final);
     }
 
 

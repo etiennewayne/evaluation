@@ -115,7 +115,7 @@
                     @endphp
                     <tr>
                         <td><b>Final Assessment</b></td>
-                        <td><b>{{ $final_avg }} ({{$legend->legend}})</b></td>
+                        <td><b>{{ $final[0]->avg_rating }}</b></td>
                     </tr>
                 </thead>
             </table>
@@ -134,6 +134,9 @@
                     <th>Remarks/Suggestion</th>
                 </tr>
                 </thead>
+                <tr>
+                    <td>{{$final[0]->remarks}}</td>
+                </tr>
             </table>
         </div>
 
@@ -149,7 +152,7 @@
 
 
         function printMe(){
-            //window.print();
+            window.print();
         }
 
     </script>
