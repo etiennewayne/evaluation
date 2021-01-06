@@ -107,7 +107,7 @@
 					{ data : 'mname' },
 					{
 
-						"defaultContent": '<button class="btn btn-primary" id="btnSchedule">Schedule</button> &nbsp; <button class="btn btn-primary" id="btnTotalRating">Total Rating</button>'
+						"defaultContent": '<button class="btn btn-primary" id="btnSchedule">Schedule</button> &nbsp; <button class="btn btn-primary" id="btnTotalRating">Rating</button>'
 						{{--'<form style="display: inline;" action="cpanel-users/'+ 0 +' method="post">--}}
 						{{--@csrf--}}
 						{{--@method("DELETE")--}}
@@ -119,7 +119,7 @@
 
 			$('#faculty tbody').on( 'click', '#btnTotalRating', function () {
 				var data = table.row( $(this).parents('tr') ).data();
-				// window.location = '/cpanel-report/'+data['faculty_id'];
+                window.location = '/cpanel-report-faculty/rating?f='+data['faculty_id'];
 
 			});//end btnTotalRating
 

@@ -36,6 +36,12 @@ class LoginController extends Controller
 			if($role == "STUDENT"){
 				return redirect()->intended('home');
 			}
+
+            if($role == "FACULTY"){
+                return redirect()->intended('faculty');
+            }
+
+
 		}
 		return view('student/home');
 	}

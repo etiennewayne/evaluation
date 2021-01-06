@@ -12,6 +12,7 @@ use App\Schedule;
 use App\Category;
 
 
+
 class ReportResultController extends Controller
 {
     //
@@ -33,8 +34,57 @@ class ReportResultController extends Controller
     }
 
 
+    public function ratingResult(Request $req){
+
+        $fcode = Faculty::where('faculty_id', $req->f)
+            ->first();
+
+        $ay = AcademicYear::where('active', 1)->first();
+
+        $result = DB::select('call report_faculty_rating_schedule(?, ?)', array($fcode->faculty_code, $ay->ay_id));
+
+        $comments = DB::select('call report_faculty_rating(?, ?)', array($fcode->faculty_code, $ay->ay_id));
 
 
+        return view('cpanel.report.print-faculty-rating')
+            ->with('result', $result)
+            ->with('comments', $comments);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //OLD CODES
 
     public function reportRating($f_id, $schedcode){
 
