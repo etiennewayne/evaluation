@@ -49,7 +49,7 @@ Route::resource('/cpanel-users','UserController');
 
 
 Route::get('/cpanel-report-faculty', 'Administrator\ReportResultController@index')->name('report');
-Route::get('/cpanel-report-faculty/rating', 'Administrator\ReportResultController@ratingResult')->name('report'); //rating result
+Route::get('/cpanel-report-faculty/rating', 'Administrator\ReportResultController@ratingResult'); //rating result
 Route::get('/cpanel-report-faculty/schedule/{facultyid}', 'Administrator\ReportResultController@facultySchedule');
 Route::get('/cpanel-report-faculty/schedule/{facultyid}/{schedcode}', 'Administrator\ReportResultController@reportRating');
 

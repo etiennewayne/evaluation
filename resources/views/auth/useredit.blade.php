@@ -5,12 +5,31 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Update User') }}</div>
+                <div class="card-header">{{ __('UPDATE USER') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="/cpanel-users/{{ $user->user_id}}">
                         @csrf
                         @method('PUT')
+
+                        <div class="form-group row">
+                            <label for="student_id" class="col-md-4 col-form-label text-md-right">{{ __('Identification No') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="student_id" type="text" class="form-control @error('student_id') is-invalid @enderror" value="{{ $user->student_id }}"
+                                       name="student_id" value="{{ old('student_id') }}"
+                                       maxlength="10"
+                                       required autocomplete="off" readonly="">
+
+                                @error('student_id')
+                                <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+
 
                         <div class="form-group row">
                             <label for="username" class="col-md-4 col-form-label text-md-right">{{ __('Username') }}</label>
@@ -26,31 +45,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
-                            <label for="position_id" class="col-md-4 col-form-label text-md-right">{{ __('Position') }}</label>
-                            <div class="col-md-6">
-                                  
-                                <select name="position_id" class="form-control">
-                                 
-                                    @foreach($positions as $pos)
-                                        @if($user->positions->position_id == $pos->position_id)
-                                            <option selected="selected" value="{{$pos->position_id}}">{{ $pos->position }}</option>
-                                        @else
-                                            <option value="{{$pos->position_id}}">{{ $pos->position }}</option>
-                                        @endif
-                                        
-                                    @endforeach
-                                </select>
 
-                                {{-- @error('lname')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror --}}
-                            </div>
-                        </div>
-
-                        
                         <div class="form-group row">
                             <label for="lname" class="col-md-4 col-form-label text-md-right">{{ __('Lastname') }}</label>
 
@@ -84,7 +79,7 @@
 
                             <div class="col-md-6">
                                 <input id="mname" type="text" class="form-control" name="mname" value="{{ $user->mname }}" autocomplete="off" autofocus>
-{{-- 
+{{--
                                 @error('mname')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -93,22 +88,34 @@
                             </div>
                         </div>
 
-                        
+
 
                         <div class="form-group row">
                             <label for="gender" class="col-md-4 col-form-label text-md-right">{{ __('Sex') }}</label>
                             <div class="col-md-6">
-                                <select class="form-control" name="sex">
+                                <select name="sex" class="form-control @error('sex') is-invalid @enderror">
                                 @if ($user->sex == 'MALE')
                                     <option selected="selected" value="MALE">MALE</option>
                                     <option value="FEMALE">FEMALE</option>
                                 @elseif ( $user->sex == 'FEMALE')
-                                   
                                     <option selected="selected" value="FEMALE">FEMALE</option>
                                     <option value="MALE">MALE</option>
+
+                                    @else
+                                        <option value="MALE">MALE</option>
+                                        <option value="FEMALE">FEMALE</option>
+
                                 @endif
 
                                 </select>
+
+                                @error('sex')
+                                <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+
+
                             </div>
                         </div>
 
@@ -122,27 +129,12 @@
                                     @else
                                         <option value="{{ $c->civil_status }}">{{ $c->civil_status }}</option>
                                     @endif
-                                        
-                                @endforeach
-                                </select>
-                            </div>
-                        </div> 
 
-                        <div class="form-group row">
-                            <label for="program_id" class="col-md-4 col-form-label text-md-right">{{ __('Program') }}</label>
-                            <div class="col-md-6">
-                                <select class="form-control" name="program_id">
-                                @foreach ($programs as $p)
-                                    @if ($user->programs->program_id == $p->program_id)
-                                        <option selected="selected" value="{{$p->program_id}}">{{ $p->program_code }}</option>
-                                    @else
-                                        <option value="{{$p->program_id}}">{{ $p->program_code }}</option>
-                                    @endif
-                                        
                                 @endforeach
                                 </select>
                             </div>
-                        </div> 
+                        </div>
+
 
 
                         <div class="form-group row">
@@ -165,11 +157,22 @@
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" autocomplete="new-password">
                             </div>
-                        </div> 
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="role" class="col-md-4 col-form-label text-md-right">{{ __('Role') }}</label>
+                            <div class="col-md-6">
+                                <select class="form-control" name="role">
+                                    @foreach($positions as $position)
+                                        <option value="{{ $position->position  }}">{{ $position->position }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
 
 
 
-                        
+
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">

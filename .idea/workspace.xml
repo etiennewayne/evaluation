@@ -21,8 +21,12 @@
   <component name="ChangeListManager">
     <list default="true" id="720635db-fce7-4503-8300-ca514c204a37" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Administrator/ReportResultController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Administrator/ReportResultController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/cpanel/report/print-faculty-rating.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/cpanel/report/print-faculty-rating.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/auth/usercreate.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/usercreate.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/auth/useredit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/useredit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/admin-layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/admin-layout.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -222,6 +226,7 @@
       <workItem from="1609835939228" duration="410000" />
       <workItem from="1609836369987" duration="704000" />
       <workItem from="1609910167096" duration="11266000" />
+      <workItem from="1609934004298" duration="4540000" />
     </task>
     <servers />
   </component>
@@ -296,11 +301,11 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="124" y="274" width="1306" height="819" key="dock-window-2/0.0.1920.1040@0.0.1920.1040" timestamp="1609059404896" />
-    <state x="383" y="182" width="672" height="648" key="search.everywhere.popup" timestamp="1609915694161">
-      <screen x="0" y="0" width="1440" height="860" />
+    <state x="511" y="220" width="896" height="784" key="search.everywhere.popup" timestamp="1609936924538">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="-1057" y="190" width="672" height="678" key="search.everywhere.popup/0.0.1440.860/-1440.0.1440.900@-1440.0.1440.900" timestamp="1607588924651" />
     <state x="383" y="182" width="672" height="648" key="search.everywhere.popup/0.0.1440.860/-1440.0.1440.900@0.0.1440.860" timestamp="1609915694161" />
-    <state x="511" y="220" width="896" height="784" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1609287363676" />
+    <state x="511" y="220" width="896" height="784" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1609936924538" />
   </component>
 </project>

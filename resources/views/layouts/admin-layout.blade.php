@@ -125,7 +125,7 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Select :</h6>
 				<a class="collapse-item" href="/cpanel-report-faculty">Faculty</a>
-				<a class="collapse-item" href="#">Student</a>
+{{--				<a class="collapse-item" href="#">Student</a>--}}
             <!--<a class="collapse-item" href="utilities-color.html">Colors</a>
             <a class="collapse-item" href="utilities-border.html">Borders</a>
             <a class="collapse-item" href="utilities-animation.html">Animations</a>
@@ -162,27 +162,28 @@
               <a class="collapse-item" href="/schedule-uploader">Schedule Uploader</a>
 
 
-            <div class="collapse-divider"></div>
-            <h6 class="collapse-header">Other Pages:</h6>
-            <a class="collapse-item" href="404.html">404 Page</a>
-            <a class="collapse-item" href="blank.html">Blank Page</a>
-          </div>
+{{--            <div class="collapse-divider"></div>--}}
+{{--            <h6 class="collapse-header">Other Pages:</h6>--}}
+{{--            <a class="collapse-item" href="404.html">404 Page</a>--}}
+{{--            <a class="collapse-item" href="blank.html">Blank Page</a>--}}
+{{--          </div>--}}
         </div>
       </li>
 
-      <!-- Nav Item - Charts -->
-      <li class="nav-item">
-        <a class="nav-link" href="charts.html">
-          <i class="fas fa-fw fa-chart-area"></i>
-          <span>Charts</span></a>
-      </li>
 
-      <!-- Nav Item - Tables -->
-      <li class="nav-item">
-        <a class="nav-link" href="tables.html">
-          <i class="fas fa-fw fa-table"></i>
-          <span>Tables</span></a>
-      </li>
+      <!-- Nav Item - Charts -->
+{{--      <li class="nav-item">--}}
+{{--        <a class="nav-link" href="charts.html">--}}
+{{--          <i class="fas fa-fw fa-chart-area"></i>--}}
+{{--          <span>Charts</span></a>--}}
+{{--      </li>--}}
+
+{{--      <!-- Nav Item - Tables -->--}}
+{{--      <li class="nav-item">--}}
+{{--        <a class="nav-link" href="tables.html">--}}
+{{--          <i class="fas fa-fw fa-table"></i>--}}
+{{--          <span>Tables</span></a>--}}
+{{--      </li>--}}
 
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">

@@ -19,9 +19,7 @@ class UserController extends Controller
     protected $redirectTo = '/login';
 
     //protected $redirectTo = '/home';
-
-
-
+    
     public function __construct(){
        $this->middleware('admin');
     }
@@ -51,15 +49,17 @@ class UserController extends Controller
             'lname' => ['string', 'max:50', 'required'],
             'fname' => ['string', 'max:50', 'required'],
             'sex' => ['string', 'max:10', 'required'],
+            'password' => ['required', 'string', 'min:4', 'confirmed'],
         ]);
 
         $data = User::create([
             'student_id' => $request->student_id,
             'username' => $request->username,
-            'lname' => $request->lname,
-            'fname' => $request->fname,
-            'mname' => $request->mname,
-            'sex' => $request->gender,
+            'lname' => strtoupper($request->lname),
+            'fname' => strtoupper($request->fname),
+            'mname' => strtoupper($request->mname),
+            'sex' => $request->sex,
+            'role' => $request->role,
             'password' => Hash::make($request->password)
         ]);
 
@@ -74,41 +74,57 @@ class UserController extends Controller
 
         $positions = Position::all();
 
-        $programs = Program::all();
+       // $programs = Program::all();
 
         $civilstatus = DB::table('civil_status')->get();
 
 
           return view('auth/useredit')->with('user', $user)
-           ->with('positions', $positions)
-           ->with('programs', $programs)
-           ->with('civilstatus', $civilstatus);
+              ->with('civilstatus', $civilstatus)
+              ->with('positions', $positions);
         //return $user;
     }
 
     public function update(Request $request, $id){
 
+
+        if($request->password != null) {
+            //if there is a password inputted.
+            $validateData = $request->validate([
+                'lname' => ['string', 'max:50', 'required'],
+                'fname' => ['string', 'max:50', 'required'],
+                'sex' => ['string', 'max:10', 'required'],
+                'password' => ['required', 'string', 'min:4', 'confirmed'],
+            ]);
+
+        }else{
+            //if no password inputted
+            $validateData = $request->validate([
+                'lname' => ['string', 'max:50', 'required'],
+                'fname' => ['string', 'max:50', 'required'],
+                'sex' => ['string', 'max:10', 'required'],
+            ]);
+        }
+
+
+
+
             $user = User::find($id);
 
-            $user->position_id = $request->position_id;
-             $user->lname = $request->lname;
-             $user->fname = $request->fname;
-             $user->mname = $request->mname;
-             $user->sex = $request->sex;
-             $user->civil_status = $request->civilstatus;
-             $user->program_id = $request->program_id;
+            $user->lname = strtoupper($request->lname);
+            $user->fname = strtoupper($request->fname);
+            $user->mname = strtoupper($request->mname);
+            $user->sex = $request->sex;
+            $user->role = $request->role;
 
+            if($request->password != null){
+                $user->password = Hash::make($request->password);
+            }
 
+            $user->save();
 
-             if($request->password != null){
-
-                $user->password =Hash::make($request->password);
-             }
-
-             $user->save();
-
-             return redirect('/cpanel-users')
-             ->with('updated','User updated!');
+            return redirect('/cpanel-users')
+            ->with('updated','User updated!');
     }
 
 

@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Create User') }}</div>
+                <div class="card-header">{{ __('CREATE USER') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="/cpanel-users">
@@ -13,7 +13,7 @@
 
 
                         <div class="form-group row">
-                            <label for="student_id" class="col-md-4 col-form-label text-md-right">{{ __('Student No') }}</label>
+                            <label for="student_id" class="col-md-4 col-form-label text-md-right">{{ __('Identification No') }}</label>
 
                             <div class="col-md-6">
                                 <input id="student_id" type="text" class="form-control @error('student_id') is-invalid @enderror"
@@ -35,7 +35,7 @@
                             <label for="lname" class="col-md-4 col-form-label text-md-right">{{ __('Lastname') }}</label>
 
                             <div class="col-md-6">
-                                <input id="lname" type="text" class="form-control @error('lname') is-invalid @enderror" name="lname" value="{{ old('lname') }}" required autocomplete="off" autofocus>
+                                <input id="lname" type="text" class="form-control @error('lname') is-invalid @enderror" name="lname" value="{{ old('lname') }}" required autocomplete="off">
 
                                 @error('lname')
                                     <span class="invalid-feedback" role="alert">
@@ -129,7 +129,7 @@
                             <div class="col-md-6">
                                 <select class="form-control" name="role">
                                     @foreach($positions as $position)
-                                        <option value="{{ $position->position_id  }}">{{ $position->position }}</option>
+                                        <option value="{{ $position->position  }}">{{ $position->position }}</option>
                                     @endforeach
                                 </select>
                             </div>
