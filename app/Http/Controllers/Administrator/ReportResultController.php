@@ -34,11 +34,11 @@ class ReportResultController extends Controller
     }
 
 
+    //this fucntion will show the final rating and print page
     public function ratingResult(Request $req){
 
         $fcode = Faculty::where('faculty_id', $req->f)
             ->first();
-
 
         $ay = AcademicYear::where('active', 1)->first();
 
@@ -46,10 +46,26 @@ class ReportResultController extends Controller
 
         $final = DB::select('call report_faculty_rating(?, ?)', array($fcode->faculty_code, $ay->ay_id));
 
+        if(!$result){
+            return 'no rating';
+        }
 
         return view('cpanel.report.print-faculty-rating')
             ->with('result', $result)
             ->with('final', $final);
+    }
+
+
+    //show faculty schedule
+    //katong active nga AY ra ang ma show na schedule
+    public function facultySchedule($faculty_id){
+
+        $faculty = DB::table('faculties')
+        ->where('faculty_id',$faculty_id)->first();
+
+         return view('cpanel/report/faculty_schedule')
+         ->with('faculty', $faculty)
+         ->with('faculty_id', $faculty_id);
     }
 
 
@@ -103,12 +119,9 @@ class ReportResultController extends Controller
         $studentRated = DB::table('ratings')
         ->where('schedule_code', $schedcode)->count();
 
-
         //return $studentRated;
 
         //$data = DB::select('call report_faculty_rating(?)', array($f_id));
-
-
 
         $faculty = DB::table('faculties')
         ->where('faculty_id',$f_id)->first();
@@ -125,70 +138,64 @@ class ReportResultController extends Controller
             ->with('noCategories', $noCategories);
     }
 
-    public function printReportRating($f_id){
+    // public function printReportRating($f_id){
 
-        if(!is_numeric($f_id)){
-            return redirect('/cpanel-report-faculty');
-        }
+    //     if(!is_numeric($f_id)){
+    //         return redirect('/cpanel-report-faculty');
+    //     }
 
-        if($f_id==0){
-            return redirect('/cpanel-report-faculty');
-        }
+    //     if($f_id==0){
+    //         return redirect('/cpanel-report-faculty');
+    //     }
 
-        $data = DB::select('call report_faculty_rating(?)', array($f_id));
-
-
-        $faculty = DB::table('faculties')
-        ->where('faculty_id',$f_id)->first();
-
-        $remarks_suggestion = Category::all();
-
-        $noCategories = DB::table('categories')->count();
-
-        foreach ($remarks_suggestion as $r) {
-
-            $schedules = DB::table('schedules')
-            ->select('schedule_id', 'faculty_id')
-            ->where('faculty_id', $f_id)->get();
-
-            $r->schedules = $schedules;
-
-            foreach ($schedules as $sched) {
-                $remarks = DB::table('rating_comments')
-                ->select('category_id','user_remark', 'user_suggestion')
-                ->where('schedule_id', $sched->schedule_id)
-                ->where('category_id', $r->category_id)
-                ->get();
-
-                $sched->remarks = $remarks;
-            }
-
-        }
-
-        $ay = AcademicYear::where('active', 1)->first();
+    //     $data = DB::select('call report_faculty_rating(?)', array($f_id));
 
 
-        return view('cpanel/report/print-report-rating-total')
-        ->with('data', $data)
-        ->with('ay',$ay)
-        ->with('faculty', $faculty)
-        ->with('noCategories', $noCategories)
-        ->with('remarks_suggestion', $remarks_suggestion);
-    }
+    //     $faculty = DB::table('faculties')
+    //     ->where('faculty_id',$f_id)->first();
+
+    //     $remarks_suggestion = Category::all();
+
+    //     $noCategories = DB::table('categories')->count();
+
+    //     foreach ($remarks_suggestion as $r) {
+
+    //         $schedules = DB::table('schedules')
+    //         ->select('schedule_id', 'faculty_id')
+    //         ->where('faculty_id', $f_id)->get();
+
+    //         $r->schedules = $schedules;
+
+    //         foreach ($schedules as $sched) {
+    //             $remarks = DB::table('rating_comments')
+    //             ->select('category_id','user_remark', 'user_suggestion')
+    //             ->where('schedule_id', $sched->schedule_id)
+    //             ->where('category_id', $r->category_id)
+    //             ->get();
+
+    //             $sched->remarks = $remarks;
+    //         }
+
+    //     }
+
+    //     $ay = AcademicYear::where('active', 1)->first();
 
 
-    public function facultySchedule($faculty_id){
+    //     return view('cpanel/report/print-report-rating-total')
+    //     ->with('data', $data)
+    //     ->with('ay',$ay)
+    //     ->with('faculty', $faculty)
+    //     ->with('noCategories', $noCategories)
+    //     ->with('remarks_suggestion', $remarks_suggestion);
+    // }
 
-        $faculty = DB::table('faculties')
-        ->where('faculty_id',$faculty_id)->first();
 
-         return view('cpanel/report/faculty_schedule')
-         ->with('faculty', $faculty)
-         ->with('faculty_id', $faculty_id);
-    }
+    
 
 
     public function ajaxSchedules(Request $request){
+
+        $ay = Academicyear::where('active', 1)->first();
 
         $fid = $request->query('fid');
 
@@ -196,6 +203,7 @@ class ReportResultController extends Controller
 
         $schedules = Schedule::where('faculty_code', $faculty->faculty_code)
             ->with(['faculty', 'course'])
+            ->where('schedules.ay_id', $ay->ay_id)
             ->get();
 
 

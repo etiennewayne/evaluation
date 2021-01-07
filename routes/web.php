@@ -105,7 +105,6 @@ Route::resource('/enrolee-courses-uploader', 'Administrator\EnroleeCoursesUpload
 
 
 
-
 //STUDENT------
 Route::get('/home','Student\HomeController@index');
 Route::get('/about','Student\AboutController@index');

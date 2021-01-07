@@ -76,7 +76,7 @@
                             <th>Time End</th>
                             <th>Day</th>
                             <th>Room</th>
-                            <th>Action</th>
+                        
                         </tr>
                     </thead>
 
@@ -89,7 +89,7 @@
                             <th>Time End</th>
                             <th>Day</th>
                             <th>Room</th>
-                            <th>Action</th>
+                          
                         </tr>
                     </tfoot>
 
@@ -127,9 +127,7 @@
                 { data : 'sched_day' },
                 { data : 'room' },
 
-                {
-                    "defaultContent": '<button class="btn btn-primary" id="btnRating">Rating</button>'
-                }
+        
             ],
 
             // columnDefs:[

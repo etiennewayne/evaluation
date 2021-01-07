@@ -10,6 +10,23 @@
     <link rel="stylesheet" type="text/css" href="{{ asset("/css/bootstrap.min.css") }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset("/css/style.css") }}" />
 
+
+    <style>
+        .legend{
+            list-style-type: circle;
+        }
+        .legend > li{
+            border-right: 1px solid black;
+        }
+        .legend > li{
+            display: inline-block;
+            float: left;
+            margin-bottom: 10px;
+            padding: 10px;
+            
+        }
+    </style>
+
 </head>
 
 
@@ -37,8 +54,26 @@
 
     <hr>
 
+   
+    <h4>RESULT</h4><br>
+
+    {{-- <div class="row">
+        <div class="col">
+            
+            <b>Legend</b> :
+                <ul class="legend">
+                    <li>Outstanding</li>
+                    <li>Very Satisfactory</li>
+                    <li>Satisfactory</li>
+                    <li>Unsatisfactory</li>
+                    <li>Poor</li>
+                </ul>
+        </div>
+    </div> --}}
 
     <div class="row">
+
+        
 
         <div class="col-md-4">
 
@@ -60,30 +95,13 @@
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item"><i>Name : {{$result[0]->lname }}, {{ $result[0]->fname }} {{$result[0]->mname}}</i> <b></b></li>
                     <li class="list-group-item">Institute :  {{$result[0]->institute}}</li>
-                    <li class="list-group-item"># of Student : {{ $total }}<b></b></li>
+                    <li class="list-group-item">No. of Student : {{ $total }}<b></b></li>
                 </ul>
             </div>
         </div>
 
-        <div class="col-md-6">
-            <h4>RESULT</h4>
-            <b>Legend</b> :
-                <ul style="display: flow;">
-{{--                    <li>O-Outstanding</li>--}}
-{{--                    <li>VS-Very Satisfactory</li>--}}
-{{--                    <li>S-Satisfactory</li>--}}
-{{--                    <li>U-Unsatisfactory</li>--}}
-{{--                    <li>P-Poor</li>--}}
-
-                    <li>Outstanding</li>
-                    <li>Very Satisfactory</li>
-                    <li>Satisfactory</li>
-                    <li>Unsatisfactory</li>
-                    <li>Poor</li>
-
-                </ul>
-             <br>
-
+        <div class="col">
+            
             <table id="" class="table table-striped table-bordered">
                 <thead>
                 <tr>
@@ -115,7 +133,7 @@
                     @endphp
                     <tr>
                         <td><b>Final Assessment</b></td>
-                        <td><b>{{ $final[0]->avg_rating }}</b></td>
+                        <td><b>{{ $final[0]->avg_rating }} ({{ $final[0]->legend }})</b></td>
                     </tr>
                 </thead>
             </table>
@@ -124,9 +142,8 @@
 
     </div><!--div class row -->
 
-
+<br>
     <div class="row">
-
         <div class="col">
             <table id="" class="table table-striped table-bordered">
                 <thead>
@@ -152,7 +169,7 @@
 
 
         function printMe(){
-            window.print();
+           // window.print();
         }
 
     </script>
