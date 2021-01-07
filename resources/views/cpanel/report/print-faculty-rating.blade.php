@@ -25,143 +25,170 @@
             padding: 10px;
             
         }
+
+        @media print {
+            .myDivToPrint {
+                background-color: white;
+                height: 100%;
+                width: 100%;
+                position: fixed;
+                top: 0;
+                left: 0;
+                margin: 0;
+                padding: 15px;
+                font-size: 14px;
+                line-height: 18px;
+            }
+}
+
+
     </style>
 
 </head>
 
 
-<body onload="printMe()" style="padding: 0;">
-
-<div class="container">
-
-    <div class="row justify-content-center">
-        <div style="display: flex;">
-            <div>
-                <img src="{{ asset('img/logo.png') }}" height="80">
-            </div>
-
-            <div class="print-letterhead-col2">
-                <div>
-                    <h4>Teacher Performance Evaluation Result</h4>
-                </div>
-                <div style="text-align: center;">
-
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-    <hr>
+<body style="padding: 0;">
 
    
-    <h4>RESULT</h4><br>
 
-    {{-- <div class="row">
-        <div class="col">
-            
-            <b>Legend</b> :
-                <ul class="legend">
-                    <li>Outstanding</li>
-                    <li>Very Satisfactory</li>
-                    <li>Satisfactory</li>
-                    <li>Unsatisfactory</li>
-                    <li>Poor</li>
-                </ul>
-        </div>
-    </div> --}}
-
-    <div class="row">
-
-        
-
-        <div class="col-md-4">
-
-            @php
-                $total_avg=0;
-                $total = 0;
-                $count = 0;
-                    foreach($result as $r){
-
-                        $total = $total + $r->no_students;
-                    }
-            @endphp
-
-
-            <div class="card" style="width: 18rem;">
-                <div class="card-header">
-                    <h5>Teacher Information</h5>
+<div id="printarea" class="myDivToPrint">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div style="display: flex;">
+                <div>
+                    <img src="{{ asset('img/logo.png') }}" height="80">
                 </div>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item"><i>Name : {{$result[0]->lname }}, {{ $result[0]->fname }} {{$result[0]->mname}}</i> <b></b></li>
-                    <li class="list-group-item">Institute :  {{$result[0]->institute}}</li>
-                    <li class="list-group-item">No. of Student : {{ $total }}<b></b></li>
-                </ul>
+    
+                <div class="print-letterhead-col2">
+                    <div>
+                        <h4>Teacher Performance Evaluation Result</h4>
+                    </div>
+                    <div style="text-align: center;">
+    
+                    </div>
+                </div>
+    
             </div>
         </div>
-
-        <div class="col">
+    
+        <hr>
+    
+       
+        <h4>RESULT</h4><br>
+    
+        {{-- <div class="row">
+            <div class="col">
+                
+                <b>Legend</b> :
+                    <ul class="legend">
+                        <li>Outstanding</li>
+                        <li>Very Satisfactory</li>
+                        <li>Satisfactory</li>
+                        <li>Unsatisfactory</li>
+                        <li>Poor</li>
+                    </ul>
+            </div>
+        </div> --}}
+    
+        <div class="row">
+    
             
-            <table id="" class="table table-striped table-bordered">
-                <thead>
-                <tr>
-                    <th>Courses</th>
-                    <th>Assessment</th>
-                </tr>
-
-                @foreach($result as $r)
-
-                    @php
-                        $count++;
-                        $total_avg = $total_avg + $r->avg_rating;
-
-                    @endphp
-
+    
+            <div class="col-md-4">
+    
+                @php
+                    $total_avg=0;
+                    $total = 0;
+                    $count = 0;
+                        foreach($result as $r){
+    
+                            $total = $total + $r->no_students;
+                        }
+                @endphp
+    
+    
+                <div class="card" style="width: 18rem;">
+                    <div class="card-header">
+                        <h5>Teacher Information</h5>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><i>Name : {{$result[0]->lname }}, {{ $result[0]->fname }} {{$result[0]->mname}}</i> <b></b></li>
+                        <li class="list-group-item">Institute :  {{$result[0]->institute}}</li>
+                        <li class="list-group-item">No. of Student : {{ $total }}<b></b></li>
+                    </ul>
+                </div>
+            </div>
+    
+            <div class="col">
+                
+                <table id="" class="table table-striped table-bordered">
+                    <thead>
                     <tr>
-                        <td>{{ $r->course_name }} ({{ $r->schedule_code }})</td>
-                        <td>{{ round($r->avg_rating,2) }}</td>
+                        <th>Courses</th>
+                        <th>Assessment</th>
                     </tr>
-                @endforeach
+    
+                    @foreach($result as $r)
+    
+                        @php
+                            $count++;
+                            $total_avg = $total_avg + $r->avg_rating;
+    
+                        @endphp
+    
+                        <tr>
+                            <td>{{ $r->course_name }} ({{ $r->schedule_code }})</td>
+                            <td>{{ round($r->avg_rating,2) }}</td>
+                        </tr>
+                    @endforeach
+    
+                        @php
+                            $final_avg = 0;
+                            $final_avg = round($total_avg / $count,2);
+    
+                            $legend = \DB::table('legends')
+                            ->where('start_value', '>=', $final_avg)
+                            ->orderBy('start_value', 'desc')->first();
+                        @endphp
+                        <tr>
+                            <td><b>Final Assessment</b></td>
+                            <td><b>{{ $final[0]->avg_rating }} ({{ $final[0]->legend }})</b></td>
+                        </tr>
+                    </thead>
+                </table>
+    
+            </div><!--div class md-6 closing tag-->
+    
+        </div><!--div class row -->
+    
+        <br>
 
-                    @php
-                        $final_avg = 0;
-                        $final_avg = round($total_avg / $count,2);
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <h5 class="card-header">Remarks/Suggestion</h5>
+                    <div class="card-body">
+                      <p class="card-text">{{ $final[0]->remarks }}</p>
+                    </div>
+                  </div>
+            </div>
+        </div><!--close row-->
+        <br>
+    
+    </div> <!--div class container -->
 
-                        $legend = \DB::table('legends')
-                        ->where('start_value', '>=', $final_avg)
-                        ->orderBy('start_value', 'desc')->first();
-                    @endphp
-                    <tr>
-                        <td><b>Final Assessment</b></td>
-                        <td><b>{{ $final[0]->avg_rating }} ({{ $final[0]->legend }})</b></td>
-                    </tr>
-                </thead>
-            </table>
 
-        </div><!--div class md-6 closing tag-->
+</div><!-- end printarea-->
 
-    </div><!--div class row -->
 
-<br>
+<!--BUTTON PRINT-->
+<div class="container">
     <div class="row">
-        <div class="col">
-            <table id="" class="table table-striped table-bordered">
-                <thead>
-                <tr>
-                    <th>Remarks/Suggestion</th>
-                </tr>
-                </thead>
-                <tr>
-                    <td>{{$final[0]->remarks}}</td>
-                </tr>
-            </table>
-        </div>
+        <button class="btn btn-primary" onclick="printMe()">PRINT</button>
+    </div>
+   
+</div>
 
-
-
-    </div><!--close row-->
-
-</div> <!--div class container -->
 
 
     <script type="text/javascript">
@@ -169,9 +196,10 @@
 
 
         function printMe(){
-           // window.print();
+            window.print();
         }
 
+        
     </script>
 
 
