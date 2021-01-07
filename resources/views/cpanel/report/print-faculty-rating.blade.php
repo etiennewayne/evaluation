@@ -114,7 +114,7 @@
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item"><i>Name : {{$result[0]->lname }}, {{ $result[0]->fname }} {{$result[0]->mname}}</i> <b></b></li>
                         <li class="list-group-item">Institute :  {{$result[0]->institute}}</li>
-                        <li class="list-group-item">No. of Student : {{ $total }}<b></b></li>
+                        <li class="list-group-item">No. of Students : {{ $total }}<b></b></li>
                     </ul>
                 </div>
             </div>
