@@ -46,13 +46,17 @@ class ReportResultController extends Controller
 
         $final = DB::select('call report_faculty_rating(?, ?)', array($fcode->faculty_code, $ay->ay_id));
 
+        $comments = DB::select('call report_comments(?, ?)', array($fcode->faculty_code, $ay->ay_id));
+
+
         if(!$result){
             return 'no rating';
         }
 
         return view('cpanel.report.print-faculty-rating')
             ->with('result', $result)
-            ->with('final', $final);
+            ->with('final', $final)
+            ->with('comments', $comments);
     }
 
 
@@ -190,7 +194,7 @@ class ReportResultController extends Controller
     // }
 
 
-    
+
 
 
     public function ajaxSchedules(Request $request){

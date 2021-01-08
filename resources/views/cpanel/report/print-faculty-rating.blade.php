@@ -23,7 +23,7 @@
             float: left;
             margin-bottom: 10px;
             padding: 10px;
-            
+
         }
 
         @media print {
@@ -49,7 +49,7 @@
 
 <body style="padding: 0;">
 
-   
+
 
 <div id="printarea" class="myDivToPrint">
     <div class="container">
@@ -58,27 +58,27 @@
                 <div>
                     <img src="{{ asset('img/logo.png') }}" height="80">
                 </div>
-    
+
                 <div class="print-letterhead-col2">
                     <div>
                         <h4>Teacher Performance Evaluation Result</h4>
                     </div>
                     <div style="text-align: center;">
-    
+
                     </div>
                 </div>
-    
+
             </div>
         </div>
-    
+
         <hr>
-    
-       
+
+
         <h4>RESULT</h4><br>
-    
+
         {{-- <div class="row">
             <div class="col">
-                
+
                 <b>Legend</b> :
                     <ul class="legend">
                         <li>Outstanding</li>
@@ -89,24 +89,24 @@
                     </ul>
             </div>
         </div> --}}
-    
+
         <div class="row">
-    
-            
-    
+
+
+
             <div class="col-md-4">
-    
+
                 @php
                     $total_avg=0;
                     $total = 0;
                     $count = 0;
                         foreach($result as $r){
-    
+
                             $total = $total + $r->no_students;
                         }
                 @endphp
-    
-    
+
+
                 <div class="card" style="width: 18rem;">
                     <div class="card-header">
                         <h5>Teacher Information</h5>
@@ -118,49 +118,34 @@
                     </ul>
                 </div>
             </div>
-    
+
             <div class="col">
-                
+
                 <table id="" class="table table-striped table-bordered">
                     <thead>
                     <tr>
                         <th>Courses</th>
                         <th>Assessment</th>
                     </tr>
-    
+
                     @foreach($result as $r)
-    
-                        @php
-                            $count++;
-                            $total_avg = $total_avg + $r->avg_rating;
-    
-                        @endphp
-    
+
                         <tr>
                             <td>{{ $r->course_name }} ({{ $r->schedule_code }})</td>
                             <td>{{ round($r->avg_rating,2) }}</td>
                         </tr>
                     @endforeach
-    
-                        @php
-                            $final_avg = 0;
-                            $final_avg = round($total_avg / $count,2);
-    
-                            $legend = \DB::table('legends')
-                            ->where('start_value', '>=', $final_avg)
-                            ->orderBy('start_value', 'desc')->first();
-                        @endphp
                         <tr>
                             <td><b>Final Assessment</b></td>
                             <td><b>{{ $final[0]->avg_rating }} ({{ $final[0]->legend }})</b></td>
                         </tr>
                     </thead>
                 </table>
-    
+
             </div><!--div class md-6 closing tag-->
-    
+
         </div><!--div class row -->
-    
+
         <br>
 
         <div class="row">
@@ -168,13 +153,33 @@
                 <div class="card">
                     <h5 class="card-header">Remarks/Suggestion</h5>
                     <div class="card-body">
-                      <p class="card-text">{{ $final[0]->remarks }}</p>
+                        
+{{--                      <p class="card-text">{{ $final[0]->remarks }}</p>--}}
+
+                        <table class="table">
+
+                        @php
+                            for($r=0; $r < sizeof($comments); $r+=2){
+                                echo '<tr><td>' .$comments[$r]->remark. '</td>';
+
+                                if($r+1 < sizeof($comments)){
+                                     echo '<td>' .$comments[$r+1]->remark. '</td>';
+                                }
+
+                                echo '</tr>';
+                            }
+
+
+                        @endphp
+                        </table>
+
+
                     </div>
                   </div>
             </div>
         </div><!--close row-->
         <br>
-    
+
     </div> <!--div class container -->
 
 
@@ -186,7 +191,7 @@
     <div class="row">
         <button class="btn btn-primary" onclick="printMe()">PRINT</button>
     </div>
-   
+
 </div>
 
 
@@ -199,7 +204,7 @@
             window.print();
         }
 
-        
+
     </script>
 
 
