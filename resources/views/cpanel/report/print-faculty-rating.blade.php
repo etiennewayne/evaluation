@@ -57,6 +57,18 @@
 
         }
 
+        .mycenter{
+            margin: 0;
+            width: 100%;
+        }
+
+        .dlogo{
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+
+        }
+
 
     </style>
 
@@ -67,19 +79,37 @@
 
 
 
+
 <div id="printarea" class="myDivToPrint">
     <div class="container">
-        <div class="row justify-content-center">
-            <div style="display: flex;">
-                <div>
-                    <img src="{{ asset('img/logo.png') }}" height="80">
+
+        <div class="row">
+
+            <div style="width: 100%;" class="mt-4">
+
+                <div class="d-flex justify-content-center">
+                    <img class="" src="{{ asset('img/logo.png') }}" height="80">
+                    <div class="mt-3">
+                        <div>Gov. Alfonso D. Tan College</div>
+                        <div>Maloro, Tangub City, Misamis Occidental</div>
+                    </div>
                 </div>
 
-                <div class="print-letterhead-col2">
-                    <div>
-                        <h4>Teacher Performance Evaluation Result</h4>
+                <div class="d-flex justify-content-center mt-5">
+                    <div class="d-flex flex-column">
+                        <h4 class="d-flex justify-content-center">Teacher Performance Evaluation Result</h4>
+                        <h5 class="d-flex justify-content-center">{{$result[0]->ay_desc}}</h5>
                     </div>
-                    <div style="text-align: center;">
+
+                </div>
+
+
+
+                <div>
+                    <div>
+
+                    </div>
+                    <div>
 
                     </div>
                 </div>
@@ -112,17 +142,6 @@
 
             <div class="col-md-4">
 
-                @php
-                    $total_avg=0;
-                    $total = 0;
-                    $count = 0;
-                        foreach($result as $r){
-
-                            $total = $total + $r->no_students;
-                        }
-                @endphp
-
-
                 <div class="card" style="width: 18rem;">
                     <div class="card-header">
                         <h5>Teacher Information</h5>
@@ -130,7 +149,7 @@
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item"><i>Name : {{$result[0]->lname }}, {{ $result[0]->fname }} {{$result[0]->mname}}</i> <b></b></li>
                         <li class="list-group-item">Institute :  {{$result[0]->institute}}</li>
-                        <li class="list-group-item">No. of Students : {{ $total }}<b></b></li>
+                        <li class="list-group-item">No. of Students : {{ $final[0]->rated }}/{{ $final[0]->raters }} ({{ round(($final[0]->rated/$final[0]->raters),4) * 100 }}%)<b></b></li>
                     </ul>
                 </div>
             </div>
@@ -141,6 +160,7 @@
                     <thead>
                     <tr>
                         <th>Courses</th>
+                        <th>No of Rater(s)</th>
                         <th>Assessment</th>
                     </tr>
 
@@ -148,12 +168,13 @@
 
                         <tr>
                             <td>{{ $r->course_name }} ({{ $r->schedule_code }})</td>
+                            <td>{{ $r->no_of_raters }}/{{ $r->no_students }} ({{ round($r->no_of_raters/$r->no_students,4) * 100 }}%)</td>
                             <td>{{ round($r->avg_rating,2) }}</td>
                         </tr>
                     @endforeach
                         <tr>
                             <td><b>Final Assessment</b></td>
-                            <td><b>{{ $final[0]->avg_rating }} ({{ $final[0]->legend }})</b></td>
+                            <td colspan="2" style="text-align: right;"><b>{{ $final[0]->avg_rating }} ({{ $final[0]->legend }})</b></td>
                         </tr>
                     </thead>
                 </table>

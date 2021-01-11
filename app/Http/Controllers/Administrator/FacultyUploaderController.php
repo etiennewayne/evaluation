@@ -25,21 +25,33 @@ class FacultyUploaderController extends Controller
 
         //return $arr;
 
-        foreach($arr as $item) { //foreach element in $arr
-            \DB::table('faculties')->insertOrIgnore([
-                'faculty_code' => trim($item->faculty_code),
-                'lname' => trim($item->lname),
-                'fname' => trim($item->fname),
-                'mname' => trim($item->mname),
-                'institute' => trim($item->institute),
-                'status' => trim($item->status),
-            ]);
+//        foreach($arr as $item) { //foreach element in $arr
+//            \DB::table('faculties')->insertOrIgnore([
+//                'faculty_code' => trim($item->faculty_code),
+//                'lname' => trim($item->lname),
+//                'fname' => trim($item->fname),
+//                'mname' => trim($item->mname),
+//                'institute' => trim($item->institute),
+//                'status' => trim($item->status),
+//            ]);
+//
+//        }
 
+
+        foreach($arr as $item) { //foreach element in $arr
+
+            \DB::table('faculties')
+                ->where('faculty_code', trim($item->faculty_code))
+                ->update(['institute' => trim($item->institute)]);
         }
+
 
         return redirect()->back()
             ->with('success', "Successfully uploaded.");
     }
+
+
+
 
 
 
