@@ -125,7 +125,15 @@
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item"><i>Name : {{$result[0]->lname }}, {{ $result[0]->fname }} {{$result[0]->mname}}</i> <b></b></li>
                         <li class="list-group-item">Institute :  {{$result[0]->institute}}</li>
-                        <li class="list-group-item">No. of Students : {{ $final[0]->rated }}/{{ $final[0]->raters }} ({{ round(($final[0]->rated/$final[0]->raters),4) * 100 }}%)<b></b></li>
+                        <li class="list-group-item">No. of Students : {{ $final[0]->rated }}/{{ $final[0]->raters }}
+                            @php
+
+                                if($final[0]->rated > 0){
+                                    echo '('.round(($final[0]->rated/$final[0]->raters),4) * 100 . '%)';
+                                }
+                            @endphp
+{{--                            ({{ round(($final[0]->rated/$final[0]->raters),4) * 100 }}%)--}}
+                            <b></b></li>
                     </ul>
                 </div>
             </div>
@@ -144,7 +152,14 @@
 
                         <tr>
                             <td>{{ $r->course_name }} ({{ $r->schedule_code }})</td>
-                            <td>{{ $r->no_of_raters }}/{{ $r->no_students }} ({{ round($r->no_of_raters/$r->no_students,4) * 100 }}%)</td>
+                            <td>{{ $r->no_of_raters }}/{{ $r->no_students }}
+                                @php
+                                    if($r->no_of_raters > 0){
+                                        echo  '('. round($r->no_of_raters/$r->no_students,4) * 100 . '%)';
+                                    }
+                                @endphp
+{{--                               --}}
+                            </td>
                             <td>{{ round($r->avg_rating,2) }}</td>
                         </tr>
                     @endforeach

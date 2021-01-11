@@ -225,6 +225,7 @@
       <workItem from="1610021465088" duration="297000" />
       <workItem from="1610069149603" duration="7656000" />
       <workItem from="1610336899098" duration="8660000" />
+      <workItem from="1610385316677" duration="2370000" />
     </task>
     <servers />
   </component>
@@ -252,6 +253,10 @@
     </option>
   </component>
   <component name="WindowStateProjectService">
+    <state x="640" y="256" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1610386539407">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="640" y="256" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1610386539407" />
     <state x="479" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1608188300824">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
@@ -287,10 +292,11 @@
     <state x="-886" y="370" key="NewPhpFileDialog/0.0.1440.860/-1440.0.1440.900@-1440.0.1440.900" timestamp="1609917872038" />
     <state x="554" y="353" key="NewPhpFileDialog/0.0.1440.860/-1440.0.1440.900@0.0.1440.860" timestamp="1608186728884" />
     <state x="739" y="427" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1609257491412" />
-    <state x="221" y="74" key="SettingsEditor" timestamp="1609836355955">
-      <screen x="0" y="0" width="1440" height="860" />
+    <state x="295" y="89" key="SettingsEditor" timestamp="1610387753410">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="221" y="74" key="SettingsEditor/0.0.1440.860/-1440.0.1440.900@0.0.1440.860" timestamp="1609836355955" />
+    <state x="295" y="89" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1610387753410" />
     <state x="406" y="212" width="1306" height="819" key="dock-window-1" timestamp="1609057441620">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
