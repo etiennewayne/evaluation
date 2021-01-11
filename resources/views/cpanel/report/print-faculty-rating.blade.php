@@ -57,19 +57,6 @@
 
         }
 
-        .mycenter{
-            margin: 0;
-            width: 100%;
-        }
-
-        .dlogo{
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-
-        }
-
-
     </style>
 
 </head>
@@ -90,8 +77,8 @@
                 <div class="d-flex justify-content-center">
                     <img class="" src="{{ asset('img/logo.png') }}" height="80">
                     <div class="mt-3">
-                        <div>Gov. Alfonso D. Tan College</div>
-                        <div>Maloro, Tangub City, Misamis Occidental</div>
+                        <div class="d-flex justify-content-center">Gov. Alfonso D. Tan College</div>
+                        <div class="d-flex justify-content-center">Maloro, Tangub City, Misamis Occidental</div>
                     </div>
                 </div>
 
@@ -101,17 +88,6 @@
                         <h5 class="d-flex justify-content-center">{{$result[0]->ay_desc}}</h5>
                     </div>
 
-                </div>
-
-
-
-                <div>
-                    <div>
-
-                    </div>
-                    <div>
-
-                    </div>
                 </div>
 
             </div>
