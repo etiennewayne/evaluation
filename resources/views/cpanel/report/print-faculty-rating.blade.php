@@ -27,19 +27,35 @@
         }
 
         @media print {
-            .myDivToPrint {
-                background-color: white;
-                height: 100%;
-                width: 100%;
-                position: fixed;
-                top: 0;
-                left: 0;
+            /*.myDivToPrint {*/
+            /*    background-color: white;*/
+            /*    height: 100%;*/
+            /*    width: 100%;*/
+            /*    position: fixed;*/
+            /*    top: 0;*/
+            /*    left: 0;*/
+            /*    margin: 0;*/
+            /*    padding: 15px;*/
+            /*    font-size: 14px;*/
+            /*    line-height: 18px;*/
+            /*}*/
+
+            .myDivToPrint{
                 margin: 0;
-                padding: 15px;
+                color: #000;
+                background-color: #fff;
                 font-size: 14px;
-                line-height: 18px;
+                height: 100%;
+
             }
-}
+            .nprint{
+                display: none;
+            }
+            header, footer, aside, nav, form, iframe, .menu, .hero, .adslot {
+                display: none;
+            }
+
+        }
 
 
     </style>
@@ -153,7 +169,7 @@
                 <div class="card">
                     <h5 class="card-header">Remarks/Suggestion</h5>
                     <div class="card-body">
-                        
+
 {{--                      <p class="card-text">{{ $final[0]->remarks }}</p>--}}
 
                         <table class="table">
@@ -189,7 +205,7 @@
 <!--BUTTON PRINT-->
 <div class="container">
     <div class="row">
-        <button class="btn btn-primary" onclick="printMe()">PRINT</button>
+        <button class="btn btn-primary nprint" onclick="printMe()">PRINT</button>
     </div>
 
 </div>
