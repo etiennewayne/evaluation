@@ -114,10 +114,16 @@ class StudyLoadController extends Controller
 	public function rate($sched_code){
 
 		//if server allow the rate...
+        //update to if specific schedule is allow rating
 		$allowrate = DB::table('allow_rate')
 		    ->where('allow_rate', 1)->count();
 
-		if($allowrate < 1){
+		$scheduleAllowRate = DB::table('schedules')
+            ->where('schedule_code', $sched_code)
+            ->where('allow_rate', 1)->count();
+
+
+		if($allowrate < 1 && $scheduleAllowRate < 1){
 			return redirect('/cor')
 			->with('error', 'Rating is now allowed this time.');
 		}
