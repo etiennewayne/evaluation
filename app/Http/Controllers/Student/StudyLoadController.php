@@ -122,11 +122,16 @@ class StudyLoadController extends Controller
             ->where('schedule_code', $sched_code)
             ->where('allow_rate', 1)->count();
 
+		//if 0 and 0 = true
+//		if($allowrate < 1 && $scheduleAllowRate < 1){
+//			return redirect('/cor')
+//			->with('error', 'Rating is now allowed this time.');
+//		}
 
-		if($allowrate < 1 && $scheduleAllowRate < 1){
-			return redirect('/cor')
-			->with('error', 'Rating is now allowed this time.');
-		}
+        if($scheduleAllowRate < 1){
+            return redirect('/cor')
+			->with('error', 'Rating is now allowed for this schedule.');
+        }
 
 		//if server allow the rate ....
 
