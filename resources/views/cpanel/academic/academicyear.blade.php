@@ -65,6 +65,8 @@
 				</table>
 
 				<a href="/cpanel-academicyear/create" class="btn btn-primary" style="margin-top: 20px;">New A.Y.</a>
+
+				
 			</div>
 
 			{{-- @csrf --}}

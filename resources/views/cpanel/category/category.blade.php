@@ -67,6 +67,7 @@
 				</table>
 
 				<a href="/cpanel-category/create" class="btn btn-primary" style="margin-top: 20px;">New Category</a>
+				<a href="/cpanel-category/copy-previous" class="btn btn-primary" style="margin-top: 20px;">Copy Previous</a>
 			</div>
 
 			{{-- @csrf --}}
