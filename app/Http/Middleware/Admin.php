@@ -24,7 +24,7 @@ class Admin
         }
 
 
-        $role = strtolower(Auth::user()->role);
+        $role = strtolower(auth()->user()->role);
 
         if($role == 'administrator'){
         return $next($request)

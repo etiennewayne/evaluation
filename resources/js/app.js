@@ -4,9 +4,19 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-require('./bootstrap');
+//require('./bootstrap');
 
-window.Vue = require('vue');
+window.Vue = require('vue').default;
+
+window.axios = require('axios');
+
+import Vue from 'vue'
+//import VueRouter from 'vue-router'
+import Buefy from 'buefy'
+
+import 'buefy/dist/buefy.css'
+
+
 
 /**
  * The following block of code may be used to automatically register your
@@ -21,11 +31,22 @@ window.Vue = require('vue');
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 
+Vue.component('nav-bar', require('./components/administrator/Navbar.vue').default);
+
+
+
+Vue.component('academic-year', require('./components/administrator/academicyear/AcademicYear.vue').default);
+Vue.component('academic-year-create', require('./components/administrator/academicyear/AcademicYearCreate.vue').default);
+
+
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
+
+Vue.use(Buefy);
 
 const app = new Vue({
     el: '#app',

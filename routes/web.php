@@ -27,11 +27,13 @@ Auth::routes([	'reset' => false,
 
 Route::Auth();
 
-
+Route::get('/', function(){
+	return view('welcome');
+});
 
 //LOGIN ------
-Route::get('/','LoginController@index')->name('login');
-Route::post('/','LoginController@auth');
+//Route::get('/','LoginController@index')->name('login');
+//Route::post('/','LoginController@auth');
 Route::get('/change-password', 'Auth\ChangePasswordController@index');
 Route::post('/change-password', 'Auth\ChangePasswordController@update');
 
@@ -132,13 +134,11 @@ Route::get('/reguser','UserController@regUser');
 Route::get('/data/ajax-users','UserController@ajaxUsers')->name('db-ajax-user');
 
 
-Route::get('/android/login/{u}/{p}','AndroidLoginController@checkLogin');
-
 
 //LOGOUT
-Route::get('/logout', function() {
-    Auth::logout();
-});
+// Route::get('/logout', function() {
+//     Auth::logout();
+// });
 
 //insert admin
 //Route::get('/insert', function(){
