@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
+
 class LoginController extends Controller
 {
     /*
@@ -25,7 +26,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    //protected $redirectTo = '/login';
+        protected $redirectTo = '/home';
 
     /**
      * Create a new controller instance.
@@ -41,6 +42,24 @@ class LoginController extends Controller
     public function username(){
         return 'username';
     }
+
+//    public function redirectTo()
+//    {
+//        return '/cpanel-home';
+//        // $user = \Auth::user();
+//        // if($user->role === 'ADMINISTRATOR'){
+//        //     return redirect()->intended('cpanel-home');
+//        // }
+//
+//    //    if($user->role === 'STUDENT'){
+//    //        return redirect()->intended('home');
+//    //    }
+//
+//    //    if($user->role === 'FACULTY'){
+//    //        return redirect()->intended('faculty');
+//    //    }
+//
+//    }
 
 
 }

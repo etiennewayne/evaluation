@@ -23,7 +23,11 @@ class Category extends Model
             ->orderBy('order_no', 'asc');
     }
 
-    
+    public function categories()
+    {
+        return $this->hasOne('App\AcademicYear', 'ay_id', 'ay_id');
+    }
+
 
     public function comments(){
         return $this->hasMany('App\RatingComment', 'category_id', 'category_id');

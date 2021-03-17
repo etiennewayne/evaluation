@@ -15,7 +15,8 @@
 //     return view('welcome');
 // });
 
-use App\User;
+
+
 
 Auth::routes([	'reset' => false,
 				'verify' => false]);

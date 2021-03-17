@@ -24,5 +24,44 @@ class AcademicYearController extends Controller
             ->paginate($req->perpage);
     }
 
+    public function store(Request $req){
+        $validate = $req->validate([
+            'ay_code' => ['string', 'required', 'unique:ay', 'max:10'],
+            'ay_desc' => ['string', 'max:255'],
+        ]);
+
+        AcademicYear::create([
+            'ay_code' => strtoupper($req->ay_code),
+            'ay_desc' => strtoupper($req->ay_desc)
+        ]);
+
+        return [['status'=>'saved']];
+    }
+
+    public function show($id){
+        return AcademicYear::find($id);
+    }
+
+    public function update(Request $req, $id){
+
+        $validate = $req->validate([
+            'ay_code' => ['string', 'required', 'unique:ay', 'max:10'],
+            'ay_desc' => ['string', 'max:255'],
+        ]);
+
+
+        $data = AcademicYear::find($id);
+        $data->ay_code = strtoupper($req->ay_code);
+        $data->ay_desc = strtoupper($req->ay_desc);
+        $data->save();
+
+        return [['status'=>'updated']];
+    }  
+
+
+    public function destroy($id){
+        return AcademicYear::destroy($id);
+    }
+
 
 }

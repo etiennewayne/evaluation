@@ -18,26 +18,24 @@ class Admin
     public function handle($request, Closure $next)
     {
 
+        $role = strtolower(Auth::user()->role);
 
-        if (!Auth::check()) {
-            return redirect('/');
-        }
-
-
-        $role = strtolower(auth()->user()->role);
-
-        if($role == 'administrator'){
-        return $next($request)
-            ->header('Cache-Control','nocache, no-store, max-age=0, must-revalidate')
-            ->header('Pragma','no-cache');
-
+        if($role != 'administrator'){
+            abort(403);
             //no cache so user cant use prev button in browser
-    }
-
-        if($role == 'student'){
-            return redirect('/home')->with('error', 'You dont\'t have admin access.');
         }
 
-        return redirect('/');
+        return $next($request);
+        // ->header('Cache-Control','nocache, no-store, max-age=0, must-revalidate')
+        // ->header('Pragma','no-cache');
+
+        // if($role == 'student'){
+        //     return $next($request)
+        //     ->header('Cache-Control','nocache, no-store, max-age=0, must-revalidate')
+        //     ->header('Pragma','no-cache');
+
+        // }
+
+
     }
 }

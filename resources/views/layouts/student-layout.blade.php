@@ -8,11 +8,14 @@
 
     <title>{{ __('EVALUATION SYSTEM') }}</title>
 
-    <script type="text/javascript" src="{{asset('/js/jquery-3.3.1.js')}}"></script>
+{{--    <script type="text/javascript" src="{{asset('/js/jquery-3.3.1.js')}}"></script>--}}
 
-    <link rel="stylesheet" type="text/css" href="{{ asset("/css/bootstrap.min.css") }}" />
+{{--    <link rel="stylesheet" type="text/css" href="{{ asset("/css/bootstrap.min.css") }}" />--}}
 
-    <link href="{{ asset('css/style.css') }}" rel="stylesheet" />
+{{--    <link href="{{ asset('css/style.css') }}" rel="stylesheet" />--}}
+
+    <script src="{{ asset('js/app.js') }}" defer></script>
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
 </head>
 

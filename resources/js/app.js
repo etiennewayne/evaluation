@@ -14,7 +14,7 @@ import Vue from 'vue'
 //import VueRouter from 'vue-router'
 import Buefy from 'buefy'
 
-import 'buefy/dist/buefy.css'
+//import 'buefy/dist/buefy.css'
 
 
 
@@ -31,12 +31,21 @@ import 'buefy/dist/buefy.css'
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 
+Vue.component('csrf', require('./components/Csrf.vue').default);
+
 Vue.component('nav-bar', require('./components/administrator/Navbar.vue').default);
 
+Vue.component('welcome-page', require('./components/WelcomePage.vue').default);
+
+
+
+//STUDENT
+Vue.component('student-navbar', require('./components/student/StudentNavbar.vue').default);
+Vue.component('student-home', require('./components/student/StudentHome.vue').default);
 
 
 Vue.component('academic-year', require('./components/administrator/academicyear/AcademicYear.vue').default);
-Vue.component('academic-year-create', require('./components/administrator/academicyear/AcademicYearCreate.vue').default);
+Vue.component('category', require('./components/administrator/category/Category').default);
 
 
 

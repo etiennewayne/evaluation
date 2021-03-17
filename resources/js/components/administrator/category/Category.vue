@@ -1,10 +1,10 @@
 <template>
 
     <div>
-        
+
         <div class="container">
             <section class="section">
-                <div class="is-flex is-justify-content-center mb-2 table-title" style="font-size: 20px; font-weight: bold;">LIST ACADEMIC YEAR</div>
+                <div class="is-flex is-justify-content-center mb-2 table-title" style="font-size: 20px; font-weight: bold;">LIST CATEGORY</div>
                 <div class="columns">
                     <div class="column is-8 is-offset-2">
                         <b-field label="Page">
@@ -31,58 +31,52 @@
                             :default-sort-direction="defaultSortDirection"
                             @sort="onSort">
 
-                            <b-table-column field="ay_id" label="ID" v-slot="props">
-                                {{ props.row.ay_id }}
+                            <b-table-column field="category_id" label="ID" v-slot="props">
+                                {{ props.row.category_id }}
                             </b-table-column>
 
-                            <b-table-column field="ay_code" label="AY Code" searchable v-slot="props">
+                            <b-table-column field="category" label="Category" searchable v-slot="props">
+                                {{ props.row.category }}
+                            </b-table-column>
+
+                            <b-table-column field="order_no" label="Order No" v-slot="props">
+                                {{ props.row.order_no }}
+                            </b-table-column>
+
+                            <b-table-column field="ay_code" label="Academic Year" v-slot="props">
                                 {{ props.row.ay_code }}
                             </b-table-column>
 
-                            <b-table-column field="ay_desc" label="AY Description" searchable v-slot="props">
-                                {{ props.row.ay_desc }}
-                            </b-table-column>
-
-                            <b-table-column field="active" label="Active" v-slot="props">
-                                <div style="margin:0 auto;">
-                                    <i v-if="props.row.active === 1" class="fa fa-check-circle" style="color:green;"></i>
-                                    <i v-else class="fa fa-close" style="color:red;"></i>
-                                </div>
-                               
-                            </b-table-column>
-
-                           
 
                             <b-table-column field="ay_id" label="Action" v-slot="props">
                                 <div class="is-flex">
                                     <b-button outlined class="button is-small is-warning mr-1" tag="a" icon-right="pencil" icon-pack="fa" @click="getData(props.row.ay_id)">EDIT</b-button>
                                     <b-button outlined class="button is-small is-danger mr-1" icon-pack="fa" icon-right="trash" @click="confirmDelete(props.row.ay_id)">DELETE</b-button>
-                                    <b-button outlined class="button is-small is-success" icon-left="check-circle" icon-pack="fa" @click="markActive"></b-button>
                                 </div>
                             </b-table-column>
 
                         </b-table>
 
                         <div class="buttons mt-3">
-                        <!-- <b-button tag="a" href="/cpanel-academicyear/create" class="is-primary">Create Account</b-button> -->
-                            <b-button @click="isModalCreate=true" class="is-primary is-fullwidth">Create Account</b-button>
+                            <!-- <b-button tag="a" href="/cpanel-academicyear/create" class="is-primary">Create Account</b-button> -->
+                            <b-button @click="isModalCreate=true" class="is-primary is-fullwidth">Create Category</b-button>
                         </div>
 
-                        
+
 
                     </div><!--close column-->
                 </div>
             </section>
 
-            
+
 
             <!--modal create-->
             <b-modal v-model="isModalCreate" has-modal-card
-                trap-focus 
-                :width="640"
-                aria-role="dialog"
-                aria-label="Example Modal"
-                aria-modal>
+                     trap-focus
+                     :width="640"
+                     aria-role="dialog"
+                     aria-label="Example Modal"
+                     aria-modal>
 
                 <form @submit.prevent="submit">
                     <div class="modal-card">
@@ -95,19 +89,27 @@
                         </header>
                         <section class="modal-card-body">
                             <div class="">
-                                <b-field label="Academic Year Code"
-                                    :type="this.errors.ay_code ? 'is-danger':''"
-                                    :message="this.errors.ay_code ? this.errors.ay_code[0] : ''">
-                                    <b-input v-model="fields.ay_code"
-                                            placeholder="Academic Year Code" required>
+                                <b-field label="Category"
+                                         :type="this.errors.category ? 'is-danger':''"
+                                         :message="this.errors.category ? this.errors.category[0] : ''">
+                                    <b-input v-model="fields.category"
+                                             placeholder="Category" required>
                                     </b-input>
                                 </b-field>
-                                <b-field label="Academic Year Description"
-                                    :type="this.errors.ay_desc ? 'is-danger':''"
-                                    :message="this.errors.ay_desc ? this.errors.ay_desc[0] : ''">
-                                    <b-input v-model="fields.ay_desc"
-                                            placeholder="Academic Year Description" required>
+                                <b-field label="Order No"
+                                         :type="this.errors.order_no ? 'is-danger':''"
+                                         :message="this.errors.order_no ? this.errors.order_no[0] : ''">
+                                    <b-input v-model="fields.order_no"
+                                             placeholder="Order No" required>
                                     </b-input>
+                                </b-field>
+                                <b-field label="Academic Year"
+                                         :type="this.errors.ay_id ? 'is-danger':''"
+                                         :message="this.errors.ay_id ? this.errors.ay_id[0] : ''">
+                                    <b-select v-model="updateFields.ay_id"
+                                              placeholder="Academic Year" required>
+                                        <option></option>
+                                    </b-select>
                                 </b-field>
                             </div>
                         </section>
@@ -131,11 +133,11 @@
 
             <!--modal update-->
             <b-modal v-model="isModalUpdate" has-modal-card
-                trap-focus 
-                :width="640"
-                aria-role="dialog"
-                aria-label="Example Modal"
-                aria-modal>
+                     trap-focus
+                     :width="640"
+                     aria-role="dialog"
+                     aria-label="Example Modal"
+                     aria-modal>
 
                 <form @submit.prevent="submit">
                     <div class="modal-card">
@@ -148,19 +150,28 @@
                         </header>
                         <section class="modal-card-body">
                             <div class="">
-                                <b-field label="Academic Year Code"
-                                    :type="this.errors.ay_code ? 'is-danger':''"
-                                    :message="this.errors.ay_code ? this.errors.ay_code[0] : ''">
-                                    <b-input v-model="updateFields.ay_code"
-                                            placeholder="Academic Year Code" required>
+                                <b-field label="Category"
+                                         :type="this.errors.category ? 'is-danger':''"
+                                         :message="this.errors.category ? this.errors.category[0] : ''">
+                                    <b-input v-model="updateFields.category"
+                                             placeholder="Academic Year Code" required>
                                     </b-input>
                                 </b-field>
-                                <b-field label="Academic Year Description"
-                                    :type="this.errors.ay_desc ? 'is-danger':''"
-                                    :message="this.errors.ay_desc ? this.errors.ay_desc[0] : ''">
-                                    <b-input v-model="updateFields.ay_desc"
-                                            placeholder="Academic Year Description" required>
+                                <b-field label="Order No"
+                                         :type="this.errors.order_no ? 'is-danger':''"
+                                         :message="this.errors.order_no ? this.errors.order_no[0] : ''">
+                                    <b-input v-model="updateFields.order_no"
+                                             placeholder="Academic Year Description" required>
                                     </b-input>
+                                </b-field>
+
+                                <b-field label="Order No"
+                                         :type="this.errors.ay_id ? 'is-danger':''"
+                                         :message="this.errors.ay_id ? this.errors.ay_id[0] : ''">
+                                    <b-select v-model="updateFields.ay_id"
+                                             placeholder="Academic Year Description" required>
+                                        <option></option>
+                                    </b-select>
                                 </b-field>
                             </div>
                         </section>
@@ -195,7 +206,7 @@ export default {
             data: [],
             total: 0,
             loading: false,
-            sortField: 'ay_code',
+            sortField: 'category_id',
             sortOrder: 'desc',
             page: 1,
             perPage: 5,
@@ -228,7 +239,7 @@ export default {
             ].join('&')
 
             this.loading = true
-            axios.get(`/api/academicyear?${params}`)
+            axios.get(`/api/category?${params}`)
                 .then(({ data }) => {
                     this.data = []
                     let currentTotal = data.total
@@ -271,15 +282,11 @@ export default {
 
         //actions here below
 
-        editLink(link_id){
-            return "/cpanel-academicyear/"+link_id+"/edit";
-        },
-
         deleteSubmit(delete_id){
-            axios.delete('/api/academicyear/'+ delete_id).then(res=>{
+            axios.delete('/api/category/'+ delete_id).then(res=>{
                 this.loadAsyncData();
             }).catch(err=>{
-               console.log(err);
+                console.log(err);
             });
         },
 
@@ -301,7 +308,7 @@ export default {
         //save data
         submit(){
             this.btnClass['is-loading'] = true;
-            axios.post('/api/academicyear', this.fields).then(res=>{
+            axios.post('/api/category', this.fields).then(res=>{
                 this.fields = {};
                 this.errors = {};
                 this.loadAsyncData()
@@ -321,7 +328,7 @@ export default {
         getData(data_id){
             this.updateFields = {};
             this.isModalUpdate = true;
-            axios.get('/api/academicyear/'+data_id).then(res=>{
+            axios.get('/api/category/'+data_id).then(res=>{
                 this.updateFields = res.data;
                 //console.log(res.data);
             })
@@ -329,7 +336,7 @@ export default {
 
         //submit Update Data
         update(data_id){
-            axios.put('/api/academicyear/'+data_id, this.fields).then(res=>{
+            axios.put('/api/category/'+data_id, this.fields).then(res=>{
 
             })
         },
@@ -337,7 +344,7 @@ export default {
 
         //markActive the academic year
         markActive(){
-            
+
         },
 
 

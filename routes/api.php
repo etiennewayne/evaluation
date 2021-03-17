@@ -19,3 +19,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 
 Route::apiResource('academicyear','Api\Administrator\AcademicYearController');
+Route::apiResource('category','Api\Administrator\CategoryController');

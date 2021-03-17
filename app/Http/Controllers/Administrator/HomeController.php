@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
     //
-	
+
 	public function __construct()
     {
         $this->middleware('admin');
@@ -21,12 +21,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        //return view('cpanel/cpanel-home');
-		return view('cpanel/admin-home');
+        return view('cpanel/cpanel-home');
+		//return view('cpanel/admin-home');
     }
-	
-	//remarks
-    //suggestion for imporvement
+
 
 
 }
