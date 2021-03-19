@@ -8,7 +8,7 @@
                 <div class="columns">
                     <div class="column is-10 is-offset-1">
 
-                        <div class="box" v-for="(item, id) in data">
+                        <div class="box" v-for="item in data" :key="item.category_id">
                             <div class="criteria-header mb-3 container">{{item.category}}</div>
                             <div class="columns" v-for="c in item.criteria" :key="c.criterion_id">
                                 <div class="column is-8">
@@ -34,7 +34,7 @@
                                         <b-field :label="`Rating`+c.criterion_id">
                                             <b-rate icon-pack="fa"
                                                     required
-                                                    v-model="rate['critid_'+c.criterion_id]"
+                                                    v-model="fields.rate['critid_'+c.criterion_id]"
                                                     spaced show-score
                                                     size="is-medium"></b-rate>
                                         </b-field>
@@ -61,7 +61,7 @@
                                 <div class="column">
                                     <div class="container">
                                         <b-field label="">
-                                            <b-input type="textarea" v-model="rate.comment"></b-input>
+                                            <b-input type="textarea" v-model="fields.comment"></b-input>
                                         </b-field>
                                     </div>
                                 </div>
@@ -92,6 +92,42 @@ export default {
     data(){
         return{
             data: {},
+            fields: {
+                "comment":"test",
+                "ay_code":"202",
+                rate: {
+                    "critid_57":4,
+                    "critid_58":5,
+                    "critid_59":4,
+                    "critid_60":4,
+                    "critid_61":4,
+                    "critid_62":4,
+                    "critid_63":4,
+                    "critid_64":3,
+                    "critid_65":4,
+                    "critid_66":3,
+                    "critid_67":4,
+                    "critid_68":4,
+                    "critid_69":4,
+                    "critid_70":5,
+                    "critid_71":5,
+                    "critid_72":4,
+                    "critid_73":4,
+                    "critid_74":5,
+                    "critid_75":4,
+                    "critid_76":4,
+                    "critid_77":4,
+                    "critid_78":4,
+                    "critid_79":5,
+                    "critid_80":4,
+                    "critid_81":4,
+                    "critid_82":4,
+                    "critid_83":4,
+                    "critid_84":5,
+                    "critid_85":4,
+                    "critid_86":4
+                }
+            },
             rate: {},
             errors: {},
             btnClass:{
@@ -111,13 +147,16 @@ export default {
 
         submit(){
             this.btnClass["is-loading"] = true;
-            this.rate.schedule_code = this.scheduleCode;
-            this.rate.ay_code = this.ayCode;
-            axios.post('/ajax/criteria', this.rate).then(res=> {
+
+            this.fields.schedule_code = this.scheduleCode;
+            this.fields.ay_code = this.ayCode;
+
+            axios.post('/ajax/criteria', this.fields).then(res=> {
                 this.errors = {};
 
                 if(res.data[0].status === 'saved'){
                     this.alertSuccess('Successfully saved.');
+                   
                 }
 
                 this.btnClass["is-loading"] = false;
@@ -134,6 +173,10 @@ export default {
             });
         },
 
+        redirectAfterSaved(){
+            window.location = '/schedule';
+        },
+
         alertError(msg) {
             this.$buefy.dialog.alert({
                 title: 'Error',
@@ -143,20 +186,22 @@ export default {
                 icon: 'times-circle',
                 iconPack: 'fa',
                 ariaRole: 'alertdialog',
-                ariaModal: true
+                ariaModal: true,
             })
         },
 
         alertSuccess(msg) {
             this.$buefy.dialog.alert({
-                title: 'Error',
+                title: 'INFORMATION',
                 message: msg,
                 type: 'is-success',
                 hasIcon: true,
                 icon: 'check',
                 iconPack: 'fa',
                 ariaRole: 'alertdialog',
-                ariaModal: true
+                ariaModal: true,
+                confirmText: 'OK',
+                onConfirm: () => window.location = '/schedule'
             })
         }
 

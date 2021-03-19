@@ -2941,6 +2941,42 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       data: {},
+      fields: {
+        "comment": "test",
+        "ay_code": "202",
+        rate: {
+          "critid_57": 4,
+          "critid_58": 5,
+          "critid_59": 4,
+          "critid_60": 4,
+          "critid_61": 4,
+          "critid_62": 4,
+          "critid_63": 4,
+          "critid_64": 3,
+          "critid_65": 4,
+          "critid_66": 3,
+          "critid_67": 4,
+          "critid_68": 4,
+          "critid_69": 4,
+          "critid_70": 5,
+          "critid_71": 5,
+          "critid_72": 4,
+          "critid_73": 4,
+          "critid_74": 5,
+          "critid_75": 4,
+          "critid_76": 4,
+          "critid_77": 4,
+          "critid_78": 4,
+          "critid_79": 5,
+          "critid_80": 4,
+          "critid_81": 4,
+          "critid_82": 4,
+          "critid_83": 4,
+          "critid_84": 5,
+          "critid_85": 4,
+          "critid_86": 4
+        }
+      },
       rate: {},
       errors: {},
       btnClass: {
@@ -2962,9 +2998,9 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
 
       this.btnClass["is-loading"] = true;
-      this.rate.schedule_code = this.scheduleCode;
-      this.rate.ay_code = this.ayCode;
-      axios.post('/ajax/criteria', this.rate).then(function (res) {
+      this.fields.schedule_code = this.scheduleCode;
+      this.fields.ay_code = this.ayCode;
+      axios.post('/ajax/criteria', this.fields).then(function (res) {
         _this2.errors = {};
 
         if (res.data[0].status === 'saved') {
@@ -2986,6 +3022,9 @@ __webpack_require__.r(__webpack_exports__);
         _this2.btnClass["is-loading"] = false;
       });
     },
+    redirectAfterSaved: function redirectAfterSaved() {
+      window.location = '/schedule';
+    },
     alertError: function alertError(msg) {
       this.$buefy.dialog.alert({
         title: 'Error',
@@ -3000,14 +3039,18 @@ __webpack_require__.r(__webpack_exports__);
     },
     alertSuccess: function alertSuccess(msg) {
       this.$buefy.dialog.alert({
-        title: 'Error',
+        title: 'INFORMATION',
         message: msg,
         type: 'is-success',
         hasIcon: true,
         icon: 'check',
         iconPack: 'fa',
         ariaRole: 'alertdialog',
-        ariaModal: true
+        ariaModal: true,
+        confirmText: 'OK',
+        onConfirm: function onConfirm() {
+          return window.location = '/schedule';
+        }
       });
     }
   },
@@ -23664,10 +23707,10 @@ var render = function() {
             _c(
               "div",
               { staticClass: "column is-10 is-offset-1" },
-              _vm._l(_vm.data, function(item, id) {
+              _vm._l(_vm.data, function(item) {
                 return _c(
                   "div",
-                  { staticClass: "box" },
+                  { key: item.category_id, staticClass: "box" },
                   [
                     _c(
                       "div",
@@ -23713,16 +23756,18 @@ var render = function() {
                                       },
                                       model: {
                                         value:
-                                          _vm.rate["critid_" + c.criterion_id],
+                                          _vm.fields.rate[
+                                            "critid_" + c.criterion_id
+                                          ],
                                         callback: function($$v) {
                                           _vm.$set(
-                                            _vm.rate,
+                                            _vm.fields.rate,
                                             "critid_" + c.criterion_id,
                                             $$v
                                           )
                                         },
                                         expression:
-                                          "rate['critid_'+c.criterion_id]"
+                                          "fields.rate['critid_'+c.criterion_id]"
                                       }
                                     })
                                   ],
@@ -23770,11 +23815,11 @@ var render = function() {
                             _c("b-input", {
                               attrs: { type: "textarea" },
                               model: {
-                                value: _vm.rate.comment,
+                                value: _vm.fields.comment,
                                 callback: function($$v) {
-                                  _vm.$set(_vm.rate, "comment", $$v)
+                                  _vm.$set(_vm.fields, "comment", $$v)
                                 },
-                                expression: "rate.comment"
+                                expression: "fields.comment"
                               }
                             })
                           ],
@@ -37099,15 +37144,14 @@ __webpack_require__.r(__webpack_exports__);
 /*!**********************************************************!*\
   !*** ./resources/js/components/student/CriteriaPage.vue ***!
   \**********************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _CriteriaPage_vue_vue_type_template_id_eeebb466_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CriteriaPage.vue?vue&type=template&id=eeebb466&scoped=true& */ "./resources/js/components/student/CriteriaPage.vue?vue&type=template&id=eeebb466&scoped=true&");
 /* harmony import */ var _CriteriaPage_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CriteriaPage.vue?vue&type=script&lang=js& */ "./resources/js/components/student/CriteriaPage.vue?vue&type=script&lang=js&");
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _CriteriaPage_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _CriteriaPage_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var _CriteriaPage_vue_vue_type_style_index_0_id_eeebb466_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./CriteriaPage.vue?vue&type=style&index=0&id=eeebb466&scoped=true&lang=css& */ "./resources/js/components/student/CriteriaPage.vue?vue&type=style&index=0&id=eeebb466&scoped=true&lang=css&");
+/* empty/unused harmony star reexport *//* harmony import */ var _CriteriaPage_vue_vue_type_style_index_0_id_eeebb466_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./CriteriaPage.vue?vue&type=style&index=0&id=eeebb466&scoped=true&lang=css& */ "./resources/js/components/student/CriteriaPage.vue?vue&type=style&index=0&id=eeebb466&scoped=true&lang=css&");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -37139,7 +37183,7 @@ component.options.__file = "resources/js/components/student/CriteriaPage.vue"
 /*!***********************************************************************************!*\
   !*** ./resources/js/components/student/CriteriaPage.vue?vue&type=script&lang=js& ***!
   \***********************************************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

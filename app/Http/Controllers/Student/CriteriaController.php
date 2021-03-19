@@ -38,44 +38,43 @@ class CriteriaController extends Controller
         //Request StoreRating
         //rule --> Rules/RatingDone
         $student_id = Auth::user()->StudID;
-        $ay_code = $req->ay_code;
 
-       
 
         try{
 
-            DB::transaction(function () use($req, $student_id, $ay_code)  {
+            DB::transaction(function () use($req, $student_id)  {
 
                 $rating = Rating::create([
                     'student_id' => $student_id,
                     'schedule_code' => $req->schedule_code,
                     'remark' => $req->comment,
-                    'ay_code' => $ay_code
+                    'ay_code' => $req->ay_code
                 ]);
 
 
-
                 $dataArray = array();
-                foreach ($req as $key => $rate){
+                foreach ($req->rate as $key => $rate){
+                    $n = explode("_", $key);
+        
                     $temp = array([
                         'rating_id' => $rating->rating_id,
                         'student_id' => $student_id,
-                        'criterion_id' => $key,
+                        'criterion_id' => $n[1],
                         'schedule_code' => $req->schedule_code,
                         'rate' => $rate
                     ]);
                     $dataArray = array_merge($dataArray, $temp);
                 }
+        
 
-                //save ratings in RatingRate Table in Database
-                $ratingRate = RatingRate::insert($dataArray);
+               //save ratings in RatingRate Table in Database
+               $ratingRate = RatingRate::insert($dataArray);
 
             });
 
         } catch(\Exception $e){
             return $e->getMessage();
         }
-
         return [['status' => 'saved']];
     }
 

@@ -8,13 +8,15 @@ class Enrolee extends Model
 {
     //
 
+    protected $table = 'enrolees';
+    
     protected $fillable = ['student_id', 'program_code', 'enr_class', 'enr_yearlevel', 'enr_units', 'enr_section', 'enr_status'];
 
     public $timestamps = false;
 
     protected $primaryKey = 'enrolee_id';
 
-    protected $table = 'enrolees';
+  
 
 
 

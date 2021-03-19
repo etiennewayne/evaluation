@@ -5,6 +5,7 @@ namespace App\Http\Requests;
 use App\AcademicYear;
 use App\Rating;
 use App\Rules\RatingDone;
+use App\Rules\RateAllowed;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Request;
@@ -34,13 +35,15 @@ class StoreRating extends FormRequest
             ->join('categories as b', 'a.category_id', 'b.category_id')
             ->select('a.criterion_id')
             ->where('b.ay_code', $this->ay_code)->get();
+            //id only of the criterion [57, 58, 59, 60]
 
         $temp = array();
         for($i =0; $i < sizeof($dataToValidate); $i++){
-            $temp += ['critid_'.$dataToValidate[$i]->criterion_id => 'required'];
+          
+            $temp += ['rate.critid_'.$dataToValidate[$i]->criterion_id => 'required'];
         }
-        $temp += ['schedule_code' => new RatingDone];
-
+        $temp += ['schedule_code' => [new RatingDone, new RateAllowed]];
+        
 
         return $temp;
     }
