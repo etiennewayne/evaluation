@@ -19,15 +19,13 @@ class Admin
     {
 
         $role = strtolower(Auth::user()->role);
-
         if($role != 'administrator'){
             abort(403);
             //no cache so user cant use prev button in browser
         }
-
-        return $next($request);
-        // ->header('Cache-Control','nocache, no-store, max-age=0, must-revalidate')
-        // ->header('Pragma','no-cache');
+        return $next($request)
+        ->header('Cache-Control','nocache, no-store, max-age=0, must-revalidate')
+        ->header('Pragma','no-cache');
 
         // if($role == 'student'){
         //     return $next($request)

@@ -17,10 +17,14 @@
 <body>
 
     <div id="app">
-
-        <student-navbar></student-navbar>
+        @guest
+            <student-navbar></student-navbar>
+        @else
+            <student-navbar-auth user-id="{{ Auth::user()->StudFName[0]}}{{ Auth::user()->StudLName }}"></student-navbar-auth>
+        @endguest
 
         @yield('content')
+
     </div>
 </body>
 

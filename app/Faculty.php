@@ -8,18 +8,22 @@ class Faculty extends Model
 {
     //
 
-    protected $fillable = ['faculty_code','lname', 'fname', 'mname', 'institute'];
+    protected $connection = 'registrar_gadtc';
+    protected $table = 'tblins';
+
+
+    //protected $fillable = ['faculty_code','lname', 'fname', 'mname', 'institute'];
 
     public $timestamps = false;
 
-    protected $primaryKey = 'faculty_id';
+    protected $primaryKey = 'InsCode';
 
-    protected $table = 'faculties';
+    
 
 
     public function schedules()
     {
-        return $this->hasMany('App\Schedule', 'faculty_code', 'faculty_code');
+        return $this->hasMany('App\Schedule', 'InsCode', 'InsCode');
     }
 
 

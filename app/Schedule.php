@@ -8,35 +8,37 @@ class Schedule extends Model
 {
     //
 
-    protected $primaryKey = 'schedule_id';
-    protected $table = 'schedules';
+    //using the infosystem database
+    protected $connection ='registrar_gadtc';
 
-    protected $fillable = ['schedule_code', 'program_id',
-    'institute', 'course_code', 'time_start', 'time_end', 'sched_day', 'room'];
+    protected $primaryKey = 'SchedCode';
 
-    protected $date = ['time_start', 'time_end'];
+    //this table will change according to semester
+    protected $table = 'tblsched202';
 
-    public function academicYear(){
-        return $this->hasOne('App\ay', 'ay_id', 'ay_id');
-    }
+
+    // protected $fillable = ['schedule_code', 'program_id',
+    // 'institute', 'course_code', 'time_start', 'time_end', 'sched_day', 'room'];
+
+    protected $date = ['SchedTimeFrm', 'SchedTimeTo'];
 
 
     public function faculty()
     {
-        return $this->hasOne('App\Faculty', 'faculty_code', 'faculty_code');
+        return $this->hasOne('App\Faculty', 'InsCode', 'InsCode');
     }
 
     public function course()
     {
-        return $this->hasOne('App\Course', 'course_code', 'course_code');
+        return $this->hasOne('App\Course', 'SubjCode', 'SchedSubjCode');
     }
 
-    public function comments()
-    {
-        return $this->hasMany('App\RatingComment', 'schedule_code', 'schedule_code');
-    }
+    // public function comments()
+    // {
+    //     return $this->hasMany('App\RatingComment', 'schedule_code', 'SchedCode');
+    // }
 
-    
+
 
 
     // public function schedules()

@@ -8,19 +8,34 @@ class EnroleeCourses extends Model
 {
     //
 
-    protected $fillable = ['student_id', 'schedule_code', 'course_code', 'course_status'];
+    //from infosystem
+    protected $connection = 'registrar_gadtc';
+    protected $table = 'tblenrdtl202';
+
+     //protected $primaryKey = 'EnrIDNum';
+
+    //protected $fillable = ['student_id', 'schedule_code', 'course_code', 'course_status'];
 
     public $timestamps = false;
 
-    protected $primaryKey = 'enrolee_course_id';
-
-    protected $table = 'enrolee_courses';
-
-    public function schedules(){
-        return $this->hasMany('App\Schedule', 'schedule_code','schedule_code');
+    public function schedule(){
+        return $this->hasOne('App\Schedule', 'SchedCode','EnrSchedCode');
     }
 
+    public function course(){
+        return $this->hasOne('App\Course', 'SubjCode','EnrSubjCode');
+    }
 
-    
+//    public function course(){
+//        return $this->hasOneThrough(Course::class, Schedule::class,
+//            'EnrSchedCode', 'SubjCode',
+//            'EnrSchedCode', 'Sched'
+//        );
+//    }
+
+
+
+
+
 
 }

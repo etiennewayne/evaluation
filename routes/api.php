@@ -15,8 +15,13 @@ use Illuminate\Http\Request;
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
+
+
+
 });
 
 
 Route::apiResource('academicyear','Api\Administrator\AcademicYearController');
 Route::apiResource('category','Api\Administrator\CategoryController');
+Route::apiResource('cor','Api\Student\CORController');
+

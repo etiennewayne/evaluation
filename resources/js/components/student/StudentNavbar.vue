@@ -29,19 +29,9 @@
             <b-navbar-item href="#">
                 FAQ
             </b-navbar-item>
-            <b-navbar-dropdown label="Info">
-                <b-navbar-item href="#">
-                    About
-                </b-navbar-item>
-                <b-navbar-item href="#">
-                    Contact
-                </b-navbar-item>
-            </b-navbar-dropdown>
-
-            <b-navbar-item tag="div">
+           <b-navbar-item tag="div">
                 <div class="buttons">
-
-                    <a class="button is-primary">
+                    <a class="button is-primary" href="/login">
                         <strong>Log in</strong>
                     </a>
                 </div>
@@ -55,7 +45,7 @@
 
 <script>
 export default {
-    props: ['userId'],
+
     data(){
         return{
 

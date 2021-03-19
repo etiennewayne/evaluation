@@ -1,4 +1,8 @@
 <?php
+use App\User;
+
+use App\EnroleeCourses;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,12 +39,12 @@ Route::get('/', function(){
 //LOGIN ------
 //Route::get('/','LoginController@index')->name('login');
 //Route::post('/','LoginController@auth');
+
+
 Route::get('/change-password', 'Auth\ChangePasswordController@index');
 Route::post('/change-password', 'Auth\ChangePasswordController@update');
 
 //Route::post('/mylogout', 'Auth\LogoutController@logout');
-
-
 
 
 //ADMINISTRATOR-------
@@ -107,40 +111,50 @@ Route::resource('/enrolee-courses-uploader', 'Administrator\EnroleeCoursesUpload
 
 
 
+//STUDENT MODULE HERE------
+//Route::get('/home','Student\HomeController@index')->name('home');
 
-//STUDENT------
-Route::get('/home','Student\HomeController@index');
+Route::get('/home', 'Student\HomeController@index')->name('home');
+
 Route::get('/about','Student\AboutController@index');
 Route::get('/faq','Student\FAQController@index');
-Route::get('/cor','Student\StudyLoadController@studyload');
+
+Route::get('/schedule','Student\ScheduleController@index');
+Route::get('/ajax/schedule','Student\ScheduleController@ajaxSchedule');
 
 
-Route::get('/cor/schedule/{schedid}','Student\StudyLoadController@rate');
-Route::post('/cor/save','Student\StudyLoadController@save');
-Route::get('/cor/{schedid}/rated','Student\StudyLoadController@isRated');
+Route::get('/criteria','Student\CriteriaController@index');
+Route::get('/ajax/criteria','Student\CriteriaController@ajaxCriteria');
+Route::post('/ajax/criteria','Student\CriteriaController@store');
 
 
-Route::get('/cor/viewrating/{schedid}','Student\ViewRatingController@viewRating');
+
+// Route::get('/cor','Student\StudyLoadController@studyload');
+// Route::get('/cor/schedule/{schedid}','Student\StudyLoadController@rate');
+// Route::post('/cor/save','Student\StudyLoadController@save');
+// Route::get('/cor/{schedid}/rated','Student\StudyLoadController@isRated');
+//Route::get('/cor/viewrating/{schedid}','Student\ViewRatingController@viewRating');
 
 
 // Route::get('/rate/{schedid}','Student\RatingController@index');
 // Route::post('/rate/{schedid}','Student\RatingController@save');
 
 
-
-
 Route::get('/reguser','UserController@regUser');
-
 
 Route::get('/data/ajax-users','UserController@ajaxUsers')->name('db-ajax-user');
 
 
-
 //LOGOUT
-// Route::get('/logout', function() {
-//     Auth::logout();
-// });
+ Route::get('/app/logout', function() {
+     Auth::logout();
+     return redirect('/');
+ });
 
+
+Route::get('/app/test', function() {
+    return Auth::user()->StudLName;
+});
 //insert admin
 //Route::get('/insert', function(){
 //

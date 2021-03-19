@@ -8,14 +8,15 @@ class Course extends Model
 {
     //
 
+    protected $connection ='registrar_gadtc';
 
-    protected $primaryKey = 'course_id';
+    protected $primaryKey = 'SubjCode';
 
-    protected $table = 'courses';
+    protected $table = 'tblsubject';
 
     public $timestamps = 'false';
 
-    protected $fillable = ['course_code', 'course_name', 'course_desc', 'course_class', 'unit'];
+    //protected $fillable = ['course_code', 'course_name', 'course_desc', 'course_class', 'unit'];
 
 
 

@@ -31,7 +31,7 @@
         <template #end>
             <b-navbar-item tag="div">
                 <div class="buttons">
-                    <b-button class="button is-danger" icon-left="sign-out" icon-pack="fa" @click="logout">
+                    <b-button class="button is-danger" icon-right="sign-out" icon-pack="fa" @click="logout">
                         LOGOUT
                     </b-button>
                 </div>

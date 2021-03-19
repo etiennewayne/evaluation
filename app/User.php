@@ -15,12 +15,15 @@ class User extends Authenticatable
      *
      * @var array
      */
+
+    protected $connection = 'registrar_gadtc';
+    protected $table ='tblstudhinfo';
+
     protected $fillable = [
-        //'lname', 'fname', 'mname', 'sex', 'email', 'password',
-        'student_id', 'lname', 'fname', 'mname', 'sex', 'username', 'password', 'role'
+         'StudID', 'username', 'StudLname', 'StudFname', 'StudMname', 'StudSex', 'email', 'password'
     ];
-    
-    protected $primaryKey = 'user_id';
+
+    protected $primaryKey = 'StudID';
 
     /**
      * The attributes that should be hidden for arrays.
@@ -32,10 +35,6 @@ class User extends Authenticatable
     ];
 
 	//protected $table = 'vw_users';
-
-    public function positions(){
-        return $this->hasOne('App\Position', 'position_id', 'position_id');
-    }
 
 
 
