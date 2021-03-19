@@ -21,7 +21,7 @@ class UserController extends Controller
     //protected $redirectTo = '/home';
     
     public function __construct(){
-       $this->middleware('admin');
+       $this->middleware('auth');
     }
     //
 

@@ -152,9 +152,9 @@ Route::get('/data/ajax-users','UserController@ajaxUsers')->name('db-ajax-user');
  });
 
 
-Route::get('/app/test', function() {
-    return Auth::user()->StudLName;
-});
+// Route::get('/app/test', function() {
+//     return User::all()->take(5);
+// });
 //insert admin
 //Route::get('/insert', function(){
 //
