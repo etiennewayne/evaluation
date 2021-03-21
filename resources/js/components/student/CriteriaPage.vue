@@ -31,7 +31,7 @@
 <!--                                            <option value="1">1</option>-->
 <!--                                        </b-select>-->
 
-                                        <b-field :label="`Rating`+c.criterion_id">
+                                        <b-field label="Rate Me">
                                             <b-rate icon-pack="fa"
                                                     required
                                                     v-model="fields.rate['critid_'+c.criterion_id]"
