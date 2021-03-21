@@ -5,3 +5,6 @@ CALL report_faculty_rating('0237', '202');
 
 
 CALL report_comments('0237');
+
+
+CALL proc_viewrating_perstudent('179186','1202887','202');

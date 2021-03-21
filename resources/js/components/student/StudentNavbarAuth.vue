@@ -31,9 +31,9 @@
                 <b-navbar-item href="/schedule">
                     Schedules
                 </b-navbar-item>
-                <b-navbar-item href="">
+                <!-- <b-navbar-item href="">
                     Change Password
-                </b-navbar-item>
+                </b-navbar-item> -->
             </b-navbar-dropdown>
 
             <b-navbar-item tag="div">

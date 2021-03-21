@@ -46,6 +46,7 @@ Vue.component('student-navbar', require('./components/student/StudentNavbar.vue'
 Vue.component('student-home', require('./components/student/StudentHome.vue').default);
 Vue.component('schedule-page', require('./components/student/SchedulePage.vue').default);
 Vue.component('criteria-page', require('./components/student/CriteriaPage.vue').default);
+Vue.component('view-rating', require('./components/student/ViewRating.vue').default);
 
 
 Vue.component('academic-year', require('./components/administrator/academicyear/AcademicYear.vue').default);
