@@ -18,11 +18,11 @@
                         </div>
 
                         <div class="p-4">
-                            Instructor: {{ this.data[0].InsLName }}, {{ this.data[0].InsFName }} {{this.data[0].InsMName}}
+                            Instructor: {{ this.instructor.lname }}, {{ this.instructor.fname }} {{this.instructor.mname}}
                             <br>
-                            Schedule Code: {{ this.data[0].schedule_code }}
+                            Schedule Code: {{ this.schedule.code }}
                             <br>
-                            Course: 
+                            Course: {{ this.course.name }} - {{ this.course.desc }}
                         </div>
                         <div class="p-4">
                             <b-table
@@ -55,6 +55,9 @@ export default {
         return{
             data: [],
             isPaginated: false,
+            instructor: {},
+            schedule: {},
+            course: {},
             
         }
     },
@@ -62,9 +65,17 @@ export default {
     methods: {
         getRating(){
             axios.get('/ajax/rating?schedule='+this.scheduleCode).then(res=>{
-                this.data = res.data;
+                if(res.data.length > 0){
+                    this.data = res.data;
+                    this.instructor.lname = this.data[0].InsLName;
+                    this.instructor.fname = this.data[0].InsFName;
+                    this.instructor.mname = this.data[0].InsMName;
+                    this.schedule.code = this.data[0].schedule_code;
 
-                console.log(this.data);
+                    this.course.name = this.data[0].SubjName;
+                    this.course.desc = this.data[0].SubjDesc;
+
+                }
             })
         }
     },

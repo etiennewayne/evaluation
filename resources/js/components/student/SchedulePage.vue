@@ -11,13 +11,13 @@
                         </div>
                         <div class="p-4">
                             <div>
-                                STUDENT NAME: <strong>{{ this.data[0].StudLName}}, {{ this.data[0].StudFName}} {{ this.data[0].StudMName}}</strong>
+                                STUDENT NAME: <strong>{{ this.student.lname }}, {{ this.student.fname }} {{ this.student.mname }}</strong>
                             </div>              
                            <div>
-                                PROGRAM & YEAR: <strong>{{ this.data[0].EnrCourse}} YEAR: {{ this.data[0].EnrYear}}</strong>
+                                PROGRAM & YEAR: <strong>{{ this.student.course }} YEAR: {{ this.student.year }}</strong>
                            </div>
                            <div>
-                               RATED: <strong>{{ this.data[0].count_rated_course }}/{{ this.data[0].count_courses }}</strong>
+                               RATED: <strong>{{ this.student.count_rated_courses }}/{{ this.student.count_courses }}</strong>
                            </div>
                         </div>
                     </div>
@@ -110,14 +110,26 @@ export default {
             sortIcon: 'arrow-up',
             sortIconSize: 'is-small',
             currentPage: 1,
-            perPage: 15
+            perPage: 15,
+
+            student: {}
         }
     },
     methods: {
         getData(){
             axios.get('/ajax/schedule').then(res=>{
                 this.data = res.data;
-                console.log(res.data);
+
+                this.student.lname = this.data[0].StudLName;
+                this.student.fname = this.data[0].StudFName;
+                this.student.mname = this.data[0].StudMName;
+                this.student.course = this.data[0].EnrCourse;
+                this.student.year = this.data[0].EnrYear;
+                this.student.count_courses = this.data[0].EnrYear;
+                this.student.count_rated_courses = this.data[0].count_rated_course;
+                this.student.count_courses = this.data[0].count_courses;
+
+               
             });
         }
     },

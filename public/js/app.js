@@ -3182,7 +3182,8 @@ __webpack_require__.r(__webpack_exports__);
       sortIcon: 'arrow-up',
       sortIconSize: 'is-small',
       currentPage: 1,
-      perPage: 15
+      perPage: 15,
+      student: {}
     };
   },
   methods: {
@@ -3191,7 +3192,14 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.get('/ajax/schedule').then(function (res) {
         _this.data = res.data;
-        console.log(res.data);
+        _this.student.lname = _this.data[0].StudLName;
+        _this.student.fname = _this.data[0].StudFName;
+        _this.student.mname = _this.data[0].StudMName;
+        _this.student.course = _this.data[0].EnrCourse;
+        _this.student.year = _this.data[0].EnrYear;
+        _this.student.count_courses = _this.data[0].EnrYear;
+        _this.student.count_rated_courses = _this.data[0].count_rated_course;
+        _this.student.count_courses = _this.data[0].count_courses;
       });
     }
   },
@@ -3435,7 +3443,10 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       data: [],
-      isPaginated: false
+      isPaginated: false,
+      instructor: {},
+      schedule: {},
+      course: {}
     };
   },
   methods: {
@@ -3443,8 +3454,15 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       axios.get('/ajax/rating?schedule=' + this.scheduleCode).then(function (res) {
-        _this.data = res.data;
-        console.log(_this.data);
+        if (res.data.length > 0) {
+          _this.data = res.data;
+          _this.instructor.lname = _this.data[0].InsLName;
+          _this.instructor.fname = _this.data[0].InsFName;
+          _this.instructor.mname = _this.data[0].InsMName;
+          _this.schedule.code = _this.data[0].schedule_code;
+          _this.course.name = _this.data[0].SubjName;
+          _this.course.desc = _this.data[0].SubjDesc;
+        }
       });
     }
   },
@@ -24014,11 +24032,11 @@ var render = function() {
                 _vm._v("\n                            STUDENT NAME: "),
                 _c("strong", [
                   _vm._v(
-                    _vm._s(this.data[0].StudLName) +
+                    _vm._s(this.student.lname) +
                       ", " +
-                      _vm._s(this.data[0].StudFName) +
+                      _vm._s(this.student.fname) +
                       " " +
-                      _vm._s(this.data[0].StudMName)
+                      _vm._s(this.student.mname)
                   )
                 ])
               ]),
@@ -24027,9 +24045,9 @@ var render = function() {
                 _vm._v("\n                            PROGRAM & YEAR: "),
                 _c("strong", [
                   _vm._v(
-                    _vm._s(this.data[0].EnrCourse) +
+                    _vm._s(this.student.course) +
                       " YEAR: " +
-                      _vm._s(this.data[0].EnrYear)
+                      _vm._s(this.student.year)
                   )
                 ])
               ]),
@@ -24038,9 +24056,9 @@ var render = function() {
                 _vm._v("\n                           RATED: "),
                 _c("strong", [
                   _vm._v(
-                    _vm._s(this.data[0].count_rated_course) +
+                    _vm._s(this.student.count_rated_courses) +
                       "/" +
-                      _vm._s(this.data[0].count_courses)
+                      _vm._s(this.student.count_courses)
                   )
                 ])
               ])
@@ -24653,21 +24671,27 @@ var render = function() {
             _c("div", { staticClass: "p-4" }, [
               _vm._v(
                 "\n                        Instructor: " +
-                  _vm._s(this.data[0].InsLName) +
+                  _vm._s(this.instructor.lname) +
                   ", " +
-                  _vm._s(this.data[0].InsFName) +
+                  _vm._s(this.instructor.fname) +
                   " " +
-                  _vm._s(this.data[0].InsMName) +
+                  _vm._s(this.instructor.mname) +
                   "\n                        "
               ),
               _c("br"),
               _vm._v(
                 "\n                        Schedule Code: " +
-                  _vm._s(this.data[0].schedule_code) +
+                  _vm._s(this.schedule.code) +
                   "\n                        "
               ),
               _c("br"),
-              _vm._v("\n                        Course: \n                    ")
+              _vm._v(
+                "\n                        Course: " +
+                  _vm._s(this.course.name) +
+                  " - " +
+                  _vm._s(this.course.desc) +
+                  "\n                    "
+              )
             ]),
             _vm._v(" "),
             _c(
