@@ -6,7 +6,7 @@
                 <div class="container has-text-centered">
 
                     <div class="welcome-text animate__animated animate__backInLeft">WELCOME TO FACULTY PERFORMANCE EVALUATION SYSTEM</div>
-                    <div class="buttons is-centered animate__animated animate__backInLeft">
+                    <div class="buttons is-centered animate__animated animate__backInRight">
                         <a class="button is-primary is-outlined" href="/login">LOGIN</a>
                     </div>
 
@@ -40,8 +40,9 @@ export default {
 <style scoped>
 
 .welcome-text{
-    font-size: 30px;
+    font-size: 40px;
     font-weight: bold;
+    margin-bottom: 10px;
 }
 
 

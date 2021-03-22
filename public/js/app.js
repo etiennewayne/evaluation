@@ -3162,6 +3162,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -3203,6 +3211,10 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
 //
 //
 //
@@ -3368,6 +3380,22 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -20809,7 +20837,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.wrapper[data-v-29a807bd]{\n    margin-top: -5rem;\n    display: flex;\n    justify-content: center;\n\n    height: 100vh;\n    align-items: center;\n}\n\n/*.login-panel{*/\n/*    height: 500px;*/\n/*    width: 900px;*/\n\n/*    border-radius: 10px;*/\n\n/*    -webkit-box-shadow: 0 10px 6px -6px #777;*/\n/*    -moz-box-shadow: 0 10px 6px -6px #777;*/\n/*    box-shadow: 5px 10px 6px -6px #b0b0b0;*/\n\n/*}*/\n.controls-panel[data-v-29a807bd]{\n    padding: 10px;\n    margin-top: 10px;\n}\n.login-header[data-v-29a807bd]{\n    font-size: large;\n    font-weight: bold;\n}\n.right-header[data-v-29a807bd]{\n    font-size: large;\n    font-weight: bold;\n    text-align: center;\n}\n.vertical-line[data-v-29a807bd]{\n    border-left: 1px solid green;\n}\n@media only screen and (max-width: 768px) {\n.vertical-line[data-v-29a807bd]{\n        border-left: white;\n        border-top: 1px solid green;\n}\n.right-header-subtitle[data-v-29a807bd]{\n\n        text-align: center;\n}\n.expand-mobile[data-v-29a807bd]{\n        width: 100%;\n}\n}\n\n\n", ""]);
+exports.push([module.i, "\n.wrapper[data-v-29a807bd]{\r\n    margin-top: -5rem;\r\n    display: flex;\r\n    justify-content: center;\r\n\r\n    height: 100vh;\r\n    align-items: center;\n}\r\n\r\n/*.login-panel{*/\r\n/*    height: 500px;*/\r\n/*    width: 900px;*/\r\n\r\n/*    border-radius: 10px;*/\r\n\r\n/*    -webkit-box-shadow: 0 10px 6px -6px #777;*/\r\n/*    -moz-box-shadow: 0 10px 6px -6px #777;*/\r\n/*    box-shadow: 5px 10px 6px -6px #b0b0b0;*/\r\n\r\n/*}*/\n.controls-panel[data-v-29a807bd]{\r\n    padding: 10px;\r\n    margin-top: 10px;\n}\n.login-header[data-v-29a807bd]{\r\n    font-size: large;\r\n    font-weight: bold;\n}\n.right-header[data-v-29a807bd]{\r\n    font-size: large;\r\n    font-weight: bold;\r\n    text-align: center;\n}\n.vertical-line[data-v-29a807bd]{\r\n    border-left: 1px solid green;\n}\n@media only screen and (max-width: 768px) {\n.vertical-line[data-v-29a807bd]{\r\n        border-left: white;\r\n        border-top: 1px solid green;\n}\n.right-header-subtitle[data-v-29a807bd]{\r\n\r\n        text-align: center;\n}\n.expand-mobile[data-v-29a807bd]{\r\n        width: 100%;\n}\n}\r\n\r\n\r\n", ""]);
 
 // exports
 
@@ -20828,7 +20856,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.welcome-text[data-v-a4d20914]{\n    font-size: 30px;\n    font-weight: bold;\n}\n@media only screen and (max-width: 768px) {\n}\n\n\n", ""]);
+exports.push([module.i, "\n.welcome-text[data-v-a4d20914]{\r\n    font-size: 40px;\r\n    font-weight: bold;\r\n    margin-bottom: 10px;\n}\n@media only screen and (max-width: 768px) {\n}\r\n\r\n\r\n", ""]);
 
 // exports
 
@@ -20866,7 +20894,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.student-home-text[data-v-044ee26a]{\n    font-weight: bold;\n    font-size: 2em;\n}\n\n", ""]);
+exports.push([module.i, "\n.student-home-text[data-v-044ee26a]{\r\n    font-weight: bold;\r\n    font-size: 2em;\n}\r\n\r\n", ""]);
 
 // exports
 
@@ -20904,7 +20932,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.brand-title-desktop[data-v-03d8ec44]{\n    font-weight: bold;\n    display: block;\n}\n.brand-subtitle-desktop[data-v-03d8ec44]{\n    font-size: 14px;\n    display: block;\n}\n.brand-title-mobile[data-v-03d8ec44]{\n    font-weight: bold;\n    display: none;\n}\n.brand-subtitle-mobile[data-v-03d8ec44]{\n    font-size: 14px;\n    display: none;\n}\n@media only screen and (max-width: 768px) {\n.brand-title-desktop[data-v-03d8ec44]{\n        font-weight: bold;\n        display: none;\n}\n.brand-subtitle-desktop[data-v-03d8ec44]{\n        font-size: 14px;\n        display: none;\n}\n.brand-title-mobile[data-v-03d8ec44]{\n        font-weight: bold;\n        display: block;\n}\n.brand-subtitle-mobile[data-v-03d8ec44]{\n        font-size: 14px;\n        display: block;\n}\n}\n", ""]);
+exports.push([module.i, "\n.brand-title-desktop[data-v-03d8ec44]{\r\n    font-weight: bold;\r\n    display: block;\n}\n.brand-subtitle-desktop[data-v-03d8ec44]{\r\n    font-size: 14px;\r\n    display: block;\n}\n.brand-title-mobile[data-v-03d8ec44]{\r\n    font-weight: bold;\r\n    display: none;\n}\n.brand-subtitle-mobile[data-v-03d8ec44]{\r\n    font-size: 14px;\r\n    display: none;\n}\n@media only screen and (max-width: 768px) {\n.brand-title-desktop[data-v-03d8ec44]{\r\n        font-weight: bold;\r\n        display: none;\n}\n.brand-subtitle-desktop[data-v-03d8ec44]{\r\n        font-size: 14px;\r\n        display: none;\n}\n.brand-title-mobile[data-v-03d8ec44]{\r\n        font-weight: bold;\r\n        display: block;\n}\n.brand-subtitle-mobile[data-v-03d8ec44]{\r\n        font-size: 14px;\r\n        display: block;\n}\n}\r\n", ""]);
 
 // exports
 
@@ -22438,7 +22466,7 @@ var staticRenderFns = [
               "div",
               {
                 staticClass:
-                  "buttons is-centered animate__animated animate__backInLeft"
+                  "buttons is-centered animate__animated animate__backInRight"
               },
               [
                 _c(
@@ -23973,7 +24001,52 @@ var render = function() {
   return _c("div", [
     _c("div", { staticClass: "container is-widescreen mt-5" }, [
       _c("div", { staticClass: "columns is-multiline" }, [
-        _vm._m(0),
+        _c("div", { staticClass: "column is-4-desktop" }, [
+          _c("div", { staticClass: "panel" }, [
+            _c("div", { staticClass: "panel-heading" }, [
+              _vm._v(
+                "\n                        STUDENT INFORMATION\n                    "
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "p-4" }, [
+              _c("div", [
+                _vm._v("\n                            STUDENT NAME: "),
+                _c("strong", [
+                  _vm._v(
+                    _vm._s(this.data[0].StudLName) +
+                      ", " +
+                      _vm._s(this.data[0].StudFName) +
+                      " " +
+                      _vm._s(this.data[0].StudMName)
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", [
+                _vm._v("\n                            PROGRAM & YEAR: "),
+                _c("strong", [
+                  _vm._v(
+                    _vm._s(this.data[0].EnrCourse) +
+                      " YEAR: " +
+                      _vm._s(this.data[0].EnrYear)
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", [
+                _vm._v("\n                           RATED: "),
+                _c("strong", [
+                  _vm._v(
+                    _vm._s(this.data[0].count_rated_course) +
+                      "/" +
+                      _vm._s(this.data[0].count_courses)
+                  )
+                ])
+              ])
+            ])
+          ])
+        ]),
         _vm._v(" "),
         _c("div", { staticClass: "column" }, [
           _c("div", { staticClass: "panel" }, [
@@ -24257,24 +24330,7 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "column is-4-desktop" }, [
-      _c("div", { staticClass: "panel" }, [
-        _c("div", { staticClass: "panel-heading" }, [
-          _vm._v(
-            "\n                        COURSE INFORMATION\n                    "
-          )
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "panel-block" })
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -24296,26 +24352,33 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("div", { staticClass: "hero is-fullheight-with-navbar" }, [
-        _c("div", { staticClass: "hero-body" }, [
-          _c(
-            "div",
-            { staticClass: "container has-text-centered student-home-text" },
-            [_vm._v("\n                Student Panel\n            ")]
-          )
-        ])
+  return _c("div", [
+    _c("div", { staticClass: "hero is-fullheight-with-navbar" }, [
+      _c("div", { staticClass: "hero-body" }, [
+        _c(
+          "div",
+          { staticClass: "container has-text-centered student-home-text" },
+          [
+            _vm._v("\n                Student Panel\n\n                "),
+            _c(
+              "div",
+              { staticClass: "buttons is-centered" },
+              [
+                _c(
+                  "b-button",
+                  { attrs: { tag: "a", href: "/schedule", outlined: "" } },
+                  [_vm._v("START EVALUATION NOW")]
+                )
+              ],
+              1
+            )
+          ]
+        )
       ])
     ])
-  }
-]
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -24436,6 +24499,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("b-navbar", {
     staticClass: "navbar is-primary",
+    attrs: { "fixed-top": "" },
     scopedSlots: _vm._u([
       {
         key: "brand",
@@ -24557,7 +24621,53 @@ var render = function() {
         _c("div", { staticClass: "column is-6 is-offset-3" }, [
           _c("div", { staticClass: "panel" }, [
             _c("div", { staticClass: "panel-heading" }, [
-              _vm._v("\n                        RATING\n                    ")
+              _c("div", { staticClass: "level" }, [
+                _c("div", { staticClass: "level-left" }, [
+                  _vm._v(
+                    "\n                                RATING\n                            "
+                  )
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "level-right" },
+                  [
+                    _c(
+                      "b-button",
+                      {
+                        attrs: {
+                          tag: "a",
+                          href: "/schedule",
+                          "icon-right": "arrow-left",
+                          "icon-pack": "fa"
+                        }
+                      },
+                      [_vm._v("BACK")]
+                    )
+                  ],
+                  1
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "p-4" }, [
+              _vm._v(
+                "\n                        Instructor: " +
+                  _vm._s(this.data[0].InsLName) +
+                  ", " +
+                  _vm._s(this.data[0].InsFName) +
+                  " " +
+                  _vm._s(this.data[0].InsMName) +
+                  "\n                        "
+              ),
+              _c("br"),
+              _vm._v(
+                "\n                        Schedule Code: " +
+                  _vm._s(this.data[0].schedule_code) +
+                  "\n                        "
+              ),
+              _c("br"),
+              _vm._v("\n                        Course: \n                    ")
             ]),
             _vm._v(" "),
             _c(
@@ -24587,7 +24697,7 @@ var render = function() {
                     }),
                     _vm._v(" "),
                     _c("b-table-column", {
-                      attrs: { field: "rating_avg", label: "Rating" },
+                      attrs: { field: "n_rating", label: "Rating" },
                       scopedSlots: _vm._u([
                         {
                           key: "default",
@@ -24595,7 +24705,7 @@ var render = function() {
                             return [
                               _vm._v(
                                 "\n                                " +
-                                  _vm._s(props.row.rating_avg) +
+                                  _vm._s(props.row.n_rating) +
                                   "\n                            "
                               )
                             ]
@@ -37858,8 +37968,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Wayne\Documents\GitHub\evaluation\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\Wayne\Documents\GitHub\evaluation\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\eshen\Desktop\Github\evaluation\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\eshen\Desktop\Github\evaluation\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

@@ -8,3 +8,5 @@ CALL report_comments('0237');
 
 
 CALL proc_viewrating_perstudent('179186','1202887','202');
+
+CALL proc_view_noratecourses('179186');

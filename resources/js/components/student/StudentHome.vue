@@ -4,6 +4,10 @@
             <div class="hero-body">
                 <div class="container has-text-centered student-home-text">
                     Student Panel
+
+                    <div class="buttons is-centered">
+                        <b-button tag="a" href="/schedule" outlined>START EVALUATION NOW</b-button>
+                    </div>
                 </div>
               
             </div>

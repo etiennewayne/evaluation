@@ -6,7 +6,23 @@
 
                     <div class="panel">
                         <div class="panel-heading">
-                            RATING
+                            <div class="level">
+                                <div class="level-left">
+                                    RATING
+                                </div>
+                                <div class="level-right">
+                                    <b-button tag="a" class="" href="/schedule" icon-right="arrow-left" icon-pack="fa">BACK</b-button>
+                                </div>
+                            </div>
+                            
+                        </div>
+
+                        <div class="p-4">
+                            Instructor: {{ this.data[0].InsLName }}, {{ this.data[0].InsFName }} {{this.data[0].InsMName}}
+                            <br>
+                            Schedule Code: {{ this.data[0].schedule_code }}
+                            <br>
+                            Course: 
                         </div>
                         <div class="p-4">
                             <b-table
@@ -18,8 +34,8 @@
                                     {{ props.row.category }}
                                 </b-table-column>
 
-                                <b-table-column field="rating_avg" label="Rating" v-slot="props">
-                                    {{ props.row.rating_avg }}
+                                <b-table-column field="n_rating" label="Rating" v-slot="props">
+                                    {{ props.row.n_rating }}
                                 </b-table-column>
                             </b-table>
                         </div>

@@ -7,10 +7,18 @@
                 <div class="column is-4-desktop">
                     <div class="panel">
                         <div class="panel-heading">
-                            COURSE INFORMATION
+                            STUDENT INFORMATION
                         </div>
-                        <div class="panel-block">
-
+                        <div class="p-4">
+                            <div>
+                                STUDENT NAME: <strong>{{ this.data[0].StudLName}}, {{ this.data[0].StudFName}} {{ this.data[0].StudMName}}</strong>
+                            </div>              
+                           <div>
+                                PROGRAM & YEAR: <strong>{{ this.data[0].EnrCourse}} YEAR: {{ this.data[0].EnrYear}}</strong>
+                           </div>
+                           <div>
+                               RATED: <strong>{{ this.data[0].count_rated_course }}/{{ this.data[0].count_courses }}</strong>
+                           </div>
                         </div>
                     </div>
                 </div>

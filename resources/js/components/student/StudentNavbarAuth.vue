@@ -1,5 +1,5 @@
 <template>
-    <b-navbar class="navbar is-primary">
+    <b-navbar class="navbar is-primary" fixed-top>
         <template #brand>
             <b-navbar-item>
                 <img
