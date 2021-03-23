@@ -3014,6 +3014,35 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['scheduleCode', 'ayCode'],
   data: function data() {
@@ -3062,7 +3091,9 @@ __webpack_require__.r(__webpack_exports__);
         'is-loading': false
       },
       instructor: {},
-      course: {}
+      course: {},
+      setMaxScore: 5,
+      setLowScore: 1
     };
   },
   methods: {
@@ -24083,6 +24114,74 @@ var render = function() {
                         _vm._s(this.course.desc) +
                         "\n                            "
                     )
+                  ]),
+                  _vm._v(" "),
+                  _c("hr"),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "level" }, [
+                    _c("div", { staticClass: "level-item has-text-centered" }, [
+                      _c("div", [
+                        _c("p", { staticClass: "heading" }, [
+                          _vm._v("Highest Rating ")
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "p",
+                          { staticClass: "is-4" },
+                          [
+                            _c("b-rate", {
+                              attrs: {
+                                "icon-pack": "fa",
+                                disabled: "",
+                                spaced: "",
+                                "show-score": "",
+                                size: "is-medium"
+                              },
+                              model: {
+                                value: _vm.setMaxScore,
+                                callback: function($$v) {
+                                  _vm.setMaxScore = $$v
+                                },
+                                expression: "setMaxScore"
+                              }
+                            })
+                          ],
+                          1
+                        )
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "level-item has-text-centered" }, [
+                      _c("div", [
+                        _c("p", { staticClass: "heading" }, [
+                          _vm._v("Lowest Rating ")
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "p",
+                          { staticClass: "is-4" },
+                          [
+                            _c("b-rate", {
+                              attrs: {
+                                "icon-pack": "fa",
+                                disabled: "",
+                                spaced: "",
+                                "show-score": "",
+                                size: "is-medium"
+                              },
+                              model: {
+                                value: _vm.setLowScore,
+                                callback: function($$v) {
+                                  _vm.setLowScore = $$v
+                                },
+                                expression: "setLowScore"
+                              }
+                            })
+                          ],
+                          1
+                        )
+                      ])
+                    ])
                   ])
                 ]),
                 _vm._v(" "),

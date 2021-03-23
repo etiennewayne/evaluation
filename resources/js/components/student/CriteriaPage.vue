@@ -17,7 +17,36 @@
                             <div>
                                 Course: {{this.course.name}} - {{this.course.desc}}
                             </div>
-                            
+
+                            <hr>
+
+                            <div class="level">
+                                <div class="level-item has-text-centered">
+                                    <div>
+                                        <p class="heading">Highest Rating </p>
+                                        <p class="is-4">
+                                            <b-rate icon-pack="fa" v-model="setMaxScore"
+                                                    disabled
+                                                    spaced show-score
+                                                    size="is-medium"></b-rate>
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="level-item has-text-centered">
+                                    <div>
+                                        <p class="heading">Lowest Rating </p>
+                                        <p class="is-4">
+                                            <b-rate icon-pack="fa" v-model="setLowScore"
+                                                    disabled
+                                                    spaced show-score
+                                                    size="is-medium"></b-rate>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div><!--level-->
+
+
                         </div>
                         <div class="box" v-for="item in data" :key="item.category_id">
                             <div class="criteria-header mb-3 container">{{item.category}}</div>
@@ -149,7 +178,8 @@ export default {
 
             instructor: {},
             course: {},
-
+            setMaxScore: 5,
+            setLowScore: 1,
 
         }
     },
@@ -164,7 +194,7 @@ export default {
                         this.getInstructor();
                     }
                     //tiwasonon ni dere..
-                }              
+                }
             })
         },
 
@@ -193,7 +223,7 @@ export default {
 
                 if(res.data[0].status === 'saved'){
                     this.alertSuccess('Successfully saved.');
-                   
+
                 }
 
                 this.btnClass["is-loading"] = false;
