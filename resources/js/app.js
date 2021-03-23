@@ -53,6 +53,10 @@ Vue.component('academic-year', require('./components/administrator/academicyear/
 Vue.component('category', require('./components/administrator/category/Category').default);
 
 
+//ADMINISTRATOR
+Vue.component('login-page', require('./components/administrator/LoginPage.vue').default);
+
+
 
 
 /**

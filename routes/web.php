@@ -50,6 +50,14 @@ Route::post('/change-password', 'Auth\ChangePasswordController@update');
 //ADMINISTRATOR-------
 Route::get('/cpanel-home', 'Administrator\HomeController@index')->name('cpanel-home');
 
+//ADMIN AUTH
+Route::get('/cpanel', 'Administrator\LoginController@index')->name('cpanel');
+
+
+
+
+
+
 //USERS
 Route::resource('/user-uploader' , 'Administrator\UserUploaderController');
 Route::resource('/cpanel-users','UserController');
