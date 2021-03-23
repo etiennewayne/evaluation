@@ -18,8 +18,8 @@
 <body>
 
     <div id="app">
-       
-        <login-page></login-page>
+
+        <panel-login-page></panel-login-page>
 
     </div>
 </body>

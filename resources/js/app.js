@@ -54,7 +54,7 @@ Vue.component('category', require('./components/administrator/category/Category'
 
 
 //ADMINISTRATOR
-Vue.component('login-page', require('./components/administrator/LoginPage.vue').default);
+Vue.component('panel-login-page', require('./components/administrator/PanelLoginPage.vue').default);
 
 
 
