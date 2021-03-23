@@ -126,9 +126,13 @@ Route::get('/ajax/schedule','Student\ScheduleController@ajaxSchedule');
 Route::get('/criteria','Student\CriteriaController@index');
 Route::get('/ajax/criteria','Student\CriteriaController@ajaxCriteria');
 Route::post('/ajax/criteria','Student\CriteriaController@store');
+Route::get('/ajax/instructor','Student\CriteriaController@ajaxInstructor');
+
+
 
 Route::get('/view-rating','Student\ViewRatingController@index');
 Route::get('/ajax/rating','Student\ViewRatingController@ajaxRating');
+
 
 // Route::get('/cor','Student\StudyLoadController@studyload');
 // Route::get('/cor/schedule/{schedid}','Student\StudyLoadController@rate');

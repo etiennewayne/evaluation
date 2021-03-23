@@ -6,6 +6,8 @@ use App\AcademicYear;
 use App\Category;
 use App\Http\Controllers\Controller;
 use App\Rating;
+use App\Schedule;
+
 use App\RatingRate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -89,5 +91,19 @@ class CriteriaController extends Controller
         return Category::where('ay_code',$ay->ay_code)
             ->with(['criteria'])->get();
     }
+
+    public function ajaxInstructor(Request $req){
+
+        $data = DB::connection('registrar_gadtc')
+        ->table('tblsched202')
+        ->join('tblins', 'tblsched202.SchedInsCode', 'tblins.InsCode')
+        ->join('tblsubject', 'SchedSubjCode', 'SubjCode')
+        ->select('InsLName', 'InsFName', 'InsMName', 'InsCode', 'SchedCode', 'SubjName', 'SubjDesc')
+        ->where('SchedCode', $req->schedule)
+        ->get();
+
+        return $data;
+    }
+
 
 }

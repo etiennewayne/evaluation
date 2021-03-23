@@ -23,7 +23,7 @@ class Faculty extends Model
 
     public function schedules()
     {
-        return $this->hasMany('App\Schedule', 'InsCode', 'InsCode');
+        return $this->hasMany('App\Schedule', 'SchedInsCode', 'InsCode');
     }
 
 

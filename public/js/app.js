@@ -2936,6 +2936,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['scheduleCode', 'ayCode'],
   data: function data() {
@@ -2983,7 +2994,9 @@ __webpack_require__.r(__webpack_exports__);
         'button': true,
         'is-primary': true,
         'is-loading': false
-      }
+      },
+      instructor: {},
+      course: {}
     };
   },
   methods: {
@@ -2991,35 +3004,55 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       axios.get('/ajax/criteria').then(function (res) {
-        _this.data = res.data;
+        if (res.data.length > 0) {
+          _this.data = res.data;
+          _this.instructor.code = _this.data[0].SchedInsCode;
+
+          if (_this.instructor.code !== '') {
+            _this.getInstructor();
+          } //tiwasonon ni dere..
+
+        }
+      });
+    },
+    getInstructor: function getInstructor() {
+      var _this2 = this;
+
+      axios.get('ajax/instructor?schedule=' + this.scheduleCode).then(function (res) {
+        if (res.data.length > 0) _this2.instructor = res.data;
+        _this2.instructor.lname = res.data[0].InsLName;
+        _this2.instructor.fname = res.data[0].InsFName;
+        _this2.instructor.mname = res.data[0].InsMName;
+        _this2.course.name = res.data[0].SubjName;
+        _this2.course.desc = res.data[0].SubjDesc;
       });
     },
     submit: function submit() {
-      var _this2 = this;
+      var _this3 = this;
 
       this.btnClass["is-loading"] = true;
       this.fields.schedule_code = this.scheduleCode;
       this.fields.ay_code = this.ayCode;
       axios.post('/ajax/criteria', this.fields).then(function (res) {
-        _this2.errors = {};
+        _this3.errors = {};
 
         if (res.data[0].status === 'saved') {
-          _this2.alertSuccess('Successfully saved.');
+          _this3.alertSuccess('Successfully saved.');
         }
 
-        _this2.btnClass["is-loading"] = false;
+        _this3.btnClass["is-loading"] = false;
       })["catch"](function (err) {
         if (err.response.status === 422) {
-          _this2.errors = err.response.data.errors;
+          _this3.errors = err.response.data.errors;
 
-          if (_this2.errors.schedule_code) {
-            _this2.alertError(_this2.errors.schedule_code[0]);
+          if (_this3.errors.schedule_code) {
+            _this3.alertError(_this3.errors.schedule_code[0]);
           } else {
-            _this2.alertError('Please rate all the criteria');
+            _this3.alertError('Please rate all the criteria');
           }
         }
 
-        _this2.btnClass["is-loading"] = false;
+        _this3.btnClass["is-loading"] = false;
       });
     },
     redirectAfterSaved: function redirectAfterSaved() {
@@ -23842,89 +23875,121 @@ var render = function() {
             _c(
               "div",
               { staticClass: "column is-10 is-offset-1" },
-              _vm._l(_vm.data, function(item) {
-                return _c(
-                  "div",
-                  { key: item.category_id, staticClass: "box" },
-                  [
-                    _c(
-                      "div",
-                      { staticClass: "criteria-header mb-3 container" },
-                      [_vm._v(_vm._s(item.category))]
-                    ),
-                    _vm._v(" "),
-                    _vm._l(item.criteria, function(c) {
-                      return _c(
+              [
+                _c("div", { staticClass: "box" }, [
+                  _c("div", { staticClass: "criteria-header mb-3 container" }, [
+                    _vm._v(
+                      "\n                                INSTRUCTOR INFORMATION\n                            "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", [
+                    _vm._v(
+                      "\n                                Instructor: " +
+                        _vm._s(this.instructor.lname) +
+                        ", " +
+                        _vm._s(this.instructor.fname) +
+                        " " +
+                        _vm._s(this.instructor.mname) +
+                        "\n                            "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", [
+                    _vm._v(
+                      "\n                                Course: " +
+                        _vm._s(this.course.name) +
+                        " - " +
+                        _vm._s(this.course.desc) +
+                        "\n                            "
+                    )
+                  ])
+                ]),
+                _vm._v(" "),
+                _vm._l(_vm.data, function(item) {
+                  return _c(
+                    "div",
+                    { key: item.category_id, staticClass: "box" },
+                    [
+                      _c(
                         "div",
-                        { key: c.criterion_id, staticClass: "columns" },
-                        [
-                          _c("div", { staticClass: "column is-8" }, [
-                            _c("div", { staticClass: "container" }, [
-                              _c("div", { staticClass: "ml-3" }, [
-                                _vm._v(
-                                  "\n                                            " +
-                                    _vm._s(c.criterion) +
-                                    "\n                                        "
-                                )
+                        { staticClass: "criteria-header mb-3 container" },
+                        [_vm._v(_vm._s(item.category))]
+                      ),
+                      _vm._v(" "),
+                      _vm._l(item.criteria, function(c) {
+                        return _c(
+                          "div",
+                          { key: c.criterion_id, staticClass: "columns" },
+                          [
+                            _c("div", { staticClass: "column is-8" }, [
+                              _c("div", { staticClass: "container" }, [
+                                _c("div", { staticClass: "ml-3" }, [
+                                  _vm._v(
+                                    "\n                                            " +
+                                      _vm._s(c.criterion) +
+                                      "\n                                        "
+                                  )
+                                ])
                               ])
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "column" }, [
-                            _c(
-                              "div",
-                              { staticClass: "container" },
-                              [
-                                _c(
-                                  "b-field",
-                                  { attrs: { label: "Rate Me" } },
-                                  [
-                                    _c("b-rate", {
-                                      attrs: {
-                                        "icon-pack": "fa",
-                                        required: "",
-                                        spaced: "",
-                                        "show-score": "",
-                                        size: "is-medium"
-                                      },
-                                      model: {
-                                        value:
-                                          _vm.fields.rate[
-                                            "critid_" + c.criterion_id
-                                          ],
-                                        callback: function($$v) {
-                                          _vm.$set(
-                                            _vm.fields.rate,
-                                            "critid_" + c.criterion_id,
-                                            $$v
-                                          )
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "column" }, [
+                              _c(
+                                "div",
+                                { staticClass: "container" },
+                                [
+                                  _c(
+                                    "b-field",
+                                    { attrs: { label: "Rate Me" } },
+                                    [
+                                      _c("b-rate", {
+                                        attrs: {
+                                          "icon-pack": "fa",
+                                          required: "",
+                                          spaced: "",
+                                          "show-score": "",
+                                          size: "is-medium"
                                         },
-                                        expression:
-                                          "fields.rate['critid_'+c.criterion_id]"
-                                      }
-                                    })
-                                  ],
-                                  1
-                                )
-                              ],
-                              1
-                            )
-                          ])
-                        ]
-                      )
-                    }),
-                    _vm._v(" "),
-                    _c("div", {
-                      staticStyle: {
-                        "background-color": "green",
-                        height: "3px"
-                      }
-                    })
-                  ],
-                  2
-                )
-              }),
-              0
+                                        model: {
+                                          value:
+                                            _vm.fields.rate[
+                                              "critid_" + c.criterion_id
+                                            ],
+                                          callback: function($$v) {
+                                            _vm.$set(
+                                              _vm.fields.rate,
+                                              "critid_" + c.criterion_id,
+                                              $$v
+                                            )
+                                          },
+                                          expression:
+                                            "fields.rate['critid_'+c.criterion_id]"
+                                        }
+                                      })
+                                    ],
+                                    1
+                                  )
+                                ],
+                                1
+                              )
+                            ])
+                          ]
+                        )
+                      }),
+                      _vm._v(" "),
+                      _c("div", {
+                        staticStyle: {
+                          "background-color": "green",
+                          height: "3px"
+                        }
+                      })
+                    ],
+                    2
+                  )
+                })
+              ],
+              2
             )
           ]),
           _vm._v(" "),

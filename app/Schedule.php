@@ -25,7 +25,7 @@ class Schedule extends Model
 
     public function faculty()
     {
-        return $this->hasOne('App\Faculty', 'InsCode', 'InsCode');
+        return $this->hasOne('App\Faculty', 'InsCode', 'SchedInsCode');
     }
 
     public function course()

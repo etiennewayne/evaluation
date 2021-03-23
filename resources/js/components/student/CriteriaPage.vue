@@ -7,7 +7,18 @@
 
                 <div class="columns">
                     <div class="column is-10 is-offset-1">
-
+                        <div class="box">
+                            <div class="criteria-header mb-3 container">
+                                INSTRUCTOR INFORMATION
+                            </div>
+                            <div>
+                                Instructor: {{ this.instructor.lname }}, {{ this.instructor.fname }} {{this.instructor.mname}}
+                            </div>
+                            <div>
+                                Course: {{this.course.name}} - {{this.course.desc}}
+                            </div>
+                            
+                        </div>
                         <div class="box" v-for="item in data" :key="item.category_id">
                             <div class="criteria-header mb-3 container">{{item.category}}</div>
                             <div class="columns" v-for="c in item.criteria" :key="c.criterion_id">
@@ -135,13 +146,42 @@ export default {
                 'is-primary': true,
                 'is-loading': false,
             },
+
+            instructor: {},
+            course: {},
+
+
         }
     },
     methods: {
         getData(){
             axios.get('/ajax/criteria').then(res=>{
-                this.data = res.data;
+                if(res.data.length > 0){
+                    this.data = res.data;
+                    this.instructor.code = this.data[0].SchedInsCode;
+
+                    if(this.instructor.code !== ''){
+                        this.getInstructor();
+                    }
+
+                    //tiwasonon ni dere..
+
+                }
+               
             })
+        },
+
+        getInstructor(){
+            axios.get('ajax/instructor?schedule=' + this.scheduleCode).then(res=>{
+                if(res.data.length > 0)
+                this.instructor = res.data;
+                this.instructor.lname = res.data[0].InsLName;
+                this.instructor.fname = res.data[0].InsFName;
+                this.instructor.mname = res.data[0].InsMName;
+
+                this.course.name = res.data[0].SubjName;
+                this.course.desc = res.data[0].SubjDesc;
+            });
         },
 
 
