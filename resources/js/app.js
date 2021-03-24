@@ -57,6 +57,9 @@ Vue.component('category', require('./components/administrator/category/Category'
 Vue.component('panel-login-page', require('./components/administrator/PanelLoginPage.vue').default);
 Vue.component('panel-home', require('./components/administrator/PanelHome.vue').default);
 
+//Admin report
+Vue.component('faculty-report', require('./components/administrator/report/FacultyReport.vue').default);
+Vue.component('faculty-schedule', require('./components/administrator/report/FacultySchedule.vue').default);
 
 
 

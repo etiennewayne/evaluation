@@ -50,12 +50,17 @@ Route::post('/change-password', 'Auth\ChangePasswordController@update');
 Route::get('/cpanel', 'Administrator\LoginController@index')->name('cpanel-login');
 Route::post('/cpanel', 'Administrator\LoginController@authenticate')->name('cpanel-auth');
 
+
 //ADMINISTRATOR-------
 Route::get('/cpanel-home', 'Administrator\HomeController@index')->name('cpanel-home');
 
 
+//REPORT ADMINISTRATOR
+Route::get('/cpanel-report/faculty-report', 'Administrator\Report\FacultyReportController@index');
+Route::get('/ajax/faculty', 'Administrator\Report\FacultyRatingReportController@ajaxFaculty');
 
-
+Route::get('/cpanel-report/faculty-schedule', 'Administrator\Report\FacultyReportScheduleController@index');
+Route::get('/ajax/faculty-schedule', 'Administrator\Report\FacultyReportScheduleController@ajaxSchedule');
 
 
 
