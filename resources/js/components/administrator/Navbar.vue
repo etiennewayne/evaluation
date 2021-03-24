@@ -19,7 +19,7 @@
                 Criteria
             </b-navbar-item>
             <b-navbar-dropdown label="Reports">
-                <b-navbar-item href="#">
+                <b-navbar-item href="cpanel">
                     Faculty Rating
                 </b-navbar-item>
                 <b-navbar-item href="#">

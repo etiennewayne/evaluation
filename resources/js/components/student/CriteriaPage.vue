@@ -44,7 +44,23 @@
                                         </p>
                                     </div>
                                 </div>
+
                             </div><!--level-->
+
+                            <hr>
+
+                            <div class="legend-container">
+                                <p class="title is-6">LEGENDS</p>
+                                <ul class="legends">
+                                    <li>5 - Outstanding</li>
+                                    <li>4 - Very Satisfactory</li>
+                                    <li>3 - Satisfactory</li>
+                                    <li>2 - UnSatisfactory</li>
+                                    <li>1 - Poor</li>
+                                </ul>
+                            </div>
+
+
 
 
                         </div>
@@ -71,7 +87,7 @@
 <!--                                            <option value="1">1</option>-->
 <!--                                        </b-select>-->
 
-                                        <b-field label="Rate Me">
+                                        <b-field label="Rate me">
                                             <b-rate icon-pack="fa"
                                                     required
                                                     v-model="fields.rate['critid_'+c.criterion_id]"
@@ -279,6 +295,10 @@ export default {
 
     },
 
+    computed: {
+        
+    },
+
     mounted() {
         this.getData();
 
@@ -290,5 +310,30 @@ export default {
     .criteria-header{
         font-weight: bold;
         border-bottom: 3px solid green;
+    }
+
+    .legend-container{
+        padding: 10px;
+    }
+
+    .legends{
+
+    }
+
+    .legends > li{
+        display: inline-block;
+
+        margin: 10px;
+        font-weight: bold;
+    }
+
+
+    @media only screen and (max-width: 600px) {
+        .legends > li{
+            font-weight: bold;
+            display: block;
+
+            margin: 10px;
+        }
     }
 </style>

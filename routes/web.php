@@ -28,8 +28,6 @@ Auth::routes([	'reset' => false,
 
 //Route::get('/registration','RegisterController@index')->//name('login');
 
-
-
 Route::Auth();
 
 Route::get('/', function(){
@@ -47,11 +45,17 @@ Route::post('/change-password', 'Auth\ChangePasswordController@update');
 //Route::post('/mylogout', 'Auth\LogoutController@logout');
 
 
+
+//ADMIN AUTH
+Route::get('/cpanel', 'Administrator\LoginController@index')->name('cpanel-login');
+Route::post('/cpanel', 'Administrator\LoginController@authenticate')->name('cpanel-auth');
+
 //ADMINISTRATOR-------
 Route::get('/cpanel-home', 'Administrator\HomeController@index')->name('cpanel-home');
 
-//ADMIN AUTH
-Route::get('/cpanel', 'Administrator\LoginController@index')->name('cpanel');
+
+
+
 
 
 

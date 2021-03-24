@@ -11,19 +11,14 @@ class HomeController extends Controller
 
 	public function __construct()
     {
-        $this->middleware('auth');
-        $this->middleware('admin');
+        //$this->middleware('auth');
+        $this->middleware('auth:admin');
     }
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
+
     public function index()
     {
         return view('cpanel/cpanel-home');
-		//return view('cpanel/admin-home');
     }
 
 

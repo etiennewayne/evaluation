@@ -21,8 +21,18 @@
   <component name="ChangeListManager">
     <list default="true" id="720635db-fce7-4503-8300-ca514c204a37" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Administrator/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Administrator/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Administrator/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Administrator/LoginController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/Admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/Admin.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/Authenticate.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/Authenticate.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/auth.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/auth.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/administrator/Navbar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/administrator/Navbar.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/administrator/PanelLoginPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/administrator/PanelLoginPage.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/student/CriteriaPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/student/CriteriaPage.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/cpanel/cpanel-home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/cpanel/cpanel-home.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -247,7 +257,9 @@
       <workItem from="1616024466959" duration="15277000" />
       <workItem from="1616063965484" duration="53886000" />
       <workItem from="1616134435674" duration="594000" />
-      <workItem from="1616476137640" duration="7596000" />
+      <workItem from="1616476137640" duration="8834000" />
+      <workItem from="1616543060349" duration="10240000" />
+      <workItem from="1616560113671" duration="4444000" />
     </task>
     <servers />
   </component>
@@ -279,10 +291,10 @@
       <screen x="-1440" y="0" width="1440" height="900" />
     </state>
     <state x="-1112" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1440.860/-1440.0.1440.900@-1440.0.1440.900" timestamp="1616082621289" />
-    <state x="-990" y="204" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1616120374936">
+    <state x="-990" y="204" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1616555216829">
       <screen x="-1440" y="0" width="1440" height="900" />
     </state>
-    <state x="-990" y="204" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1440.860/-1440.0.1440.900@-1440.0.1440.900" timestamp="1616120374936" />
+    <state x="-990" y="204" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1440.860/-1440.0.1440.900@-1440.0.1440.900" timestamp="1616555216829" />
     <state x="-864" y="369" key="NewPhpFileDialog" timestamp="1616081759609">
       <screen x="-1440" y="0" width="1440" height="900" />
     </state>
@@ -295,18 +307,18 @@
       <screen x="-1440" y="0" width="1440" height="900" />
     </state>
     <state x="-894" y="359" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1440.860/-1440.0.1440.900@-1440.0.1440.900" timestamp="1616037627481" />
-    <state x="185" y="72" width="1129" height="725" key="dock-window-1" timestamp="1616072404018">
+    <state x="31" y="102" width="1062" height="714" key="dock-window-1" timestamp="1616554545547">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
-    <state x="185" y="72" width="1129" height="725" key="dock-window-1/0.0.1440.860/-1440.0.1440.900@-1440.0.1440.900" timestamp="1616072404018" />
+    <state x="31" y="102" width="1062" height="714" key="dock-window-1/0.0.1440.860/-1440.0.1440.900@-1440.0.1440.900" timestamp="1616554545547" />
     <state x="-1064" y="205" key="run.anything.popup" timestamp="1616027493640">
       <screen x="-1440" y="0" width="1440" height="900" />
     </state>
     <state x="-1064" y="205" key="run.anything.popup/0.0.1440.860/-1440.0.1440.900@-1440.0.1440.900" timestamp="1616027493640" />
-    <state x="383" y="180" width="672" height="678" key="search.everywhere.popup" timestamp="1616483812846">
-      <screen x="0" y="0" width="1440" height="860" />
+    <state x="-1057" y="188" width="672" height="710" key="search.everywhere.popup" timestamp="1616549900165">
+      <screen x="-1440" y="0" width="1440" height="900" />
     </state>
-    <state x="-1057" y="188" width="672" height="710" key="search.everywhere.popup/0.0.1440.860/-1440.0.1440.900@-1440.0.1440.900" timestamp="1616121770901" />
+    <state x="-1057" y="188" width="672" height="710" key="search.everywhere.popup/0.0.1440.860/-1440.0.1440.900@-1440.0.1440.900" timestamp="1616549900165" />
     <state x="383" y="180" width="672" height="678" key="search.everywhere.popup/0.0.1440.860/-1440.0.1440.900@0.0.1440.860" timestamp="1616483812846" />
   </component>
 </project>
