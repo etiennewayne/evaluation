@@ -60,6 +60,7 @@ Vue.component('panel-home', require('./components/administrator/PanelHome.vue').
 //Admin report
 Vue.component('faculty-report', require('./components/administrator/report/FacultyReport.vue').default);
 Vue.component('faculty-schedule', require('./components/administrator/report/FacultySchedule.vue').default);
+Vue.component('faculty-rating', require('./components/administrator/report/FacultyRating.vue').default);
 
 
 

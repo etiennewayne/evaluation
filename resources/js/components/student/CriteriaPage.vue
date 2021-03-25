@@ -15,34 +15,29 @@
                                 Instructor: {{ this.instructor.lname }}, {{ this.instructor.fname }} {{this.instructor.mname}}
                             </div>
                             <div>
-                                Course: {{this.course.name}} - {{this.course.desc}}
+                                Course: {{this.course.schedCode}} {{this.course.name}} - {{this.course.desc}}
                             </div>
 
                             <hr>
 
-                            <div class="level">
-                                <div class="level-item has-text-centered">
-                                    <div>
-                                        <p class="heading">Highest Rating </p>
-                                        <p class="is-4">
-                                            <b-rate icon-pack="fa" v-model="setMaxScore"
-                                                    disabled
-                                                    spaced show-score
-                                                    size="is-medium"></b-rate>
-                                        </p>
-                                    </div>
-                                </div>
 
-                                <div class="level-item has-text-centered">
-                                    <div>
-                                        <p class="heading">Lowest Rating </p>
-                                        <p class="is-4">
-                                            <b-rate icon-pack="fa" v-model="setLowScore"
-                                                    disabled
-                                                    spaced show-score
-                                                    size="is-medium"></b-rate>
-                                        </p>
-                                    </div>
+                            <div class="legend-container">
+                                <p class="title is-6">INSTRUCTION:</p>
+                                <div style="margin: 0 20px;">
+
+                                    Rate the instructor with five(5) stars(
+                                    <span><i class="fa fa-star"></i></span>
+                                    <span><i class="fa fa-star"></i></span>
+                                    <span><i class="fa fa-star"></i></span>
+                                    <span><i class="fa fa-star"></i></span>
+                                    <span><i class="fa fa-star"></i></span>) as the highest and one(1)(
+                                    <span><i class="fa fa-star"></i></span>
+                                    <span><i class="fa fa-star-o"></i></span>
+                                    <span><i class="fa fa-star-o"></i></span>
+                                    <span><i class="fa fa-star-o"></i></span>
+                                    <span><i class="fa fa-star-o"></i></span>
+                                    )as the lowest.
+                                    Legend is further provided for your rating reference.
                                 </div>
 
                             </div><!--level-->
@@ -50,7 +45,7 @@
                             <hr>
 
                             <div class="legend-container">
-                                <p class="title is-6">LEGENDS</p>
+                                <p class="title is-6">LEGEND:</p>
                                 <ul class="legends">
                                     <li>5 - Outstanding</li>
                                     <li>4 - Very Satisfactory</li>
@@ -222,6 +217,7 @@ export default {
                 this.instructor.fname = res.data[0].InsFName;
                 this.instructor.mname = res.data[0].InsMName;
 
+                this.course.schedCode = res.data[0].SchedCode;
                 this.course.name = res.data[0].SubjName;
                 this.course.desc = res.data[0].SubjDesc;
             });

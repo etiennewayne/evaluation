@@ -21,11 +21,18 @@
   <component name="ChangeListManager">
     <list default="true" id="720635db-fce7-4503-8300-ca514c204a37" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Administrator/Report/FacultyRatingReportController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Administrator/Report/FacultyRatingReportController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Administrator/Report/FacultyReportScheduleController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Administrator/Report/FacultyReportScheduleController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Administrator/ReportResultController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Administrator/ReportResultController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/administrator/Navbar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/administrator/Navbar.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/administrator/report/FacultyReport.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/administrator/report/FacultyReport.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/administrator/report/FacultySchedule.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/administrator/report/FacultySchedule.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/student/CriteriaPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/student/CriteriaPage.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/cpanel/report/faculty-rating.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/cpanel/report/faculty-rating.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sample student.txt" beforeDir="false" afterPath="$PROJECT_DIR$/sample student.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -253,6 +260,8 @@
       <workItem from="1616476137640" duration="8834000" />
       <workItem from="1616543060349" duration="10240000" />
       <workItem from="1616560113671" duration="13588000" />
+      <workItem from="1616633981607" duration="759000" />
+      <workItem from="1616635257388" duration="10308000" />
     </task>
     <servers />
   </component>
@@ -278,48 +287,5 @@
     <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
       <collection />
     </option>
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="-944" y="240" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1616574611030">
-      <screen x="-1440" y="0" width="1440" height="900" />
-    </state>
-    <state x="-944" y="240" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1440.860/-1440.0.1440.900@-1440.0.1440.900" timestamp="1616574611030" />
-    <state x="-1112" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1616082621289">
-      <screen x="-1440" y="0" width="1440" height="900" />
-    </state>
-    <state x="-1112" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1440.860/-1440.0.1440.900@-1440.0.1440.900" timestamp="1616082621289" />
-    <state x="-990" y="204" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1616575271301">
-      <screen x="-1440" y="0" width="1440" height="900" />
-    </state>
-    <state x="-990" y="204" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1440.860/-1440.0.1440.900@-1440.0.1440.900" timestamp="1616575271301" />
-    <state x="-864" y="369" key="NewPhpFileDialog" timestamp="1616575045664">
-      <screen x="-1440" y="0" width="1440" height="900" />
-    </state>
-    <state x="-864" y="369" key="NewPhpFileDialog/0.0.1440.860/-1440.0.1440.900@-1440.0.1440.900" timestamp="1616575045664" />
-    <state width="498" height="446" key="SwitcherDM" timestamp="1616575609157">
-      <screen x="-1440" y="0" width="1440" height="900" />
-    </state>
-    <state width="498" height="446" key="SwitcherDM/0.0.1440.860/-1440.0.1440.900@-1440.0.1440.900" timestamp="1616575609157" />
-    <state x="-894" y="359" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1616037627481">
-      <screen x="-1440" y="0" width="1440" height="900" />
-    </state>
-    <state x="-894" y="359" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1440.860/-1440.0.1440.900@-1440.0.1440.900" timestamp="1616037627481" />
-    <state x="31" y="102" width="1062" height="714" key="dock-window-1" timestamp="1616554545547">
-      <screen x="0" y="0" width="1440" height="860" />
-    </state>
-    <state x="31" y="102" width="1062" height="714" key="dock-window-1/0.0.1440.860/-1440.0.1440.900@-1440.0.1440.900" timestamp="1616554545547" />
-    <state x="-1064" y="205" key="run.anything.popup" timestamp="1616575545272">
-      <screen x="-1440" y="0" width="1440" height="900" />
-    </state>
-    <state x="-1064" y="205" key="run.anything.popup/0.0.1440.860/-1440.0.1440.900@-1440.0.1440.900" timestamp="1616575545272" />
-    <state x="-1057" y="188" width="672" height="710" key="search.everywhere.popup" timestamp="1616575253376">
-      <screen x="-1440" y="0" width="1440" height="900" />
-    </state>
-    <state x="-1057" y="188" width="672" height="710" key="search.everywhere.popup/0.0.1440.860/-1440.0.1440.900@-1440.0.1440.900" timestamp="1616575253376" />
-    <state x="383" y="180" width="672" height="678" key="search.everywhere.popup/0.0.1440.860/-1440.0.1440.900@0.0.1440.860" timestamp="1616483812846" />
-    <state x="-998" y="354" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1616572800457">
-      <screen x="-1440" y="0" width="1440" height="900" />
-    </state>
-    <state x="-998" y="354" key="vcs.readOnlyHandler.ReadOnlyStatusDialog/0.0.1440.860/-1440.0.1440.900@-1440.0.1440.900" timestamp="1616572800457" />
   </component>
 </project>

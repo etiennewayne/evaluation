@@ -57,10 +57,14 @@ Route::get('/cpanel-home', 'Administrator\HomeController@index')->name('cpanel-h
 
 //REPORT ADMINISTRATOR
 Route::get('/cpanel-report/faculty-report', 'Administrator\Report\FacultyReportController@index');
-Route::get('/ajax/faculty', 'Administrator\Report\FacultyRatingReportController@ajaxFaculty');
+Route::get('/ajax/faculty', 'Administrator\Report\FacultyReportController@ajaxFaculty');
 
 Route::get('/cpanel-report/faculty-schedule', 'Administrator\Report\FacultyReportScheduleController@index');
 Route::get('/ajax/faculty-schedule', 'Administrator\Report\FacultyReportScheduleController@ajaxSchedule');
+
+//rating
+Route::get('/cpanel-report/faculty-rating', 'Administrator\Report\FacultyRatingReportController@index');
+Route::get('/ajax/faculty-rating', 'Administrator\Report\FacultyRatingReportController@ajaxRating');
 
 
 

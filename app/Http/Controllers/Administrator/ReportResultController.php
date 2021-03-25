@@ -44,7 +44,7 @@ class ReportResultController extends Controller
 
         $result = DB::select('call report_faculty_rating_schedule(?, ?)', array($fcode->faculty_code, $ay->ay_id));
 
-        $final = DB::select('call report_faculty_rating(?, ?)', array($fcode->faculty_code, $ay->ay_id));
+            $final = DB::select('call report_faculty_rating(?, ?)', array($fcode->faculty_code, $ay->ay_id));
 
         $comments = DB::select('call report_comments(?, ?)', array($fcode->faculty_code, $ay->ay_id));
 

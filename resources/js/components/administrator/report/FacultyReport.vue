@@ -4,6 +4,7 @@
             <div class="container">
                 <div class="columns">
                     <div class="column is-8 is-offset-2">
+                        <div class="title is-4 table-header">FACULTY</div>
                         <b-field label="Page">
                             <b-select v-model="perPage" @input="setPerPage">
                                 <option value="5">5 per page</option>
@@ -14,10 +15,8 @@
                                 <option value="40">40 per page</option>
                             </b-select>
 
-
-                            <b-input type="text" v-model="lastname" placeholder="Lastname"></b-input>
+                            <b-input type="text" v-model="lastname" @keyup.native.enter="loadAsyncData" placeholder="Lastname"></b-input>
                             <button class="button" @click="loadAsyncData">SEARCH</button>
-
                         </b-field>
 
                         <b-table
@@ -55,7 +54,7 @@
 
                             <b-table-column field="ay_id" label="Action" v-slot="props">
                                 <div class="is-flex">
-                                    <b-button outlined class="button is-small is-primary mr-1" tag="a" icon-right="calendar" icon-pack="fa" @click="getSchedule(props.row.InsCode)">SCHEDULE</b-button>
+                                    <b-button outlined class="button is-small is-primary mr-1" tag="a" icon-right="star" icon-pack="fa" @click="getRating(props.row.InsCode)">RATING</b-button>
                                 </div>
                             </b-table-column>
 
@@ -136,9 +135,12 @@ export default {
             this.loadAsyncData()
         },
 
-        getSchedule(data_id){
-            window.location = '/cpanel-report/faculty-schedule?code='+data_id;
+        getRating(data_id){
+            window.location = '/cpanel-report/faculty-rating?code='+data_id;
         },
+
+
+
 
     },
 
@@ -149,5 +151,8 @@ export default {
 </script>
 
 <style scoped>
-
+    .table-header{
+        margin: auto;
+        text-align: center;
+    }
 </style>

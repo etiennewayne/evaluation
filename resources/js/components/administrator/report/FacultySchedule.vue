@@ -4,6 +4,7 @@
             <div class="container">
                 <div class="columns">
                     <div class="column is-8 is-offset-2">
+                        <div class="title is-4 table-header">FACULTY SCHEDULE</div>
                         <b-field label="Page">
                             <b-select v-model="perPage" @input="setPerPage">
                                 <option value="5">5 per page</option>
@@ -51,7 +52,7 @@
 
                             <b-table-column field="ay_id" label="Action" v-slot="props">
                                 <div class="is-flex">
-                                    <b-button outlined class="button is-small is-primary mr-1" tag="a" icon-right="star" icon-pack="fa" @click="getSchedule(props.row.InsCode)">RATING</b-button>
+                                    <b-button outlined class="button is-small is-primary mr-1" tag="a" icon-right="star" icon-pack="fa" @click="getRating(props.row.SchedCode)">RATING</b-button>
                                 </div>
                             </b-table-column>
 
@@ -130,9 +131,9 @@ export default {
             this.loadAsyncData()
         },
 
-        getSchedule(data_id){
-            window.location = '/cpanel-report/faculty-schedule?code='+data_id;
-        },
+        getRating(schedcode){
+            return window.location = '/cpanel-report/faculty-rating?code=' +this.code+'&schedule='+schedcode;
+        }
 
     },
 
