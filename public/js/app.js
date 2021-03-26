@@ -3031,33 +3031,79 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['code'],
   data: function data() {
     return {
       data: {},
+      ratings: {},
       aydesc: '',
       instructor: '',
       institute: '',
-      noOfStudent: ''
+      noOfStudent: '',
+      finalRating: 0,
+      legend: ''
     };
   },
   methods: {
-    getRating: function getRating() {
+    getRater: function getRater() {
       var _this = this;
 
-      axios.get('/ajax/faculty-rating?code=' + this.code).then(function (res) {
+      axios.get('/ajax/faculty-rater?code=' + this.code).then(function (res) {
         if (res.data.length > 0) {
           _this.data = res.data;
           _this.aydesc = _this.data[0].ay_desc;
           _this.instructor = _this.data[0].InsLName + ', ' + _this.data[0].InsFName + ' ' + _this.data[0].InsMName;
           _this.institute = _this.data[0].InsDept;
-          _this.noOfStudent = _this.data[0].no_of_raters + '/' + _this.data[0].no_students;
+          _this.noOfStudent = _this.percentageForm(_this.data[0].total_rated, _this.data[0].total_raters);
         }
       });
+    },
+    getRating: function getRating() {
+      var _this2 = this;
+
+      axios.get('/ajax/faculty-rating?code=' + this.code).then(function (res) {
+        if (res.data.length > 0) {
+          _this2.ratings = res.data;
+
+          if (res.data.length > 0) {} //this.finalRating = this.data[0].
+
+        }
+      });
+    },
+    percentageForm: function percentageForm(rated, raters) {
+      var p = rated / raters * 100;
+      return rated + '/' + raters + ' (' + Math.round(p * 100) / 100 + '%)';
     }
   },
   mounted: function mounted() {
+    this.getRater();
     this.getRating();
   }
 });
@@ -21503,7 +21549,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, "\n.header[data-v-30c740f3]{\n    display: flex;\n    justify-content: center;\n    margin-bottom: 5px;\n}\n.header-text[data-v-30c740f3]{\n    text-align: center;\n    font-weight: bold;\n}\n.school-header[data-v-30c740f3]{\n    display: flex;\n    justify-content: center;\n    flex-direction: column;\n}\n.mybox[data-v-30c740f3]{\n    width: 100%;\n}\n.rating-table > th[data-v-30c740f3]{\n    font-size: 8px;\n}\n@media only screen and (max-width: 640px) {\nbody[data-v-30c740f3] {\n        background-color: lightblue;\n}\n}\n\n\n\n", ""]);
+exports.push([module.i, "\n.header[data-v-30c740f3]{\n    display: flex;\n    justify-content: center;\n    margin-bottom: 5px;\n}\n.header-text[data-v-30c740f3]{\n    text-align: center;\n    font-weight: bold;\n}\n.school-header[data-v-30c740f3]{\n    display: flex;\n    justify-content: center;\n    flex-direction: column;\n}\n.mybox[data-v-30c740f3]{\n    width: 100%;\n}\n@media print {\n.rating-table thead tr th[data-v-30c740f3] {\n        font-size: 12px;\n}\n.rating-table thead tr th[data-v-30c740f3]:nth-child(0) {\n        font-size: 9px;\n        width: 120px;\n}\n}\n\n\n\n", ""]);
 
 // exports
 
@@ -24749,68 +24795,91 @@ var render = function() {
         _vm._v(" "),
         _c("div", { staticClass: "mybox" }, [
           _c("div", { staticClass: "is-flex is-flex-direction-column" }, [
-            _c("div", [_vm._v(" INSTRUCTOR :" + _vm._s(this.instructor))]),
+            _c("div", [
+              _c("strong", [_vm._v("INSTRUCTOR:")]),
+              _vm._v(" " + _vm._s(this.instructor))
+            ]),
             _vm._v(" "),
-            _c("div", [_vm._v("INSTITUTE: " + _vm._s(this.institute))]),
+            _c("div", [
+              _c("strong", [_vm._v("INSTITUTE:")]),
+              _vm._v(" " + _vm._s(this.institute))
+            ]),
             _vm._v(" "),
-            _c("div", [_vm._v("NO OF STUDENTS: " + _vm._s(this.noOfStudent))])
+            _c("div", [
+              _c("strong", [_vm._v("NO OF STUDENTS:")]),
+              _vm._v(" " + _vm._s(this.noOfStudent))
+            ])
           ])
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "mybox" }, [
-          _c("div", { staticClass: "is-flex is-flex-direction-column" }, [
-            _c(
-              "table",
-              {
-                staticClass:
-                  "table is-bordered is-striped is-narrow is-hoverable is-fullwidth rating-table"
-              },
-              [
-                _vm._m(1),
-                _vm._v(" "),
+        _c("div", { staticClass: "columns" }, [
+          _c("div", { staticClass: "column" }, [
+            _c("div", { staticClass: "mybox" }, [
+              _c("div", { staticClass: "is-flex is-flex-direction-column" }, [
                 _c(
-                  "tbody",
-                  _vm._l(this.data, function(item) {
-                    return _c("tr", { key: item.id }, [
-                      _c("td", [_vm._v(_vm._s(item.SubjName))]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(item.no_of_raters))]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _vm._v(
-                          _vm._s(Math.round(item.course_design * 100) / 100)
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _vm._v(_vm._s(Math.round(item.content * 100) / 100))
-                      ]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _vm._v(_vm._s(Math.round(item.process * 100) / 100))
-                      ]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _vm._v(_vm._s(Math.round(item.outcomes * 100) / 100))
-                      ]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _vm._v(
-                          _vm._s(Math.round(item.personal_quality * 100) / 100)
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _vm._v(
-                          _vm._s(Math.round(item.avg_category * 100) / 100)
-                        )
-                      ])
-                    ])
-                  }),
-                  0
+                  "table",
+                  {
+                    staticClass:
+                      "table is-bordered is-striped is-narrow is-hoverable is-fullwidth rating-table"
+                  },
+                  [
+                    _vm._m(1),
+                    _vm._v(" "),
+                    _c(
+                      "tbody",
+                      _vm._l(this.data, function(item) {
+                        return _c("tr", { key: item.id }, [
+                          _c("td", [_vm._v(_vm._s(item.SchedCode))]),
+                          _vm._v(" "),
+                          _c("td", [_vm._v(_vm._s(item.SubjName))]),
+                          _vm._v(" "),
+                          _c("td", [
+                            _vm._v(
+                              _vm._s(
+                                _vm.percentageForm(
+                                  item.no_of_raters,
+                                  item.no_students
+                                )
+                              )
+                            )
+                          ])
+                        ])
+                      }),
+                      0
+                    )
+                  ]
                 )
-              ]
-            )
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "column" }, [
+            _c("div", { staticClass: "mybox" }, [
+              _c("div", { staticClass: "is-flex is-flex-direction-column" }, [
+                _c(
+                  "table",
+                  {
+                    staticClass:
+                      "table is-bordered is-striped is-narrow is-hoverable is-fullwidth rating-table"
+                  },
+                  [
+                    _vm._m(2),
+                    _vm._v(" "),
+                    _c(
+                      "tbody",
+                      _vm._l(this.ratings, function(item) {
+                        return _c("tr", { key: item.id }, [
+                          _c("td", [_vm._v(_vm._s(item.category))]),
+                          _vm._v(" "),
+                          _c("td", [_vm._v(_vm._s(item.avrg))])
+                        ])
+                      }),
+                      0
+                    )
+                  ]
+                )
+              ])
+            ])
           ])
         ])
       ])
@@ -24848,21 +24917,23 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("thead", [
       _c("tr", [
-        _c("th", { attrs: { width: "150" } }, [_vm._v("Course")]),
+        _c("th", [_vm._v("SCHEDULE CODE")]),
         _vm._v(" "),
-        _c("th", [_vm._v("No of Raters")]),
+        _c("th", [_vm._v("COURSE")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Course Design")]),
+        _c("th", [_vm._v("RATERS")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("CATEGORY")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Content")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Process")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Outcomes")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Personal Qualities and Professionalism")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Assessment")])
+        _c("th", [_vm._v("AVERAGE RATE")])
       ])
     ])
   }

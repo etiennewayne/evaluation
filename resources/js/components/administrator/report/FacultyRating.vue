@@ -24,43 +24,69 @@
 
                 <div class="mybox">
                     <div class="is-flex is-flex-direction-column">
-                        <div> INSTRUCTOR :{{this.instructor }}</div>
-                        <div>INSTITUTE: {{ this.institute }}</div>
-                        <div>NO OF STUDENTS: {{ this.noOfStudent }}</div>
-                    </div>
-
-                </div>
-
-                <div class="mybox">
-                    <div class="is-flex is-flex-direction-column">
-                        <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth rating-table">
-                            <thead>
-                                <tr>
-                                    <th width="150">Course</th>
-                                    <th>No of Raters</th>
-                                    <th>Course Design</th>
-                                    <th>Content</th>
-                                    <th>Process</th>
-                                    <th>Outcomes</th>
-                                    <th>Personal Qualities and Professionalism</th>
-                                    <th>Assessment</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr v-for="item in this.data" :key="item.id">
-                                    <td>{{ item.SubjName }}</td>
-                                    <td>{{ item.no_of_raters }}</td>
-                                    <td>{{ Math.round(item.course_design * 100) / 100 }}</td>
-                                    <td>{{ Math.round(item.content * 100) / 100 }}</td>
-                                    <td>{{ Math.round(item.process * 100) / 100 }}</td>
-                                    <td>{{ Math.round(item.outcomes * 100)/ 100 }}</td>
-                                    <td>{{ Math.round(item.personal_quality * 100) / 100 }}</td>
-                                    <td>{{ Math.round(item.avg_category * 100) / 100 }}</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <div><strong>INSTRUCTOR:</strong> {{this.instructor }}</div>
+                        <div><strong>INSTITUTE:</strong> {{ this.institute }}</div>
+                        <div><strong>NO OF STUDENTS:</strong> {{ this.noOfStudent }}</div>
                     </div>
                 </div>
+
+                <div class="columns">
+                    <div class="column">
+                        <div class="mybox">
+                            <div class="is-flex is-flex-direction-column">
+                                <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth rating-table">
+                                    <thead>
+                                        <tr>
+                                            <th>SCHEDULE CODE</th>
+                                            <th>COURSE</th>
+                                            <th>RATERS</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr v-for="item in this.data" :key="item.id">
+                                            <td>{{ item.SchedCode }}</td>
+                                            <td>{{ item.SubjName }}</td>
+                                            <td>{{ percentageForm(item.no_of_raters, item.no_students) }}</td>
+                                        
+                                        </tr>
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!--TABLE FOR RATING-->
+                    <div class="column">
+                        <div class="mybox">
+                            <div class="is-flex is-flex-direction-column">
+                                <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth rating-table">
+                                    <thead>
+                                        <tr>
+                                            <th>CATEGORY</th>
+                                            <th>AVERAGE RATE</th>
+                                            
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr v-for="item in this.ratings" :key="item.id">
+                                            <td>{{ item.category }}</td>
+                                            <td>{{ item.avrg }}</td>
+                                        </tr>
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        
+                    </div>
+
+                </div><!--clumns-->
+
+                
+                
+                
 
 
             </div>
@@ -74,18 +100,23 @@ export default {
     data(){
         return{
             data: {},
+            ratings: {},
+
             aydesc: '',
 
             instructor: '',
             institute: '',
             noOfStudent: '',
 
+            finalRating: 0,
+            legend: '',
+
 
         }
     },
     methods: {
-        getRating(){
-            axios.get('/ajax/faculty-rating?code='+this.code).then(res=>{
+        getRater(){
+            axios.get('/ajax/faculty-rater?code='+this.code).then(res=>{
 
                 if(res.data.length > 0){
                     this.data = res.data;
@@ -94,12 +125,37 @@ export default {
                     this.instructor = this.data[0].InsLName + ', ' + this.data[0].InsFName + ' ' + this.data[0].InsMName;
                     this.institute = this.data[0].InsDept;
 
-                    this.noOfStudent = this.data[0].no_of_raters + '/'+this.data[0].no_students;
+                    this.noOfStudent =  this.percentageForm(this.data[0].total_rated, this.data[0].total_raters);
                 }
             })
+        },
+
+        getRating(){
+            axios.get('/ajax/faculty-rating?code='+this.code).then(res=>{
+
+                if(res.data.length > 0){
+                    this.ratings = res.data;
+
+                    if(res.data.length > 0){
+
+                    }
+
+        
+                    //this.finalRating = this.data[0].
+
+                }
+            })
+        },
+
+
+        percentageForm(rated, raters){
+            let p = (rated/raters) * 100;
+            return rated + '/'+raters + ' ('+Math.round(p * 100) /100 + '%)';
         }
     },
     mounted() {
+        
+        this.getRater();
         this.getRating();
     }
 }
@@ -127,13 +183,16 @@ export default {
         width: 100%;
     }
 
-    .rating-table > th{
-        font-size: 8px;
-    }
+    
 
-    @media only screen and (max-width: 640px) {
-        body {
-            background-color: lightblue;
+    @media print {
+        .rating-table thead tr th {
+            font-size: 12px;
+        }
+
+        .rating-table thead tr th:nth-child(0) {
+            font-size: 9px;
+            width: 120px;
         }
     }
 

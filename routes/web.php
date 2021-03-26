@@ -64,8 +64,8 @@ Route::get('/ajax/faculty-schedule', 'Administrator\Report\FacultyReportSchedule
 
 //rating
 Route::get('/cpanel-report/faculty-rating', 'Administrator\Report\FacultyRatingReportController@index');
+Route::get('/ajax/faculty-rater', 'Administrator\Report\FacultyRatingReportController@ajaxRater');
 Route::get('/ajax/faculty-rating', 'Administrator\Report\FacultyRatingReportController@ajaxRating');
-
 
 
 

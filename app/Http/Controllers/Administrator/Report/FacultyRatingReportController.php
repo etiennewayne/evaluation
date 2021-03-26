@@ -38,7 +38,18 @@ class FacultyRatingReportController extends Controller
         $code = $req->code;
         $ay_code = $ay->ay_code;
 
-       $data = DB::select('call report_faculty_rating_schedule(?, ?)', array($code, $ay_code));
+        //$data = DB::select('call report_faculty_rating_schedule(?, ?)', array($code, $ay_code));
+        $data = DB::select('call report_rating_per_category(?, ?)', array($code, $ay_code));
+        return $data;
+    }
+
+    public function ajaxRater(Request $req){
+
+        $ay = AcademicYear::where('active', 1)->first();
+        $code = $req->code;
+        $ay_code = $ay->ay_code;
+        $data = $data = DB::select('call report_faculty_rating_schedule(?, ?)', array($code, $ay_code));
+
         return $data;
     }
 
