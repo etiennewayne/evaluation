@@ -3115,12 +3115,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['code'],
   data: function data() {
@@ -21595,7 +21589,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.wrapper[data-v-29a807bd]{\r\n    margin-top: -5rem;\r\n    display: flex;\r\n    justify-content: center;\r\n\r\n    height: 100vh;\r\n    align-items: center;\n}\r\n\r\n/*.login-panel{*/\r\n/*    height: 500px;*/\r\n/*    width: 900px;*/\r\n\r\n/*    border-radius: 10px;*/\r\n\r\n/*    -webkit-box-shadow: 0 10px 6px -6px #777;*/\r\n/*    -moz-box-shadow: 0 10px 6px -6px #777;*/\r\n/*    box-shadow: 5px 10px 6px -6px #b0b0b0;*/\r\n\r\n/*}*/\n.controls-panel[data-v-29a807bd]{\r\n    padding: 10px;\r\n    margin-top: 10px;\n}\n.login-header[data-v-29a807bd]{\r\n    font-size: large;\r\n    font-weight: bold;\n}\n.right-header[data-v-29a807bd]{\r\n    font-size: large;\r\n    font-weight: bold;\r\n    text-align: center;\n}\n.vertical-line[data-v-29a807bd]{\r\n    border-left: 1px solid green;\n}\n@media only screen and (max-width: 768px) {\n.vertical-line[data-v-29a807bd]{\r\n        border-left: white;\r\n        border-top: 1px solid green;\n}\n.right-header-subtitle[data-v-29a807bd]{\r\n\r\n        text-align: center;\n}\n.expand-mobile[data-v-29a807bd]{\r\n        width: 100%;\n}\n}\r\n\r\n\r\n", ""]);
+exports.push([module.i, "\n.wrapper[data-v-29a807bd]{\n    margin-top: -5rem;\n    display: flex;\n    justify-content: center;\n\n    height: 100vh;\n    align-items: center;\n}\n\n/*.login-panel{*/\n/*    height: 500px;*/\n/*    width: 900px;*/\n\n/*    border-radius: 10px;*/\n\n/*    -webkit-box-shadow: 0 10px 6px -6px #777;*/\n/*    -moz-box-shadow: 0 10px 6px -6px #777;*/\n/*    box-shadow: 5px 10px 6px -6px #b0b0b0;*/\n\n/*}*/\n.controls-panel[data-v-29a807bd]{\n    padding: 10px;\n    margin-top: 10px;\n}\n.login-header[data-v-29a807bd]{\n    font-size: large;\n    font-weight: bold;\n}\n.right-header[data-v-29a807bd]{\n    font-size: large;\n    font-weight: bold;\n    text-align: center;\n}\n.vertical-line[data-v-29a807bd]{\n    border-left: 1px solid green;\n}\n@media only screen and (max-width: 768px) {\n.vertical-line[data-v-29a807bd]{\n        border-left: white;\n        border-top: 1px solid green;\n}\n.right-header-subtitle[data-v-29a807bd]{\n\n        text-align: center;\n}\n.expand-mobile[data-v-29a807bd]{\n        width: 100%;\n}\n}\n\n\n", ""]);
 
 // exports
 
@@ -40345,8 +40339,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\eshen\Desktop\Github\evaluation\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\eshen\Desktop\Github\evaluation\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\Wayne\Documents\GitHub\evaluation\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\Wayne\Documents\GitHub\evaluation\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
