@@ -3057,6 +3057,70 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['code'],
   data: function data() {
@@ -3068,43 +3132,82 @@ __webpack_require__.r(__webpack_exports__);
       institute: '',
       noOfStudent: '',
       finalRating: 0,
-      legend: ''
+      legend: '',
+      suggestions: {},
+      itemsPerRow: 2,
+      signatories: {},
+      signHeader: [],
+      signName: [],
+      signDesignation: [],
+      signPath: [],
+      groupSignature: {
+        'group-signature': true
+      }
     };
   },
   methods: {
     getRater: function getRater() {
       var _this = this;
 
-      axios.get('/ajax/faculty-rater?code=' + this.code).then(function (res) {
-        if (res.data.length > 0) {
-          _this.data = res.data;
+      axios.all([axios.get('/ajax/faculty-rater?code=' + this.code), axios.get('/ajax/faculty-suggestion?code=' + this.code), axios.get('/ajax/faculty-rating?code=' + this.code), axios.get('/ajax/signatory')]).then(axios.spread(function () {
+        for (var _len = arguments.length, res = new Array(_len), _key = 0; _key < _len; _key++) {
+          res[_key] = arguments[_key];
+        }
+
+        if (res[0].data.length > 0) {
+          _this.data = res[0].data;
           _this.aydesc = _this.data[0].ay_desc;
           _this.instructor = _this.data[0].InsLName + ', ' + _this.data[0].InsFName + ' ' + _this.data[0].InsMName;
           _this.institute = _this.data[0].InsDept;
           _this.noOfStudent = _this.percentageForm(_this.data[0].total_rated, _this.data[0].total_raters);
         }
-      });
-    },
-    getRating: function getRating() {
-      var _this2 = this;
 
-      axios.get('/ajax/faculty-rating?code=' + this.code).then(function (res) {
-        if (res.data.length > 0) {
-          _this2.ratings = res.data;
-
-          if (res.data.length > 0) {} //this.finalRating = this.data[0].
-
+        if (res[1].data.length > 0) {
+          _this.suggestions = res[1].data;
         }
-      });
+
+        if (res[2].data.length > 0) {
+          _this.ratings = res[2].data;
+          _this.finalRating = _this.ratings[0].total_avg;
+          _this.legend = _this.ratings[0].legend;
+        }
+
+        if (res[3].data.length > 0) {
+          _this.signatories = res[3].data; // this.signHeader[0] = this.signatories[0].signatory_header;
+          // this.signHeader[1] = this.signatories[1].signatory_header;
+          // this.signName[0] = this.signatories[0].name;
+          // this.signName[1] = this.signatories[1].name;
+          // this.signPath[0] = this.signatories[0].sign_path;
+          // this.signPath[1] = this.signatories[1].sign_path;
+        }
+      }));
+    },
+    chunk: function chunk(arr, len) {
+      var chunks = [];
+      var i = 0;
+      var n = arr.length;
+
+      while (i < n) {
+        chunks.push(arr.slice(i, i += len));
+      }
+
+      return chunks;
     },
     percentageForm: function percentageForm(rated, raters) {
       var p = rated / raters * 100;
       return rated + '/' + raters + ' (' + Math.round(p * 100) / 100 + '%)';
+    },
+    printMe: function printMe() {
+      window.print();
     }
   },
+  // computed: {
+  //     chunked () {
+  //         return _.chunk(this.suggestions, 2)
+  //     },
+  // },
   mounted: function mounted() {
     this.getRater();
-    this.getRating();
   }
 });
 
@@ -21549,7 +21652,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, "\n.header[data-v-30c740f3]{\n    display: flex;\n    justify-content: center;\n    margin-bottom: 5px;\n}\n.header-text[data-v-30c740f3]{\n    text-align: center;\n    font-weight: bold;\n}\n.school-header[data-v-30c740f3]{\n    display: flex;\n    justify-content: center;\n    flex-direction: column;\n}\n.mybox[data-v-30c740f3]{\n    width: 100%;\n}\n@media print {\n.rating-table thead tr th[data-v-30c740f3] {\n        font-size: 12px;\n}\n.rating-table thead tr th[data-v-30c740f3]:nth-child(0) {\n        font-size: 9px;\n        width: 120px;\n}\n}\n\n\n\n", ""]);
+exports.push([module.i, "\n.header[data-v-30c740f3]{\n    display: flex;\n    justify-content: center;\n    margin-bottom: 5px;\n}\n.header-text[data-v-30c740f3]{\n    text-align: center;\n    font-weight: bold;\n}\n.school-header[data-v-30c740f3]{\n    display: flex;\n    justify-content: center;\n    flex-direction: column;\n}\n.mybox[data-v-30c740f3]{\n    width: 100%;\n}\n.flex-grow[data-v-30c740f3]{\n    flex: 1;\n}\n.back-flex[data-v-30c740f3]{\n    display: flex;\n    justify-content: flex-end;\n}\n.remarks[data-v-30c740f3]{\n    font-weight: bold;\n}\n.table-remark > tr > td[data-v-30c740f3]{\n    padding: 10px;\n    border: 1px solid gray;\n    width: 50%;\n}\n.signatory[data-v-30c740f3]{\n    width: 100%;\n}\n.noted[data-v-30c740f3]{\n    font-weight: bold;\n    margin-top: 50px;\n}\n.signature[data-v-30c740f3]{\n    position:relative;\n    top: 50px;\n    width: 180px;\n}\n.sign-name[data-v-30c740f3]{\n    font-weight: bold;\n    position: relative;   \n    font-size: 16px;\n    margin-left: 50px;\n}\n.sign-designation[data-v-30c740f3]{\n    font-weight: bold;\n    font-size: 14px;\n    margin-left: 50px;\n}\n.group-signature[data-v-30c740f3]{\n    position: relative;\n    margin-top: -50px;\n}\n\n\n/*print css*/\n@media print {\n@page {\n        margin-top: 20px;\n        margin-bottom: 20px;\n}\n    /* @page:footer {\n        display: none\n    }\n\n    @page:header {\n        display: none\n    } */\n\n    /* body{\n        padding-top: 72px;\n        padding-bottom: 72px ;\n    } */\n.rating-table thead tr th[data-v-30c740f3] {\n        font-size: 12px;\n}\n.rating-table thead tr th[data-v-30c740f3]:nth-child(0) {\n        font-size: 9px;\n        width: 120px;\n}\n.back-flex[data-v-30c740f3]{\n        display: none;\n}\n.no-break[data-v-30c740f3]{\n        display: flex;\n        flex-direction: column;\n        -moz-column-break-inside: avoid;\n             break-inside: avoid;\n}\n.signatory[data-v-30c740f3]{\n        width: 100%;\n}\n.sign-name[data-v-30c740f3]{\n      \n        font-weight: bold;\n        font-size: 16px;\n}\n.sign-designation[data-v-30c740f3]{\n        font-weight: bold;\n        font-size: 14px;\n}\n}\n\n\n\n", ""]);
 
 // exports
 
@@ -24794,21 +24897,62 @@ var render = function() {
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "mybox" }, [
-          _c("div", { staticClass: "is-flex is-flex-direction-column" }, [
-            _c("div", [
-              _c("strong", [_vm._v("INSTRUCTOR:")]),
-              _vm._v(" " + _vm._s(this.instructor))
-            ]),
+          _c("div", { staticClass: "is-flex" }, [
+            _c(
+              "div",
+              { staticClass: "is-flex is-flex-direction-column flex-grow" },
+              [
+                _c("div", [
+                  _c("strong", [_vm._v("INSTRUCTOR:")]),
+                  _vm._v(" " + _vm._s(this.instructor))
+                ]),
+                _vm._v(" "),
+                _c("div", [
+                  _c("strong", [_vm._v("INSTITUTE:")]),
+                  _vm._v(" " + _vm._s(this.institute))
+                ]),
+                _vm._v(" "),
+                _c("div", [
+                  _c("strong", [_vm._v("NO OF STUDENTS:")]),
+                  _vm._v(" " + _vm._s(this.noOfStudent))
+                ])
+              ]
+            ),
             _vm._v(" "),
-            _c("div", [
-              _c("strong", [_vm._v("INSTITUTE:")]),
-              _vm._v(" " + _vm._s(this.institute))
-            ]),
-            _vm._v(" "),
-            _c("div", [
-              _c("strong", [_vm._v("NO OF STUDENTS:")]),
-              _vm._v(" " + _vm._s(this.noOfStudent))
-            ])
+            _c(
+              "div",
+              { staticClass: "back-flex flex-grow" },
+              [
+                _c(
+                  "b-button",
+                  {
+                    attrs: {
+                      tag: "a",
+                      href: "/cpanel-report/faculty-report",
+                      type: "is-danger",
+                      "icon-pack": "fa",
+                      "icon-left": "chevron-left"
+                    }
+                  },
+                  [_vm._v("BACK")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "b-button",
+                  {
+                    staticStyle: { "margin-left": "10px" },
+                    attrs: {
+                      type: "is-primary",
+                      "icon-pack": "fa",
+                      "icon-left": "print"
+                    },
+                    on: { click: _vm.printMe }
+                  },
+                  [_vm._v("PRINT")]
+                )
+              ],
+              1
+            )
           ])
         ]),
         _vm._v(" "),
@@ -24867,21 +25011,105 @@ var render = function() {
                     _vm._v(" "),
                     _c(
                       "tbody",
-                      _vm._l(this.ratings, function(item) {
-                        return _c("tr", { key: item.id }, [
-                          _c("td", [_vm._v(_vm._s(item.category))]),
+                      [
+                        _vm._l(this.ratings, function(item) {
+                          return _c("tr", { key: item.id }, [
+                            _c("td", [_vm._v(_vm._s(item.category))]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v(_vm._s(item.avrg))])
+                          ])
+                        }),
+                        _vm._v(" "),
+                        _c("tr", [
+                          _vm._m(3),
                           _vm._v(" "),
-                          _c("td", [_vm._v(_vm._s(item.avrg))])
+                          _c("td", [
+                            _c("strong", [
+                              _vm._v(
+                                _vm._s(this.finalRating) +
+                                  " (" +
+                                  _vm._s(this.legend) +
+                                  ")"
+                              )
+                            ])
+                          ])
                         ])
-                      }),
-                      0
+                      ],
+                      2
                     )
                   ]
                 )
               ])
             ])
           ])
-        ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "columns" }, [
+          _c("div", { staticClass: "column" }, [
+            _c("div", { staticClass: "remarks" }, [
+              _vm._v("REMARK/SUGGESTION")
+            ]),
+            _vm._v(" "),
+            _c("div", [
+              _c(
+                "table",
+                { staticClass: "table-remark" },
+                _vm._l(this.chunk(this.suggestions, 2), function(c) {
+                  return _c(
+                    "tr",
+                    { key: c.index },
+                    _vm._l(c, function(suggestion) {
+                      return _c("td", { key: suggestion.index }, [
+                        _c("i", { staticClass: "fa fa-comment-o" }),
+                        _vm._v(" " + _vm._s(suggestion.remark))
+                      ])
+                    }),
+                    0
+                  )
+                }),
+                0
+              )
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "no-break" },
+          _vm._l(this.signatories, function(item) {
+            return _c("div", { key: item.index, staticClass: "signatory" }, [
+              _c("div", { staticClass: "noted" }, [
+                _vm._v(
+                  "\n                        " +
+                    _vm._s(item.signatory_header) +
+                    "\n                    "
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { class: _vm.groupSignature }, [
+                _c("div", { staticClass: "sign-name" }, [
+                  _c("div", [
+                    _c("img", {
+                      staticClass: "signature",
+                      attrs: { src: item.sign_path }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", [_vm._v(_vm._s(item.name))])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "sign-designation" }, [
+                  _vm._v(
+                    "\n                            " +
+                      _vm._s(item.designation) +
+                      "\n                        "
+                  )
+                ])
+              ])
+            ])
+          }),
+          0
+        )
       ])
     ])
   ])
@@ -24936,6 +25164,12 @@ var staticRenderFns = [
         _c("th", [_vm._v("AVERAGE RATE")])
       ])
     ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [_c("strong", [_vm._v("ASSESSTMENT")])])
   }
 ]
 render._withStripped = true

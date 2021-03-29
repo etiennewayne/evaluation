@@ -53,6 +53,25 @@ class FacultyRatingReportController extends Controller
         return $data;
     }
 
+    public function ajaxSuggestion(Request $req){
+
+        $ay = AcademicYear::where('active', 1)->first();
+
+        $code = $req->code;
+        $ay_code = $ay->ay_code;
+        $data = $data = DB::select('call report_comments(?, ?)', array($code, $ay_code));
+
+        return $data;
+    }
+
+    public function ajaxSignatory(Request $req){
+        $data = DB::table('evaluation.signatories as a')
+        ->get();
+        return $data;
+    }
+
+
+
 
 
 }
