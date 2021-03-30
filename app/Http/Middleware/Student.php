@@ -18,15 +18,19 @@ class Student
      */
     public function handle($request, Closure $next)
     {
-        $role = strtolower(Auth::user()->role);
-        if(!$role == 'student'){
-            abort(403);
+
+        if(auth()->guard('admin')){
+            return redirect('/cpanel-home');
+        }
+
+        if(auth()->guard('web')){
+            return redirect('/home');
         }
 
         return $next($request)
         ->header('Cache-Control','nocache, no-store, max-age=0, must-revalidate')
         ->header('Pragma','no-cache');
         //no cache so user cant use prev button in browser
-        
+
     }
 }

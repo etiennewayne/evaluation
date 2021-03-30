@@ -25,3 +25,5 @@ Route::apiResource('academicyear','Api\Administrator\AcademicYearController');
 Route::apiResource('category','Api\Administrator\CategoryController');
 Route::apiResource('cor','Api\Student\CORController');
 
+Route::apiResource('user','Api\Administrator\UserController');
+

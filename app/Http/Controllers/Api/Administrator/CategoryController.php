@@ -14,7 +14,7 @@ class CategoryController extends Controller
     //
 
     public function __contruct(){
-        $this->middleware('auth');
+        $this->middleware('auth:admin');
     }
 
     public function index(Request $req){

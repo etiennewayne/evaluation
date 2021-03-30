@@ -6,7 +6,7 @@
             </b-navbar-item>
         </template>
         <template #start>
-            <b-navbar-item href="#">
+            <b-navbar-item href="/cpanel-home">
                 Home
             </b-navbar-item>
             <b-navbar-item href="/cpanel-academicyear">
@@ -18,13 +18,16 @@
             <b-navbar-item href="/cpanel-criteria">
                 Criteria
             </b-navbar-item>
+            <b-navbar-item href="/cpanel-user">
+                Users
+            </b-navbar-item>
             <b-navbar-dropdown label="Reports">
                 <b-navbar-item href="/cpanel-report/faculty-report">
                     Faculty Report
                 </b-navbar-item>
-                <b-navbar-item href="#">
-                    Contact
-                </b-navbar-item>
+<!--                <b-navbar-item href="#">-->
+<!--                    Contact-->
+<!--                </b-navbar-item>-->
             </b-navbar-dropdown>
         </template>
 

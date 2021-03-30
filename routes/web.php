@@ -75,7 +75,7 @@ Route::get('/ajax/signatory', 'Administrator\Report\FacultyRatingReportControlle
 
 //USERS
 Route::resource('/user-uploader' , 'Administrator\UserUploaderController');
-Route::resource('/cpanel-users','UserController');
+Route::resource('/cpanel-user','UserController');
 
 
 Route::get('/cpanel-report-faculty', 'Administrator\ReportResultController@index')->name('report');

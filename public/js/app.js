@@ -2135,6 +2135,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   methods: {
     logout: function logout() {
@@ -2156,6 +2159,10 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
 //
 //
 //
@@ -3489,6 +3496,439 @@ __webpack_require__.r(__webpack_exports__);
     getRating: function getRating(schedcode) {
       return window.location = '/cpanel-report/faculty-rating?code=' + this.code + '&schedule=' + schedcode;
     }
+  },
+  mounted: function mounted() {
+    this.loadAsyncData();
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/administrator/user/UserPanel.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/administrator/user/UserPanel.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      data: [],
+      total: 0,
+      loading: false,
+      sortField: 'id',
+      sortOrder: 'desc',
+      page: 1,
+      perPage: 20,
+      defaultSortDirection: 'asc',
+      isModalCreate: false,
+      isModalUpdate: false,
+      fields: {},
+      updateFields: {},
+      errors: {},
+      btnClass: {
+        'is-success': true,
+        'button': true,
+        'is-loading': false
+      }
+    };
+  },
+  methods: {
+    /*
+    * Load async data
+    */
+    loadAsyncData: function loadAsyncData() {
+      var _this = this;
+
+      var params = ["sort_by=".concat(this.sortField, ".").concat(this.sortOrder), "perpage=".concat(this.perPage), "page=".concat(this.page)].join('&');
+      this.loading = true;
+      axios.get("/api/user?".concat(params)).then(function (_ref) {
+        var data = _ref.data;
+        _this.data = [];
+        var currentTotal = data.total;
+
+        if (data.total / _this.perPage > 1000) {
+          currentTotal = _this.perPage * 1000;
+        }
+
+        _this.total = currentTotal;
+        data.data.forEach(function (item) {
+          //item.release_date = item.release_date ? item.release_date.replace(/-/g, '/') : null
+          _this.data.push(item);
+        });
+        _this.loading = false;
+      })["catch"](function (error) {
+        _this.data = [];
+        _this.total = 0;
+        _this.loading = false;
+        throw error;
+      });
+    },
+
+    /*
+    * Handle page-change event
+    */
+    onPageChange: function onPageChange(page) {
+      this.page = page;
+      this.loadAsyncData();
+    },
+    onSort: function onSort(field, order) {
+      this.sortField = field;
+      this.sortOrder = order;
+      this.loadAsyncData();
+    },
+    setPerPage: function setPerPage() {
+      this.loadAsyncData();
+    },
+    //actions here below
+    deleteSubmit: function deleteSubmit(delete_id) {
+      var _this2 = this;
+
+      axios["delete"]('/api/user/' + delete_id).then(function (res) {
+        _this2.loadAsyncData();
+      })["catch"](function (err) {
+        console.log(err);
+      });
+    },
+    //alert
+    confirmDelete: function confirmDelete(delete_id) {
+      var _this3 = this;
+
+      this.$buefy.dialog.confirm({
+        title: 'DELETE!',
+        type: 'is-danger',
+        message: 'Are you sure you want to delete this data?',
+        cancelText: 'Cancel',
+        confirmText: 'Delete Account',
+        onConfirm: function onConfirm() {
+          return _this3.deleteSubmit(delete_id);
+        }
+      });
+    },
+    //save data
+    submit: function submit() {
+      var _this4 = this;
+
+      this.btnClass['is-loading'] = true;
+      axios.post('/api/user', this.fields).then(function (res) {
+        _this4.fields = {};
+        _this4.errors = {};
+
+        _this4.loadAsyncData();
+
+        _this4.btnClass['is-loading'] = false;
+        _this4.isModalCreate = false;
+      })["catch"](function (err) {
+        if (err.response.status === 422) {
+          _this4.errors = err.response.data.errors;
+        } //console.log(err.response.status);
+
+
+        _this4.btnClass['is-loading'] = false;
+      });
+    },
+    submitEdit: function submitEdit() {
+      var _this5 = this;
+
+      if (this.updateFields.id === '' || this.updateFields.id === null) {
+        return false;
+      }
+
+      this.btnClass['is-loading'] = true;
+      axios.put('/api/user/' + this.updateFields.id, this.updateFields).then(function (res) {
+        _this5.updateFields = {};
+        _this5.errors = {};
+
+        _this5.loadAsyncData();
+
+        _this5.btnClass['is-loading'] = false;
+        _this5.isModalUpdate = false;
+      })["catch"](function (err) {
+        if (err.response.status === 422) {
+          _this5.errors = err.response.data.errors;
+        } //console.log(err.response.status);
+
+
+        _this5.btnClass['is-loading'] = false;
+      });
+    },
+    //getData
+    getData: function getData(data_id) {
+      var _this6 = this;
+
+      this.updateFields = {};
+      this.isModalUpdate = true;
+      axios.get('/api/user/' + data_id).then(function (res) {
+        _this6.updateFields = res.data[0];
+        console.log(res.data[0]);
+      });
+    },
+    //submit Update Data
+    update: function update(data_id) {
+      axios.put('/api/category/' + data_id, this.fields).then(function (res) {});
+    },
+    //markActive the academic year
+    markActive: function markActive() {}
   },
   mounted: function mounted() {
     this.loadAsyncData();
@@ -23425,20 +23865,24 @@ var render = function() {
         key: "start",
         fn: function() {
           return [
-            _c("b-navbar-item", { attrs: { href: "#" } }, [
-              _vm._v("\n            Home\n        ")
+            _c("b-navbar-item", { attrs: { href: "/cpanel-home" } }, [
+              _vm._v("\n                Home\n            ")
             ]),
             _vm._v(" "),
             _c("b-navbar-item", { attrs: { href: "/cpanel-academicyear" } }, [
-              _vm._v("\n            Academic Year\n        ")
+              _vm._v("\n                Academic Year\n            ")
             ]),
             _vm._v(" "),
             _c("b-navbar-item", { attrs: { href: "/cpanel-category" } }, [
-              _vm._v("\n            Categories\n        ")
+              _vm._v("\n                Categories\n            ")
             ]),
             _vm._v(" "),
             _c("b-navbar-item", { attrs: { href: "/cpanel-criteria" } }, [
-              _vm._v("\n            Criteria\n        ")
+              _vm._v("\n                Criteria\n            ")
+            ]),
+            _vm._v(" "),
+            _c("b-navbar-item", { attrs: { href: "/cpanel-user" } }, [
+              _vm._v("\n                Users\n            ")
             ]),
             _vm._v(" "),
             _c(
@@ -23448,12 +23892,12 @@ var render = function() {
                 _c(
                   "b-navbar-item",
                   { attrs: { href: "/cpanel-report/faculty-report" } },
-                  [_vm._v("\n                Faculty Report\n            ")]
-                ),
-                _vm._v(" "),
-                _c("b-navbar-item", { attrs: { href: "#" } }, [
-                  _vm._v("\n                Contact\n            ")
-                ])
+                  [
+                    _vm._v(
+                      "\n                    Faculty Report\n                "
+                    )
+                  ]
+                )
               ],
               1
             )
@@ -23477,7 +23921,11 @@ var render = function() {
                       attrs: { "icon-right": "sign-out", "icon-pack": "fa" },
                       on: { click: _vm.logout }
                     },
-                    [_vm._v("\n                    LOGOUT\n                ")]
+                    [
+                      _vm._v(
+                        "\n                        LOGOUT\n                    "
+                      )
+                    ]
                   )
                 ],
                 1
@@ -23519,8 +23967,16 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("section", { staticClass: "section debug" }, [
-      _c("div", { staticClass: "container" })
+    return _c("section", { staticClass: "section" }, [
+      _c("div", { staticClass: "hero is-fullheight-with-navbar" }, [
+        _c("div", { staticClass: "hero-body" }, [
+          _c("div", { staticClass: "container has-text-centered" }, [
+            _c("p", { staticClass: "title is-3" }, [
+              _vm._v("WELCOME ADMINISTRATOR")
+            ])
+          ])
+        ])
+      ])
     ])
   }
 ]
@@ -25642,6 +26098,870 @@ var render = function() {
       ])
     ])
   ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/administrator/user/UserPanel.vue?vue&type=template&id=ad3c553c&scoped=true&":
+/*!*******************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/administrator/user/UserPanel.vue?vue&type=template&id=ad3c553c&scoped=true& ***!
+  \*******************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    [
+      _c("section", { staticClass: "section" }, [
+        _c(
+          "div",
+          {
+            staticClass: "is-flex is-justify-content-center mb-2 table-title",
+            staticStyle: { "font-size": "20px", "font-weight": "bold" }
+          },
+          [_vm._v("LIST OF USER")]
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "columns" }, [
+          _c(
+            "div",
+            { staticClass: "column is-8 is-offset-2" },
+            [
+              _c(
+                "b-field",
+                { attrs: { label: "Page" } },
+                [
+                  _c(
+                    "b-select",
+                    {
+                      on: { input: _vm.setPerPage },
+                      model: {
+                        value: _vm.perPage,
+                        callback: function($$v) {
+                          _vm.perPage = $$v
+                        },
+                        expression: "perPage"
+                      }
+                    },
+                    [
+                      _c("option", { attrs: { value: "5" } }, [
+                        _vm._v("5 per page")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "10" } }, [
+                        _vm._v("10 per page")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "15" } }, [
+                        _vm._v("15 per page")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "20" } }, [
+                        _vm._v("20 per page")
+                      ])
+                    ]
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "b-table",
+                {
+                  attrs: {
+                    data: _vm.data,
+                    loading: _vm.loading,
+                    paginated: "",
+                    "backend-pagination": "",
+                    total: _vm.total,
+                    "per-page": _vm.perPage,
+                    "aria-next-label": "Next page",
+                    "aria-previous-label": "Previous page",
+                    "aria-page-label": "Page",
+                    "aria-current-label": "Current page",
+                    "backend-sorting": "",
+                    "default-sort-direction": _vm.defaultSortDirection
+                  },
+                  on: { "page-change": _vm.onPageChange, sort: _vm.onSort }
+                },
+                [
+                  _c("b-table-column", {
+                    attrs: { field: "id", label: "ID" },
+                    scopedSlots: _vm._u([
+                      {
+                        key: "default",
+                        fn: function(props) {
+                          return [
+                            _vm._v(
+                              "\n                        " +
+                                _vm._s(props.row.id) +
+                                "\n                    "
+                            )
+                          ]
+                        }
+                      }
+                    ])
+                  }),
+                  _vm._v(" "),
+                  _c("b-table-column", {
+                    attrs: { field: "username", label: "Username" },
+                    scopedSlots: _vm._u([
+                      {
+                        key: "default",
+                        fn: function(props) {
+                          return [
+                            _vm._v(
+                              "\n                        " +
+                                _vm._s(props.row.username) +
+                                "\n                    "
+                            )
+                          ]
+                        }
+                      }
+                    ])
+                  }),
+                  _vm._v(" "),
+                  _c("b-table-column", {
+                    attrs: { field: "name", label: "Name" },
+                    scopedSlots: _vm._u([
+                      {
+                        key: "default",
+                        fn: function(props) {
+                          return [
+                            _vm._v(
+                              "\n                        " +
+                                _vm._s(props.row.name) +
+                                "\n                    "
+                            )
+                          ]
+                        }
+                      }
+                    ])
+                  }),
+                  _vm._v(" "),
+                  _c("b-table-column", {
+                    attrs: { field: "email", label: "Email" },
+                    scopedSlots: _vm._u([
+                      {
+                        key: "default",
+                        fn: function(props) {
+                          return [
+                            _vm._v(
+                              "\n                        " +
+                                _vm._s(props.row.email) +
+                                "\n                    "
+                            )
+                          ]
+                        }
+                      }
+                    ])
+                  }),
+                  _vm._v(" "),
+                  _c("b-table-column", {
+                    attrs: { field: "userType", label: "Role" },
+                    scopedSlots: _vm._u([
+                      {
+                        key: "default",
+                        fn: function(props) {
+                          return [
+                            _vm._v(
+                              "\n                        " +
+                                _vm._s(props.row.userType) +
+                                "\n                    "
+                            )
+                          ]
+                        }
+                      }
+                    ])
+                  }),
+                  _vm._v(" "),
+                  _c("b-table-column", {
+                    attrs: { field: "institute", label: "Office/Institute" },
+                    scopedSlots: _vm._u([
+                      {
+                        key: "default",
+                        fn: function(props) {
+                          return [
+                            _vm._v(
+                              "\n                        " +
+                                _vm._s(props.row.institute) +
+                                "\n                    "
+                            )
+                          ]
+                        }
+                      }
+                    ])
+                  }),
+                  _vm._v(" "),
+                  _c("b-table-column", {
+                    attrs: { field: "ay_id", label: "Action" },
+                    scopedSlots: _vm._u([
+                      {
+                        key: "default",
+                        fn: function(props) {
+                          return [
+                            _c(
+                              "div",
+                              { staticClass: "is-flex" },
+                              [
+                                _c(
+                                  "b-button",
+                                  {
+                                    staticClass:
+                                      "button is-small is-warning mr-1",
+                                    attrs: {
+                                      outlined: "",
+                                      tag: "a",
+                                      "icon-right": "pencil",
+                                      "icon-pack": "fa"
+                                    },
+                                    on: {
+                                      click: function($event) {
+                                        return _vm.getData(props.row.id)
+                                      }
+                                    }
+                                  },
+                                  [_vm._v("EDIT")]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "b-button",
+                                  {
+                                    staticClass:
+                                      "button is-small is-danger mr-1",
+                                    attrs: {
+                                      outlined: "",
+                                      "icon-pack": "fa",
+                                      "icon-right": "trash"
+                                    },
+                                    on: {
+                                      click: function($event) {
+                                        return _vm.confirmDelete(props.row.id)
+                                      }
+                                    }
+                                  },
+                                  [_vm._v("DELETE")]
+                                )
+                              ],
+                              1
+                            )
+                          ]
+                        }
+                      }
+                    ])
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "buttons mt-3" },
+                [
+                  _c(
+                    "b-button",
+                    {
+                      staticClass: "is-primary is-fullwidth",
+                      on: {
+                        click: function($event) {
+                          _vm.isModalCreate = true
+                        }
+                      }
+                    },
+                    [_vm._v("Create User")]
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _c(
+        "b-modal",
+        {
+          attrs: {
+            "has-modal-card": "",
+            "trap-focus": "",
+            width: 640,
+            "aria-role": "dialog",
+            "aria-label": "Example Modal",
+            "aria-modal": ""
+          },
+          model: {
+            value: _vm.isModalCreate,
+            callback: function($$v) {
+              _vm.isModalCreate = $$v
+            },
+            expression: "isModalCreate"
+          }
+        },
+        [
+          _c(
+            "form",
+            {
+              on: {
+                submit: function($event) {
+                  $event.preventDefault()
+                  return _vm.submit($event)
+                }
+              }
+            },
+            [
+              _c("div", { staticClass: "modal-card" }, [
+                _c("header", { staticClass: "modal-card-head" }, [
+                  _c("p", { staticClass: "modal-card-title" }, [
+                    _vm._v("User Information")
+                  ]),
+                  _vm._v(" "),
+                  _c("button", {
+                    staticClass: "delete",
+                    attrs: { type: "button" },
+                    on: {
+                      click: function($event) {
+                        _vm.isModalCreate = false
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("section", { staticClass: "modal-card-body" }, [
+                  _c(
+                    "div",
+                    { staticClass: "fiel" },
+                    [
+                      _c(
+                        "b-field",
+                        {
+                          attrs: {
+                            label: "Username",
+                            "label-position": "on-border",
+                            type: this.errors.username ? "is-danger" : "",
+                            message: this.errors.username
+                              ? this.errors.username[0]
+                              : ""
+                          }
+                        },
+                        [
+                          _c("b-input", {
+                            attrs: { placeholder: "Username", required: "" },
+                            model: {
+                              value: _vm.fields.username,
+                              callback: function($$v) {
+                                _vm.$set(_vm.fields, "username", $$v)
+                              },
+                              expression: "fields.username"
+                            }
+                          })
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "b-field",
+                        {
+                          attrs: {
+                            label: "Name",
+                            "label-position": "on-border",
+                            type: this.errors.name ? "is-danger" : "",
+                            message: this.errors.name ? this.errors.name[0] : ""
+                          }
+                        },
+                        [
+                          _c("b-input", {
+                            attrs: { placeholder: "Name", required: "" },
+                            model: {
+                              value: _vm.fields.name,
+                              callback: function($$v) {
+                                _vm.$set(_vm.fields, "name", $$v)
+                              },
+                              expression: "fields.name"
+                            }
+                          })
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "b-field",
+                        {
+                          attrs: {
+                            label: "Email",
+                            "label-position": "on-border",
+                            type: this.errors.email ? "is-danger" : "",
+                            message: this.errors.email
+                              ? this.errors.email[0]
+                              : ""
+                          }
+                        },
+                        [
+                          _c("b-input", {
+                            attrs: { placeholder: "Email", required: "" },
+                            model: {
+                              value: _vm.fields.email,
+                              callback: function($$v) {
+                                _vm.$set(_vm.fields, "email", $$v)
+                              },
+                              expression: "fields.email"
+                            }
+                          })
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "b-field",
+                        {
+                          attrs: {
+                            label: "Password",
+                            "label-position": "on-border",
+                            type: this.errors.password ? "is-danger" : "",
+                            message: this.errors.password
+                              ? this.errors.password[0]
+                              : ""
+                          }
+                        },
+                        [
+                          _c("b-input", {
+                            attrs: { placeholder: "Password", required: "" },
+                            model: {
+                              value: _vm.fields.password,
+                              callback: function($$v) {
+                                _vm.$set(_vm.fields, "password", $$v)
+                              },
+                              expression: "fields.password"
+                            }
+                          })
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "b-field",
+                        {
+                          attrs: {
+                            label: "Confirm Password",
+                            "label-position": "on-border",
+                            type: this.errors.password_confirmation
+                              ? "is-danger"
+                              : "",
+                            message: this.errors.password_confirmation
+                              ? this.errors.password_confirmation[0]
+                              : ""
+                          }
+                        },
+                        [
+                          _c("b-input", {
+                            attrs: {
+                              placeholder: "Confirm Password",
+                              required: ""
+                            },
+                            model: {
+                              value: _vm.fields.password_confirmation,
+                              callback: function($$v) {
+                                _vm.$set(
+                                  _vm.fields,
+                                  "password_confirmation",
+                                  $$v
+                                )
+                              },
+                              expression: "fields.password_confirmation"
+                            }
+                          })
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "b-field",
+                        { attrs: { grouped: "" } },
+                        [
+                          _c(
+                            "b-field",
+                            {
+                              attrs: {
+                                label: "Role",
+                                "label-position": "on-border"
+                              }
+                            },
+                            [
+                              _c(
+                                "b-select",
+                                {
+                                  model: {
+                                    value: _vm.fields.userType,
+                                    callback: function($$v) {
+                                      _vm.$set(_vm.fields, "userType", $$v)
+                                    },
+                                    expression: "fields.userType"
+                                  }
+                                },
+                                [
+                                  _c("option", { attrs: { value: "ADMIN" } }, [
+                                    _vm._v("ADMINISTRATOR")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("option", { attrs: { value: "USER" } }, [
+                                    _vm._v("USER")
+                                  ])
+                                ]
+                              )
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "b-field",
+                            {
+                              attrs: {
+                                label: "Institute",
+                                "label-position": "on-border"
+                              }
+                            },
+                            [
+                              _c(
+                                "b-select",
+                                {
+                                  model: {
+                                    value: _vm.fields.institute,
+                                    callback: function($$v) {
+                                      _vm.$set(_vm.fields, "institute", $$v)
+                                    },
+                                    expression: "fields.institute"
+                                  }
+                                },
+                                [
+                                  _c("option", { attrs: { value: "ICS" } }, [
+                                    _vm._v("ICS")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("option", { attrs: { value: "IAS" } }, [
+                                    _vm._v("IAS")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("option", { attrs: { value: "HR" } }, [
+                                    _vm._v("HR")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("option", { attrs: { value: "HR" } }, [
+                                    _vm._v("CISO")
+                                  ])
+                                ]
+                              )
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                ]),
+                _vm._v(" "),
+                _c(
+                  "footer",
+                  { staticClass: "modal-card-foot" },
+                  [
+                    _c("b-button", {
+                      attrs: { label: "Close" },
+                      on: {
+                        click: function($event) {
+                          _vm.isModalCreate = false
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        class: _vm.btnClass,
+                        attrs: { label: "Save", type: "is-success" }
+                      },
+                      [_vm._v("SAVE")]
+                    )
+                  ],
+                  1
+                )
+              ])
+            ]
+          )
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "b-modal",
+        {
+          attrs: {
+            "has-modal-card": "",
+            "trap-focus": "",
+            width: 640,
+            "aria-role": "dialog",
+            "aria-label": "Example Modal",
+            "aria-modal": ""
+          },
+          model: {
+            value: _vm.isModalUpdate,
+            callback: function($$v) {
+              _vm.isModalUpdate = $$v
+            },
+            expression: "isModalUpdate"
+          }
+        },
+        [
+          _c(
+            "form",
+            {
+              on: {
+                submit: function($event) {
+                  $event.preventDefault()
+                  return _vm.submitEdit($event)
+                }
+              }
+            },
+            [
+              _c("div", { staticClass: "modal-card" }, [
+                _c("header", { staticClass: "modal-card-head" }, [
+                  _c("p", { staticClass: "modal-card-title" }, [
+                    _vm._v("User Information")
+                  ]),
+                  _vm._v(" "),
+                  _c("button", {
+                    staticClass: "delete",
+                    attrs: { type: "button" },
+                    on: {
+                      click: function($event) {
+                        _vm.isModalUpdate = false
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("section", { staticClass: "modal-card-body" }, [
+                  _c(
+                    "div",
+                    { staticClass: "fiel" },
+                    [
+                      _c(
+                        "b-field",
+                        {
+                          attrs: {
+                            label: "Username",
+                            "label-position": "on-border",
+                            type: this.errors.username ? "is-danger" : "",
+                            message: this.errors.username
+                              ? this.errors.username[0]
+                              : ""
+                          }
+                        },
+                        [
+                          _c("b-input", {
+                            attrs: { placeholder: "Username", required: "" },
+                            model: {
+                              value: _vm.updateFields.username,
+                              callback: function($$v) {
+                                _vm.$set(_vm.updateFields, "username", $$v)
+                              },
+                              expression: "updateFields.username"
+                            }
+                          })
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "b-field",
+                        {
+                          attrs: {
+                            label: "Name",
+                            "label-position": "on-border",
+                            type: this.errors.name ? "is-danger" : "",
+                            message: this.errors.name ? this.errors.name[0] : ""
+                          }
+                        },
+                        [
+                          _c("b-input", {
+                            attrs: { placeholder: "Name", required: "" },
+                            model: {
+                              value: _vm.updateFields.name,
+                              callback: function($$v) {
+                                _vm.$set(_vm.updateFields, "name", $$v)
+                              },
+                              expression: "updateFields.name"
+                            }
+                          })
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "b-field",
+                        {
+                          attrs: {
+                            label: "Email",
+                            "label-position": "on-border",
+                            type: this.errors.email ? "is-danger" : "",
+                            message: this.errors.email
+                              ? this.errors.email[0]
+                              : ""
+                          }
+                        },
+                        [
+                          _c("b-input", {
+                            attrs: { placeholder: "Email", required: "" },
+                            model: {
+                              value: _vm.updateFields.email,
+                              callback: function($$v) {
+                                _vm.$set(_vm.updateFields, "email", $$v)
+                              },
+                              expression: "updateFields.email"
+                            }
+                          })
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "b-field",
+                        { attrs: { grouped: "" } },
+                        [
+                          _c(
+                            "b-field",
+                            {
+                              attrs: {
+                                label: "Role",
+                                "label-position": "on-border"
+                              }
+                            },
+                            [
+                              _c(
+                                "b-select",
+                                {
+                                  model: {
+                                    value: _vm.updateFields.userType,
+                                    callback: function($$v) {
+                                      _vm.$set(
+                                        _vm.updateFields,
+                                        "userType",
+                                        $$v
+                                      )
+                                    },
+                                    expression: "updateFields.userType"
+                                  }
+                                },
+                                [
+                                  _c("option", { attrs: { value: "ADMIN" } }, [
+                                    _vm._v("ADMINISTRATOR")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("option", { attrs: { value: "USER" } }, [
+                                    _vm._v("USER")
+                                  ])
+                                ]
+                              )
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "b-field",
+                            {
+                              attrs: {
+                                label: "Institute",
+                                "label-position": "on-border"
+                              }
+                            },
+                            [
+                              _c(
+                                "b-select",
+                                {
+                                  model: {
+                                    value: _vm.updateFields.institute,
+                                    callback: function($$v) {
+                                      _vm.$set(
+                                        _vm.updateFields,
+                                        "institute",
+                                        $$v
+                                      )
+                                    },
+                                    expression: "updateFields.institute"
+                                  }
+                                },
+                                [
+                                  _c("option", { attrs: { value: "ICS" } }, [
+                                    _vm._v("ICS")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("option", { attrs: { value: "IAS" } }, [
+                                    _vm._v("IAS")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("option", { attrs: { value: "HR" } }, [
+                                    _vm._v("HR")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("option", { attrs: { value: "CIS" } }, [
+                                    _vm._v("CIS")
+                                  ])
+                                ]
+                              )
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                ]),
+                _vm._v(" "),
+                _c(
+                  "footer",
+                  { staticClass: "modal-card-foot" },
+                  [
+                    _c("b-button", {
+                      attrs: { label: "Close" },
+                      on: {
+                        click: function($event) {
+                          _vm.isModalUpdate = false
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        class: _vm.btnClass,
+                        attrs: { label: "Save", type: "is-success" }
+                      },
+                      [_vm._v("UPDATE")]
+                    )
+                  ],
+                  1
+                )
+              ])
+            ]
+          )
+        ]
+      )
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -38880,7 +40200,9 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('panel-home', __webpack_req
 
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('faculty-report', __webpack_require__(/*! ./components/administrator/report/FacultyReport.vue */ "./resources/js/components/administrator/report/FacultyReport.vue")["default"]);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('faculty-schedule', __webpack_require__(/*! ./components/administrator/report/FacultySchedule.vue */ "./resources/js/components/administrator/report/FacultySchedule.vue")["default"]);
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('faculty-rating', __webpack_require__(/*! ./components/administrator/report/FacultyRating.vue */ "./resources/js/components/administrator/report/FacultyRating.vue")["default"]);
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('faculty-rating', __webpack_require__(/*! ./components/administrator/report/FacultyRating.vue */ "./resources/js/components/administrator/report/FacultyRating.vue")["default"]); //User
+
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('user-panel', __webpack_require__(/*! ./components/administrator/user/UserPanel.vue */ "./resources/js/components/administrator/user/UserPanel.vue")["default"]);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -39830,6 +41152,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FacultySchedule_vue_vue_type_template_id_71098526_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FacultySchedule_vue_vue_type_template_id_71098526_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/administrator/user/UserPanel.vue":
+/*!******************************************************************!*\
+  !*** ./resources/js/components/administrator/user/UserPanel.vue ***!
+  \******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _UserPanel_vue_vue_type_template_id_ad3c553c_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./UserPanel.vue?vue&type=template&id=ad3c553c&scoped=true& */ "./resources/js/components/administrator/user/UserPanel.vue?vue&type=template&id=ad3c553c&scoped=true&");
+/* harmony import */ var _UserPanel_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./UserPanel.vue?vue&type=script&lang=js& */ "./resources/js/components/administrator/user/UserPanel.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _UserPanel_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _UserPanel_vue_vue_type_template_id_ad3c553c_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _UserPanel_vue_vue_type_template_id_ad3c553c_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "ad3c553c",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/administrator/user/UserPanel.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/administrator/user/UserPanel.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************!*\
+  !*** ./resources/js/components/administrator/user/UserPanel.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_UserPanel_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./UserPanel.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/administrator/user/UserPanel.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_UserPanel_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/administrator/user/UserPanel.vue?vue&type=template&id=ad3c553c&scoped=true&":
+/*!*************************************************************************************************************!*\
+  !*** ./resources/js/components/administrator/user/UserPanel.vue?vue&type=template&id=ad3c553c&scoped=true& ***!
+  \*************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_UserPanel_vue_vue_type_template_id_ad3c553c_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./UserPanel.vue?vue&type=template&id=ad3c553c&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/administrator/user/UserPanel.vue?vue&type=template&id=ad3c553c&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_UserPanel_vue_vue_type_template_id_ad3c553c_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_UserPanel_vue_vue_type_template_id_ad3c553c_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

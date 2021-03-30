@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Illuminate\Auth\Middleware\Authenticate as Middleware;
+use Illuminate\Support\Facades\Auth;
 
 class Authenticate extends Middleware
 {
@@ -14,11 +15,16 @@ class Authenticate extends Middleware
      */
     protected function redirectTo($request)
     {
-        if (! $request->expectsJson()) {
-//            if(auth()->guard('admin')){
-//                return route('cpanel');
-//            }
+        if(Auth::check()){
+            if(auth()->guard('admin')){
+                return redirect('/cpanel-home');
+            }
+            if(auth()->guard('web')){
+                return redirect('/home');
+            }
+        }
 
+        if (! $request->expectsJson()) {
             return route('login');
         }
 

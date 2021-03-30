@@ -11,7 +11,7 @@ class EnroleeCoursesUploaderController extends Controller
 
     public function __construct()
     {
-        $$this->middleware('auth:admin');
+        $this->middleware('auth:admin');
     }
 
 
@@ -21,7 +21,7 @@ class EnroleeCoursesUploaderController extends Controller
 
     public function store(Request $req){
 
-       
+
         set_time_limit(5000);
         $arr = json_decode($req->enrolee_json);
 
@@ -42,5 +42,5 @@ class EnroleeCoursesUploaderController extends Controller
         ->with('success', 'Successfully uploaded.');
     }
 
-     
+
 }

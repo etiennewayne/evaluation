@@ -15,19 +15,13 @@ use Illuminate\Support\Facades\DB;
 class UserController extends Controller
 {
 
-
-    protected $redirectTo = '/login';
-
-    //protected $redirectTo = '/home';
-    
     public function __construct(){
-       $this->middleware('auth');
+       $this->middleware('auth:admin');
     }
     //
 
     public function index(){
-        $users = User::all();
-        return view('auth/user')->with('users',$users);
+        return view('auth.user');
     }
 
 

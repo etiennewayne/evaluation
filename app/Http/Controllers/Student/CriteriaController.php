@@ -20,8 +20,8 @@ class CriteriaController extends Controller
     //
 
     public function __construct(){
-        $this->middleware('auth');
-        $this->middleware('student');
+        $this->middleware('auth:web');
+        //$this->middleware('student');
     }
 
 
@@ -57,7 +57,7 @@ class CriteriaController extends Controller
                 $dataArray = array();
                 foreach ($req->rate as $key => $rate){
                     $n = explode("_", $key);
-        
+
                     $temp = array([
                         'rating_id' => $rating->rating_id,
                         'student_id' => $student_id,
@@ -67,7 +67,7 @@ class CriteriaController extends Controller
                     ]);
                     $dataArray = array_merge($dataArray, $temp);
                 }
-        
+
 
                //save ratings in RatingRate Table in Database
                $ratingRate = RatingRate::insert($dataArray);

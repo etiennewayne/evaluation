@@ -14,7 +14,7 @@ class AcademicYearController extends Controller
 {
     //
     public function __contruct(){
-        $this->middleware('auth');
+        $this->middleware('auth:admin');
     }
 
     public function index(Request $req){
@@ -56,7 +56,7 @@ class AcademicYearController extends Controller
         $data->save();
 
         return [['status'=>'updated']];
-    }  
+    }
 
 
     public function destroy($id){

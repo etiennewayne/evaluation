@@ -29,8 +29,8 @@ class LoginController extends Controller
      * @var string
      */
 
-    //protected $redirectTo = '/home';
     protected $redirectTo = '/home';
+    //protected $redirectTo = '/home';
     /**
      * Create a new controller instance.
      *
@@ -46,7 +46,12 @@ class LoginController extends Controller
         return 'StudID';
     }
 
-   
+    protected function guard()
+    {
+        return Auth::guard('web');
+    }
+
+
 
 
 }
