@@ -15,19 +15,11 @@ class Authenticate extends Middleware
      */
     protected function redirectTo($request)
     {
-        if(Auth::check()){
-            if(auth()->guard('admin')){
-                return redirect('/cpanel-home');
-            }
-            if(auth()->guard('web')){
-                return redirect('/home');
-            }
-        }
-
         if (! $request->expectsJson()) {
+//            if($request->is('cpanel')){
+//                return redirect('/cpanel');
+//            }
             return route('login');
         }
-
-
     }
 }

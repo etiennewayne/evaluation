@@ -14,9 +14,10 @@ use Admin;
 class LoginController extends Controller
 {
     //
+    use AuthenticatesUsers;
 
+    protected $redirectTo = '/cpanel-home';
 
-    protected $redirectTo = '/cpanel';
 
     public function __construct()
     {
@@ -56,6 +57,8 @@ class LoginController extends Controller
             return [['status' => 'login_error']];
         }
     }
+
+
 
 
 

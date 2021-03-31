@@ -2600,7 +2600,23 @@ __webpack_require__.r(__webpack_exports__);
       axios.put('/api/academicyear/' + data_id, this.fields).then(function (res) {});
     },
     //markActive the academic year
-    markActive: function markActive() {}
+    markActive: function markActive(id) {
+      var _this6 = this;
+
+      axios.post('/api/academicyear-set-active', {
+        'id': id
+      }).then(function (res) {
+        if (res.data[0].status === 'success') {
+          _this6.$buefy.dialog.alert({
+            title: 'SUCCESS!',
+            message: 'Set active successfully',
+            onConfirm: function onConfirm() {
+              return _this6.loadAsyncData();
+            }
+          });
+        }
+      });
+    }
   },
   mounted: function mounted() {
     this.loadAsyncData();
@@ -24147,7 +24163,7 @@ var render = function() {
               staticClass: "is-flex is-justify-content-center mb-2 table-title",
               staticStyle: { "font-size": "20px", "font-weight": "bold" }
             },
-            [_vm._v("LIST ACADEMIC YEAR")]
+            [_vm._v("ACADEMIC YEAR LIST")]
           ),
           _vm._v(" "),
           _c("div", { staticClass: "columns" }, [
@@ -24358,7 +24374,11 @@ var render = function() {
                                       "icon-left": "check-circle",
                                       "icon-pack": "fa"
                                     },
-                                    on: { click: _vm.markActive }
+                                    on: {
+                                      click: function($event) {
+                                        return _vm.markActive(props.row.ay_id)
+                                      }
+                                    }
                                   })
                                 ],
                                 1

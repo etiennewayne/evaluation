@@ -110,7 +110,7 @@ Route::get('/ajax-category' , 'Administrator\CategoryController@ajax_category');
 //ACADEMIC YEAR ---------------------
 Route::resource('/cpanel-academicyear' , 'Administrator\AcademicYearController');
 Route::get('/ajax-academicyear' , 'Administrator\AcademicYearController@ajax_academicyear');
-Route::post('/cpanel-academicyear/set-active' , 'Administrator\AcademicYearController@setActive');
+//Route::get('/ajax/academicyear-set-active' , 'Administrator\AcademicYearController@setActive');
 
 
 

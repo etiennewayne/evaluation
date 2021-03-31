@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 
 
 use App\AcademicYear;
+use Illuminate\Support\Facades\DB;
 
 
 class AcademicYearController extends Controller
@@ -63,5 +64,20 @@ class AcademicYearController extends Controller
         return AcademicYear::destroy($id);
     }
 
+    public function setActive(Request $req){
+
+        DB::table('evaluation.ay')
+            ->update([
+               'active' => 0
+            ]);
+
+        $data = DB::table('evaluation.ay')
+            ->where('ay_id', $req->id)
+            ->update([
+                'active' => 1
+            ]);
+
+        return [['status'=>'success']];
+    }
 
 }

@@ -1,10 +1,10 @@
 <template>
 
     <div>
-        
+
         <div class="container">
             <section class="section">
-                <div class="is-flex is-justify-content-center mb-2 table-title" style="font-size: 20px; font-weight: bold;">LIST ACADEMIC YEAR</div>
+                <div class="is-flex is-justify-content-center mb-2 table-title" style="font-size: 20px; font-weight: bold;">ACADEMIC YEAR LIST</div>
                 <div class="columns">
                     <div class="column is-8 is-offset-2">
                         <b-field label="Page">
@@ -48,16 +48,16 @@
                                     <i v-if="props.row.active === 1" class="fa fa-check-circle" style="color:green;"></i>
                                     <i v-else class="fa fa-close" style="color:red;"></i>
                                 </div>
-                               
+
                             </b-table-column>
 
-                           
+
 
                             <b-table-column field="ay_id" label="Action" v-slot="props">
                                 <div class="is-flex">
                                     <b-button outlined class="button is-small is-warning mr-1" tag="a" icon-right="pencil" icon-pack="fa" @click="getData(props.row.ay_id)">EDIT</b-button>
                                     <b-button outlined class="button is-small is-danger mr-1" icon-pack="fa" icon-right="trash" @click="confirmDelete(props.row.ay_id)">DELETE</b-button>
-                                    <b-button outlined class="button is-small is-success" icon-left="check-circle" icon-pack="fa" @click="markActive"></b-button>
+                                    <b-button outlined class="button is-small is-success" icon-left="check-circle" icon-pack="fa" @click="markActive(props.row.ay_id)"></b-button>
                                 </div>
                             </b-table-column>
 
@@ -68,17 +68,17 @@
                             <b-button @click="isModalCreate=true" class="is-primary is-fullwidth">Create Account</b-button>
                         </div>
 
-                        
+
 
                     </div><!--close column-->
                 </div>
             </section>
 
-            
+
 
             <!--modal create-->
             <b-modal v-model="isModalCreate" has-modal-card
-                trap-focus 
+                trap-focus
                 :width="640"
                 aria-role="dialog"
                 aria-label="Example Modal"
@@ -131,7 +131,7 @@
 
             <!--modal update-->
             <b-modal v-model="isModalUpdate" has-modal-card
-                trap-focus 
+                trap-focus
                 :width="640"
                 aria-role="dialog"
                 aria-label="Example Modal"
@@ -336,8 +336,19 @@ export default {
 
 
         //markActive the academic year
-        markActive(){
-            
+        markActive(id){
+            axios.post('/api/academicyear-set-active', { 'id': id }).then(res=>{
+
+                if(res.data[0].status === 'success'){
+                    this.$buefy.dialog.alert({
+                        title: 'SUCCESS!',
+
+                        message: 'Set active successfully',
+                        onConfirm: () => this.loadAsyncData()
+                    });
+                }
+
+            });
         },
 
 
