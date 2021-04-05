@@ -19,17 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="720635db-fce7-4503-8300-ca514c204a37" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Administrator/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Administrator/LoginController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/Administrator/AcademicYearController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/Administrator/AcademicYearController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/Authenticate.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/Authenticate.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/RedirectIfAuthenticated.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/RedirectIfAuthenticated.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/administrator/academicyear/AcademicYear.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/administrator/academicyear/AcademicYear.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
-    </list>
+    <list default="true" id="720635db-fce7-4503-8300-ca514c204a37" name="Default" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -179,7 +169,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../admissionsystem" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="vue.rearranger.settings.migration" value="true" />
@@ -285,20 +275,5 @@
     <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
       <collection />
     </option>
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="449" y="184" width="541" height="491" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1617086085718">
-      <screen x="0" y="0" width="1440" height="860" />
-    </state>
-    <state x="449" y="184" width="541" height="491" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1440.860/-1440.0.1440.900@0.0.1440.860" timestamp="1617086085718" />
-    <state width="498" height="446" key="SwitcherDM" timestamp="1617077477323">
-      <screen x="0" y="0" width="1440" height="860" />
-    </state>
-    <state width="498" height="446" key="SwitcherDM/0.0.1440.860/-1440.0.1440.900@0.0.1440.860" timestamp="1617077477323" />
-    <state x="383" y="180" width="672" height="678" key="search.everywhere.popup" timestamp="1617165318816">
-      <screen x="0" y="0" width="1440" height="860" />
-    </state>
-    <state x="-1057" y="188" width="672" height="710" key="search.everywhere.popup/0.0.1440.860/-1440.0.1440.900@-1440.0.1440.900" timestamp="1617160353644" />
-    <state x="383" y="180" width="672" height="678" key="search.everywhere.popup/0.0.1440.860/-1440.0.1440.900@0.0.1440.860" timestamp="1617165318816" />
   </component>
 </project>
