@@ -16,6 +16,7 @@ class AcademicYearController extends Controller
     //
     public function __contruct(){
         $this->middleware('auth:admin');
+        $this->middleware('admin');
     }
 
     public function index(Request $req){

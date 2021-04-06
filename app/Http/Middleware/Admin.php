@@ -17,9 +17,10 @@ class Admin
      */
     public function handle($request, Closure $next)
     {
+        $role = Auth::guard('admin')->user()->userType;
 
-        if(!auth()->guard('admin')->check()) {
-            return redirect(route('cpanel-login'));
+        if(strtolower($role) != 'admin') {
+            abort(403);
         }
 
         return $next($request)

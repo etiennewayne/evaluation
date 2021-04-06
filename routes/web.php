@@ -169,15 +169,22 @@ Route::get('/ajax/rating','Student\ViewRatingController@ajaxRating');
 
 
 Route::get('/reguser','UserController@regUser');
-
 Route::get('/data/ajax-users','UserController@ajaxUsers')->name('db-ajax-user');
 
 
 //LOGOUT
- Route::get('/app/logout', function() {
-     Auth::logout();
-     return redirect('/');
- });
+//  Route::get('/app/logout', function() {
+//      Auth::logout();
+//      return redirect('/');
+//  });
+
+
+
+//  Route::get('/app/test', function() {
+//     $role = Auth::guard('admin')->user()->userType;
+//     return $role;
+
+// });
 
 
 // Route::get('/app/test', function() {
