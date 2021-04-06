@@ -3,17 +3,36 @@
 
 
         <section class="section">
-            <div class="is-flex is-justify-content-center mb-2 table-title" style="font-size: 20px; font-weight: bold;">LIST OF USER</div>
+
             <div class="columns">
                 <div class="column is-8 is-offset-2">
-                    <b-field label="Page">
-                        <b-select v-model="perPage" @input="setPerPage">
-                            <option value="5">5 per page</option>
-                            <option value="10">10 per page</option>
-                            <option value="15">15 per page</option>
-                            <option value="20">20 per page</option>
-                        </b-select>
-                    </b-field>
+                    <div class="is-flex is-justify-content-center mb-2 table-title" style="font-size: 20px; font-weight: bold;">LIST OF USER</div>
+                    <div class="level">
+                        <div class="level-left">
+                            <b-field label="Page">
+                                <b-select v-model="perPage" @input="setPerPage">
+                                    <option value="5">5 per page</option>
+                                    <option value="10">10 per page</option>
+                                    <option value="15">15 per page</option>
+                                    <option value="20">20 per page</option>
+                                </b-select>
+                            </b-field>
+                        </div>
+
+                        <div class="level-right">
+                            <div class="level-item">
+                                <b-field label="Search">
+                                    <b-input type="text"
+                                        v-model="search" placeholder="Search Name"
+                                        @keyup.native.enter="loadAsyncData"/>
+                                    <p class="control">
+                                        <b-button type="is-primary" label="Search" @click="loadAsyncData"/>
+                                    </p>
+                                </b-field>
+                            </div>
+                        </div>
+                    </div>
+
                     <b-table
                         :data="data"
                         :loading="loading"
@@ -282,6 +301,8 @@ export default {
                 'is-loading':false,
             },
 
+            search: '',
+
         }
     },
     methods: {
@@ -291,6 +312,7 @@ export default {
         loadAsyncData() {
             const params = [
                 `sort_by=${this.sortField}.${this.sortOrder}`,
+                `name=${this.search}`,
                 `perpage=${this.perPage}`,
                 `page=${this.page}`
             ].join('&')

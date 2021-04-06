@@ -29,17 +29,23 @@
             <b-navbar-item href="#">
                 FAQ
             </b-navbar-item>
-           <b-navbar-item tag="div">
-                <div class="buttons">
-                    <a class="button is-primary" href="/login">
-                        <strong>Log in</strong>
-                    </a>
-                </div>
-            </b-navbar-item>
+            <b-navbar-dropdown label="Login Option">
+                <b-navbar-item href="/login">
+                    Login
+                </b-navbar-item>
+                <b-navbar-item href="/cpanel">
+                    Admin Login
+                </b-navbar-item>
+            </b-navbar-dropdown>
+<!--           <b-navbar-item tag="div">-->
+<!--                <div class="buttons">-->
+<!--                    <a class="button is-primary" href="/login">-->
+<!--                        <strong>Log in</strong>-->
+<!--                    </a>-->
+<!--                </div>-->
+<!--            </b-navbar-item>-->
         </template>
     </b-navbar>
-
-
 
 </template>
 

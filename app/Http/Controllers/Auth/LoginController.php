@@ -39,6 +39,13 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+
+
+        if(Auth::check()){
+            if(auth()->guard('admin')){
+                return '/cpanel';
+            }
+        }
     }
 
     public function username()

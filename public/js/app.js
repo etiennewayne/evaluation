@@ -2065,8 +2065,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -3138,6 +3136,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['code'],
   data: function data() {
@@ -3239,6 +3239,11 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
 //
 //
 //
@@ -3786,6 +3791,25 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -3806,7 +3830,8 @@ __webpack_require__.r(__webpack_exports__);
         'is-success': true,
         'button': true,
         'is-loading': false
-      }
+      },
+      search: ''
     };
   },
   methods: {
@@ -3816,7 +3841,7 @@ __webpack_require__.r(__webpack_exports__);
     loadAsyncData: function loadAsyncData() {
       var _this = this;
 
-      var params = ["sort_by=".concat(this.sortField, ".").concat(this.sortOrder), "perpage=".concat(this.perPage), "page=".concat(this.page)].join('&');
+      var params = ["sort_by=".concat(this.sortField, ".").concat(this.sortOrder), "name=".concat(this.search), "perpage=".concat(this.perPage), "page=".concat(this.page)].join('&');
       this.loading = true;
       axios.get("/api/user?".concat(params)).then(function (_ref) {
         var data = _ref.data;
@@ -4439,6 +4464,12 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -22064,7 +22095,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.welcome-text[data-v-a4d20914]{\r\n    font-size: 40px;\r\n    font-weight: bold;\r\n    margin-bottom: 10px;\n}\n@media only screen and (max-width: 768px) {\n}\r\n\r\n\r\n", ""]);
+exports.push([module.i, "\n.welcome-text[data-v-a4d20914]{\n    font-size: 40px;\n    font-weight: bold;\n    margin-bottom: 10px;\n}\n@media only screen and (max-width: 768px) {\n}\n\n\n", ""]);
 
 // exports
 
@@ -22102,7 +22133,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, "\n.header[data-v-30c740f3]{\n    display: flex;\n    justify-content: center;\n    margin-bottom: 5px;\n}\n.header-text[data-v-30c740f3]{\n    text-align: center;\n    font-weight: bold;\n}\n.school-header[data-v-30c740f3]{\n    display: flex;\n    justify-content: center;\n    flex-direction: column;\n}\n.mybox[data-v-30c740f3]{\n    width: 100%;\n}\n.flex-grow[data-v-30c740f3]{\n    flex: 1;\n}\n.back-flex[data-v-30c740f3]{\n    display: flex;\n    justify-content: flex-end;\n}\n.remarks[data-v-30c740f3]{\n    font-weight: bold;\n}\n.table-remark > tr > td[data-v-30c740f3]{\n    padding: 10px;\n    border: 1px solid gray;\n    width: 50%;\n}\n.signatory[data-v-30c740f3]{\n    width: 100%;\n}\n.noted[data-v-30c740f3]{\n    font-weight: bold;\n    margin-top: 50px;\n}\n.signature[data-v-30c740f3]{\n    position:relative;\n    top: 50px;\n    width: 180px;\n}\n.sign-name[data-v-30c740f3]{\n    font-weight: bold;\n    position: relative;   \n    font-size: 16px;\n    margin-left: 50px;\n}\n.sign-designation[data-v-30c740f3]{\n    font-weight: bold;\n    font-size: 14px;\n    margin-left: 50px;\n}\n.group-signature[data-v-30c740f3]{\n    position: relative;\n    margin-top: -50px;\n}\n\n\n/*print css*/\n@media print {\n@page {\n        margin-top: 20px;\n        margin-bottom: 20px;\n}\n    /* @page:footer {\n        display: none\n    }\n\n    @page:header {\n        display: none\n    } */\n\n    /* body{\n        padding-top: 72px;\n        padding-bottom: 72px ;\n    } */\n.rating-table thead tr th[data-v-30c740f3] {\n        font-size: 12px;\n}\n.rating-table thead tr th[data-v-30c740f3]:nth-child(0) {\n        font-size: 9px;\n        width: 120px;\n}\n.back-flex[data-v-30c740f3]{\n        display: none;\n}\n.no-break[data-v-30c740f3]{\n        display: flex;\n        flex-direction: column;\n        -moz-column-break-inside: avoid;\n             break-inside: avoid;\n}\n.signatory[data-v-30c740f3]{\n        width: 100%;\n}\n.sign-name[data-v-30c740f3]{\n      \n        font-weight: bold;\n        font-size: 16px;\n}\n.sign-designation[data-v-30c740f3]{\n        font-weight: bold;\n        font-size: 14px;\n}\n}\n\n\n\n", ""]);
+exports.push([module.i, "\n.header[data-v-30c740f3]{\n    display: flex;\n    justify-content: center;\n    margin-bottom: 5px;\n}\n.header-text[data-v-30c740f3]{\n    text-align: center;\n    font-weight: bold;\n}\n.school-header[data-v-30c740f3]{\n    display: flex;\n    justify-content: center;\n    flex-direction: column;\n}\n.mybox[data-v-30c740f3]{\n    width: 100%;\n}\n.flex-grow[data-v-30c740f3]{\n    flex: 1;\n}\n.back-flex[data-v-30c740f3]{\n    display: flex;\n    justify-content: flex-end;\n}\n.remarks[data-v-30c740f3]{\n    font-weight: bold;\n}\n.table-remark > tr > td[data-v-30c740f3]{\n    padding: 10px;\n    border: 1px solid gray;\n    width: 50%;\n}\n.signatory[data-v-30c740f3]{\n    width: 100%;\n}\n.noted[data-v-30c740f3]{\n    font-weight: bold;\n    margin-top: 50px;\n}\n.signature[data-v-30c740f3]{\n    position:relative;\n    top: 50px;\n    width: 180px;\n}\n.sign-name[data-v-30c740f3]{\n    font-weight: bold;\n    position: relative;\n    font-size: 16px;\n    margin-left: 50px;\n}\n.sign-designation[data-v-30c740f3]{\n    font-weight: bold;\n    font-size: 14px;\n    margin-left: 50px;\n}\n.group-signature[data-v-30c740f3]{\n    position: relative;\n    margin-top: -50px;\n}\n\n\n/*print css*/\n@media print {\n@page {\n        margin-top: 20px;\n        margin-bottom: 20px;\n}\n    /* @page:footer {\n        display: none\n    }\n\n    @page:header {\n        display: none\n    } */\n\n    /* body{\n        padding-top: 72px;\n        padding-bottom: 72px ;\n    } */\n.rating-table thead tr th[data-v-30c740f3] {\n        font-size: 12px;\n}\n.rating-table thead tr th[data-v-30c740f3]:nth-child(0) {\n        font-size: 9px;\n        width: 120px;\n}\n.back-flex[data-v-30c740f3]{\n        display: none;\n}\n.no-break[data-v-30c740f3]{\n        display: flex;\n        flex-direction: column;\n        -moz-column-break-inside: avoid;\n             break-inside: avoid;\n}\n.signatory[data-v-30c740f3]{\n        width: 100%;\n}\n.sign-name[data-v-30c740f3]{\n\n        font-weight: bold;\n        font-size: 16px;\n}\n.sign-designation[data-v-30c740f3]{\n        font-weight: bold;\n        font-size: 14px;\n}\n}\n\n\n\n", ""]);
 
 // exports
 
@@ -25456,7 +25487,9 @@ var render = function() {
                                 )
                               )
                             )
-                          ])
+                          ]),
+                          _vm._v(" "),
+                          _c("td", [_vm._v(_vm._s(item.SchedSubjSet))])
                         ])
                       }),
                       0
@@ -25619,7 +25652,9 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("COURSE")]),
         _vm._v(" "),
-        _c("th", [_vm._v("RATERS")])
+        _c("th", [_vm._v("RATERS")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("SET")])
       ])
     ])
   },
@@ -25665,233 +25700,265 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", [
     _c("section", { staticClass: "section" }, [
-      _c("div", { staticClass: "container" }, [
-        _c("div", { staticClass: "columns" }, [
-          _c(
-            "div",
-            { staticClass: "column is-8 is-offset-2" },
-            [
-              _c("div", { staticClass: "title is-4 table-header" }, [
-                _vm._v("FACULTY")
-              ]),
-              _vm._v(" "),
+      _c("div", { staticClass: "columns" }, [
+        _c(
+          "div",
+          { staticClass: "column is-8 is-offset-2" },
+          [
+            _c(
+              "div",
+              {
+                staticClass:
+                  "is-flex is-justify-content-center mb-2 table-title",
+                staticStyle: { "font-size": "20px", "font-weight": "bold" }
+              },
+              [_vm._v("LIST OF FACULTY")]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "level" }, [
               _c(
-                "b-field",
-                { attrs: { label: "Page" } },
+                "div",
+                { staticClass: "level-left" },
                 [
                   _c(
-                    "b-select",
-                    {
-                      on: { input: _vm.setPerPage },
-                      model: {
-                        value: _vm.perPage,
-                        callback: function($$v) {
-                          _vm.perPage = $$v
-                        },
-                        expression: "perPage"
-                      }
-                    },
+                    "b-field",
+                    { attrs: { label: "Page" } },
                     [
-                      _c("option", { attrs: { value: "5" } }, [
-                        _vm._v("5 per page")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "10" } }, [
-                        _vm._v("10 per page")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "15" } }, [
-                        _vm._v("15 per page")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "20" } }, [
-                        _vm._v("20 per page")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "30" } }, [
-                        _vm._v("30 per page")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "40" } }, [
-                        _vm._v("40 per page")
-                      ])
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("b-input", {
-                    attrs: { type: "text", placeholder: "Lastname" },
-                    nativeOn: {
-                      keyup: function($event) {
-                        if (
-                          !$event.type.indexOf("key") &&
-                          _vm._k(
-                            $event.keyCode,
-                            "enter",
-                            13,
-                            $event.key,
-                            "Enter"
-                          )
-                        ) {
-                          return null
-                        }
-                        return _vm.loadAsyncData($event)
-                      }
-                    },
-                    model: {
-                      value: _vm.lastname,
-                      callback: function($$v) {
-                        _vm.lastname = $$v
-                      },
-                      expression: "lastname"
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c(
-                    "button",
-                    { staticClass: "button", on: { click: _vm.loadAsyncData } },
-                    [_vm._v("SEARCH")]
+                      _c(
+                        "b-select",
+                        {
+                          on: { input: _vm.setPerPage },
+                          model: {
+                            value: _vm.perPage,
+                            callback: function($$v) {
+                              _vm.perPage = $$v
+                            },
+                            expression: "perPage"
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { value: "5" } }, [
+                            _vm._v("5 per page")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "10" } }, [
+                            _vm._v("10 per page")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "15" } }, [
+                            _vm._v("15 per page")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "20" } }, [
+                            _vm._v("20 per page")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "30" } }, [
+                            _vm._v("30 per page")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "40" } }, [
+                            _vm._v("40 per page")
+                          ])
+                        ]
+                      )
+                    ],
+                    1
                   )
                 ],
                 1
               ),
               _vm._v(" "),
               _c(
-                "b-table",
-                {
-                  attrs: {
-                    data: _vm.data,
-                    loading: _vm.loading,
-                    paginated: "",
-                    "backend-pagination": "",
-                    total: _vm.total,
-                    "per-page": _vm.perPage,
-                    "aria-next-label": "Next page",
-                    "aria-previous-label": "Previous page",
-                    "aria-page-label": "Page",
-                    "aria-current-label": "Current page",
-                    "backend-sorting": "",
-                    "default-sort-direction": _vm.defaultSortDirection
-                  },
-                  on: { "page-change": _vm.onPageChange, sort: _vm.onSort }
-                },
+                "div",
+                { staticClass: "level-right" },
                 [
-                  _c("b-table-column", {
-                    attrs: { field: "InsCode", label: "ID" },
-                    scopedSlots: _vm._u([
-                      {
-                        key: "default",
-                        fn: function(props) {
-                          return [
-                            _vm._v(
-                              "\n                            " +
-                                _vm._s(props.row.InsCode) +
-                                "\n                        "
-                            )
-                          ]
+                  _c(
+                    "b-field",
+                    { attrs: { label: "Search" } },
+                    [
+                      _c("b-input", {
+                        attrs: { type: "text", placeholder: "Lastname" },
+                        nativeOn: {
+                          keyup: function($event) {
+                            if (
+                              !$event.type.indexOf("key") &&
+                              _vm._k(
+                                $event.keyCode,
+                                "enter",
+                                13,
+                                $event.key,
+                                "Enter"
+                              )
+                            ) {
+                              return null
+                            }
+                            return _vm.loadAsyncData($event)
+                          }
+                        },
+                        model: {
+                          value: _vm.lastname,
+                          callback: function($$v) {
+                            _vm.lastname = $$v
+                          },
+                          expression: "lastname"
                         }
-                      }
-                    ])
-                  }),
-                  _vm._v(" "),
-                  _c("b-table-column", {
-                    attrs: { field: "InsLName", label: "Lastname" },
-                    scopedSlots: _vm._u([
-                      {
-                        key: "default",
-                        fn: function(props) {
-                          return [
-                            _vm._v(
-                              "\n                            " +
-                                _vm._s(props.row.InsLName) +
-                                "\n                        "
-                            )
-                          ]
-                        }
-                      }
-                    ])
-                  }),
-                  _vm._v(" "),
-                  _c("b-table-column", {
-                    attrs: { field: "InsFName", label: "Firstname" },
-                    scopedSlots: _vm._u([
-                      {
-                        key: "default",
-                        fn: function(props) {
-                          return [
-                            _vm._v(
-                              "\n                            " +
-                                _vm._s(props.row.InsFName) +
-                                "\n                        "
-                            )
-                          ]
-                        }
-                      }
-                    ])
-                  }),
-                  _vm._v(" "),
-                  _c("b-table-column", {
-                    attrs: { field: "InsMName", label: "Middlename" },
-                    scopedSlots: _vm._u([
-                      {
-                        key: "default",
-                        fn: function(props) {
-                          return [
-                            _vm._v(
-                              "\n                            " +
-                                _vm._s(props.row.InsMName) +
-                                "\n                        "
-                            )
-                          ]
-                        }
-                      }
-                    ])
-                  }),
-                  _vm._v(" "),
-                  _c("b-table-column", {
-                    attrs: { field: "ay_id", label: "Action" },
-                    scopedSlots: _vm._u([
-                      {
-                        key: "default",
-                        fn: function(props) {
-                          return [
-                            _c(
-                              "div",
-                              { staticClass: "is-flex" },
-                              [
-                                _c(
-                                  "b-button",
-                                  {
-                                    staticClass:
-                                      "button is-small is-primary mr-1",
-                                    attrs: {
-                                      outlined: "",
-                                      tag: "a",
-                                      "icon-right": "star",
-                                      "icon-pack": "fa"
-                                    },
-                                    on: {
-                                      click: function($event) {
-                                        return _vm.getRating(props.row.InsCode)
-                                      }
-                                    }
-                                  },
-                                  [_vm._v("RATING")]
-                                )
-                              ],
-                              1
-                            )
-                          ]
-                        }
-                      }
-                    ])
-                  })
+                      }),
+                      _vm._v(" "),
+                      _c("p", { staticClass: "control" }, [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "button is-primary",
+                            on: { click: _vm.loadAsyncData }
+                          },
+                          [_vm._v("SEARCH")]
+                        )
+                      ])
+                    ],
+                    1
+                  )
                 ],
                 1
               )
-            ],
-            1
-          )
-        ])
+            ]),
+            _vm._v(" "),
+            _c(
+              "b-table",
+              {
+                attrs: {
+                  data: _vm.data,
+                  loading: _vm.loading,
+                  paginated: "",
+                  "backend-pagination": "",
+                  total: _vm.total,
+                  "per-page": _vm.perPage,
+                  "aria-next-label": "Next page",
+                  "aria-previous-label": "Previous page",
+                  "aria-page-label": "Page",
+                  "aria-current-label": "Current page",
+                  "backend-sorting": "",
+                  "default-sort-direction": _vm.defaultSortDirection
+                },
+                on: { "page-change": _vm.onPageChange, sort: _vm.onSort }
+              },
+              [
+                _c("b-table-column", {
+                  attrs: { field: "InsCode", label: "ID" },
+                  scopedSlots: _vm._u([
+                    {
+                      key: "default",
+                      fn: function(props) {
+                        return [
+                          _vm._v(
+                            "\n                        " +
+                              _vm._s(props.row.InsCode) +
+                              "\n                    "
+                          )
+                        ]
+                      }
+                    }
+                  ])
+                }),
+                _vm._v(" "),
+                _c("b-table-column", {
+                  attrs: { field: "InsLName", label: "Lastname" },
+                  scopedSlots: _vm._u([
+                    {
+                      key: "default",
+                      fn: function(props) {
+                        return [
+                          _vm._v(
+                            "\n                        " +
+                              _vm._s(props.row.InsLName) +
+                              "\n                    "
+                          )
+                        ]
+                      }
+                    }
+                  ])
+                }),
+                _vm._v(" "),
+                _c("b-table-column", {
+                  attrs: { field: "InsFName", label: "Firstname" },
+                  scopedSlots: _vm._u([
+                    {
+                      key: "default",
+                      fn: function(props) {
+                        return [
+                          _vm._v(
+                            "\n                        " +
+                              _vm._s(props.row.InsFName) +
+                              "\n                    "
+                          )
+                        ]
+                      }
+                    }
+                  ])
+                }),
+                _vm._v(" "),
+                _c("b-table-column", {
+                  attrs: { field: "InsMName", label: "Middlename" },
+                  scopedSlots: _vm._u([
+                    {
+                      key: "default",
+                      fn: function(props) {
+                        return [
+                          _vm._v(
+                            "\n                        " +
+                              _vm._s(props.row.InsMName) +
+                              "\n                    "
+                          )
+                        ]
+                      }
+                    }
+                  ])
+                }),
+                _vm._v(" "),
+                _c("b-table-column", {
+                  attrs: { field: "ay_id", label: "Action" },
+                  scopedSlots: _vm._u([
+                    {
+                      key: "default",
+                      fn: function(props) {
+                        return [
+                          _c(
+                            "div",
+                            { staticClass: "is-flex" },
+                            [
+                              _c(
+                                "b-button",
+                                {
+                                  staticClass:
+                                    "button is-small is-primary mr-1",
+                                  attrs: {
+                                    outlined: "",
+                                    tag: "a",
+                                    "icon-right": "star",
+                                    "icon-pack": "fa"
+                                  },
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.getRating(props.row.InsCode)
+                                    }
+                                  }
+                                },
+                                [_vm._v("RATING")]
+                              )
+                            ],
+                            1
+                          )
+                        ]
+                      }
+                    }
+                  ])
+                })
+              ],
+              1
+            )
+          ],
+          1
+        )
       ])
     ])
   ])
@@ -26145,57 +26212,123 @@ var render = function() {
     "div",
     [
       _c("section", { staticClass: "section" }, [
-        _c(
-          "div",
-          {
-            staticClass: "is-flex is-justify-content-center mb-2 table-title",
-            staticStyle: { "font-size": "20px", "font-weight": "bold" }
-          },
-          [_vm._v("LIST OF USER")]
-        ),
-        _vm._v(" "),
         _c("div", { staticClass: "columns" }, [
           _c(
             "div",
             { staticClass: "column is-8 is-offset-2" },
             [
               _c(
-                "b-field",
-                { attrs: { label: "Page" } },
-                [
-                  _c(
-                    "b-select",
-                    {
-                      on: { input: _vm.setPerPage },
-                      model: {
-                        value: _vm.perPage,
-                        callback: function($$v) {
-                          _vm.perPage = $$v
-                        },
-                        expression: "perPage"
-                      }
-                    },
-                    [
-                      _c("option", { attrs: { value: "5" } }, [
-                        _vm._v("5 per page")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "10" } }, [
-                        _vm._v("10 per page")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "15" } }, [
-                        _vm._v("15 per page")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "20" } }, [
-                        _vm._v("20 per page")
-                      ])
-                    ]
-                  )
-                ],
-                1
+                "div",
+                {
+                  staticClass:
+                    "is-flex is-justify-content-center mb-2 table-title",
+                  staticStyle: { "font-size": "20px", "font-weight": "bold" }
+                },
+                [_vm._v("LIST OF USER")]
               ),
+              _vm._v(" "),
+              _c("div", { staticClass: "level" }, [
+                _c(
+                  "div",
+                  { staticClass: "level-left" },
+                  [
+                    _c(
+                      "b-field",
+                      { attrs: { label: "Page" } },
+                      [
+                        _c(
+                          "b-select",
+                          {
+                            on: { input: _vm.setPerPage },
+                            model: {
+                              value: _vm.perPage,
+                              callback: function($$v) {
+                                _vm.perPage = $$v
+                              },
+                              expression: "perPage"
+                            }
+                          },
+                          [
+                            _c("option", { attrs: { value: "5" } }, [
+                              _vm._v("5 per page")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "10" } }, [
+                              _vm._v("10 per page")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "15" } }, [
+                              _vm._v("15 per page")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "20" } }, [
+                              _vm._v("20 per page")
+                            ])
+                          ]
+                        )
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "level-right" }, [
+                  _c(
+                    "div",
+                    { staticClass: "level-item" },
+                    [
+                      _c(
+                        "b-field",
+                        { attrs: { label: "Search" } },
+                        [
+                          _c("b-input", {
+                            attrs: { type: "text", placeholder: "Search Name" },
+                            nativeOn: {
+                              keyup: function($event) {
+                                if (
+                                  !$event.type.indexOf("key") &&
+                                  _vm._k(
+                                    $event.keyCode,
+                                    "enter",
+                                    13,
+                                    $event.key,
+                                    "Enter"
+                                  )
+                                ) {
+                                  return null
+                                }
+                                return _vm.loadAsyncData($event)
+                              }
+                            },
+                            model: {
+                              value: _vm.search,
+                              callback: function($$v) {
+                                _vm.search = $$v
+                              },
+                              expression: "search"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c(
+                            "p",
+                            { staticClass: "control" },
+                            [
+                              _c("b-button", {
+                                attrs: { type: "is-primary", label: "Search" },
+                                on: { click: _vm.loadAsyncData }
+                              })
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                ])
+              ]),
               _vm._v(" "),
               _c(
                 "b-table",
@@ -27748,25 +27881,27 @@ var render = function() {
         fn: function() {
           return [
             _c("b-navbar-item", { attrs: { href: "/" } }, [
-              _vm._v("\n            Home\n        ")
+              _vm._v("\n                Home\n            ")
             ]),
             _vm._v(" "),
             _c("b-navbar-item", { attrs: { href: "#" } }, [
-              _vm._v("\n            FAQ\n        ")
+              _vm._v("\n                FAQ\n            ")
             ]),
             _vm._v(" "),
-            _c("b-navbar-item", { attrs: { tag: "div" } }, [
-              _c("div", { staticClass: "buttons" }, [
-                _c(
-                  "a",
-                  {
-                    staticClass: "button is-primary",
-                    attrs: { href: "/login" }
-                  },
-                  [_c("strong", [_vm._v("Log in")])]
-                )
-              ])
-            ])
+            _c(
+              "b-navbar-dropdown",
+              { attrs: { label: "Login Option" } },
+              [
+                _c("b-navbar-item", { attrs: { href: "/login" } }, [
+                  _vm._v("\n                    Login\n                ")
+                ]),
+                _vm._v(" "),
+                _c("b-navbar-item", { attrs: { href: "/cpanel" } }, [
+                  _vm._v("\n                    Admin Login\n                ")
+                ])
+              ],
+              1
+            )
           ]
         },
         proxy: true

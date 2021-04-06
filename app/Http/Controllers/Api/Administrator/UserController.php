@@ -19,6 +19,7 @@ class UserController extends Controller
         $sortkey = explode(".",$req->sort_by);
 
         return DB::table('registrar_gadtc.users as a')
+            ->where('name', 'like', '%'. $req->name . '%')
             ->orderBy($sortkey[0], $sortkey[1])
             ->paginate($req->perpage);
     }

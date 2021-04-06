@@ -1,10 +1,8 @@
 <template>
-
     <div>
         <div class="hero is-fullheight-with-navbar">
             <div class="hero-body ">
                 <div class="container has-text-centered">
-
                     <div class="welcome-text animate__animated animate__backInLeft">WELCOME TO FACULTY PERFORMANCE EVALUATION SYSTEM</div>
                     <div class="buttons is-centered animate__animated animate__backInRight">
                         <a class="button is-primary is-outlined" href="/login">LOGIN</a>

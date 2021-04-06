@@ -34,8 +34,8 @@
                             <b-button type="is-primary" style="margin-left: 10px;" icon-pack="fa" icon-left="print" @click="printMe">PRINT</b-button>
                         </div>
                     </div>
-                    
-                    
+
+
                 </div>
 
                 <div class="columns">
@@ -48,6 +48,7 @@
                                             <th>SCHEDULE CODE</th>
                                             <th>COURSE</th>
                                             <th>RATERS</th>
+                                            <th>SET</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -55,6 +56,7 @@
                                             <td>{{ item.SchedCode }}</td>
                                             <td>{{ item.SubjName }}</td>
                                             <td>{{ percentageForm(item.no_of_raters, item.no_students) }}</td>
+                                            <td>{{ item.SchedSubjSet }}</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -72,7 +74,7 @@
                                         <tr>
                                             <th>CATEGORY</th>
                                             <th>AVERAGE RATE</th>
-                                            
+
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -84,12 +86,12 @@
                                             <td><strong>ASSESSTMENT</strong></td>
                                             <td><strong>{{ this.finalRating }} ({{ this.legend }})</strong></td>
                                         </tr>
-                                        
+
                                     </tbody>
                                 </table>
                             </div>
                         </div>
-                        
+
                     </div>
 
                 </div><!--columns-->
@@ -141,11 +143,11 @@
                                 VP for Academic Affairs
                             </div>
                         </div>
-                        
+
                     </div> -->
 
                 </div>
-                
+
 
             </div>
         </section>
@@ -177,7 +179,7 @@ export default {
             signName: [],
             signDesignation: [],
             signPath: [],
-            
+
 
             groupSignature: {
                 'group-signature': true,
@@ -187,17 +189,17 @@ export default {
         }
     },
     methods: {
-        
+
         getRater(){
             axios.all(
                 [
-                    axios.get('/ajax/faculty-rater?code='+this.code), 
+                    axios.get('/ajax/faculty-rater?code='+this.code),
                     axios.get('/ajax/faculty-suggestion?code='+this.code),
                     axios.get('/ajax/faculty-rating?code='+this.code),
                     axios.get('/ajax/signatory')
 
                 ]).then(axios.spread((...res)=>{
-                
+
                     if(res[0].data.length > 0){
 
                         this.data = res[0].data;
@@ -237,7 +239,7 @@ export default {
 
 
 
-        
+
 
         chunk (arr, len) {
 
@@ -268,12 +270,12 @@ export default {
     //     },
     // },
 
-    
+
 
     mounted() {
-        
+
         this.getRater();
-    
+
     }
 }
 </script>
@@ -333,12 +335,12 @@ export default {
 
     .sign-name{
         font-weight: bold;
-        position: relative;   
+        position: relative;
         font-size: 16px;
         margin-left: 50px;
     }
 
-   
+
 
     .sign-designation{
         font-weight: bold;
@@ -350,8 +352,8 @@ export default {
         position: relative;
         margin-top: -50px;
     }
- 
-    
+
+
     /*print css*/
     @media print {
         @page {
@@ -361,7 +363,7 @@ export default {
         /* @page:footer {
             display: none
         }
-    
+
         @page:header {
             display: none
         } */
@@ -395,7 +397,7 @@ export default {
         }
 
         .sign-name{
-          
+
             font-weight: bold;
             font-size: 16px;
         }
@@ -405,7 +407,7 @@ export default {
             font-size: 14px;
         }
 
-        
+
     }
 
 
