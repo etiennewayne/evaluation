@@ -20,17 +20,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="720635db-fce7-4503-8300-ca514c204a37" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/Administrator/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/Administrator/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/WelcomePage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/WelcomePage.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/administrator/report/FacultyRating.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/administrator/report/FacultyRating.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/administrator/report/FacultyReport.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/administrator/report/FacultyReport.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/administrator/user/UserPanel.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/administrator/user/UserPanel.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/student/StudentNavbar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/student/StudentNavbar.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/sass/app.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/app.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -192,6 +185,11 @@
       <recent name="C:\Users\eshen\Desktop\Github\evaluation\resources\views\auth" />
     </key>
   </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="git status" />
+    </option>
+  </component>
   <component name="RunManager">
     <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
       <TestRunner scope="XML" />
@@ -264,7 +262,7 @@
       <workItem from="1617158783983" duration="8363000" />
       <workItem from="1617598770675" duration="2754000" />
       <workItem from="1617667407157" duration="1747000" />
-      <workItem from="1617672264568" duration="326000" />
+      <workItem from="1617672264568" duration="1769000" />
     </task>
     <servers />
   </component>
@@ -292,9 +290,29 @@
     </option>
   </component>
   <component name="WindowStateProjectService">
+    <state width="1397" height="229" key="GridCell.Tab.0.bottom" timestamp="1617672639925">
+      <screen x="-1440" y="0" width="1440" height="900" />
+    </state>
+    <state width="1397" height="229" key="GridCell.Tab.0.bottom/0.0.1440.860/-1440.0.1440.900@-1440.0.1440.900" timestamp="1617672639925" />
+    <state width="1397" height="229" key="GridCell.Tab.0.center" timestamp="1617672639925">
+      <screen x="-1440" y="0" width="1440" height="900" />
+    </state>
+    <state width="1397" height="229" key="GridCell.Tab.0.center/0.0.1440.860/-1440.0.1440.900@-1440.0.1440.900" timestamp="1617672639925" />
+    <state width="1397" height="229" key="GridCell.Tab.0.left" timestamp="1617672639924">
+      <screen x="-1440" y="0" width="1440" height="900" />
+    </state>
+    <state width="1397" height="229" key="GridCell.Tab.0.left/0.0.1440.860/-1440.0.1440.900@-1440.0.1440.900" timestamp="1617672639924" />
+    <state width="1397" height="229" key="GridCell.Tab.0.right" timestamp="1617672639925">
+      <screen x="-1440" y="0" width="1440" height="900" />
+    </state>
+    <state width="1397" height="229" key="GridCell.Tab.0.right/0.0.1440.860/-1440.0.1440.900@-1440.0.1440.900" timestamp="1617672639925" />
     <state width="498" height="446" key="SwitcherDM" timestamp="1617614632619">
       <screen x="-1440" y="0" width="1440" height="900" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.0.1440.860/-1440.0.1440.900@-1440.0.1440.900" timestamp="1617614632619" />
+    <state x="-1064" y="205" width="672" height="677" key="run.anything.popup" timestamp="1617672620492">
+      <screen x="-1440" y="0" width="1440" height="900" />
+    </state>
+    <state x="-1064" y="205" width="672" height="677" key="run.anything.popup/0.0.1440.860/-1440.0.1440.900@-1440.0.1440.900" timestamp="1617672620492" />
   </component>
 </project>

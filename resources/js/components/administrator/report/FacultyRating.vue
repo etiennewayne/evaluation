@@ -86,7 +86,6 @@
                                             <td><strong>ASSESSTMENT</strong></td>
                                             <td><strong>{{ this.finalRating }} ({{ this.legend }})</strong></td>
                                         </tr>
-
                                     </tbody>
                                 </table>
                             </div>
@@ -321,6 +320,7 @@ export default {
 
     .signatory{
         width: 100%;
+
     }
 
     .noted{
@@ -348,6 +348,9 @@ export default {
         margin-left: 50px;
     }
 
+    .no-break{
+        display: flex;
+    }
     .group-signature{
         position: relative;
         margin-top: -50px;
@@ -388,7 +391,6 @@ export default {
 
         .no-break{
             display: flex;
-            flex-direction: column;
             break-inside: avoid;
         }
 
