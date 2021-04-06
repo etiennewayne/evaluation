@@ -29,12 +29,12 @@
             <b-navbar-item href="#">
                 FAQ
             </b-navbar-item>
-            <b-navbar-dropdown label="Login Option">
+            <b-navbar-dropdown label="Others">
                 <b-navbar-item href="/login">
-                    Login
+                    Student
                 </b-navbar-item>
                 <b-navbar-item href="/cpanel">
-                    Admin Login
+                    GADTC
                 </b-navbar-item>
             </b-navbar-dropdown>
 <!--           <b-navbar-item tag="div">-->

@@ -8,7 +8,8 @@ class AcademicYear extends Model
 {
     //
     protected $table = 'ay';
-
+    protected $connection = 'mysql';
+    
     protected $primaryKey = 'ay_id';
 
     public $timestamps = false;

@@ -21,8 +21,14 @@
   <component name="ChangeListManager">
     <list default="true" id="720635db-fce7-4503-8300-ca514c204a37" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/Administrator/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/Administrator/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/Admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/Admin.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/AcademicYear.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/AcademicYear.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Category.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Category.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/Administrator/AcademicYearController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/Administrator/AcademicYearController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/Administrator/CategoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/Administrator/CategoryController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/administrator/academicyear/AcademicYear.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/administrator/academicyear/AcademicYear.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/administrator/category/Category.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/administrator/category/Category.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/student/StudentNavbar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/student/StudentNavbar.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -262,6 +268,8 @@
       <workItem from="1617598770675" duration="2754000" />
       <workItem from="1617667407157" duration="1747000" />
       <workItem from="1617672264568" duration="2442000" />
+      <workItem from="1617691835745" duration="2176000" />
+      <workItem from="1617695813820" duration="2349000" />
     </task>
     <servers />
   </component>
@@ -313,9 +321,9 @@
       <screen x="-1440" y="0" width="1440" height="900" />
     </state>
     <state x="-1064" y="205" width="672" height="677" key="run.anything.popup/0.0.1440.860/-1440.0.1440.900@-1440.0.1440.900" timestamp="1617674347466" />
-    <state x="-1057" y="190" width="672" height="678" key="search.everywhere.popup" timestamp="1617674931591">
+    <state x="-1057" y="190" width="672" height="678" key="search.everywhere.popup" timestamp="1617693720429">
       <screen x="-1440" y="0" width="1440" height="900" />
     </state>
-    <state x="-1057" y="190" width="672" height="678" key="search.everywhere.popup/0.0.1440.860/-1440.0.1440.900@-1440.0.1440.900" timestamp="1617674931591" />
+    <state x="-1057" y="190" width="672" height="678" key="search.everywhere.popup/0.0.1440.860/-1440.0.1440.900@-1440.0.1440.900" timestamp="1617693720429" />
   </component>
 </project>

@@ -9,13 +9,13 @@ class Category extends Model
     //
 
     protected $table = 'categories';
+    protected $connection = 'mysql';
 
-    protected $fillable = ['category', 'order_no','ay_id'];
+    protected $fillable = ['category', 'order_no','ay_id', 'ay_code'];
 
     public $timestamps = false;
 
     protected $primaryKey = 'category_id';
-
 
     public function criteria()
     {

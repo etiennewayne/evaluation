@@ -16,7 +16,7 @@ class AcademicYearController extends Controller
     //
     public function __contruct(){
         $this->middleware('auth:admin');
-        $this->middleware('admin');
+        
     }
 
     public function index(Request $req){
@@ -47,7 +47,7 @@ class AcademicYearController extends Controller
     public function update(Request $req, $id){
 
         $validate = $req->validate([
-            'ay_code' => ['string', 'required', 'unique:ay', 'max:10'],
+            'ay_code' => ['string', 'required', 'unique:ay,ay_code,'. $id .',ay_id', 'max:10'],
             'ay_desc' => ['string', 'max:255'],
         ]);
 

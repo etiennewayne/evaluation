@@ -65,7 +65,7 @@
 
                         <div class="buttons mt-3">
                         <!-- <b-button tag="a" href="/cpanel-academicyear/create" class="is-primary">Create Account</b-button> -->
-                            <b-button @click="isModalCreate=true" class="is-primary is-fullwidth">Create Account</b-button>
+                            <b-button @click="modalCreate" class="is-primary is-fullwidth">Create Account</b-button>
                         </div>
 
 
@@ -130,7 +130,7 @@
 
 
             <!--modal update-->
-            <b-modal v-model="isModalUpdate" has-modal-card
+            <!-- <b-modal v-model="isModalUpdate" has-modal-card
                 trap-focus
                 :width="640"
                 aria-role="dialog"
@@ -175,8 +175,8 @@
                         </footer>
                     </div>
 
-                </form><!--close form-->
-            </b-modal>
+                </form>
+            </b-modal> -->
 
 
 
@@ -200,6 +200,7 @@ export default {
             page: 1,
             perPage: 5,
             defaultSortDirection: 'asc',
+            dataId: 0,
 
             isModalCreate: false,
             isModalUpdate: false,
@@ -292,7 +293,7 @@ export default {
                 type: 'is-danger',
                 message: 'Are you sure you want to delete this data?',
                 cancelText: 'Cancel',
-                confirmText: 'Delete Account',
+                confirmText: 'Delete',
                 onConfirm: () => this.deleteSubmit(delete_id)
             });
         },
@@ -301,36 +302,58 @@ export default {
         //save data
         submit(){
             this.btnClass['is-loading'] = true;
-            axios.post('/api/academicyear', this.fields).then(res=>{
-                this.fields = {};
-                this.errors = {};
-                this.loadAsyncData()
-                this.btnClass['is-loading'] = false;
-                this.isModalCreate = false;
-            }).catch(err=>{
-                if(err.response.status===422){
-                    this.errors = err.response.data.errors;
-                }
 
-                //console.log(err.response.status);
-                this.btnClass['is-loading'] = false;
-            })
+            if(this.dataId > 0){
+                //update request
+                axios.put('/api/academicyear/' + this.dataId, this.fields).then(res=>{
+                    this.fields = {};
+                    this.errors = {};
+                    this.loadAsyncData()
+                    this.btnClass['is-loading'] = false;
+                    this.isModalCreate = false;
+                    this.dataId = 0; //clear edit ID
+                    this.fields = {}; //clear fields
+                }).catch(err=>{
+                    if(err.response.status===422){
+                        this.errors = err.response.data.errors;
+                    }
+
+                    //console.log(err.response.status);
+                    this.btnClass['is-loading'] = false;
+                })
+
+            }else{
+
+                axios.post('/api/academicyear', this.fields).then(res=>{
+                    this.fields = {};
+                    this.errors = {};
+                    this.loadAsyncData()
+                    this.btnClass['is-loading'] = false;
+                    this.isModalCreate = false;
+                }).catch(err=>{
+                    if(err.response.status===422){
+                        this.errors = err.response.data.errors;
+                    }
+
+                    //console.log(err.response.status);
+                    this.btnClass['is-loading'] = false;
+                })
+            }
+
         },
+
 
         //getData
         getData(data_id){
-            this.updateFields = {};
-            this.isModalUpdate = true;
+            this.fields = {};
+            this.errors = {};
+
+            this.dataId = data_id;
+
+            this.isModalCreate = true;
             axios.get('/api/academicyear/'+data_id).then(res=>{
-                this.updateFields = res.data;
+                this.fields = res.data;
                 //console.log(res.data);
-            })
-        },
-
-        //submit Update Data
-        update(data_id){
-            axios.put('/api/academicyear/'+data_id, this.fields).then(res=>{
-
             })
         },
 
@@ -338,7 +361,6 @@ export default {
         //markActive the academic year
         markActive(id){
             axios.post('/api/academicyear-set-active', { 'id': id }).then(res=>{
-
                 if(res.data[0].status === 'success'){
                     this.$buefy.dialog.alert({
                         title: 'SUCCESS!',
@@ -351,8 +373,12 @@ export default {
             });
         },
 
-
-
+        modalCreate(){
+            this.isModalCreate = true;
+            this.fields = {};
+            this.errors = {};
+            this.dataId = 0;
+        },
 
     },
 

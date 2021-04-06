@@ -2474,6 +2474,7 @@ __webpack_require__.r(__webpack_exports__);
       page: 1,
       perPage: 5,
       defaultSortDirection: 'asc',
+      dataId: 0,
       isModalCreate: false,
       isModalUpdate: false,
       fields: {},
@@ -2555,7 +2556,7 @@ __webpack_require__.r(__webpack_exports__);
         type: 'is-danger',
         message: 'Are you sure you want to delete this data?',
         cancelText: 'Cancel',
-        confirmText: 'Delete Account',
+        confirmText: 'Delete',
         onConfirm: function onConfirm() {
           return _this3.deleteSubmit(delete_id);
         }
@@ -2566,36 +2567,58 @@ __webpack_require__.r(__webpack_exports__);
       var _this4 = this;
 
       this.btnClass['is-loading'] = true;
-      axios.post('/api/academicyear', this.fields).then(function (res) {
-        _this4.fields = {};
-        _this4.errors = {};
 
-        _this4.loadAsyncData();
+      if (this.dataId > 0) {
+        //update request
+        axios.put('/api/academicyear/' + this.dataId, this.fields).then(function (res) {
+          _this4.fields = {};
+          _this4.errors = {};
 
-        _this4.btnClass['is-loading'] = false;
-        _this4.isModalCreate = false;
-      })["catch"](function (err) {
-        if (err.response.status === 422) {
-          _this4.errors = err.response.data.errors;
-        } //console.log(err.response.status);
+          _this4.loadAsyncData();
+
+          _this4.btnClass['is-loading'] = false;
+          _this4.isModalCreate = false;
+          _this4.dataId = 0; //clear edit ID
+
+          _this4.fields = {}; //clear fields
+        })["catch"](function (err) {
+          if (err.response.status === 422) {
+            _this4.errors = err.response.data.errors;
+          } //console.log(err.response.status);
 
 
-        _this4.btnClass['is-loading'] = false;
-      });
+          _this4.btnClass['is-loading'] = false;
+        });
+      } else {
+        axios.post('/api/academicyear', this.fields).then(function (res) {
+          _this4.fields = {};
+          _this4.errors = {};
+
+          _this4.loadAsyncData();
+
+          _this4.btnClass['is-loading'] = false;
+          _this4.isModalCreate = false;
+        })["catch"](function (err) {
+          if (err.response.status === 422) {
+            _this4.errors = err.response.data.errors;
+          } //console.log(err.response.status);
+
+
+          _this4.btnClass['is-loading'] = false;
+        });
+      }
     },
     //getData
     getData: function getData(data_id) {
       var _this5 = this;
 
-      this.updateFields = {};
-      this.isModalUpdate = true;
+      this.fields = {};
+      this.errors = {};
+      this.dataId = data_id;
+      this.isModalCreate = true;
       axios.get('/api/academicyear/' + data_id).then(function (res) {
-        _this5.updateFields = res.data; //console.log(res.data);
+        _this5.fields = res.data; //console.log(res.data);
       });
-    },
-    //submit Update Data
-    update: function update(data_id) {
-      axios.put('/api/academicyear/' + data_id, this.fields).then(function (res) {});
     },
     //markActive the academic year
     markActive: function markActive(id) {
@@ -2614,6 +2637,12 @@ __webpack_require__.r(__webpack_exports__);
           });
         }
       });
+    },
+    modalCreate: function modalCreate() {
+      this.isModalCreate = true;
+      this.fields = {};
+      this.errors = {};
+      this.dataId = 0;
     }
   },
   mounted: function mounted() {
@@ -2755,83 +2784,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2844,9 +2796,8 @@ __webpack_require__.r(__webpack_exports__);
       perPage: 5,
       defaultSortDirection: 'asc',
       isModalCreate: false,
-      isModalUpdate: false,
+      dataId: 0,
       fields: {},
-      updateFields: {},
       errors: {},
       btnClass: {
         'is-success': true,
@@ -2921,7 +2872,7 @@ __webpack_require__.r(__webpack_exports__);
         type: 'is-danger',
         message: 'Are you sure you want to delete this data?',
         cancelText: 'Cancel',
-        confirmText: 'Delete Account',
+        confirmText: 'Delete',
         onConfirm: function onConfirm() {
           return _this3.deleteSubmit(delete_id);
         }
@@ -2932,39 +2883,63 @@ __webpack_require__.r(__webpack_exports__);
       var _this4 = this;
 
       this.btnClass['is-loading'] = true;
-      axios.post('/api/category', this.fields).then(function (res) {
-        _this4.fields = {};
-        _this4.errors = {};
 
-        _this4.loadAsyncData();
+      if (this.dataId > 0) {
+        //update
+        axios.post('/api/category/' + this.dataId, this.fields).then(function (res) {
+          _this4.fields = {};
+          _this4.errors = {};
 
-        _this4.btnClass['is-loading'] = false;
-        _this4.isModalCreate = false;
-      })["catch"](function (err) {
-        if (err.response.status === 422) {
-          _this4.errors = err.response.data.errors;
-        } //console.log(err.response.status);
+          _this4.loadAsyncData();
+
+          _this4.btnClass['is-loading'] = false;
+          _this4.isModalCreate = false;
+        })["catch"](function (err) {
+          if (err.response.status === 422) {
+            _this4.errors = err.response.data.errors;
+          } //console.log(err.response.status);
 
 
-        _this4.btnClass['is-loading'] = false;
-      });
+          _this4.btnClass['is-loading'] = false;
+        });
+      } else {
+        //insert
+        axios.post('/api/category', this.fields).then(function (res) {
+          _this4.fields = {};
+          _this4.errors = {};
+
+          _this4.loadAsyncData();
+
+          _this4.btnClass['is-loading'] = false;
+          _this4.isModalCreate = false;
+        })["catch"](function (err) {
+          if (err.response.status === 422) {
+            _this4.errors = err.response.data.errors;
+          } //console.log(err.response.status);
+
+
+          _this4.btnClass['is-loading'] = false;
+        });
+      }
     },
     //getData
     getData: function getData(data_id) {
       var _this5 = this;
 
-      this.updateFields = {};
-      this.isModalUpdate = true;
+      this.fields = {};
+      this.isModalCreate = true;
+      this.dataId = data_id;
       axios.get('/api/category/' + data_id).then(function (res) {
-        _this5.updateFields = res.data; //console.log(res.data);
+        _this5.fields = res.data[0];
+        console.log(res.data);
       });
     },
-    //submit Update Data
-    update: function update(data_id) {
-      axios.put('/api/category/' + data_id, this.fields).then(function (res) {});
-    },
-    //markActive the academic year
-    markActive: function markActive() {}
+    openModal: function openModal() {
+      this.isModalCreate = true;
+      this.dataId = 0;
+      this.fields = {};
+      this.errors = {};
+    }
   },
   mounted: function mounted() {
     this.loadAsyncData();
@@ -24430,11 +24405,7 @@ var render = function() {
                       "b-button",
                       {
                         staticClass: "is-primary is-fullwidth",
-                        on: {
-                          click: function($event) {
-                            _vm.isModalCreate = true
-                          }
-                        }
+                        on: { click: _vm.modalCreate }
                       },
                       [_vm._v("Create Account")]
                     )
@@ -24571,151 +24542,6 @@ var render = function() {
                         on: {
                           click: function($event) {
                             _vm.isModalCreate = false
-                          }
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c(
-                        "button",
-                        {
-                          class: _vm.btnClass,
-                          attrs: { label: "Save", type: "is-success" }
-                        },
-                        [_vm._v("SAVE")]
-                      )
-                    ],
-                    1
-                  )
-                ])
-              ]
-            )
-          ]
-        ),
-        _vm._v(" "),
-        _c(
-          "b-modal",
-          {
-            attrs: {
-              "has-modal-card": "",
-              "trap-focus": "",
-              width: 640,
-              "aria-role": "dialog",
-              "aria-label": "Example Modal",
-              "aria-modal": ""
-            },
-            model: {
-              value: _vm.isModalUpdate,
-              callback: function($$v) {
-                _vm.isModalUpdate = $$v
-              },
-              expression: "isModalUpdate"
-            }
-          },
-          [
-            _c(
-              "form",
-              {
-                on: {
-                  submit: function($event) {
-                    $event.preventDefault()
-                    return _vm.submit($event)
-                  }
-                }
-              },
-              [
-                _c("div", { staticClass: "modal-card" }, [
-                  _c("header", { staticClass: "modal-card-head" }, [
-                    _c("p", { staticClass: "modal-card-title" }, [
-                      _vm._v("Academic Year")
-                    ]),
-                    _vm._v(" "),
-                    _c("button", {
-                      staticClass: "delete",
-                      attrs: { type: "button" },
-                      on: {
-                        click: function($event) {
-                          _vm.isModalUpdate = false
-                        }
-                      }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c("section", { staticClass: "modal-card-body" }, [
-                    _c(
-                      "div",
-                      {},
-                      [
-                        _c(
-                          "b-field",
-                          {
-                            attrs: {
-                              label: "Academic Year Code",
-                              type: this.errors.ay_code ? "is-danger" : "",
-                              message: this.errors.ay_code
-                                ? this.errors.ay_code[0]
-                                : ""
-                            }
-                          },
-                          [
-                            _c("b-input", {
-                              attrs: {
-                                placeholder: "Academic Year Code",
-                                required: ""
-                              },
-                              model: {
-                                value: _vm.updateFields.ay_code,
-                                callback: function($$v) {
-                                  _vm.$set(_vm.updateFields, "ay_code", $$v)
-                                },
-                                expression: "updateFields.ay_code"
-                              }
-                            })
-                          ],
-                          1
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "b-field",
-                          {
-                            attrs: {
-                              label: "Academic Year Description",
-                              type: this.errors.ay_desc ? "is-danger" : "",
-                              message: this.errors.ay_desc
-                                ? this.errors.ay_desc[0]
-                                : ""
-                            }
-                          },
-                          [
-                            _c("b-input", {
-                              attrs: {
-                                placeholder: "Academic Year Description",
-                                required: ""
-                              },
-                              model: {
-                                value: _vm.updateFields.ay_desc,
-                                callback: function($$v) {
-                                  _vm.$set(_vm.updateFields, "ay_desc", $$v)
-                                },
-                                expression: "updateFields.ay_desc"
-                              }
-                            })
-                          ],
-                          1
-                        )
-                      ],
-                      1
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "footer",
-                    { staticClass: "modal-card-foot" },
-                    [
-                      _c("b-button", {
-                        attrs: { label: "Close" },
-                        on: {
-                          click: function($event) {
-                            _vm.isModalUpdate = false
                           }
                         }
                       }),
@@ -24941,7 +24767,9 @@ var render = function() {
                                       },
                                       on: {
                                         click: function($event) {
-                                          return _vm.getData(props.row.ay_id)
+                                          return _vm.getData(
+                                            props.row.category_id
+                                          )
                                         }
                                       }
                                     },
@@ -24961,7 +24789,7 @@ var render = function() {
                                       on: {
                                         click: function($event) {
                                           return _vm.confirmDelete(
-                                            props.row.ay_id
+                                            props.row.category_id
                                           )
                                         }
                                       }
@@ -24988,11 +24816,7 @@ var render = function() {
                       "b-button",
                       {
                         staticClass: "is-primary is-fullwidth",
-                        on: {
-                          click: function($event) {
-                            _vm.isModalCreate = true
-                          }
-                        }
+                        on: { click: _vm.openModal }
                       },
                       [_vm._v("Create Category")]
                     )
@@ -25039,7 +24863,7 @@ var render = function() {
                 _c("div", { staticClass: "modal-card" }, [
                   _c("header", { staticClass: "modal-card-head" }, [
                     _c("p", { staticClass: "modal-card-title" }, [
-                      _vm._v("Academic Year")
+                      _vm._v("Category")
                     ]),
                     _vm._v(" "),
                     _c("button", {
@@ -25108,39 +24932,6 @@ var render = function() {
                             })
                           ],
                           1
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "b-field",
-                          {
-                            attrs: {
-                              label: "Academic Year",
-                              type: this.errors.ay_id ? "is-danger" : "",
-                              message: this.errors.ay_id
-                                ? this.errors.ay_id[0]
-                                : ""
-                            }
-                          },
-                          [
-                            _c(
-                              "b-select",
-                              {
-                                attrs: {
-                                  placeholder: "Academic Year",
-                                  required: ""
-                                },
-                                model: {
-                                  value: _vm.updateFields.ay_id,
-                                  callback: function($$v) {
-                                    _vm.$set(_vm.updateFields, "ay_id", $$v)
-                                  },
-                                  expression: "updateFields.ay_id"
-                                }
-                              },
-                              [_c("option")]
-                            )
-                          ],
-                          1
                         )
                       ],
                       1
@@ -25156,184 +24947,6 @@ var render = function() {
                         on: {
                           click: function($event) {
                             _vm.isModalCreate = false
-                          }
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c(
-                        "button",
-                        {
-                          class: _vm.btnClass,
-                          attrs: { label: "Save", type: "is-success" }
-                        },
-                        [_vm._v("SAVE")]
-                      )
-                    ],
-                    1
-                  )
-                ])
-              ]
-            )
-          ]
-        ),
-        _vm._v(" "),
-        _c(
-          "b-modal",
-          {
-            attrs: {
-              "has-modal-card": "",
-              "trap-focus": "",
-              width: 640,
-              "aria-role": "dialog",
-              "aria-label": "Example Modal",
-              "aria-modal": ""
-            },
-            model: {
-              value: _vm.isModalUpdate,
-              callback: function($$v) {
-                _vm.isModalUpdate = $$v
-              },
-              expression: "isModalUpdate"
-            }
-          },
-          [
-            _c(
-              "form",
-              {
-                on: {
-                  submit: function($event) {
-                    $event.preventDefault()
-                    return _vm.submit($event)
-                  }
-                }
-              },
-              [
-                _c("div", { staticClass: "modal-card" }, [
-                  _c("header", { staticClass: "modal-card-head" }, [
-                    _c("p", { staticClass: "modal-card-title" }, [
-                      _vm._v("Academic Year")
-                    ]),
-                    _vm._v(" "),
-                    _c("button", {
-                      staticClass: "delete",
-                      attrs: { type: "button" },
-                      on: {
-                        click: function($event) {
-                          _vm.isModalUpdate = false
-                        }
-                      }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c("section", { staticClass: "modal-card-body" }, [
-                    _c(
-                      "div",
-                      {},
-                      [
-                        _c(
-                          "b-field",
-                          {
-                            attrs: {
-                              label: "Category",
-                              type: this.errors.category ? "is-danger" : "",
-                              message: this.errors.category
-                                ? this.errors.category[0]
-                                : ""
-                            }
-                          },
-                          [
-                            _c("b-input", {
-                              attrs: {
-                                placeholder: "Academic Year Code",
-                                required: ""
-                              },
-                              model: {
-                                value: _vm.updateFields.category,
-                                callback: function($$v) {
-                                  _vm.$set(_vm.updateFields, "category", $$v)
-                                },
-                                expression: "updateFields.category"
-                              }
-                            })
-                          ],
-                          1
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "b-field",
-                          {
-                            attrs: {
-                              label: "Order No",
-                              type: this.errors.order_no ? "is-danger" : "",
-                              message: this.errors.order_no
-                                ? this.errors.order_no[0]
-                                : ""
-                            }
-                          },
-                          [
-                            _c("b-input", {
-                              attrs: {
-                                placeholder: "Academic Year Description",
-                                required: ""
-                              },
-                              model: {
-                                value: _vm.updateFields.order_no,
-                                callback: function($$v) {
-                                  _vm.$set(_vm.updateFields, "order_no", $$v)
-                                },
-                                expression: "updateFields.order_no"
-                              }
-                            })
-                          ],
-                          1
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "b-field",
-                          {
-                            attrs: {
-                              label: "Order No",
-                              type: this.errors.ay_id ? "is-danger" : "",
-                              message: this.errors.ay_id
-                                ? this.errors.ay_id[0]
-                                : ""
-                            }
-                          },
-                          [
-                            _c(
-                              "b-select",
-                              {
-                                attrs: {
-                                  placeholder: "Academic Year Description",
-                                  required: ""
-                                },
-                                model: {
-                                  value: _vm.updateFields.ay_id,
-                                  callback: function($$v) {
-                                    _vm.$set(_vm.updateFields, "ay_id", $$v)
-                                  },
-                                  expression: "updateFields.ay_id"
-                                }
-                              },
-                              [_c("option")]
-                            )
-                          ],
-                          1
-                        )
-                      ],
-                      1
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "footer",
-                    { staticClass: "modal-card-foot" },
-                    [
-                      _c("b-button", {
-                        attrs: { label: "Close" },
-                        on: {
-                          click: function($event) {
-                            _vm.isModalUpdate = false
                           }
                         }
                       }),
@@ -27889,14 +27502,14 @@ var render = function() {
             _vm._v(" "),
             _c(
               "b-navbar-dropdown",
-              { attrs: { label: "Login Option" } },
+              { attrs: { label: "Others" } },
               [
                 _c("b-navbar-item", { attrs: { href: "/login" } }, [
-                  _vm._v("\n                    Login\n                ")
+                  _vm._v("\n                    Student\n                ")
                 ]),
                 _vm._v(" "),
                 _c("b-navbar-item", { attrs: { href: "/cpanel" } }, [
-                  _vm._v("\n                    Admin Login\n                ")
+                  _vm._v("\n                    GADTC\n                ")
                 ])
               ],
               1

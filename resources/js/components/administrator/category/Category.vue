@@ -50,8 +50,8 @@
 
                             <b-table-column field="ay_id" label="Action" v-slot="props">
                                 <div class="is-flex">
-                                    <b-button outlined class="button is-small is-warning mr-1" tag="a" icon-right="pencil" icon-pack="fa" @click="getData(props.row.ay_id)">EDIT</b-button>
-                                    <b-button outlined class="button is-small is-danger mr-1" icon-pack="fa" icon-right="trash" @click="confirmDelete(props.row.ay_id)">DELETE</b-button>
+                                    <b-button outlined class="button is-small is-warning mr-1" tag="a" icon-right="pencil" icon-pack="fa" @click="getData(props.row.category_id)">EDIT</b-button>
+                                    <b-button outlined class="button is-small is-danger mr-1" icon-pack="fa" icon-right="trash" @click="confirmDelete(props.row.category_id)">DELETE</b-button>
                                 </div>
                             </b-table-column>
 
@@ -59,11 +59,8 @@
 
                         <div class="buttons mt-3">
                             <!-- <b-button tag="a" href="/cpanel-academicyear/create" class="is-primary">Create Account</b-button> -->
-                            <b-button @click="isModalCreate=true" class="is-primary is-fullwidth">Create Category</b-button>
+                            <b-button @click="openModal" class="is-primary is-fullwidth">Create Category</b-button>
                         </div>
-
-
-
                     </div><!--close column-->
                 </div>
             </section>
@@ -81,7 +78,7 @@
                 <form @submit.prevent="submit">
                     <div class="modal-card">
                         <header class="modal-card-head">
-                            <p class="modal-card-title">Academic Year</p>
+                            <p class="modal-card-title">Category</p>
                             <button
                                 type="button"
                                 class="delete"
@@ -103,14 +100,7 @@
                                              placeholder="Order No" required>
                                     </b-input>
                                 </b-field>
-                                <b-field label="Academic Year"
-                                         :type="this.errors.ay_id ? 'is-danger':''"
-                                         :message="this.errors.ay_id ? this.errors.ay_id[0] : ''">
-                                    <b-select v-model="updateFields.ay_id"
-                                              placeholder="Academic Year" required>
-                                        <option></option>
-                                    </b-select>
-                                </b-field>
+
                             </div>
                         </section>
                         <footer class="modal-card-foot">
@@ -126,73 +116,6 @@
 
                 </form><!--close form-->
             </b-modal>
-
-
-
-
-
-            <!--modal update-->
-            <b-modal v-model="isModalUpdate" has-modal-card
-                     trap-focus
-                     :width="640"
-                     aria-role="dialog"
-                     aria-label="Example Modal"
-                     aria-modal>
-
-                <form @submit.prevent="submit">
-                    <div class="modal-card">
-                        <header class="modal-card-head">
-                            <p class="modal-card-title">Academic Year</p>
-                            <button
-                                type="button"
-                                class="delete"
-                                @click="isModalUpdate = false"/>
-                        </header>
-                        <section class="modal-card-body">
-                            <div class="">
-                                <b-field label="Category"
-                                         :type="this.errors.category ? 'is-danger':''"
-                                         :message="this.errors.category ? this.errors.category[0] : ''">
-                                    <b-input v-model="updateFields.category"
-                                             placeholder="Academic Year Code" required>
-                                    </b-input>
-                                </b-field>
-                                <b-field label="Order No"
-                                         :type="this.errors.order_no ? 'is-danger':''"
-                                         :message="this.errors.order_no ? this.errors.order_no[0] : ''">
-                                    <b-input v-model="updateFields.order_no"
-                                             placeholder="Academic Year Description" required>
-                                    </b-input>
-                                </b-field>
-
-                                <b-field label="Order No"
-                                         :type="this.errors.ay_id ? 'is-danger':''"
-                                         :message="this.errors.ay_id ? this.errors.ay_id[0] : ''">
-                                    <b-select v-model="updateFields.ay_id"
-                                             placeholder="Academic Year Description" required>
-                                        <option></option>
-                                    </b-select>
-                                </b-field>
-                            </div>
-                        </section>
-                        <footer class="modal-card-foot">
-                            <b-button
-                                label="Close"
-                                @click="isModalUpdate=false"/>
-                            <button
-                                :class="btnClass"
-                                label="Save"
-                                type="is-success">SAVE</button>
-                        </footer>
-                    </div>
-
-                </form><!--close form-->
-            </b-modal>
-
-
-
-
-
         </div><!-- container-->
     </div><!--close root div>-->
 
@@ -213,10 +136,11 @@ export default {
             defaultSortDirection: 'asc',
 
             isModalCreate: false,
-            isModalUpdate: false,
+
+            dataId: 0,
+
 
             fields: {},
-            updateFields: {},
             errors : {},
 
             btnClass: {
@@ -299,7 +223,7 @@ export default {
                 type: 'is-danger',
                 message: 'Are you sure you want to delete this data?',
                 cancelText: 'Cancel',
-                confirmText: 'Delete Account',
+                confirmText: 'Delete',
                 onConfirm: () => this.deleteSubmit(delete_id)
             });
         },
@@ -308,46 +232,64 @@ export default {
         //save data
         submit(){
             this.btnClass['is-loading'] = true;
-            axios.post('/api/category', this.fields).then(res=>{
-                this.fields = {};
-                this.errors = {};
-                this.loadAsyncData()
-                this.btnClass['is-loading'] = false;
-                this.isModalCreate = false;
-            }).catch(err=>{
-                if(err.response.status===422){
-                    this.errors = err.response.data.errors;
-                }
 
-                //console.log(err.response.status);
-                this.btnClass['is-loading'] = false;
-            })
+            if(this.dataId > 0){
+                //update
+                axios.post('/api/category/'+this.dataId, this.fields).then(res=>{
+                    this.fields = {};
+                    this.errors = {};
+                    this.loadAsyncData()
+                    this.btnClass['is-loading'] = false;
+                    this.isModalCreate = false;
+
+
+                }).catch(err=>{
+                    if(err.response.status===422){
+                        this.errors = err.response.data.errors;
+                    }
+                    //console.log(err.response.status);
+                    this.btnClass['is-loading'] = false;
+                })
+            }else{
+                //insert
+                axios.post('/api/category', this.fields).then(res=>{
+                    this.fields = {};
+                    this.errors = {};
+                    this.loadAsyncData()
+                    this.btnClass['is-loading'] = false;
+                    this.isModalCreate = false;
+                }).catch(err=>{
+                    if(err.response.status===422){
+                        this.errors = err.response.data.errors;
+                    }
+
+                    //console.log(err.response.status);
+                    this.btnClass['is-loading'] = false;
+                })
+            }
+
         },
 
         //getData
         getData(data_id){
-            this.updateFields = {};
-            this.isModalUpdate = true;
-            axios.get('/api/category/'+data_id).then(res=>{
-                this.updateFields = res.data;
-                //console.log(res.data);
+            this.fields = {};
+            this.isModalCreate = true;
+            this.dataId = data_id;
+
+            axios.get('/api/category/' + data_id).then(res=>{
+                this.fields = res.data[0];
+                console.log(res.data);
             })
         },
 
-        //submit Update Data
-        update(data_id){
-            axios.put('/api/category/'+data_id, this.fields).then(res=>{
+        openModal(){
+          this.isModalCreate = true;
+          this.dataId = 0;
 
-            })
-        },
-
-
-        //markActive the academic year
-        markActive(){
+          this.fields ={};
+          this.errors = {};
 
         },
-
-
 
 
     },
