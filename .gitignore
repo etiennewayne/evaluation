@@ -4,6 +4,7 @@
 /storage/*.key
 /vendor
 /config
+/personal
 .idea
 .env
 .env.backup
