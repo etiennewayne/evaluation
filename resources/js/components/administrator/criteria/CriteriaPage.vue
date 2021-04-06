@@ -23,8 +23,8 @@
                             <div class="level-item">
                                 <b-field label="Search">
                                     <b-input type="text"
-                                        v-model="search" placeholder="Search Name"
-                                        @keyup.native.enter="loadAsyncData"/>
+                                             v-model="search" placeholder="Search Name"
+                                             @keyup.native.enter="loadAsyncData"/>
                                     <p class="control">
                                         <b-button type="is-primary" label="Search" @click="loadAsyncData"/>
                                     </p>
@@ -84,7 +84,7 @@
 
                     <div class="buttons mt-3">
                         <!-- <b-button tag="a" href="/cpanel-academicyear/create" class="is-primary">Create Account</b-button> -->
-                        <b-button @click="openModal" class="is-primary is-fullwidth">Create User</b-button>
+                        <b-button @click="isModalCreate=true" class="is-primary is-fullwidth">Create User</b-button>
                     </div>
                 </div><!--close column-->
             </div>
@@ -92,7 +92,7 @@
 
 
 
-            <!--modal create-->
+        <!--modal create-->
         <b-modal v-model="isModalCreate" has-modal-card
                  trap-focus
                  :width="640"
@@ -188,6 +188,89 @@
         </b-modal>
 
 
+
+
+
+        <!--modal update-->
+        <b-modal v-model="isModalUpdate" has-modal-card
+                 trap-focus
+                 :width="640"
+                 aria-role="dialog"
+                 aria-label="Example Modal"
+                 aria-modal>
+
+            <form @submit.prevent="submitEdit">
+                <div class="modal-card">
+                    <header class="modal-card-head">
+                        <p class="modal-card-title">User Information</p>
+                        <button
+                            type="button"
+                            class="delete"
+                            @click="isModalUpdate = false"/>
+                    </header>
+
+                    <section class="modal-card-body">
+                        <div class="fiel">
+                            <b-field label="Username" label-position="on-border"
+                                     :type="this.errors.username ? 'is-danger':''"
+                                     :message="this.errors.username ? this.errors.username[0] : ''">
+                                <b-input v-model="updateFields.username"
+                                         placeholder="Username" required>
+                                </b-input>
+                            </b-field>
+
+                            <b-field label="Name" label-position="on-border"
+                                     :type="this.errors.name ? 'is-danger':''"
+                                     :message="this.errors.name ? this.errors.name[0] : ''">
+                                <b-input v-model="updateFields.name"
+                                         placeholder="Name" required>
+                                </b-input>
+                            </b-field>
+
+                            <b-field label="Email" label-position="on-border"
+                                     :type="this.errors.email ? 'is-danger':''"
+                                     :message="this.errors.email ? this.errors.email[0] : ''">
+                                <b-input v-model="updateFields.email"
+                                         placeholder="Email" required>
+                                </b-input>
+                            </b-field>
+
+                            <b-field grouped>
+                                <b-field label="Role" label-position="on-border">
+                                    <b-select v-model="updateFields.userType">
+                                        <option value="ADMIN">ADMINISTRATOR</option>
+                                        <option value="USER">USER</option>
+                                    </b-select>
+                                </b-field>
+
+                                <b-field label="Institute" label-position="on-border">
+                                    <b-select v-model="updateFields.institute">
+                                        <option value="ICS">ICS</option>
+                                        <option value="IAS">IAS</option>
+                                        <option value="HR">HR</option>
+                                        <option value="CIS">CIS</option>
+                                    </b-select>
+                                </b-field>
+
+                            </b-field>
+
+                        </div>
+                    </section>
+                    <footer class="modal-card-foot">
+                        <b-button
+                            label="Close"
+                            @click="isModalUpdate=false"/>
+                        <button
+                            :class="btnClass"
+                            label="Save"
+                            type="is-success">UPDATE</button>
+                    </footer>
+                </div>
+
+            </form><!--close form-->
+        </b-modal>
+
+
     </div>
 </template>
 
@@ -206,9 +289,10 @@ export default {
             defaultSortDirection: 'asc',
 
             isModalCreate: false,
+            isModalUpdate: false,
 
-            dataId: 0,
             fields: {},
+            updateFields: {},
             errors : {},
 
             btnClass: {
@@ -234,7 +318,7 @@ export default {
             ].join('&')
 
             this.loading = true
-            axios.get(`/ajax/user?${params}`)
+            axios.get(`/api/criteria?${params}`)
                 .then(({ data }) => {
                     this.data = []
                     let currentTotal = data.total
@@ -274,10 +358,11 @@ export default {
             this.loadAsyncData()
         },
 
+
         //actions here below
 
         deleteSubmit(delete_id){
-            axios.delete('/ajax/user/'+ delete_id).then(res=>{
+            axios.delete('/api/criteria/'+ delete_id).then(res=>{
                 this.loadAsyncData();
             }).catch(err=>{
                 console.log(err);
@@ -302,64 +387,60 @@ export default {
         //save data
         submit(){
             this.btnClass['is-loading'] = true;
-            if(this.dataId > 0){
-                //update data
-                axios.put('/ajax/user/'+ this.dataId, this.fields).then(res=>{
-                    this.fields = {};
-                    this.errors = {};
-                    this.loadAsyncData()
-                    this.btnClass['is-loading'] = false;
-                    this.isModalCreate = false;
-                }).catch(err=>{
-                    if(err.response.status===422){
-                        this.errors = err.response.data.errors;
-                    }
+            axios.post('/api/user', this.fields).then(res=>{
+                this.fields = {};
+                this.errors = {};
+                this.loadAsyncData()
+                this.btnClass['is-loading'] = false;
+                this.isModalCreate = false;
+            }).catch(err=>{
+                if(err.response.status===422){
+                    this.errors = err.response.data.errors;
+                }
 
-                    //console.log(err.response.status);
-                    this.btnClass['is-loading'] = false;
-                })
-            }else{
-                axios.post('/ajax/user', this.fields).then(res=>{
-                    this.fields = {};
-                    this.errors = {};
-                    this.loadAsyncData()
-                    this.btnClass['is-loading'] = false;
-                    this.isModalCreate = false;
-                }).catch(err=>{
-                    if(err.response.status===422){
-                        this.errors = err.response.data.errors;
-                    }
-
-                    //console.log(err.response.status);
-                    this.btnClass['is-loading'] = false;
-                })
-            }
-
-
-        },
-
-
-
-        //getData
-        getData(data_id){
-            this.fields = {};
-            this.isModalCreate = true;
-            this.dataId = data_id;
-
-            axios.get('/ajax/user/'+data_id).then(res=>{
-                this.fields = res.data[0];
-                //console.log(res.data[0]);
+                //console.log(err.response.status);
+                this.btnClass['is-loading'] = false;
             })
         },
 
-        openModal(){
-            this.isModalCreate=true;
-            this.fields = {};
-            this.errors = {};
+        submitEdit(){
 
-        }
+            if(this.updateFields.id === '' || this.updateFields.id === null){
+                return false;
+            }
 
+            this.btnClass['is-loading'] = true;
+            axios.put('/api/user/' + this.updateFields.id, this.updateFields).then(res=>{
+                this.updateFields = {};
+                this.errors = {};
+                this.loadAsyncData()
+                this.btnClass['is-loading'] = false;
+                this.isModalUpdate = false;
+            }).catch(err=>{
+                if(err.response.status===422){
+                    this.errors = err.response.data.errors;
+                }
+                //console.log(err.response.status);
+                this.btnClass['is-loading'] = false;
+            })
+        },
 
+        //getData
+        getData(data_id){
+            this.updateFields = {};
+            this.isModalUpdate = true;
+            axios.get('/api/user/'+data_id).then(res=>{
+                this.updateFields = res.data[0];
+                console.log(res.data[0]);
+            })
+        },
+
+        //submit Update Data
+        update(data_id){
+            axios.put('/api/category/'+data_id, this.fields).then(res=>{
+
+            })
+        },
 
     },
 

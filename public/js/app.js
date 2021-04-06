@@ -3701,89 +3701,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -3796,9 +3713,8 @@ __webpack_require__.r(__webpack_exports__);
       perPage: 20,
       defaultSortDirection: 'asc',
       isModalCreate: false,
-      isModalUpdate: false,
+      dataId: 0,
       fields: {},
-      updateFields: {},
       errors: {},
       btnClass: {
         'is-success': true,
@@ -3817,7 +3733,7 @@ __webpack_require__.r(__webpack_exports__);
 
       var params = ["sort_by=".concat(this.sortField, ".").concat(this.sortOrder), "name=".concat(this.search), "perpage=".concat(this.perPage), "page=".concat(this.page)].join('&');
       this.loading = true;
-      axios.get("/api/user?".concat(params)).then(function (_ref) {
+      axios.get("/ajax/user?".concat(params)).then(function (_ref) {
         var data = _ref.data;
         _this.data = [];
         var currentTotal = data.total;
@@ -3859,7 +3775,7 @@ __webpack_require__.r(__webpack_exports__);
     deleteSubmit: function deleteSubmit(delete_id) {
       var _this2 = this;
 
-      axios["delete"]('/api/user/' + delete_id).then(function (res) {
+      axios["delete"]('/ajax/user/' + delete_id).then(function (res) {
         _this2.loadAsyncData();
       })["catch"](function (err) {
         console.log(err);
@@ -3885,65 +3801,60 @@ __webpack_require__.r(__webpack_exports__);
       var _this4 = this;
 
       this.btnClass['is-loading'] = true;
-      axios.post('/api/user', this.fields).then(function (res) {
-        _this4.fields = {};
-        _this4.errors = {};
 
-        _this4.loadAsyncData();
+      if (this.dataId > 0) {
+        //update data
+        axios.put('/ajax/user/' + this.dataId, this.fields).then(function (res) {
+          _this4.fields = {};
+          _this4.errors = {};
 
-        _this4.btnClass['is-loading'] = false;
-        _this4.isModalCreate = false;
-      })["catch"](function (err) {
-        if (err.response.status === 422) {
-          _this4.errors = err.response.data.errors;
-        } //console.log(err.response.status);
+          _this4.loadAsyncData();
+
+          _this4.btnClass['is-loading'] = false;
+          _this4.isModalCreate = false;
+        })["catch"](function (err) {
+          if (err.response.status === 422) {
+            _this4.errors = err.response.data.errors;
+          } //console.log(err.response.status);
 
 
-        _this4.btnClass['is-loading'] = false;
-      });
-    },
-    submitEdit: function submitEdit() {
-      var _this5 = this;
+          _this4.btnClass['is-loading'] = false;
+        });
+      } else {
+        axios.post('/ajax/user', this.fields).then(function (res) {
+          _this4.fields = {};
+          _this4.errors = {};
 
-      if (this.updateFields.id === '' || this.updateFields.id === null) {
-        return false;
+          _this4.loadAsyncData();
+
+          _this4.btnClass['is-loading'] = false;
+          _this4.isModalCreate = false;
+        })["catch"](function (err) {
+          if (err.response.status === 422) {
+            _this4.errors = err.response.data.errors;
+          } //console.log(err.response.status);
+
+
+          _this4.btnClass['is-loading'] = false;
+        });
       }
-
-      this.btnClass['is-loading'] = true;
-      axios.put('/api/user/' + this.updateFields.id, this.updateFields).then(function (res) {
-        _this5.updateFields = {};
-        _this5.errors = {};
-
-        _this5.loadAsyncData();
-
-        _this5.btnClass['is-loading'] = false;
-        _this5.isModalUpdate = false;
-      })["catch"](function (err) {
-        if (err.response.status === 422) {
-          _this5.errors = err.response.data.errors;
-        } //console.log(err.response.status);
-
-
-        _this5.btnClass['is-loading'] = false;
-      });
     },
     //getData
     getData: function getData(data_id) {
-      var _this6 = this;
+      var _this5 = this;
 
-      this.updateFields = {};
-      this.isModalUpdate = true;
-      axios.get('/api/user/' + data_id).then(function (res) {
-        _this6.updateFields = res.data[0];
-        console.log(res.data[0]);
+      this.fields = {};
+      this.isModalCreate = true;
+      this.dataId = data_id;
+      axios.get('/ajax/user/' + data_id).then(function (res) {
+        _this5.fields = res.data[0]; //console.log(res.data[0]);
       });
     },
-    //submit Update Data
-    update: function update(data_id) {
-      axios.put('/api/category/' + data_id, this.fields).then(function (res) {});
-    },
-    //markActive the academic year
-    markActive: function markActive() {}
+    openModal: function openModal() {
+      this.isModalCreate = true;
+      this.fields = {};
+      this.errors = {};
+    }
   },
   mounted: function mounted() {
     this.loadAsyncData();
@@ -26139,11 +26050,7 @@ var render = function() {
                     "b-button",
                     {
                       staticClass: "is-primary is-fullwidth",
-                      on: {
-                        click: function($event) {
-                          _vm.isModalCreate = true
-                        }
-                      }
+                      on: { click: _vm.openModal }
                     },
                     [_vm._v("Create User")]
                   )
@@ -26458,263 +26365,6 @@ var render = function() {
                         attrs: { label: "Save", type: "is-success" }
                       },
                       [_vm._v("SAVE")]
-                    )
-                  ],
-                  1
-                )
-              ])
-            ]
-          )
-        ]
-      ),
-      _vm._v(" "),
-      _c(
-        "b-modal",
-        {
-          attrs: {
-            "has-modal-card": "",
-            "trap-focus": "",
-            width: 640,
-            "aria-role": "dialog",
-            "aria-label": "Example Modal",
-            "aria-modal": ""
-          },
-          model: {
-            value: _vm.isModalUpdate,
-            callback: function($$v) {
-              _vm.isModalUpdate = $$v
-            },
-            expression: "isModalUpdate"
-          }
-        },
-        [
-          _c(
-            "form",
-            {
-              on: {
-                submit: function($event) {
-                  $event.preventDefault()
-                  return _vm.submitEdit($event)
-                }
-              }
-            },
-            [
-              _c("div", { staticClass: "modal-card" }, [
-                _c("header", { staticClass: "modal-card-head" }, [
-                  _c("p", { staticClass: "modal-card-title" }, [
-                    _vm._v("User Information")
-                  ]),
-                  _vm._v(" "),
-                  _c("button", {
-                    staticClass: "delete",
-                    attrs: { type: "button" },
-                    on: {
-                      click: function($event) {
-                        _vm.isModalUpdate = false
-                      }
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("section", { staticClass: "modal-card-body" }, [
-                  _c(
-                    "div",
-                    { staticClass: "fiel" },
-                    [
-                      _c(
-                        "b-field",
-                        {
-                          attrs: {
-                            label: "Username",
-                            "label-position": "on-border",
-                            type: this.errors.username ? "is-danger" : "",
-                            message: this.errors.username
-                              ? this.errors.username[0]
-                              : ""
-                          }
-                        },
-                        [
-                          _c("b-input", {
-                            attrs: { placeholder: "Username", required: "" },
-                            model: {
-                              value: _vm.updateFields.username,
-                              callback: function($$v) {
-                                _vm.$set(_vm.updateFields, "username", $$v)
-                              },
-                              expression: "updateFields.username"
-                            }
-                          })
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "b-field",
-                        {
-                          attrs: {
-                            label: "Name",
-                            "label-position": "on-border",
-                            type: this.errors.name ? "is-danger" : "",
-                            message: this.errors.name ? this.errors.name[0] : ""
-                          }
-                        },
-                        [
-                          _c("b-input", {
-                            attrs: { placeholder: "Name", required: "" },
-                            model: {
-                              value: _vm.updateFields.name,
-                              callback: function($$v) {
-                                _vm.$set(_vm.updateFields, "name", $$v)
-                              },
-                              expression: "updateFields.name"
-                            }
-                          })
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "b-field",
-                        {
-                          attrs: {
-                            label: "Email",
-                            "label-position": "on-border",
-                            type: this.errors.email ? "is-danger" : "",
-                            message: this.errors.email
-                              ? this.errors.email[0]
-                              : ""
-                          }
-                        },
-                        [
-                          _c("b-input", {
-                            attrs: { placeholder: "Email", required: "" },
-                            model: {
-                              value: _vm.updateFields.email,
-                              callback: function($$v) {
-                                _vm.$set(_vm.updateFields, "email", $$v)
-                              },
-                              expression: "updateFields.email"
-                            }
-                          })
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "b-field",
-                        { attrs: { grouped: "" } },
-                        [
-                          _c(
-                            "b-field",
-                            {
-                              attrs: {
-                                label: "Role",
-                                "label-position": "on-border"
-                              }
-                            },
-                            [
-                              _c(
-                                "b-select",
-                                {
-                                  model: {
-                                    value: _vm.updateFields.userType,
-                                    callback: function($$v) {
-                                      _vm.$set(
-                                        _vm.updateFields,
-                                        "userType",
-                                        $$v
-                                      )
-                                    },
-                                    expression: "updateFields.userType"
-                                  }
-                                },
-                                [
-                                  _c("option", { attrs: { value: "ADMIN" } }, [
-                                    _vm._v("ADMINISTRATOR")
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("option", { attrs: { value: "USER" } }, [
-                                    _vm._v("USER")
-                                  ])
-                                ]
-                              )
-                            ],
-                            1
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "b-field",
-                            {
-                              attrs: {
-                                label: "Institute",
-                                "label-position": "on-border"
-                              }
-                            },
-                            [
-                              _c(
-                                "b-select",
-                                {
-                                  model: {
-                                    value: _vm.updateFields.institute,
-                                    callback: function($$v) {
-                                      _vm.$set(
-                                        _vm.updateFields,
-                                        "institute",
-                                        $$v
-                                      )
-                                    },
-                                    expression: "updateFields.institute"
-                                  }
-                                },
-                                [
-                                  _c("option", { attrs: { value: "ICS" } }, [
-                                    _vm._v("ICS")
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("option", { attrs: { value: "IAS" } }, [
-                                    _vm._v("IAS")
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("option", { attrs: { value: "HR" } }, [
-                                    _vm._v("HR")
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("option", { attrs: { value: "CIS" } }, [
-                                    _vm._v("CIS")
-                                  ])
-                                ]
-                              )
-                            ],
-                            1
-                          )
-                        ],
-                        1
-                      )
-                    ],
-                    1
-                  )
-                ]),
-                _vm._v(" "),
-                _c(
-                  "footer",
-                  { staticClass: "modal-card-foot" },
-                  [
-                    _c("b-button", {
-                      attrs: { label: "Close" },
-                      on: {
-                        click: function($event) {
-                          _vm.isModalUpdate = false
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c(
-                      "button",
-                      {
-                        class: _vm.btnClass,
-                        attrs: { label: "Save", type: "is-success" }
-                      },
-                      [_vm._v("UPDATE")]
                     )
                   ],
                   1

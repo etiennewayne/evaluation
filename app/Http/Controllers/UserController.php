@@ -19,142 +19,80 @@ class UserController extends Controller
        $this->middleware('auth:admin');
        $this->middleware('admin');
     }
-    //
 
+    //
     public function index(){
         return view('auth.user');
     }
 
 
+    public function index_data(Request $req){
+        $sortkey = explode(".",$req->sort_by);
 
-    public function create(){
-        $programs = Program::all();
-        $positions = Position::all();
-
-        return view('auth/usercreate')
-            ->with('programs', $programs)
-            ->with('positions', $positions);
+        return DB::table('registrar_gadtc.users as a')
+            ->where('name', 'like', '%'. $req->name . '%')
+            ->select('id', 'username', 'name', 'email', 'userType', 'institute')
+            ->orderBy($sortkey[0], $sortkey[1])
+            ->paginate($req->perpage);
     }
 
-    public function store(Request $request){
 
-        $validateData = $request->validate([
-            'student_id' => ['string', 'max:10', 'min:3', 'required', 'unique:users'],
-            'username' => ['string', 'max:50', 'min:3', 'required', 'unique:users'],
-            'lname' => ['string', 'max:50', 'required'],
-            'fname' => ['string', 'max:50', 'required'],
-            'sex' => ['string', 'max:10', 'required'],
+    public function show($id){
+        return DB::table('registrar_gadtc.users')
+            ->select('id', 'username', 'email', 'userType', 'name', 'institute')
+            ->where('id', $id)
+            ->get();
+    }
+
+    public function store(Request $req){
+        $validate = $req->validate([
+            'username' => ['required', 'string', 'max:30', 'unique:registrar_gadtc.users'],
+            'name' => ['required', 'string', 'max:50'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:registrar_gadtc.users'],
             'password' => ['required', 'string', 'min:4', 'confirmed'],
         ]);
 
-        $data = User::create([
-            'student_id' => $request->student_id,
-            'username' => $request->username,
-            'lname' => strtoupper($request->lname),
-            'fname' => strtoupper($request->fname),
-            'mname' => strtoupper($request->mname),
-            'sex' => $request->sex,
-            'role' => $request->role,
-            'password' => Hash::make($request->password)
+        $data = DB::table('registrar_gadtc.users')->insert(
+            [
+                'username' => $req->username,
+                'name' => strtoupper($req->name),
+                'email' => $req->email,
+                'password' => Hash::make($req->password),
+                'userType' =>strtoupper($req->userType),
+                'institute' => strtoupper($req->institute),
+            ]
+        );
+        return [['status' => 'saved']];
+    }
+
+
+    public function update(Request $req, $id){
+        $validate = $req->validate([
+            'username' => ['required', 'string', 'max:30', 'unique:registrar_gadtc.users,username,' .$id],
+            'name' => ['required', 'string', 'max:50'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:registrar_gadtc.users,email,' . $id],
         ]);
 
-        return redirect('/cpanel-users')->with('success', 'User created successfully.');
-    }
-
-
-    public function edit($id){
-
-
-        $user = User::find($id);
-
-        $positions = Position::all();
-
-       // $programs = Program::all();
-
-        $civilstatus = DB::table('civil_status')->get();
-
-
-          return view('auth/useredit')->with('user', $user)
-              ->with('civilstatus', $civilstatus)
-              ->with('positions', $positions);
-        //return $user;
-    }
-
-    public function update(Request $request, $id){
-
-
-        if($request->password != null) {
-            //if there is a password inputted.
-            $validateData = $request->validate([
-                'lname' => ['string', 'max:50', 'required'],
-                'fname' => ['string', 'max:50', 'required'],
-                'sex' => ['string', 'max:10', 'required'],
-                'password' => ['required', 'string', 'min:4', 'confirmed'],
+        DB::table('registrar_gadtc.users')
+            ->where('id', $id)
+            ->update([
+                'username' => $req->username,
+                'name' => strtoupper($req->name),
+                'email' => $req->email,
+                'userType' =>strtoupper($req->userType),
+                'institute' => strtoupper($req->institute),
             ]);
-
-        }else{
-            //if no password inputted
-            $validateData = $request->validate([
-                'lname' => ['string', 'max:50', 'required'],
-                'fname' => ['string', 'max:50', 'required'],
-                'sex' => ['string', 'max:10', 'required'],
-            ]);
-        }
-
-
-
-
-            $user = User::find($id);
-
-            $user->lname = strtoupper($request->lname);
-            $user->fname = strtoupper($request->fname);
-            $user->mname = strtoupper($request->mname);
-            $user->sex = $request->sex;
-            $user->role = $request->role;
-
-            if($request->password != null){
-                $user->password = Hash::make($request->password);
-            }
-
-            $user->save();
-
-            return redirect('/cpanel-users')
-            ->with('updated','User updated!');
+        return [['status' => 'updated']];
     }
-
 
 
     public function destroy($id){
-        User::destroy($id);
-        return 'User successfully deleted!';
+        return DB::table('registrar_gadtc.users')
+            ->where('id', $id)
+            ->delete();
     }
 
-    public function regUser(){
 
-//        $data = User::create([
-//            'username' => 'admin',
-//            'lname' => 'AMPARADO',
-//            'fname' => 'ETIENNE WAYNE',
-//            'mname' => 'NAMOCATCAT',
-//            'sex' => 'MALE',
-//            'password' => Hash::make('admin')
-//        ]);
-//
-//        DB::table('users')
-//            ->where('user_id', 3225)
-//            ->update(['password' => Hash::make('admin')]);
-
-        return 'test';
-    }
-
-    public function ajaxUsers(){
-        $users = User::all();
-       // ->take(10);
-        return $users;
-
-
-
-    }
 
 
 

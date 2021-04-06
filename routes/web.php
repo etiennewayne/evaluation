@@ -75,7 +75,15 @@ Route::get('/ajax/signatory', 'Administrator\Report\FacultyRatingReportControlle
 
 //USERS
 Route::resource('/user-uploader' , 'Administrator\UserUploaderController');
-Route::resource('/cpanel-user','UserController');
+
+Route::get('/cpanel-user','UserController@index');
+Route::get('/ajax/user','UserController@index_data');
+Route::get('/ajax/user/{id}','UserController@show');
+
+Route::post('/ajax/user','UserController@store');
+Route::put('/ajax/user/{id}','UserController@update');
+Route::delete('/ajax/user/{id}','UserController@destroy');
+
 
 
 Route::get('/cpanel-report-faculty', 'Administrator\ReportResultController@index')->name('report');
