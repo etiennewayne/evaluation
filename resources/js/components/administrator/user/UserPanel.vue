@@ -3,7 +3,6 @@
 
 
         <section class="section">
-
             <div class="columns">
                 <div class="column is-8 is-offset-2">
                     <div class="is-flex is-justify-content-center mb-2 table-title" style="font-size: 20px; font-weight: bold;">LIST OF USER</div>
@@ -218,7 +217,6 @@ export default {
             },
 
             search: '',
-
         }
     },
     methods: {
@@ -236,7 +234,7 @@ export default {
             this.loading = true
             axios.get(`/ajax/user?${params}`)
                 .then(({ data }) => {
-                    this.data = []
+                    this.data = [];
                     let currentTotal = data.total
                     if (data.total / this.perPage > 1000) {
                         currentTotal = this.perPage * 1000

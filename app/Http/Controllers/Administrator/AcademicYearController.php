@@ -84,7 +84,8 @@ class AcademicYearController extends Controller
 
 
     public function ajax_academicyear(){
-       $data = Academicyear::all();
+       $data = Academicyear::orderBy('ay_id', 'desc')
+        ->get();
 
         return $data;
     }

@@ -101,4 +101,12 @@ class CategoryController extends Controller
         return $data;
     }
 
+    public function activeCategories(){
+        $ay = AcademicYear::where('active', 1)->first();
+
+        return Category::where('ay_code', $ay->ay_code)
+            ->orderBy('order_no', 'asc')
+            ->get();
+    }
+
 }

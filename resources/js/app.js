@@ -62,6 +62,10 @@ Vue.component('faculty-report', require('./components/administrator/report/Facul
 Vue.component('faculty-schedule', require('./components/administrator/report/FacultySchedule.vue').default);
 Vue.component('faculty-rating', require('./components/administrator/report/FacultyRating.vue').default);
 
+//criteria
+Vue.component('criteria-panel', require('./components/administrator/criteria/CriteriaPanel.vue').default);
+
+
 //User
 Vue.component('user-panel', require('./components/administrator/user/UserPanel.vue').default);
 

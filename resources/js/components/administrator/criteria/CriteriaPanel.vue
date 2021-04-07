@@ -3,20 +3,29 @@
 
 
         <section class="section">
-
             <div class="columns">
                 <div class="column is-8 is-offset-2">
-                    <div class="is-flex is-justify-content-center mb-2 table-title" style="font-size: 20px; font-weight: bold;">LIST OF USER</div>
+                    <div class="is-flex is-justify-content-center mb-2 table-title" style="font-size: 20px; font-weight: bold;">LIST OF CRITERIA</div>
                     <div class="level">
                         <div class="level-left">
-                            <b-field label="Page">
-                                <b-select v-model="perPage" @input="setPerPage">
-                                    <option value="5">5 per page</option>
-                                    <option value="10">10 per page</option>
-                                    <option value="15">15 per page</option>
-                                    <option value="20">20 per page</option>
-                                </b-select>
-                            </b-field>
+                            <div class="level-item">
+                                <b-field label="Page">
+                                    <b-select v-model="perPage" @input="setPerPage">
+                                        <option value="5">5 per page</option>
+                                        <option value="10">10 per page</option>
+                                        <option value="15">15 per page</option>
+                                        <option value="20">20 per page</option>
+                                    </b-select>
+                                </b-field>
+                            </div>
+                            <div class="level-item">
+                                <b-field label="A.Y. Code">
+                                    <b-select v-model="ay" @input="filterAY">
+                                        <option v-for="item in this.ays" :key="item.ay_id" :value="item.ay_code">{{ item.ay_code }}</option>
+                                    </b-select>
+                                </b-field>
+                            </div>
+
                         </div>
 
                         <div class="level-right">
@@ -31,6 +40,12 @@
                                 </b-field>
                             </div>
                         </div>
+                    </div>
+
+
+                    <div class="buttons mt-3">
+                        <!-- <b-button tag="a" href="/cpanel-academicyear/create" class="is-primary">Create Account</b-button> -->
+                        <b-button @click="openModal" class="is-primary">Create Criteria</b-button>
                     </div>
 
                     <b-table
@@ -50,28 +65,26 @@
                         @sort="onSort">
 
                         <b-table-column field="id" label="ID" v-slot="props">
-                            {{ props.row.id }}
+                            {{ props.row.criterion_id }}
                         </b-table-column>
 
-                        <b-table-column field="username" label="Username" v-slot="props">
-                            {{ props.row.username }}
+                        <b-table-column field="criterion" label="Criterion" searchable v-slot="props">
+                            {{ props.row.criterion }}
                         </b-table-column>
 
-                        <b-table-column field="name" label="Name" v-slot="props">
-                            {{ props.row.name }}
+                        <b-table-column field="order_no" label="Order No" v-slot="props">
+                            {{ props.row.order_no }}
                         </b-table-column>
 
-                        <b-table-column field="email" label="Email" v-slot="props">
-                            {{ props.row.email }}
+                        <b-table-column field="ay_code" label="A.Y. Code" v-slot="props">
+                            {{ props.row.ay_code }}
                         </b-table-column>
 
-                        <b-table-column field="userType" label="Role" v-slot="props">
-                            {{ props.row.userType }}
+                        <b-table-column field="category" label="Category" v-slot="props">
+                            {{ props.row.category.category }}
                         </b-table-column>
 
-                        <b-table-column field="institute" label="Office/Institute" v-slot="props">
-                            {{ props.row.institute }}
-                        </b-table-column>
+
 
                         <b-table-column field="ay_id" label="Action" v-slot="props">
                             <div class="is-flex">
@@ -81,11 +94,6 @@
                         </b-table-column>
 
                     </b-table>
-
-                    <div class="buttons mt-3">
-                        <!-- <b-button tag="a" href="/cpanel-academicyear/create" class="is-primary">Create Account</b-button> -->
-                        <b-button @click="isModalCreate=true" class="is-primary is-fullwidth">Create User</b-button>
-                    </div>
                 </div><!--close column-->
             </div>
         </section>
@@ -111,30 +119,33 @@
                     </header>
 
                     <section class="modal-card-body">
-                        <div class="fiel">
-                            <b-field label="Username" label-position="on-border"
-                                     :type="this.errors.username ? 'is-danger':''"
-                                     :message="this.errors.username ? this.errors.username[0] : ''">
-                                <b-input v-model="fields.username"
-                                         placeholder="Username" required>
+                        <div class="field">
+                            <b-field label="Criterion" label-position="on-border"
+                                     :type="this.errors.criterion ? 'is-danger':''"
+                                     :message="this.errors.criterion ? this.errors.criterion[0] : ''">
+                                <b-input v-model="fields.criterion"
+                                         placeholder="Criterion" required>
                                 </b-input>
+                            </b-field>
+                            <b-field grouped>
+                                <b-field label="Order No" label-position="on-border"
+                                         :type="this.errors.order_no ? 'is-danger':''"
+                                         :message="this.errors.order_no ? this.errors.order_no[0] : ''">
+                                    <b-input v-model="fields.order_no"
+                                             placeholder="Order No" required>
+                                    </b-input>
+                                </b-field>
+
+                                <b-field label="Category" label-position="on-border"
+                                         :type="this.errors.category ? 'is-danger':''"
+                                         :message="this.errors.category ? this.errors.category[0] : ''">
+                                    <b-select v-model="fields.category"
+                                             placeholder="Category" required>
+                                            <option v-for="item in this.categories" :key="item.category_id" :value="item.category_id">{{ item.category }} ({{ item.ay_code }})</option>
+                                    </b-select>
+                                </b-field>
                             </b-field>
 
-                            <b-field label="Name" label-position="on-border"
-                                     :type="this.errors.name ? 'is-danger':''"
-                                     :message="this.errors.name ? this.errors.name[0] : ''">
-                                <b-input v-model="fields.name"
-                                         placeholder="Name" required>
-                                </b-input>
-                            </b-field>
-
-                            <b-field label="Email" label-position="on-border"
-                                     :type="this.errors.email ? 'is-danger':''"
-                                     :message="this.errors.email ? this.errors.email[0] : ''">
-                                <b-input v-model="fields.email"
-                                         placeholder="Email" required>
-                                </b-input>
-                            </b-field>
 
                             <b-field label="Password" label-position="on-border"
                                      :type="this.errors.password ? 'is-danger':''"
@@ -188,89 +199,6 @@
         </b-modal>
 
 
-
-
-
-        <!--modal update-->
-        <b-modal v-model="isModalUpdate" has-modal-card
-                 trap-focus
-                 :width="640"
-                 aria-role="dialog"
-                 aria-label="Example Modal"
-                 aria-modal>
-
-            <form @submit.prevent="submitEdit">
-                <div class="modal-card">
-                    <header class="modal-card-head">
-                        <p class="modal-card-title">User Information</p>
-                        <button
-                            type="button"
-                            class="delete"
-                            @click="isModalUpdate = false"/>
-                    </header>
-
-                    <section class="modal-card-body">
-                        <div class="fiel">
-                            <b-field label="Username" label-position="on-border"
-                                     :type="this.errors.username ? 'is-danger':''"
-                                     :message="this.errors.username ? this.errors.username[0] : ''">
-                                <b-input v-model="updateFields.username"
-                                         placeholder="Username" required>
-                                </b-input>
-                            </b-field>
-
-                            <b-field label="Name" label-position="on-border"
-                                     :type="this.errors.name ? 'is-danger':''"
-                                     :message="this.errors.name ? this.errors.name[0] : ''">
-                                <b-input v-model="updateFields.name"
-                                         placeholder="Name" required>
-                                </b-input>
-                            </b-field>
-
-                            <b-field label="Email" label-position="on-border"
-                                     :type="this.errors.email ? 'is-danger':''"
-                                     :message="this.errors.email ? this.errors.email[0] : ''">
-                                <b-input v-model="updateFields.email"
-                                         placeholder="Email" required>
-                                </b-input>
-                            </b-field>
-
-                            <b-field grouped>
-                                <b-field label="Role" label-position="on-border">
-                                    <b-select v-model="updateFields.userType">
-                                        <option value="ADMIN">ADMINISTRATOR</option>
-                                        <option value="USER">USER</option>
-                                    </b-select>
-                                </b-field>
-
-                                <b-field label="Institute" label-position="on-border">
-                                    <b-select v-model="updateFields.institute">
-                                        <option value="ICS">ICS</option>
-                                        <option value="IAS">IAS</option>
-                                        <option value="HR">HR</option>
-                                        <option value="CIS">CIS</option>
-                                    </b-select>
-                                </b-field>
-
-                            </b-field>
-
-                        </div>
-                    </section>
-                    <footer class="modal-card-foot">
-                        <b-button
-                            label="Close"
-                            @click="isModalUpdate=false"/>
-                        <button
-                            :class="btnClass"
-                            label="Save"
-                            type="is-success">UPDATE</button>
-                    </footer>
-                </div>
-
-            </form><!--close form-->
-        </b-modal>
-
-
     </div>
 </template>
 
@@ -282,18 +210,22 @@ export default {
             data: [],
             total: 0,
             loading: false,
-            sortField: 'id',
+            sortField: 'criterion_id',
             sortOrder: 'desc',
             page: 1,
             perPage: 20,
             defaultSortDirection: 'asc',
 
             isModalCreate: false,
-            isModalUpdate: false,
 
+            dataId: 0,
             fields: {},
-            updateFields: {},
             errors : {},
+
+            ays: {},
+            ay: '',
+            categories: {},
+            category: '',
 
             btnClass: {
                 'is-success': true,
@@ -302,7 +234,6 @@ export default {
             },
 
             search: '',
-
         }
     },
     methods: {
@@ -313,14 +244,15 @@ export default {
             const params = [
                 `sort_by=${this.sortField}.${this.sortOrder}`,
                 `name=${this.search}`,
+                `aycode=${this.ay}`,
                 `perpage=${this.perPage}`,
                 `page=${this.page}`
             ].join('&')
 
             this.loading = true
-            axios.get(`/api/criteria?${params}`)
+            axios.get(`/ajax/cpanel/criteria?${params}`)
                 .then(({ data }) => {
-                    this.data = []
+                    this.data = [];
                     let currentTotal = data.total
                     if (data.total / this.perPage > 1000) {
                         currentTotal = this.perPage * 1000
@@ -358,11 +290,14 @@ export default {
             this.loadAsyncData()
         },
 
+        filterAY(){
+            this.loadAsyncData();
+        },
 
         //actions here below
 
         deleteSubmit(delete_id){
-            axios.delete('/api/criteria/'+ delete_id).then(res=>{
+            axios.delete('/ajax/user/'+ delete_id).then(res=>{
                 this.loadAsyncData();
             }).catch(err=>{
                 console.log(err);
@@ -387,65 +322,81 @@ export default {
         //save data
         submit(){
             this.btnClass['is-loading'] = true;
-            axios.post('/api/user', this.fields).then(res=>{
-                this.fields = {};
-                this.errors = {};
-                this.loadAsyncData()
-                this.btnClass['is-loading'] = false;
-                this.isModalCreate = false;
-            }).catch(err=>{
-                if(err.response.status===422){
-                    this.errors = err.response.data.errors;
-                }
+            if(this.dataId > 0){
+                //update data
+                axios.put('/ajax/user/'+ this.dataId, this.fields).then(res=>{
+                    this.fields = {};
+                    this.errors = {};
+                    this.loadAsyncData()
+                    this.btnClass['is-loading'] = false;
+                    this.isModalCreate = false;
+                }).catch(err=>{
+                    if(err.response.status===422){
+                        this.errors = err.response.data.errors;
+                    }
 
-                //console.log(err.response.status);
-                this.btnClass['is-loading'] = false;
-            })
-        },
+                    //console.log(err.response.status);
+                    this.btnClass['is-loading'] = false;
+                })
+            }else{
+                axios.post('/ajax/user', this.fields).then(res=>{
+                    this.fields = {};
+                    this.errors = {};
+                    this.loadAsyncData()
+                    this.btnClass['is-loading'] = false;
+                    this.isModalCreate = false;
+                }).catch(err=>{
+                    if(err.response.status===422){
+                        this.errors = err.response.data.errors;
+                    }
 
-        submitEdit(){
-
-            if(this.updateFields.id === '' || this.updateFields.id === null){
-                return false;
+                    //console.log(err.response.status);
+                    this.btnClass['is-loading'] = false;
+                })
             }
 
-            this.btnClass['is-loading'] = true;
-            axios.put('/api/user/' + this.updateFields.id, this.updateFields).then(res=>{
-                this.updateFields = {};
-                this.errors = {};
-                this.loadAsyncData()
-                this.btnClass['is-loading'] = false;
-                this.isModalUpdate = false;
-            }).catch(err=>{
-                if(err.response.status===422){
-                    this.errors = err.response.data.errors;
-                }
-                //console.log(err.response.status);
-                this.btnClass['is-loading'] = false;
-            })
+
         },
+
+
 
         //getData
         getData(data_id){
-            this.updateFields = {};
-            this.isModalUpdate = true;
-            axios.get('/api/user/'+data_id).then(res=>{
-                this.updateFields = res.data[0];
-                console.log(res.data[0]);
+            this.fields = {};
+            this.isModalCreate = true;
+            this.dataId = data_id;
+
+            axios.get('/ajax/user/'+data_id).then(res=>{
+                this.fields = res.data[0];
+                //console.log(res.data[0]);
             })
         },
 
-        //submit Update Data
-        update(data_id){
-            axios.put('/api/category/'+data_id, this.fields).then(res=>{
+        openModal(){
+            this.isModalCreate=true;
+            this.fields = {};
+            this.errors = {};
 
-            })
         },
+
+        initializeData(){
+            const url1 = '/ajax-academicyear';
+            const url2 = '/ajax/cpanel/categories';
+
+            axios.all([axios.get(url1), axios.get(url2)]).then(axios.spread((...res)=>{
+                this.ays = res[0].data;
+                this.categories = res[1].data;
+            }))
+
+        },
+
+
 
     },
 
     mounted() {
-        this.loadAsyncData()
+        this.loadAsyncData();
+        this.initializeData();
     }
 }
 </script>

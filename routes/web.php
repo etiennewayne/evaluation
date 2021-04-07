@@ -45,7 +45,6 @@ Route::post('/change-password', 'Auth\ChangePasswordController@update');
 //Route::post('/mylogout', 'Auth\LogoutController@logout');
 
 
-
 //ADMIN AUTH
 Route::get('/cpanel', 'Administrator\LoginController@index')->name('cpanel-login');
 Route::post('/cpanel', 'Administrator\LoginController@authenticate')->name('cpanel-auth');
@@ -53,6 +52,8 @@ Route::post('/cpanel', 'Administrator\LoginController@authenticate')->name('cpan
 
 //ADMINISTRATOR-------
 Route::get('/cpanel-home', 'Administrator\HomeController@index')->name('cpanel-home');
+
+
 
 
 //REPORT ADMINISTRATOR
@@ -92,27 +93,25 @@ Route::get('/cpanel-report-faculty/schedule/{facultyid}', 'Administrator\ReportR
 Route::get('/cpanel-report-faculty/schedule/{facultyid}/{schedcode}', 'Administrator\ReportResultController@reportRating');
 
 
-//Route::get('/cpanel-report/{facultyid}/print/print-report-rating-total', 'Administrator\ReportResultController@printReportRating');
-//
-//
-//Route::get('/cpanel-report/{facultyid}/schedule/rate', 'Administrator\ReportResultController@facultyRate');
-//Route::get('/cpanel-report/{facultyid}/print/rate', 'Administrator\ReportResultController@printFacultyRate');
 
 Route::get('/cpanel-report-student/by-student', 'Administrator\ReportResultController@studentSchedRated');
-
 
 Route::get('/data/ajax-faculties', 'Administrator\ReportResultController@ajaxFaculties');
 Route::get('/data/ajax-schedules', 'Administrator\ReportResultController@ajaxSchedules');
 
 
 //CRITERIA ---------------------
-Route::resource('/cpanel-criteria' , 'Administrator\CriteriaController');
-Route::get('/ajax-criteria' , 'Administrator\CriteriaController@ajax_criteria');
+//Route::resource('/cpanel-criteria' , 'Administrator\CriteriaController');
+Route::get('/cpanel-criteria' , 'Administrator\CriteriaController@index');
+Route::get('/ajax/cpanel/criteria' , 'Administrator\CriteriaController@index_data');
+
+
 
 
 //CATEGORY ---------------------
 Route::resource('/cpanel-category' , 'Administrator\CategoryController');
 Route::get('/ajax-category' , 'Administrator\CategoryController@ajax_category');
+Route::get('/ajax/cpanel/categories' , 'Administrator\CategoryController@activeCategories');
 
 
 //ACADEMIC YEAR ---------------------
