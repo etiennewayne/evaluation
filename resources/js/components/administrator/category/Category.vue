@@ -46,8 +46,7 @@
                             <b-table-column field="ay_code" label="Academic Year" v-slot="props">
                                 {{ props.row.ay_code }}
                             </b-table-column>
-
-
+                            
                             <b-table-column field="ay_id" label="Action" v-slot="props">
                                 <div class="is-flex">
                                     <b-button outlined class="button is-small is-warning mr-1" tag="a" icon-right="pencil" icon-pack="fa" @click="getData(props.row.category_id)">EDIT</b-button>
