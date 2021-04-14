@@ -105,6 +105,12 @@ Route::get('/data/ajax-schedules', 'Administrator\ReportResultController@ajaxSch
 Route::get('/cpanel-criteria' , 'Administrator\CriteriaController@index');
 Route::get('/ajax/cpanel/criteria' , 'Administrator\CriteriaController@index_data');
 
+//SCHEDULE
+Route::resource('/cpanel-schedule' , 'Administrator\ScheduleController');
+Route::get('/ajax/cpanel/schedule' , 'Administrator\ScheduleController@index_data');
+Route::put('/open/rate/{id}' , 'Administrator\ScheduleController@openRate');
+Route::put('/close/rate/{id}' , 'Administrator\ScheduleController@closeRate');
+
 
 
 
@@ -208,4 +214,16 @@ Route::get('/data/ajax-users','UserController@ajaxUsers')->name('db-ajax-user');
 //        'role' => 'ADMINISTRATOR'
 //    ]);
 //
+//});
+
+
+//Route::get('/test/schedule', function(){
+//    //return \App\Schedule::with(['faculty'])->take(5)->get();
+//    //return \App\Faculty::take(5)->get();
+//    return \App\Schedule::join('tblins', 'SchedInsCode', 'InsCode')
+//        ->join('tblsubject', 'SchedSubjCode', 'SubjCode')
+//        ->select('SchedCode','SchedTimeFrm', 'SchedTimeTo', 'SchedDays','InsCode',
+//        'InsLName', 'InsFName', 'InsMName', 'SchedSubjCode', 'SubjName', 'SubjDesc', 'SubjClass', 'SubjUnits')
+//        ->take(5)
+//        ->get();
 //});

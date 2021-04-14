@@ -18,6 +18,9 @@
             <b-navbar-item href="/cpanel-criteria">
                 Criteria
             </b-navbar-item>
+            <b-navbar-item href="/cpanel-schedule">
+                Schedule
+            </b-navbar-item>
             <b-navbar-item href="/cpanel-user">
                 Users
             </b-navbar-item>

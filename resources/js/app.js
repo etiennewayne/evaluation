@@ -66,6 +66,10 @@ Vue.component('faculty-rating', require('./components/administrator/report/Facul
 Vue.component('criteria-panel', require('./components/administrator/criteria/CriteriaPanel.vue').default);
 
 
+//schedule
+Vue.component('schedule-panel', require('./components/administrator/schedule/SchedulePanel.vue').default);
+
+
 //User
 Vue.component('user-panel', require('./components/administrator/user/UserPanel.vue').default);
 

@@ -22,6 +22,10 @@ class Schedule extends Model
 
     protected $date = ['SchedTimeFrm', 'SchedTimeTo'];
 
+    public $timestamps = false;
+//    protected $casts = [
+//        'SchedInsCode' => 'integer'
+//    ];
 
     public function faculty()
     {

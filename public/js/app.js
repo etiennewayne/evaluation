@@ -2136,6 +2136,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   methods: {
     logout: function logout() {
@@ -3886,6 +3889,206 @@ __webpack_require__.r(__webpack_exports__);
     },
     getRating: function getRating(schedcode) {
       return window.location = '/cpanel-report/faculty-rating?code=' + this.code + '&schedule=' + schedcode;
+    }
+  },
+  mounted: function mounted() {
+    this.loadAsyncData();
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/administrator/schedule/SchedulePanel.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/administrator/schedule/SchedulePanel.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      data: [],
+      total: 0,
+      loading: false,
+      sortField: 'SchedCode',
+      sortOrder: 'asc',
+      page: 1,
+      perPage: 20,
+      defaultSortDirection: 'asc',
+      schedCode: '',
+      fLname: ''
+    };
+  },
+  methods: {
+    loadAsyncData: function loadAsyncData() {
+      var _this = this;
+
+      var params = ["sort_by=".concat(this.sortField, ".").concat(this.sortOrder), "perpage=".concat(this.perPage), "page=".concat(this.page), "code=".concat(this.schedCode), "lname=".concat(this.fLname)].join('&');
+      this.loading = true;
+      axios.get("/ajax/cpanel/schedule?".concat(params)).then(function (_ref) {
+        var data = _ref.data;
+        _this.data = [];
+        var currentTotal = data.total;
+
+        if (data.total / _this.perPage > 1000) {
+          currentTotal = _this.perPage * 1000;
+        }
+
+        _this.total = currentTotal;
+        data.data.forEach(function (item) {
+          //item.release_date = item.release_date ? item.release_date.replace(/-/g, '/') : null
+          _this.data.push(item);
+        });
+        _this.loading = false;
+      })["catch"](function (error) {
+        _this.data = [];
+        _this.total = 0;
+        _this.loading = false;
+        throw error;
+      });
+    },
+
+    /*
+    * Handle page-change event
+    */
+    onPageChange: function onPageChange(page) {
+      this.page = page;
+      this.loadAsyncData();
+    },
+    onSort: function onSort(field, order) {
+      this.sortField = field;
+      this.sortOrder = order;
+      this.loadAsyncData();
+    },
+    setPerPage: function setPerPage() {
+      this.loadAsyncData();
+    },
+    getRating: function getRating(data_id) {
+      window.location = '/cpanel-report/faculty-rating?code=' + data_id;
+    },
+    openRate: function openRate(schedcode) {
+      var _this2 = this;
+
+      axios.put('/open/rate/' + schedcode).then(function (res) {
+        _this2.loadAsyncData();
+      });
+    },
+    closeRate: function closeRate(schedcode) {
+      var _this3 = this;
+
+      axios.put('/close/rate/' + schedcode).then(function (res) {
+        _this3.loadAsyncData();
+      });
     }
   },
   mounted: function mounted() {
@@ -22356,7 +22559,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.wrapper[data-v-29a807bd]{\r\n    margin-top: -5rem;\r\n    display: flex;\r\n    justify-content: center;\r\n\r\n    height: 100vh;\r\n    align-items: center;\n}\r\n\r\n/*.login-panel{*/\r\n/*    height: 500px;*/\r\n/*    width: 900px;*/\r\n\r\n/*    border-radius: 10px;*/\r\n\r\n/*    -webkit-box-shadow: 0 10px 6px -6px #777;*/\r\n/*    -moz-box-shadow: 0 10px 6px -6px #777;*/\r\n/*    box-shadow: 5px 10px 6px -6px #b0b0b0;*/\r\n\r\n/*}*/\n.controls-panel[data-v-29a807bd]{\r\n    padding: 10px;\r\n    margin-top: 10px;\n}\n.login-header[data-v-29a807bd]{\r\n    font-size: large;\r\n    font-weight: bold;\n}\n.right-header[data-v-29a807bd]{\r\n    font-size: large;\r\n    font-weight: bold;\r\n    text-align: center;\n}\n.vertical-line[data-v-29a807bd]{\r\n    border-left: 1px solid green;\n}\n@media only screen and (max-width: 768px) {\n.vertical-line[data-v-29a807bd]{\r\n        border-left: white;\r\n        border-top: 1px solid green;\n}\n.right-header-subtitle[data-v-29a807bd]{\r\n\r\n        text-align: center;\n}\n.expand-mobile[data-v-29a807bd]{\r\n        width: 100%;\n}\n}\r\n\r\n\r\n", ""]);
+exports.push([module.i, "\n.wrapper[data-v-29a807bd]{\n    margin-top: -5rem;\n    display: flex;\n    justify-content: center;\n\n    height: 100vh;\n    align-items: center;\n}\n\n/*.login-panel{*/\n/*    height: 500px;*/\n/*    width: 900px;*/\n\n/*    border-radius: 10px;*/\n\n/*    -webkit-box-shadow: 0 10px 6px -6px #777;*/\n/*    -moz-box-shadow: 0 10px 6px -6px #777;*/\n/*    box-shadow: 5px 10px 6px -6px #b0b0b0;*/\n\n/*}*/\n.controls-panel[data-v-29a807bd]{\n    padding: 10px;\n    margin-top: 10px;\n}\n.login-header[data-v-29a807bd]{\n    font-size: large;\n    font-weight: bold;\n}\n.right-header[data-v-29a807bd]{\n    font-size: large;\n    font-weight: bold;\n    text-align: center;\n}\n.vertical-line[data-v-29a807bd]{\n    border-left: 1px solid green;\n}\n@media only screen and (max-width: 768px) {\n.vertical-line[data-v-29a807bd]{\n        border-left: white;\n        border-top: 1px solid green;\n}\n.right-header-subtitle[data-v-29a807bd]{\n\n        text-align: center;\n}\n.expand-mobile[data-v-29a807bd]{\n        width: 100%;\n}\n}\n\n\n", ""]);
 
 // exports
 
@@ -22375,7 +22578,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.welcome-text[data-v-a4d20914]{\r\n    font-size: 40px;\r\n    font-weight: bold;\r\n    margin-bottom: 10px;\n}\n@media only screen and (max-width: 768px) {\n}\r\n\r\n\r\n", ""]);
+exports.push([module.i, "\n.welcome-text[data-v-a4d20914]{\n    font-size: 40px;\n    font-weight: bold;\n    margin-bottom: 10px;\n}\n@media only screen and (max-width: 768px) {\n}\n\n\n", ""]);
 
 // exports
 
@@ -22433,6 +22636,25 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 // module
 exports.push([module.i, "\n.table-header[data-v-2744410a]{\n    margin: auto;\n    text-align: center;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/administrator/schedule/SchedulePanel.vue?vue&type=style&index=0&id=68da263c&scoped=true&lang=css&":
+/*!******************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/administrator/schedule/SchedulePanel.vue?vue&type=style&index=0&id=68da263c&scoped=true&lang=css& ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.table-header[data-v-68da263c]{\n    margin: auto;\n    text-align: center;\n}\n", ""]);
 
 // exports
 
@@ -23124,6 +23346,36 @@ if(false) {}
 
 
 var content = __webpack_require__(/*! !../../../../../node_modules/css-loader??ref--6-1!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--6-2!../../../../../node_modules/vue-loader/lib??vue-loader-options!./FacultyReport.vue?vue&type=style&index=0&id=2744410a&scoped=true&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/administrator/report/FacultyReport.vue?vue&type=style&index=0&id=2744410a&scoped=true&lang=css&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/administrator/schedule/SchedulePanel.vue?vue&type=style&index=0&id=68da263c&scoped=true&lang=css&":
+/*!**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/administrator/schedule/SchedulePanel.vue?vue&type=style&index=0&id=68da263c&scoped=true&lang=css& ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../../node_modules/css-loader??ref--6-1!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--6-2!../../../../../node_modules/vue-loader/lib??vue-loader-options!./SchedulePanel.vue?vue&type=style&index=0&id=68da263c&scoped=true&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/administrator/schedule/SchedulePanel.vue?vue&type=style&index=0&id=68da263c&scoped=true&lang=css&");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -24206,6 +24458,10 @@ var render = function() {
             _vm._v(" "),
             _c("b-navbar-item", { attrs: { href: "/cpanel-criteria" } }, [
               _vm._v("\n                Criteria\n            ")
+            ]),
+            _vm._v(" "),
+            _c("b-navbar-item", { attrs: { href: "/cpanel-schedule" } }, [
+              _vm._v("\n                Schedule\n            ")
             ]),
             _vm._v(" "),
             _c("b-navbar-item", { attrs: { href: "/cpanel-user" } }, [
@@ -26829,6 +27085,467 @@ var render = function() {
             1
           )
         ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/administrator/schedule/SchedulePanel.vue?vue&type=template&id=68da263c&scoped=true&":
+/*!***************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/administrator/schedule/SchedulePanel.vue?vue&type=template&id=68da263c&scoped=true& ***!
+  \***************************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("section", { staticClass: "section" }, [
+      _c("div", { staticClass: "columns" }, [
+        _c(
+          "div",
+          { staticClass: "column is-8 is-offset-2" },
+          [
+            _c(
+              "div",
+              {
+                staticClass:
+                  "is-flex is-justify-content-center mb-2 table-title",
+                staticStyle: { "font-size": "20px", "font-weight": "bold" }
+              },
+              [_vm._v("LIST OF SCHEDULES")]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "level" }, [
+              _c(
+                "div",
+                { staticClass: "level-left" },
+                [
+                  _c(
+                    "b-field",
+                    { attrs: { label: "Page" } },
+                    [
+                      _c(
+                        "b-select",
+                        {
+                          on: { input: _vm.setPerPage },
+                          model: {
+                            value: _vm.perPage,
+                            callback: function($$v) {
+                              _vm.perPage = $$v
+                            },
+                            expression: "perPage"
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { value: "5" } }, [
+                            _vm._v("5 per page")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "10" } }, [
+                            _vm._v("10 per page")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "15" } }, [
+                            _vm._v("15 per page")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "20" } }, [
+                            _vm._v("20 per page")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "30" } }, [
+                            _vm._v("30 per page")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "40" } }, [
+                            _vm._v("40 per page")
+                          ])
+                        ]
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "level-right" },
+                [
+                  _c(
+                    "b-field",
+                    { attrs: { label: "Schedulue Code" } },
+                    [
+                      _c("b-input", {
+                        attrs: { type: "text", placeholder: "Schedule Code" },
+                        nativeOn: {
+                          keyup: function($event) {
+                            if (
+                              !$event.type.indexOf("key") &&
+                              _vm._k(
+                                $event.keyCode,
+                                "enter",
+                                13,
+                                $event.key,
+                                "Enter"
+                              )
+                            ) {
+                              return null
+                            }
+                            return _vm.loadAsyncData($event)
+                          }
+                        },
+                        model: {
+                          value: _vm.schedCode,
+                          callback: function($$v) {
+                            _vm.schedCode = $$v
+                          },
+                          expression: "schedCode"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("p", { staticClass: "control" }, [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "button is-primary",
+                            on: { click: _vm.loadAsyncData }
+                          },
+                          [_vm._v("Schedule Code")]
+                        )
+                      ])
+                    ],
+                    1
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "level-right" },
+                [
+                  _c(
+                    "b-field",
+                    { attrs: { label: "Faculty(Lastname)" } },
+                    [
+                      _c("b-input", {
+                        attrs: {
+                          type: "text",
+                          placeholder: "Faculty(Lastname)"
+                        },
+                        nativeOn: {
+                          keyup: function($event) {
+                            if (
+                              !$event.type.indexOf("key") &&
+                              _vm._k(
+                                $event.keyCode,
+                                "enter",
+                                13,
+                                $event.key,
+                                "Enter"
+                              )
+                            ) {
+                              return null
+                            }
+                            return _vm.loadAsyncData($event)
+                          }
+                        },
+                        model: {
+                          value: _vm.fLname,
+                          callback: function($$v) {
+                            _vm.fLname = $$v
+                          },
+                          expression: "fLname"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("p", { staticClass: "control" }, [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "button is-primary",
+                            on: { click: _vm.loadAsyncData }
+                          },
+                          [_vm._v("SEARCH")]
+                        )
+                      ])
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ]),
+            _vm._v(" "),
+            _c(
+              "b-table",
+              {
+                attrs: {
+                  data: _vm.data,
+                  loading: _vm.loading,
+                  paginated: "",
+                  "backend-pagination": "",
+                  total: _vm.total,
+                  "per-page": _vm.perPage,
+                  "aria-next-label": "Next page",
+                  "aria-previous-label": "Previous page",
+                  "aria-page-label": "Page",
+                  "aria-current-label": "Current page",
+                  "backend-sorting": "",
+                  "default-sort-direction": _vm.defaultSortDirection
+                },
+                on: { "page-change": _vm.onPageChange, sort: _vm.onSort }
+              },
+              [
+                _c("b-table-column", {
+                  attrs: { field: "SchedCode", label: "Schedule Code" },
+                  scopedSlots: _vm._u([
+                    {
+                      key: "default",
+                      fn: function(props) {
+                        return [
+                          _vm._v(
+                            "\n                        " +
+                              _vm._s(props.row.SchedCode) +
+                              "\n                    "
+                          )
+                        ]
+                      }
+                    }
+                  ])
+                }),
+                _vm._v(" "),
+                _c("b-table-column", {
+                  attrs: { field: "SubjName", label: "Course Name" },
+                  scopedSlots: _vm._u([
+                    {
+                      key: "default",
+                      fn: function(props) {
+                        return [
+                          _vm._v(
+                            "\n                        " +
+                              _vm._s(props.row.SubjName) +
+                              "\n                    "
+                          )
+                        ]
+                      }
+                    }
+                  ])
+                }),
+                _vm._v(" "),
+                _c("b-table-column", {
+                  attrs: { field: "SchedTimeFrm", label: "From" },
+                  scopedSlots: _vm._u([
+                    {
+                      key: "default",
+                      fn: function(props) {
+                        return [
+                          _vm._v(
+                            "\n                        " +
+                              _vm._s(
+                                _vm._f("formatTime")(props.row.SchedTimeFrm)
+                              ) +
+                              "\n                    "
+                          )
+                        ]
+                      }
+                    }
+                  ])
+                }),
+                _vm._v(" "),
+                _c("b-table-column", {
+                  attrs: { field: "SchedTimeTo", label: "To" },
+                  scopedSlots: _vm._u([
+                    {
+                      key: "default",
+                      fn: function(props) {
+                        return [
+                          _vm._v(
+                            "\n                        " +
+                              _vm._s(
+                                _vm._f("formatTime")(props.row.SchedTimeTo)
+                              ) +
+                              "\n                    "
+                          )
+                        ]
+                      }
+                    }
+                  ])
+                }),
+                _vm._v(" "),
+                _c("b-table-column", {
+                  attrs: { field: "SchedDays", label: "Days" },
+                  scopedSlots: _vm._u([
+                    {
+                      key: "default",
+                      fn: function(props) {
+                        return [
+                          _vm._v(
+                            "\n                        " +
+                              _vm._s(props.row.SchedDays) +
+                              "\n                    "
+                          )
+                        ]
+                      }
+                    }
+                  ])
+                }),
+                _vm._v(" "),
+                _c("b-table-column", {
+                  attrs: { field: "SchedInsCode", label: "Code" },
+                  scopedSlots: _vm._u([
+                    {
+                      key: "default",
+                      fn: function(props) {
+                        return [
+                          _vm._v(
+                            "\n                        " +
+                              _vm._s(props.row.InsCode) +
+                              "\n                    "
+                          )
+                        ]
+                      }
+                    }
+                  ])
+                }),
+                _vm._v(" "),
+                _c("b-table-column", {
+                  attrs: { field: "status", label: "Status" },
+                  scopedSlots: _vm._u([
+                    {
+                      key: "default",
+                      fn: function(props) {
+                        return [
+                          props.row.allow_rate == 1
+                            ? _c("b-icon", {
+                                attrs: {
+                                  pack: "fa",
+                                  icon: "check",
+                                  type: "is-success",
+                                  size: "is-small"
+                                }
+                              })
+                            : _c("b-icon", {
+                                attrs: {
+                                  pack: "fa",
+                                  icon: "times-circle",
+                                  type: "is-danger",
+                                  size: "is-small"
+                                }
+                              })
+                        ]
+                      }
+                    }
+                  ])
+                }),
+                _vm._v(" "),
+                _c("b-table-column", {
+                  attrs: { field: "instructor_name", label: "Instructor Name" },
+                  scopedSlots: _vm._u([
+                    {
+                      key: "default",
+                      fn: function(props) {
+                        return [
+                          _vm._v(
+                            "\n                        " +
+                              _vm._s(props.row.InsLName) +
+                              ", " +
+                              _vm._s(props.row.InsFName) +
+                              " " +
+                              _vm._s(props.row.InsMName) +
+                              "\n                    "
+                          )
+                        ]
+                      }
+                    }
+                  ])
+                }),
+                _vm._v(" "),
+                _c("b-table-column", {
+                  attrs: { field: "allow_rate", label: "Action" },
+                  scopedSlots: _vm._u([
+                    {
+                      key: "default",
+                      fn: function(props) {
+                        return [
+                          _c(
+                            "div",
+                            { staticClass: "is-flex" },
+                            [
+                              props.row.allow_rate == 0
+                                ? _c(
+                                    "b-button",
+                                    {
+                                      staticClass:
+                                        "button is-small is-primary mr-1",
+                                      attrs: {
+                                        tag: "a",
+                                        "icon-right": "check",
+                                        "icon-pack": "fa"
+                                      },
+                                      on: {
+                                        click: function($event) {
+                                          return _vm.openRate(
+                                            props.row.SchedCode
+                                          )
+                                        }
+                                      }
+                                    },
+                                    [_vm._v("OPEN")]
+                                  )
+                                : _vm._e(),
+                              _vm._v(" "),
+                              props.row.allow_rate == 1
+                                ? _c(
+                                    "b-button",
+                                    {
+                                      staticClass:
+                                        "button is-small is-danger mr-1",
+                                      attrs: {
+                                        tag: "a",
+                                        "icon-right": "times-circle",
+                                        "icon-pack": "fa"
+                                      },
+                                      on: {
+                                        click: function($event) {
+                                          return _vm.closeRate(
+                                            props.row.SchedCode
+                                          )
+                                        }
+                                      }
+                                    },
+                                    [_vm._v("CLOSE")]
+                                  )
+                                : _vm._e()
+                            ],
+                            1
+                          )
+                        ]
+                      }
+                    }
+                  ])
+                })
+              ],
+              1
+            )
+          ],
+          1
+        )
       ])
     ])
   ])
@@ -40743,7 +41460,9 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('faculty-report', __webpack
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('faculty-schedule', __webpack_require__(/*! ./components/administrator/report/FacultySchedule.vue */ "./resources/js/components/administrator/report/FacultySchedule.vue")["default"]);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('faculty-rating', __webpack_require__(/*! ./components/administrator/report/FacultyRating.vue */ "./resources/js/components/administrator/report/FacultyRating.vue")["default"]); //criteria
 
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('criteria-panel', __webpack_require__(/*! ./components/administrator/criteria/CriteriaPanel.vue */ "./resources/js/components/administrator/criteria/CriteriaPanel.vue")["default"]); //User
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('criteria-panel', __webpack_require__(/*! ./components/administrator/criteria/CriteriaPanel.vue */ "./resources/js/components/administrator/criteria/CriteriaPanel.vue")["default"]); //schedule
+
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('schedule-panel', __webpack_require__(/*! ./components/administrator/schedule/SchedulePanel.vue */ "./resources/js/components/administrator/schedule/SchedulePanel.vue")["default"]); //User
 
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('user-panel', __webpack_require__(/*! ./components/administrator/user/UserPanel.vue */ "./resources/js/components/administrator/user/UserPanel.vue")["default"]);
 /**
@@ -41769,6 +42488,93 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/administrator/schedule/SchedulePanel.vue":
+/*!**************************************************************************!*\
+  !*** ./resources/js/components/administrator/schedule/SchedulePanel.vue ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _SchedulePanel_vue_vue_type_template_id_68da263c_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./SchedulePanel.vue?vue&type=template&id=68da263c&scoped=true& */ "./resources/js/components/administrator/schedule/SchedulePanel.vue?vue&type=template&id=68da263c&scoped=true&");
+/* harmony import */ var _SchedulePanel_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SchedulePanel.vue?vue&type=script&lang=js& */ "./resources/js/components/administrator/schedule/SchedulePanel.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _SchedulePanel_vue_vue_type_style_index_0_id_68da263c_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./SchedulePanel.vue?vue&type=style&index=0&id=68da263c&scoped=true&lang=css& */ "./resources/js/components/administrator/schedule/SchedulePanel.vue?vue&type=style&index=0&id=68da263c&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _SchedulePanel_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _SchedulePanel_vue_vue_type_template_id_68da263c_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _SchedulePanel_vue_vue_type_template_id_68da263c_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "68da263c",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/administrator/schedule/SchedulePanel.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/administrator/schedule/SchedulePanel.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************************!*\
+  !*** ./resources/js/components/administrator/schedule/SchedulePanel.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_SchedulePanel_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./SchedulePanel.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/administrator/schedule/SchedulePanel.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_SchedulePanel_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/administrator/schedule/SchedulePanel.vue?vue&type=style&index=0&id=68da263c&scoped=true&lang=css&":
+/*!***********************************************************************************************************************************!*\
+  !*** ./resources/js/components/administrator/schedule/SchedulePanel.vue?vue&type=style&index=0&id=68da263c&scoped=true&lang=css& ***!
+  \***********************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_SchedulePanel_vue_vue_type_style_index_0_id_68da263c_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/style-loader!../../../../../node_modules/css-loader??ref--6-1!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--6-2!../../../../../node_modules/vue-loader/lib??vue-loader-options!./SchedulePanel.vue?vue&type=style&index=0&id=68da263c&scoped=true&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/administrator/schedule/SchedulePanel.vue?vue&type=style&index=0&id=68da263c&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_SchedulePanel_vue_vue_type_style_index_0_id_68da263c_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_SchedulePanel_vue_vue_type_style_index_0_id_68da263c_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_SchedulePanel_vue_vue_type_style_index_0_id_68da263c_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_SchedulePanel_vue_vue_type_style_index_0_id_68da263c_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+
+
+/***/ }),
+
+/***/ "./resources/js/components/administrator/schedule/SchedulePanel.vue?vue&type=template&id=68da263c&scoped=true&":
+/*!*********************************************************************************************************************!*\
+  !*** ./resources/js/components/administrator/schedule/SchedulePanel.vue?vue&type=template&id=68da263c&scoped=true& ***!
+  \*********************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SchedulePanel_vue_vue_type_template_id_68da263c_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./SchedulePanel.vue?vue&type=template&id=68da263c&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/administrator/schedule/SchedulePanel.vue?vue&type=template&id=68da263c&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SchedulePanel_vue_vue_type_template_id_68da263c_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SchedulePanel_vue_vue_type_template_id_68da263c_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/administrator/user/UserPanel.vue":
 /*!******************************************************************!*\
   !*** ./resources/js/components/administrator/user/UserPanel.vue ***!
@@ -42342,8 +43148,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\eshen\Desktop\Github\evaluation\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\eshen\Desktop\Github\evaluation\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\Wayne\Documents\GitHub\evaluation\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\Wayne\Documents\GitHub\evaluation\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

@@ -21,15 +21,11 @@
   <component name="ChangeListManager">
     <list default="true" id="720635db-fce7-4503-8300-ca514c204a37" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Administrator/AcademicYearController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Administrator/AcademicYearController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Administrator/CategoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Administrator/CategoryController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Administrator/CriteriaController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Administrator/CriteriaController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/Administrator/CategoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/Administrator/CategoryController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Faculty.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Faculty.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Schedule.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Schedule.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/administrator/criteria/CriteriaPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/administrator/criteria/CriteriaPanel.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/administrator/user/UserPanel.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/administrator/user/UserPanel.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/cpanel/criteria/criteria.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/cpanel/criteria/criteria.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/administrator/Navbar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/administrator/Navbar.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -272,7 +268,8 @@
       <workItem from="1617672264568" duration="2442000" />
       <workItem from="1617691835745" duration="2176000" />
       <workItem from="1617695813820" duration="7556000" />
-      <workItem from="1617754057180" duration="9736000" />
+      <workItem from="1617754057180" duration="10113000" />
+      <workItem from="1618376914565" duration="9544000" />
     </task>
     <servers />
   </component>
@@ -300,10 +297,11 @@
     </option>
   </component>
   <component name="WindowStateProjectService">
-    <state x="404" y="223" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1617700614068">
+    <state x="404" y="223" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1618379643466">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
     <state x="404" y="223" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1440.860/-1440.0.1440.900@-1440.0.1440.900" timestamp="1617700614068" />
+    <state x="404" y="223" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1440.860/-1440.0.1440.900@0.0.1440.860" timestamp="1618379643466" />
     <state width="1397" height="229" key="GridCell.Tab.0.bottom" timestamp="1617675000221">
       <screen x="-1440" y="0" width="1440" height="900" />
     </state>
@@ -320,6 +318,10 @@
       <screen x="-1440" y="0" width="1440" height="900" />
     </state>
     <state width="1397" height="229" key="GridCell.Tab.0.right/0.0.1440.860/-1440.0.1440.900@-1440.0.1440.900" timestamp="1617675000220" />
+    <state x="576" y="349" key="NewPhpFileDialog" timestamp="1618379406865">
+      <screen x="0" y="0" width="1440" height="860" />
+    </state>
+    <state x="576" y="349" key="NewPhpFileDialog/0.0.1440.860/-1440.0.1440.900@0.0.1440.860" timestamp="1618379406865" />
     <state width="498" height="446" key="SwitcherDM" timestamp="1617770873963">
       <screen x="-1440" y="0" width="1440" height="900" />
     </state>
@@ -340,9 +342,10 @@
       <screen x="-1440" y="0" width="1440" height="900" />
     </state>
     <state x="-1064" y="205" width="672" height="677" key="run.anything.popup/0.0.1440.860/-1440.0.1440.900@-1440.0.1440.900" timestamp="1617674347466" />
-    <state x="-1057" y="190" width="672" height="678" key="search.everywhere.popup" timestamp="1617770893244">
-      <screen x="-1440" y="0" width="1440" height="900" />
+    <state x="383" y="182" width="672" height="648" key="search.everywhere.popup" timestamp="1618379450739">
+      <screen x="0" y="0" width="1440" height="860" />
     </state>
     <state x="-1057" y="190" width="672" height="678" key="search.everywhere.popup/0.0.1440.860/-1440.0.1440.900@-1440.0.1440.900" timestamp="1617770893244" />
+    <state x="383" y="182" width="672" height="648" key="search.everywhere.popup/0.0.1440.860/-1440.0.1440.900@0.0.1440.860" timestamp="1618379450739" />
   </component>
 </project>
