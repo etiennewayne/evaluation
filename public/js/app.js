@@ -4014,6 +4014,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -27116,7 +27120,7 @@ var render = function() {
       _c("div", { staticClass: "columns" }, [
         _c(
           "div",
-          { staticClass: "column is-8 is-offset-2" },
+          { staticClass: "column is-10 is-offset-1" },
           [
             _c(
               "div",
@@ -27448,6 +27452,24 @@ var render = function() {
                                   size: "is-small"
                                 }
                               })
+                        ]
+                      }
+                    }
+                  ])
+                }),
+                _vm._v(" "),
+                _c("b-table-column", {
+                  attrs: { field: "SchedSubjSet", label: "Set" },
+                  scopedSlots: _vm._u([
+                    {
+                      key: "default",
+                      fn: function(props) {
+                        return [
+                          _vm._v(
+                            "\n                        " +
+                              _vm._s(props.row.SchedSubjSet) +
+                              "\n                    "
+                          )
                         ]
                       }
                     }

@@ -3,7 +3,7 @@
         <section class="section">
 
             <div class="columns">
-                <div class="column is-8 is-offset-2">
+                <div class="column is-10 is-offset-1">
                     <div class="is-flex is-justify-content-center mb-2 table-title" style="font-size: 20px; font-weight: bold;">LIST OF SCHEDULES</div>
                     <div class="level">
                         <div class="level-left">
@@ -86,6 +86,10 @@
                                     type="is-danger"
                                     size="is-small">
                             </b-icon>
+                        </b-table-column>
+
+                        <b-table-column field="SchedSubjSet" label="Set" v-slot="props">
+                            {{ props.row.SchedSubjSet }}
                         </b-table-column>
 
                         <b-table-column field="instructor_name" label="Instructor Name" v-slot="props">

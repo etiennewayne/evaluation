@@ -29,7 +29,7 @@ class ScheduleController extends Controller
         return  Schedule::join('tblins', 'SchedInsCode', 'InsCode')
             ->join('tblsubject', 'SchedSubjCode', 'SubjCode')
             ->select('SchedCode','SchedTimeFrm', 'SchedTimeTo', 'SchedDays','InsCode',
-                'InsLName', 'InsFName', 'InsMName', 'SchedSubjCode', 'SubjName', 'SubjDesc', 'SubjClass', 'SubjUnits', 'allow_rate')
+                'InsLName', 'InsFName', 'InsMName', 'SchedSubjCode', 'SubjName', 'SubjDesc', 'SubjClass', 'SubjUnits', 'SchedSubjSet', 'allow_rate')
             ->where('SchedCode', 'LIKE', $req->code. '%')
             ->where('InsLName', 'LIKE', $req->lname. '%')
             ->orderBy($sortkey[0], $sortkey[1])
