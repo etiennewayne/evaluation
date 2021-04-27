@@ -39,8 +39,6 @@ class UserUploaderController extends Controller
                 'yearlevel' => trim($item->year_level),
                 'role' => trim($item->role)
             ]);
-
-
         }
 
         return redirect()->back()
