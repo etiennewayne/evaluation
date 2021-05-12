@@ -4871,6 +4871,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -27549,7 +27554,7 @@ var render = function() {
                 }),
                 _vm._v(" "),
                 _c("b-table-column", {
-                  attrs: { field: "allow_rate", label: "Action" },
+                  attrs: { field: "allow_rate", label: "Action", centered: "" },
                   scopedSlots: _vm._u([
                     {
                       key: "default",
@@ -28880,46 +28885,72 @@ var render = function() {
                           key: "default",
                           fn: function(props) {
                             return [
-                              _c(
-                                "div",
-                                { staticClass: "buttons" },
-                                [
-                                  props.row.nSchedule_Code !== null
-                                    ? _c(
-                                        "b-button",
-                                        {
-                                          staticClass:
-                                            "button is-small is-warning",
-                                          attrs: {
-                                            tag: "a",
-                                            href:
-                                              "/view-rating?schedule=" +
-                                              props.row.EnrSchedCode,
-                                            "icon-pack": "fa",
-                                            "icon-right": "tasks"
-                                          }
-                                        },
-                                        [_vm._v("RATING")]
-                                      )
-                                    : _c(
-                                        "b-button",
-                                        {
-                                          staticClass:
-                                            "button is-small is-primary",
-                                          attrs: {
-                                            tag: "a",
-                                            href:
-                                              "/criteria?schedule=" +
-                                              props.row.EnrSchedCode,
-                                            "icon-pack": "fa",
-                                            "icon-right": "star"
-                                          }
-                                        },
-                                        [_vm._v("RATE")]
-                                      )
-                                ],
-                                1
-                              )
+                              _c("div", { staticClass: "buttons" }, [
+                                props.row.allow_rate == "1"
+                                  ? _c(
+                                      "div",
+                                      [
+                                        props.row.nSchedule_Code !== null
+                                          ? _c(
+                                              "b-button",
+                                              {
+                                                staticClass:
+                                                  "button is-small is-warning",
+                                                attrs: {
+                                                  tag: "a",
+                                                  href:
+                                                    "/view-rating?schedule=" +
+                                                    props.row.EnrSchedCode,
+                                                  "icon-pack": "fa",
+                                                  "icon-right": "tasks"
+                                                }
+                                              },
+                                              [_vm._v("RATING")]
+                                            )
+                                          : _c(
+                                              "b-button",
+                                              {
+                                                staticClass:
+                                                  "button is-small is-primary",
+                                                attrs: {
+                                                  tag: "a",
+                                                  href:
+                                                    "/criteria?schedule=" +
+                                                    props.row.EnrSchedCode,
+                                                  "icon-pack": "fa",
+                                                  "icon-right": "star"
+                                                }
+                                              },
+                                              [_vm._v("RATE")]
+                                            )
+                                      ],
+                                      1
+                                    )
+                                  : _c(
+                                      "div",
+                                      [
+                                        props.row.nSchedule_Code !== null
+                                          ? _c(
+                                              "b-button",
+                                              {
+                                                staticClass:
+                                                  "button is-small is-warning",
+                                                attrs: {
+                                                  tag: "a",
+                                                  href:
+                                                    "/view-rating?schedule=" +
+                                                    props.row.EnrSchedCode,
+                                                  "icon-pack": "fa",
+                                                  "icon-right": "tasks"
+                                                }
+                                              },
+                                              [_vm._v("RATING")]
+                                            )
+                                          : _vm._e()
+                                      ],
+                                      1
+                                    )
+                              ])
                             ]
                           }
                         }

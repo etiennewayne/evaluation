@@ -12,7 +12,7 @@
                         <div class="p-4">
                             <div>
                                 STUDENT NAME: <strong>{{ this.student.lname }}, {{ this.student.fname }} {{ this.student.mname }}</strong>
-                            </div>              
+                            </div>
                            <div>
                                 PROGRAM & YEAR: <strong>{{ this.student.course }} YEAR: {{ this.student.year }}</strong>
                            </div>
@@ -27,7 +27,7 @@
                         <div class="panel-heading">
                             SCHEDULES
                         </div>
-                        
+
                         <div class="p-4">
                             <b-table
                                 :data="data"
@@ -80,14 +80,19 @@
 
                                 <b-table-column field="SchedSubjSet" label="Action"  v-slot="props">
                                     <div class="buttons">
-                                        <b-button v-if="props.row.nSchedule_Code !== null"  class="button is-small is-warning" tag="a" :href="`/view-rating?schedule=`+props.row.EnrSchedCode" icon-pack="fa" icon-right="tasks">RATING</b-button>
-                                        <b-button v-else class="button is-small is-primary" tag="a" :href="`/criteria?schedule=`+props.row.EnrSchedCode" icon-pack="fa" icon-right="star">RATE</b-button>
+                                        <div v-if="props.row.allow_rate == '1'">
+                                            <b-button v-if="props.row.nSchedule_Code !== null"  class="button is-small is-warning" tag="a" :href="`/view-rating?schedule=`+props.row.EnrSchedCode" icon-pack="fa" icon-right="tasks">RATING</b-button>
+                                            <b-button v-else class="button is-small is-primary" tag="a" :href="`/criteria?schedule=`+props.row.EnrSchedCode" icon-pack="fa" icon-right="star">RATE</b-button>
+                                        </div>
+                                        <div v-else>
+                                            <b-button v-if="props.row.nSchedule_Code !== null"  class="button is-small is-warning" tag="a" :href="`/view-rating?schedule=`+props.row.EnrSchedCode" icon-pack="fa" icon-right="tasks">RATING</b-button>
+                                        </div>
                                     </div>
                                 </b-table-column>
                             </b-table>
                         </div>
-                        
-                        
+
+
                     </div>
                 </div><!--column-->
             </div>
@@ -129,7 +134,7 @@ export default {
                 this.student.count_rated_courses = this.data[0].count_rated_course;
                 this.student.count_courses = this.data[0].count_courses;
 
-               
+
             });
         }
     },

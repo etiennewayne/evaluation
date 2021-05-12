@@ -35,8 +35,8 @@ class ScheduleController extends Controller
 
     //AJAX
     public function ajaxSchedule(){
-        $set = DB::connection('mysql')->table('sets')
-            ->where('active', 1)->first();
+//        $set = DB::connection('mysql')->table('sets')
+//            ->where('active', 1)->get();
 
         $ay = Academicyear::where('active', 1)->first();
 
@@ -56,10 +56,10 @@ class ScheduleController extends Controller
                 'b.SchedTimeFrm', 'b.SchedTimeTo', 'b.SchedDays', 'b.SchedInsCode', 'b.SchedSubjSet',
                 'c.SubjName', 'c.SubjDesc', 'c.subjClass',
                 'ratings.schedule_code as nSchedule_Code',
-                'd.EnrCourse', 'd.EnrYear', 'e.StudLName', 'e.StudFName', 'e.StudMName',
+                'd.EnrCourse', 'd.EnrYear', 'e.StudLName', 'e.StudFName', 'e.StudMName', 'b.allow_rate',
                DB::raw('(select count(*) from registrar_gadtc.tblenrdtl202
                 join registrar_gadtc.tblsched202 on registrar_gadtc.tblenrdtl202.EnrSchedCode = registrar_gadtc.tblsched202.SchedCode
-                where registrar_gadtc.tblenrdtl202.EnrIDNum = a.EnrIDNum and registrar_gadtc.tblsched202.SchedSubjSet = '.$set->set.') as count_courses'),
+                where registrar_gadtc.tblenrdtl202.EnrIDNum = a.EnrIDNum) as count_courses'),
                DB::raw('(select count(*) from evaluation.ratings where evaluation.ratings.student_id=a.EnrIDNum and evaluation.ratings.ay_code = '.$ay->ay_code.') as count_rated_course'),
             )
             ->leftJoin('evaluation.ratings', function($join){
@@ -67,13 +67,11 @@ class ScheduleController extends Controller
                     ->on('a.EnrIDNum', 'ratings.student_id');
             })
             ->where('a.EnrIDNum', $student_id)
-            ->where('b.SchedSubjSet', $set->set)
             ->get();
 
             // DB::table('ratings')
             //     ->where('ratings.student_id', $student_id)
             //     ->where('ratings.ay_code', $ay->ay_code)
-
 
         return $data;
     }

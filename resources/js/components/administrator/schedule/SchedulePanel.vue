@@ -96,7 +96,7 @@
                             {{ props.row.InsLName }}, {{ props.row.InsFName }} {{ props.row.InsMName }}
                         </b-table-column>
 
-                        <b-table-column field="allow_rate" label="Action" v-slot="props">
+                        <b-table-column field="allow_rate" label="Action" centered v-slot="props">
                             <div class="is-flex">
                                 <b-button v-if="props.row.allow_rate == 0" class="button is-small is-primary mr-1" tag="a" icon-right="check" icon-pack="fa" @click="openRate(props.row.SchedCode)">OPEN</b-button>
                                 <b-button v-if="props.row.allow_rate == 1" class="button is-small is-danger mr-1" tag="a" icon-right="times-circle" icon-pack="fa" @click="closeRate(props.row.SchedCode)">CLOSE</b-button>
