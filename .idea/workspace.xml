@@ -23,9 +23,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/LoginPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/LoginPage.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/WelcomePage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/WelcomePage.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/student-app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/student-app.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/welcome.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -270,7 +267,7 @@
       <workItem from="1617754057180" duration="10113000" />
       <workItem from="1618376914565" duration="9675000" />
       <workItem from="1618636911092" duration="98000" />
-      <workItem from="1620777952746" duration="5466000" />
+      <workItem from="1620777952746" duration="6246000" />
     </task>
     <servers />
   </component>

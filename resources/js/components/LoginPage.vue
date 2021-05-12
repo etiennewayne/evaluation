@@ -13,7 +13,7 @@
                                     FACULTY PERFORMANCE EVALUATION SYSTEM
                                 </div>
                                 <br>
-                                <p class="right-header-subtitle">An Assessment of teacher's performance that aims to measure teacher's competence.
+                                <p class="right-header-subtitle" style="text-align: justify;">An Assessment of teacher's performance that aims to measure teacher's competence.
                                     Produce fast, secure and reliable result where disclosure of ratings is strictly prohibited.</p>
                             </div>
                             <div class="column vertical-line">

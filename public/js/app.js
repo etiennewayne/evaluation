@@ -24338,11 +24338,18 @@ var staticRenderFns = [
       _vm._v(" "),
       _c("br"),
       _vm._v(" "),
-      _c("p", { staticClass: "right-header-subtitle" }, [
-        _vm._v(
-          "An Assessment of teacher's performance that aims to measure teacher's competence.\n                                Produce fast, secure and reliable result where disclosure of ratings is strictly prohibited."
-        )
-      ])
+      _c(
+        "p",
+        {
+          staticClass: "right-header-subtitle",
+          staticStyle: { "text-align": "justify" }
+        },
+        [
+          _vm._v(
+            "An Assessment of teacher's performance that aims to measure teacher's competence.\n                                Produce fast, secure and reliable result where disclosure of ratings is strictly prohibited."
+          )
+        ]
+      )
     ])
   }
 ]
