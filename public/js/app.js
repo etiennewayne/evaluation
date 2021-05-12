@@ -2022,6 +2022,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['error'],
   data: function data() {
@@ -2065,20 +2066,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ __webpack_exports__["default"] = ({
-  data: function data() {
-    return {
-      fields: {}
-    };
-  },
-  methods: {// submit(){
-    //     axios.post('/login', this.fields).then(res=>{
-    //         this.fields ={};
-    //
-    //     });
-    // }
-  }
-});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({});
 
 /***/ }),
 
@@ -22582,7 +22579,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.welcome-text[data-v-a4d20914]{\n    font-size: 40px;\n    font-weight: bold;\n    margin-bottom: 10px;\n}\n@media only screen and (max-width: 768px) {\n}\n\n\n", ""]);
+exports.push([module.i, "\n.home-wrapper[data-v-a4d20914] {\n    display: flex;\n    justify-content: center;\n    flex-direction: column;\n    align-items: center;\n    margin: 5px 5px 5px 5px;\n}\n.home-logo[data-v-a4d20914]{\n    width: 100%;\n}\n.welcome-text[data-v-a4d20914]{\n    font-size: 20px;\n    font-weight: bold;\n}\n@media only screen and (max-width: 768px) {\n.home-wrapper[data-v-a4d20914] {\n        background-color: red;\n}\n}\n\n\n", ""]);
 
 // exports
 
@@ -24295,7 +24292,23 @@ var render = function() {
                               )
                             : _vm._e(),
                           _vm._v(" "),
-                          _vm._m(1)
+                          _c("div", { staticClass: "buttons is-right" }, [
+                            _c(
+                              "button",
+                              {
+                                staticClass: "button is-primary expand-mobile"
+                              },
+                              [
+                                _c("b-icon", {
+                                  attrs: { pack: "fa", icon: "sign-in" }
+                                }),
+                                _vm._v(
+                                  " \n                                             LOGIN"
+                                )
+                              ],
+                              1
+                            )
+                          ])
                         ],
                         1
                       )
@@ -24331,16 +24344,6 @@ var staticRenderFns = [
         )
       ])
     ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "buttons is-right" }, [
-      _c("button", { staticClass: "button is-primary expand-mobile" }, [
-        _vm._v("LOGIN")
-      ])
-    ])
   }
 ]
 render._withStripped = true
@@ -24364,47 +24367,71 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", [
+    _c("div", { staticClass: "hero is-fullheight-with-navbar" }, [
+      _c("div", { staticClass: "hero-body" }, [
+        _c("div", { staticClass: "container has-text-centered" }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "welcome-text animate__animated animate__backInLeft"
+            },
+            [
+              _vm._v(
+                "\n                    ONLINE FACULTY PERFORMANCE EVALUATION SYSTEM\n                "
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass:
+                "buttons is-centered animate__animated animate__backInLeft"
+            },
+            [
+              _c(
+                "b-button",
+                {
+                  staticClass: "is-primary mt-4",
+                  attrs: {
+                    "icon-pack": "fa",
+                    "icon-left": "arrow-right",
+                    tag: "a",
+                    href: "/login"
+                  }
+                },
+                [
+                  _vm._v(
+                    "\n                        START EVALUATION\n                    "
+                  )
+                ]
+              )
+            ],
+            1
+          )
+        ])
+      ])
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("div", { staticClass: "hero is-fullheight-with-navbar" }, [
-        _c("div", { staticClass: "hero-body " }, [
-          _c("div", { staticClass: "container has-text-centered" }, [
-            _c(
-              "div",
-              {
-                staticClass:
-                  "welcome-text animate__animated animate__backInLeft"
-              },
-              [_vm._v("WELCOME TO FACULTY PERFORMANCE EVALUATION SYSTEM")]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass:
-                  "buttons is-centered animate__animated animate__backInRight"
-              },
-              [
-                _c(
-                  "a",
-                  {
-                    staticClass: "button is-primary is-outlined",
-                    attrs: { href: "/login" }
-                  },
-                  [_vm._v("LOGIN")]
-                )
-              ]
-            )
-          ])
-        ])
-      ])
-    ])
+    return _c(
+      "div",
+      { staticClass: "home-logo animate__animated animate__bounceIn" },
+      [
+        _c("img", {
+          staticStyle: { height: "300px" },
+          attrs: { src: "/img/home-logo.svg" }
+        })
+      ]
+    )
   }
 ]
 render._withStripped = true

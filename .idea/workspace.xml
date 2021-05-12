@@ -19,7 +19,14 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="720635db-fce7-4503-8300-ca514c204a37" name="Default" comment="" />
+    <list default="true" id="720635db-fce7-4503-8300-ca514c204a37" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/LoginPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/LoginPage.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/WelcomePage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/WelcomePage.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/student-app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/student-app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/welcome.blade.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -169,7 +176,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../admissionsystem" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="vue.rearranger.settings.migration" value="true" />
@@ -262,6 +269,8 @@
       <workItem from="1617695813820" duration="7556000" />
       <workItem from="1617754057180" duration="10113000" />
       <workItem from="1618376914565" duration="9675000" />
+      <workItem from="1618636911092" duration="98000" />
+      <workItem from="1620777952746" duration="5466000" />
     </task>
     <servers />
   </component>

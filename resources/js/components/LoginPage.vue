@@ -38,7 +38,8 @@
                                             {{ error }}
                                         </b-notification>
                                         <div class="buttons is-right">
-                                            <button class="button is-primary expand-mobile">LOGIN</button>
+                                            <button class="button is-primary expand-mobile"><b-icon pack="fa" icon="sign-in"></b-icon>&nbsp;
+                                                &nbsp;LOGIN</button>
                                         </div>
                                     </div>
                                 </form>

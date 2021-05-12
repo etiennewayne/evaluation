@@ -3,7 +3,7 @@
 <head>
 
     <meta charset="utf-8">
-    <meta name="theme-color" content="hsl(136, 55%, 28%)" />
+    <meta name="theme-color" content="hsl(136, 55%, 28%)">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -27,6 +27,7 @@
         @yield('content')
 
     </div>
+    @yield('extrascript')
 </body>
 
 
