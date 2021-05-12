@@ -2023,6 +2023,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['error'],
   data: function data() {
@@ -24228,12 +24230,19 @@ var render = function() {
                         [
                           _c(
                             "b-field",
-                            { attrs: { label: "Student ID" } },
+                            {
+                              attrs: {
+                                label: "Student ID",
+                                "label-position": "on-border"
+                              }
+                            },
                             [
                               _c("b-input", {
                                 attrs: {
                                   type: "text",
                                   name: "StudID",
+                                  "icon-pack": "fa",
+                                  icon: "user",
                                   placeholder: "Student ID",
                                   required: ""
                                 },
@@ -24251,13 +24260,20 @@ var render = function() {
                           _vm._v(" "),
                           _c(
                             "b-field",
-                            { attrs: { label: "Password" } },
+                            {
+                              attrs: {
+                                label: "Password",
+                                "label-position": "on-border"
+                              }
+                            },
                             [
                               _c("b-input", {
                                 attrs: {
                                   type: "password",
                                   "password-reveal": "",
                                   name: "password",
+                                  "icon-pack": "fa",
+                                  icon: "key",
                                   placeholder: "Password",
                                   required: ""
                                 },

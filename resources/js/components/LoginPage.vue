@@ -23,14 +23,16 @@
                                 <form action="/login" method="post">
                                     <csrf></csrf>
                                     <div class="controls-panel">
-                                        <b-field label="Student ID">
+                                        <b-field label="Student ID" label-position="on-border">
                                             <b-input type="text" v-model="fields.username"
                                                      name="StudID"
+                                                     icon-pack="fa"
+                                                     icon="user"
                                                      placeholder="Student ID" required></b-input>
                                         </b-field>
-                                        <b-field label="Password">
+                                        <b-field label="Password" label-position="on-border">
                                             <b-input type="password" password-reveal v-model="fields.password"
-                                                     name="password"
+                                                     name="password" icon-pack="fa" icon="key"
                                                      placeholder="Password" required></b-input>
                                         </b-field>
 
