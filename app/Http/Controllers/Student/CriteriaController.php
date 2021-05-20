@@ -13,6 +13,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\StoreRating;
+use App\AllowRate;
+
+use App\Rules\AllowRateRule;
 
 
 class CriteriaController extends Controller
@@ -26,9 +29,17 @@ class CriteriaController extends Controller
 
 
     public function index(Request $req){
+        $allowRate = AllowRate::all();
+        if($allowRate[0]->allow_rate < 1){
+            return redirect()->back();
+        }
 
         $schedule_code = $req->schedule;
         $ay = AcademicYear::where('active', 1)->first();
+
+       
+       
+       
 
         return view('student.criteria')
             ->with('schedule_code', $schedule_code)
@@ -39,9 +50,8 @@ class CriteriaController extends Controller
     public function store(StoreRating $req){
         //Request StoreRating
         //rule --> Rules/RatingDone
+       
         $student_id = Auth::user()->StudID;
-
-
         try{
 
             DB::transaction(function () use($req, $student_id)  {
@@ -52,7 +62,6 @@ class CriteriaController extends Controller
                     'remark' => $req->comment,
                     'ay_code' => $req->ay_code
                 ]);
-
 
                 $dataArray = array();
                 foreach ($req->rate as $key => $rate){

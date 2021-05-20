@@ -4618,38 +4618,39 @@ __webpack_require__.r(__webpack_exports__);
     return {
       data: {},
       fields: {
-        // "comment":"test",
-        // "ay_code":"202",
-        rate: {// "critid_57":4,
-          // "critid_58":5,
-          // "critid_59":4,
-          // "critid_60":4,
-          // "critid_61":4,
-          // "critid_62":4,
-          // "critid_63":4,
-          // "critid_64":3,
-          // "critid_65":4,
-          // "critid_66":3,
-          // "critid_67":4,
-          // "critid_68":4,
-          // "critid_69":4,
-          // "critid_70":5,
-          // "critid_71":5,
-          // "critid_72":4,
-          // "critid_73":4,
-          // "critid_74":5,
-          // "critid_75":4,
-          // "critid_76":4,
-          // "critid_77":4,
-          // "critid_78":4,
-          // "critid_79":5,
-          // "critid_80":4,
-          // "critid_81":4,
-          // "critid_82":4,
-          // "critid_83":4,
-          // "critid_84":5,
-          // "critid_85":4,
-          // "critid_86":4
+        "comment": "test",
+        "ay_code": "202",
+        rate: {
+          "critid_57": 4,
+          "critid_58": 5,
+          "critid_59": 4,
+          "critid_60": 4,
+          "critid_61": 4,
+          "critid_62": 4,
+          "critid_63": 4,
+          "critid_64": 3,
+          "critid_65": 4,
+          "critid_66": 3,
+          "critid_67": 4,
+          "critid_68": 4,
+          "critid_69": 4,
+          "critid_70": 5,
+          "critid_71": 5,
+          "critid_72": 4,
+          "critid_73": 4,
+          "critid_74": 5,
+          "critid_75": 4,
+          "critid_76": 4,
+          "critid_77": 4,
+          "critid_78": 4,
+          "critid_79": 5,
+          "critid_80": 4,
+          "critid_81": 4,
+          "critid_82": 4,
+          "critid_83": 4,
+          "critid_84": 5,
+          "critid_85": 4,
+          "critid_86": 4
         }
       },
       rate: {},
@@ -22681,7 +22682,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.criteria-header[data-v-eeebb466]{\n    font-weight: bold;\n    border-bottom: 3px solid green;\n}\n.legend-container[data-v-eeebb466]{\n    padding: 10px;\n}\n.legends[data-v-eeebb466]{\n}\n.legends > li[data-v-eeebb466]{\n    display: inline-block;\n\n    margin: 10px;\n    font-weight: bold;\n}\n@media only screen and (max-width: 600px) {\n.legends > li[data-v-eeebb466]{\n        font-weight: bold;\n        display: block;\n\n        margin: 10px;\n}\n}\n", ""]);
+exports.push([module.i, "\n.criteria-header[data-v-eeebb466]{\n    font-weight: bold;\n    border-bottom: 3px solid green;\n}\n.legend-container[data-v-eeebb466]{\n    padding: 10px;\n}\n.legends > li[data-v-eeebb466]{\n    display: inline-block;\n\n    margin: 10px;\n    font-weight: bold;\n}\n@media only screen and (max-width: 600px) {\n.legends > li[data-v-eeebb466]{\n        font-weight: bold;\n        display: block;\n\n        margin: 10px;\n}\n}\n", ""]);
 
 // exports
 
@@ -43251,8 +43252,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Wayne\Documents\GitHub\evaluation\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\Wayne\Documents\GitHub\evaluation\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\wayne\Desktop\GitHub\evaluation\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\wayne\Desktop\GitHub\evaluation\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
